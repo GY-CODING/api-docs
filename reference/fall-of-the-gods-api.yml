@@ -1,1 +1,10 @@
-# Comment.
+openapi: 3.1.0
+info:
+  title: Fall of the Gods API
+  version: 1.0
+  description: ''
+servers:
+  - url: 'https://api.gycoding.com/fallofthegods'
+  scription: 'Production Server'
+paths:
+    
