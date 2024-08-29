@@ -1,0 +1,17 @@
+name: Transfer Support Issue
+on:
+  issues:
+    types:
+      - opened
+
+jobs:
+  transferir-issue:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Add to Support project
+        uses: actions/add-to-project@v1.0.2
+        with:
+          project-url: https://github.com/orgs/GY-CODING/projects/10
+          github-token: ${{ secrets.SUPPORT_TOKEN }}
+          labeled: support
+          label-operator: OR
