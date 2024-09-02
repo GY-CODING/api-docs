@@ -1,10 +1,335 @@
 openapi: 3.1.0
 info:
   title: Fall of the Gods API
-  version: 1.0
-  description: ''
+  description: API REST that provides all the information available about Fall of the Gods universe.
+  version: 1.0.0
 servers:
   - url: 'https://api.gycoding.com/fallofthegods'
-  scription: 'Production Server'
+    description: Production Server
 paths:
-    
+  /fallofthegods/actuator/health:
+    get:
+      summary: Health
+      description: Retrieves the whole list of members from a specific chat.
+      responses:
+        '200':
+          description: OK
+
+  /fallofthegods/characters/story/get:
+    get:
+      summary: Get Character from Story
+      description: Retrieves a specific character from the whole universe of Fall of the Gods.
+      parameters:
+        - in: query
+          name: id
+          schema:
+            type: string
+          description: Character's identifier.
+      responses:
+        '200':
+          description: OK
+
+  /fallofthegods/characters/game/get:
+    get:
+      summary: Get Character from Games
+      description: Retrieves a specific character from the games of Fall of the Gods.
+      parameters:
+        - in: query
+          name: id
+          schema:
+            type: string
+          description: Character's identifier.
+      responses:
+        '200':
+          description: OK
+
+  /fallofthegods/characters/story/list:
+    get:
+      summary: List Characters from Story
+      description: Retrieves a non-paginated list of all the characters from the whole universe of Fall of the Gods.
+      responses:
+        '200':
+          description: OK
+
+  /fallofthegods/characters/game/list:
+    get:
+      summary: List Characters from Games
+      description: Retrieves a non-paginated list of all the characters from the games of Fall of the Gods.
+      responses:
+        '200':
+          description: OK
+
+  /fallofthegods/characters/story/page:
+    get:
+      summary: Page Characters from Story
+      description: Retrieves a paginated list of all the characters from the whole universe of Fall of the Gods.
+      parameters:
+        - in: query
+          name: page
+          schema:
+            type: integer
+          description: Number of page.
+        - in: query
+          name: size
+          schema:
+            type: integer
+          description: Amount of elements to show on one page.
+      responses:
+        '200':
+          description: OK
+
+  /fallofthegods/characters/game/page:
+    get:
+      summary: Page Characters from Games
+      description: Retrieves a paginated list of all the characters from the games of Fall of the Gods.
+      parameters:
+        - in: query
+          name: page
+          schema:
+            type: integer
+          description: Number of page.
+        - in: query
+          name: size
+          schema:
+            type: integer
+          description: Amount of elements to show on one page.
+      responses:
+        '200':
+          description: OK
+
+  /fallofthegods/items/story/get:
+    get:
+      summary: Get Item from Story
+      description: Retrieves a specific item from the whole universe of Fall of the Gods.
+      parameters:
+        - in: query
+          name: id
+          schema:
+            type: string
+          description: Item's identifier.
+      responses:
+        '200':
+          description: OK
+
+  /fallofthegods/items/game/get:
+    get:
+      summary: Get Item from Games
+      description: Retrieves a specific item from the games of Fall of the Gods.
+      parameters:
+        - in: query
+          name: id
+          schema:
+            type: string
+          description: Item's identifier.
+      responses:
+        '200':
+          description: OK
+
+  /fallofthegods/items/story/list:
+    get:
+      summary: List Items from Story
+      description: Retrieves a non-paginated list of all the items from the whole universe of Fall of the Gods.
+      responses:
+        '200':
+          description: OK
+
+  /fallofthegods/items/game/list:
+    get:
+      summary: List Items from Games
+      description: Retrieves a non-paginated list of all the items from the games of Fall of the Gods.
+      responses:
+        '200':
+          description: OK
+
+  /fallofthegods/items/story/page:
+    get:
+      summary: Page Items from Story
+      description: Retrieves a paginated list of all the items from the whole universe of Fall of the Gods.
+      parameters:
+        - in: query
+          name: page
+          schema:
+            type: integer
+          description: Number of page.
+        - in: query
+          name: size
+          schema:
+            type: integer
+          description: Amount of elements to show on one page.
+      responses:
+        '200':
+          description: OK
+
+  /fallofthegods/items/game/page:
+    get:
+      summary: Page Items from Games
+      description: Retrieves a paginated list of all the items from the games of Fall of the Gods.
+      parameters:
+        - in: query
+          name: page
+          schema:
+            type: integer
+          description: Number of page.
+        - in: query
+          name: size
+          schema:
+            type: integer
+          description: Amount of elements to show on one page.
+      responses:
+        '200':
+          description: OK
+
+  /fallofthegods/stories/get:
+    get:
+      summary: Get Story
+      description: Retrieves a specific story from the whole universe of Fall of the Gods.
+      parameters:
+        - in: query
+          name: id
+          schema:
+            type: string
+          description: Story's identifier.
+      responses:
+        '200':
+          description: OK
+
+  /fallofthegods/stories/list:
+    get:
+      summary: List Stories
+      description: Retrieves a non-paginated list of all the stories from the whole universe of Fall of the Gods.
+      responses:
+        '200':
+          description: OK
+
+  /fallofthegods/stories/page:
+    get:
+      summary: Page Stories
+      description: Retrieves a paginated list of all the stories from the games of Fall of the Gods.
+      parameters:
+        - in: query
+          name: page
+          schema:
+            type: integer
+          description: Number of page.
+        - in: query
+          name: size
+          schema:
+            type: integer
+          description: Amount of elements to show on one page.
+      responses:
+        '200':
+          description: OK
+
+  /fallofthegods/worlds/get:
+    get:
+      summary: Get World
+      description: Retrieves a specific world from the whole universe of Fall of the Gods.
+      parameters:
+        - in: query
+          name: id
+          schema:
+            type: string
+          description: World's identifier.
+      responses:
+        '200':
+          description: OK
+
+  /fallofthegods/worlds/places/get:
+    get:
+      summary: Get Place
+      description: Retrieves a specific place from the whole universe of Fall of the Gods.
+      parameters:
+        - in: query
+          name: id
+          schema:
+            type: string
+          description: Place's identifier.
+      responses:
+        '200':
+          description: OK
+
+  /fallofthegods/worlds/list:
+    get:
+      summary: List Worlds
+      description: Retrieves a non-paginated list of all the worlds.
+      responses:
+        '200':
+          description: OK
+
+  /fallofthegods/worlds/places/listAll:
+    get:
+      summary: List Places
+      description: Retrieves a non-paginated list of all the places.
+      responses:
+        '200':
+          description: OK
+
+  /fallofthegods/worlds/places/list:
+    get:
+      summary: List Places by World
+      description: Retrieves a non-paginated list of all the places inside a specific world.
+      parameters:
+        - in: query
+          name: id
+          schema:
+            type: string
+          description: World's identifier.
+      responses:
+        '200':
+          description: OK
+
+  /fallofthegods/worlds/page:
+    get:
+      summary: Page Worlds
+      description: Retrieves a paginated list of all the worlds.
+      parameters:
+        - in: query
+          name: page
+          schema:
+            type: integer
+          description: Number of page.
+        - in: query
+          name: size
+          schema:
+            type: integer
+          description: Amount of elements to show on one page.
+      responses:
+        '200':
+          description: OK
+
+  /fallofthegods/worlds/places/pageAll:
+    get:
+      summary: Page Places
+      description: Retrieves a paginated list of all the places.
+      parameters:
+        - in: query
+          name: page
+          schema:
+            type: integer
+          description: Number of page.
+        - in: query
+          name: size
+          schema:
+            type: integer
+          description: Amount of elements to show on one page.
+      responses:
+        '200':
+          description: OK
+
+  /fallofthegods/worlds/places/page:
+    get:
+      summary: Page Places by World
+      description: Retrieves a paginated list of all the places inside a specific world.
+      parameters:
+        - in: query
+          name: id
+          schema:
+            type: string
+          description: World's identifier.
+        - in: query
+          name: page
+          schema:
+            type: integer
+          description: Number of page.
+        - in: query
+          name: size
