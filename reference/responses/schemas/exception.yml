@@ -1,0 +1,27 @@
+components:
+  schemas:
+    ApiError:
+      description: Model for exceptions.
+      type: object
+      properties:
+        code:
+          type: string
+          description: Internal error code.
+        message:
+          type: string
+          description: Error message summary.
+        status:
+          type: integer
+          description: HTTP status error code.
+          enum:
+            - 400
+            - 403
+            - 404
+            - 405
+            - 500
+        owner:
+          type: string
+          description: Exception owner could be GYCODING or API_GATEWAY.
+          enum:
+            - GYCODING
+            - API_GATEWAY

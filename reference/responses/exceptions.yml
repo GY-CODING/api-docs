@@ -1,0 +1,81 @@
+components:
+  responses:
+    bad_request_api_error_response:
+      description: 400 response
+      content:
+        application/json:
+          schema:
+            $ref: 'schemas/exception.yml#/components/schemas/ApiError'
+          examples:
+            bad_request_response:
+              $ref: '#/components/examples/bad_request_api_error_response_example'
+    forbidden_api_error_response:
+      description: 403 response
+      content:
+        application/json:
+          schema:
+            $ref: 'schemas/exception.yml#/components/schemas/ApiError'
+          examples:
+            forbidden_response:
+              $ref: '#/components/examples/forbidden_api_error_response_example'
+    not_found_api_error_response:
+      description: 404 response
+      content:
+        application/json:
+          schema:
+            $ref: 'schemas/exception.yml#/components/schemas/ApiError'
+          examples:
+            not_found_response:
+              $ref: '#/components/examples/not_found_api_error_response_example'
+    method_not_allowed_api_error_response:
+      description: 405 response
+      content:
+        application/json:
+          schema:
+            $ref: 'schemas/exception.yml#/components/schemas/ApiError'
+          examples:
+            method_not_allowed_response:
+              $ref: '#/components/examples/method_not_allowed_api_error_response_example'
+    conflict_api_error_response:
+      description: 409 response
+      content:
+        application/json:
+          schema:
+            $ref: 'schemas/exception.yml#/components/schemas/ApiError'
+          examples:
+            conflict_response:
+              $ref: '#/components/examples/conflict_api_error_response_example'
+    server_error_api_error_response:
+      description: 500 response
+      content:
+        application/json:
+          schema:
+            $ref: 'schemas/exception.yml#/components/schemas/ApiError'
+          examples:
+            server_error_response:
+              $ref: '#/components/examples/unexpected_error_api_error_response_example'
+  examples:
+    bad_request_response_example:
+      value:
+        code: BAD_REQUEST
+        message: The endpoint is malformed.
+        status: 400
+        owner: GYCODING
+    db_error_response_example:
+      value:
+        code: DB_ERROR
+        message: An error with the database has occurred, sorry for the inconvenience.
+        status: 500
+        owner: GYCODING
+    auth_error_response_example:
+      value:
+        code: AUTH_ERROR
+        message: An error with the authentication service has occurred, sorry for the inconvenience.
+        status: 500
+        owner: GYCODING
+    server_error_response_example:
+      value:
+        code: SERVER_ERROR
+        message: An internal server error has occurred, sorry for the inconvenience.
+        status: 500
+        owner: GYCODING

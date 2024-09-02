@@ -8,7 +8,7 @@
 
 ## Introduction
 
-GYCODING's API documentation based on OpenAPI Specification.
+GYCODING's API documentation based on OpenAPI Specification *(3.1.0)*.
 
 <br>
 

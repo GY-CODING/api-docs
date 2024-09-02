@@ -12,8 +12,8 @@ paths:
       summary: List messages
       description: Retrieves the whole list of messages from a specific chat.
       parameters:
-        - $ref: '#/components/parameters/chat-id'
-        - $ref: '#/components/parameters/token'
+        - $ref: 'parameters/gy-messages.yml#/components/parameters/chat-id'
+        - $ref: 'parameters/gy-messages.yml#/components/parameters/token'
       responses:
         '200':
           description: OK
@@ -23,8 +23,8 @@ paths:
       summary: Delete chat
       description: Removes a chat completely, unassigning it from every user.
       parameters:
-        - $ref: '#/components/parameters/chat-id'
-        - $ref: '#/components/parameters/token'
+        - $ref: 'parameters/gy-messages.yml#/components/parameters/chat-id'
+        - $ref: 'parameters/gy-messages.yml#/components/parameters/token'
       responses:
         '200':
           description: OK
@@ -34,8 +34,8 @@ paths:
       summary: Leave chat
       description: As a user, leaves a chat.
       parameters:
-        - $ref: '#/components/parameters/chat-id'
-        - $ref: '#/components/parameters/token'
+        - $ref: 'parameters/gy-messages.yml#/components/parameters/chat-id'
+        - $ref: 'parameters/gy-messages.yml#/components/parameters/token'
       responses:
         '200':
           description: OK
@@ -45,8 +45,8 @@ paths:
       summary: Send message
       description: Sends a message to a specific chat.
       parameters:
-        - $ref: '#/components/parameters/chat-id'
-        - $ref: '#/components/parameters/token'
+        - $ref: 'parameters/gy-messages.yml#/components/parameters/chat-id'
+        - $ref: 'parameters/gy-messages.yml#/components/parameters/token'
       requestBody:
         content:
           application/json:
@@ -65,7 +65,7 @@ paths:
       summary: Create chat
       description: Creates a new chat.
       parameters:
-        - $ref: '#/components/parameters/token'
+        - $ref: 'parameters/gy-messages.yml#/components/parameters/token'
       requestBody:
         content:
           application/json:
@@ -84,8 +84,8 @@ paths:
       summary: Add a member
       description: As a user, add myself into a chat.
       parameters:
-        - $ref: '#/components/parameters/chat-id'
-        - $ref: '#/components/parameters/token'
+        - $ref: 'parameters/gy-messages.yml#/components/parameters/chat-id'
+        - $ref: 'parameters/gy-messages.yml#/components/parameters/token'
       responses:
         '200':
           description: OK
@@ -95,7 +95,7 @@ paths:
       summary: List chats
       description: Retrieves the whole list of chat from where the user belongs.
       parameters:
-        - $ref: '#/components/parameters/token'
+        - $ref: 'parameters/gy-messages.yml#/components/parameters/token'
       responses:
         '200':
           description: OK
@@ -105,27 +105,8 @@ paths:
       summary: List members
       description: Retrieves the whole list of members from a specific chat.
       parameters:
-        - $ref: '#/components/parameters/chat-id'
-        - $ref: '#/components/parameters/token'
+        - $ref: 'parameters/gy-messages.yml#/components/parameters/chat-id'
+        - $ref: 'parameters/gy-messages.yml#/components/parameters/token'
       responses:
         '200':
           description: OK
-
-components:
-  parameters:
-    token:
-      name: token
-      in: header
-      required: true
-      schema:
-        type: string
-      description: Authentication token.
-      example: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c'
-    chat-id:
-      name: chat-id
-      in: path
-      required: true
-      schema:
-        type: string
-      description: The chat ID.
-      example: '5f4b3b2b-3b2b-4b3b-2b3b-4b3b2b3b4b3b'
