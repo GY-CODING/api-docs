@@ -1,0 +1,131 @@
+openapi: 3.1.0
+info:
+  title: GY Messages
+  description: Official GYCODING messaging API service.
+  version: 1.1.0
+servers:
+  - url: 'https://api.gycoding.com/messages'
+    description: Production Server
+paths:
+  /messages/{chat-id}/messages/list:
+    get:
+      summary: List messages
+      description: Retrieves the whole list of messages from a specific chat.
+      parameters:
+        - $ref: '#/components/parameters/chat-id'
+        - $ref: '#/components/parameters/token'
+      responses:
+        '200':
+          description: OK
+
+  /messages/{chat-id}/delete:
+    delete:
+      summary: Delete chat
+      description: Removes a chat completely, unassigning it from every user.
+      parameters:
+        - $ref: '#/components/parameters/chat-id'
+        - $ref: '#/components/parameters/token'
+      responses:
+        '200':
+          description: OK
+
+  /messages/{chat-id}/leave:
+    delete:
+      summary: Leave chat
+      description: As a user, leaves a chat.
+      parameters:
+        - $ref: '#/components/parameters/chat-id'
+        - $ref: '#/components/parameters/token'
+      responses:
+        '200':
+          description: OK
+
+  /messages/{chat-id}/send:
+    post:
+      summary: Send message
+      description: Sends a message to a specific chat.
+      parameters:
+        - $ref: '#/components/parameters/chat-id'
+        - $ref: '#/components/parameters/token'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                message:
+                  type: string
+                  description: The content of the message.
+      responses:
+        '200':
+          description: OK
+
+  /messages/create:
+    post:
+      summary: Create chat
+      description: Creates a new chat.
+      parameters:
+        - $ref: '#/components/parameters/token'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: The name of the chat.
+      responses:
+        '200':
+          description: OK
+
+  /messages/{chat-id}/members/add:
+    post:
+      summary: Add a member
+      description: As a user, add myself into a chat.
+      parameters:
+        - $ref: '#/components/parameters/chat-id'
+        - $ref: '#/components/parameters/token'
+      responses:
+        '200':
+          description: OK
+
+  /messages/chats/list:
+    get:
+      summary: List chats
+      description: Retrieves the whole list of chat from where the user belongs.
+      parameters:
+        - $ref: '#/components/parameters/token'
+      responses:
+        '200':
+          description: OK
+
+  /messages/{chat-id}/members/list:
+    get:
+      summary: List members
+      description: Retrieves the whole list of members from a specific chat.
+      parameters:
+        - $ref: '#/components/parameters/chat-id'
+        - $ref: '#/components/parameters/token'
+      responses:
+        '200':
+          description: OK
+
+components:
+  parameters:
+    token:
+      name: token
+      in: header
+      required: true
+      schema:
+        type: string
+      description: Authentication token.
+      example: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c'
+    chat-id:
+      name: chat-id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: The chat ID.
+      example: '5f4b3b2b-3b2b-4b3b-2b3b-4b3b2b3b4b3b'

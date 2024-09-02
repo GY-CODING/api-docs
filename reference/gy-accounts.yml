@@ -1,0 +1,157 @@
+openapi: 3.1.0
+info:
+  title: GY Accounts
+  description: Official GYCODING account management API service.
+  version: 3.2.0
+servers:
+  - url: 'https://api.gycoding.com/accounts'
+    description: Production Server
+paths:
+  /auth/messages/chat/add:
+    put:
+      summary: Add chat to metadata
+      description: Resets user metadata.
+      parameters:
+        - $ref: '#/components/parameters/token'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                chatId:
+                  type: string
+                  description: The chat ID.
+                admin:
+                  type: boolean
+                  description: Whether the user is an admin.
+      responses:
+        '200':
+          description: OK
+
+  /auth/messages/chat/set:
+    put:
+      summary: Set user admin state in a chat metadata
+      description: Resets user metadata.
+      parameters:
+        - $ref: '#/components/parameters/token'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                chatId:
+                  type: string
+                  description: The chat ID.
+                admin:
+                  type: boolean
+                  description: Whether the user is an admin.
+      responses:
+        '200':
+          description: OK
+
+  /auth/messages/chat/remove:
+    delete:
+      summary: Remove chat from metadata
+      description: Resets user metadata.
+      parameters:
+        - $ref: '#/components/parameters/token'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                chatId:
+                  type: string
+                  description: The chat ID.
+      responses:
+        '200':
+          description: OK
+
+  /auth/messages/chat/list:
+    get:
+      summary: List user chats from metadata
+      description: Resets user metadata.
+      parameters:
+        - $ref: '#/components/parameters/token'
+      responses:
+        '200':
+          description: OK
+
+  /auth/login:
+    post:
+      summary: Login
+      description: Checks the existence and authentication of a user account using basic Email/Username and Password authentication and returns a JWT.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+      responses:
+        '200':
+          description: OK
+
+  /auth/signup:
+    post:
+      summary: Sign Up
+      description: Registers a new user account using basic Email/Username and Password authentication.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user:
+                  type: string
+                email:
+                  type: string
+                password:
+                  type: string
+      responses:
+        '200':
+          description: OK
+
+  /auth/google:
+    get:
+      summary: Google Authentication
+      description: Returns a custom GYCODING authentication URL for Google Authentication.
+      responses:
+        '200':
+          description: OK
+
+  /auth/metadata/set:
+    put:
+      summary: Set User Metadata
+      description: Resets user metadata.
+      parameters:
+        - $ref: '#/components/parameters/isReset'
+        - $ref: '#/components/parameters/token'
+      responses:
+        '200':
+          description: OK
+
+components:
+  parameters:
+    token:
+      name: token
+      in: header
+      required: true
+      schema:
+        type: string
+      description: Authentication token.
+      example: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c'
+    isReset:
+      name: isReset
+      in: query
+      required: true
+      schema:
+        type: boolean
+      description: Whether the operation of setting the data is a reset or a first-time set.
+      example: true

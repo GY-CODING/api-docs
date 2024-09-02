@@ -2,20 +2,12 @@ openapi: 3.1.0
 info:
   title: Fall of the Gods API
   description: API REST that provides all the information available about Fall of the Gods universe.
-  version: 1.0.0
+  version: 3.0.0
 servers:
   - url: 'https://api.gycoding.com/fallofthegods'
     description: Production Server
 paths:
-  /fallofthegods/actuator/health:
-    get:
-      summary: Health
-      description: Retrieves the whole list of members from a specific chat.
-      responses:
-        '200':
-          description: OK
-
-  /fallofthegods/characters/story/get:
+  /characters/story/get:
     get:
       summary: Get Character from Story
       description: Retrieves a specific character from the whole universe of Fall of the Gods.
@@ -29,7 +21,7 @@ paths:
         '200':
           description: OK
 
-  /fallofthegods/characters/game/get:
+  /characters/game/get:
     get:
       summary: Get Character from Games
       description: Retrieves a specific character from the games of Fall of the Gods.
@@ -43,7 +35,7 @@ paths:
         '200':
           description: OK
 
-  /fallofthegods/characters/story/list:
+  /characters/story/list:
     get:
       summary: List Characters from Story
       description: Retrieves a non-paginated list of all the characters from the whole universe of Fall of the Gods.
@@ -51,7 +43,7 @@ paths:
         '200':
           description: OK
 
-  /fallofthegods/characters/game/list:
+  /characters/game/list:
     get:
       summary: List Characters from Games
       description: Retrieves a non-paginated list of all the characters from the games of Fall of the Gods.
@@ -59,7 +51,7 @@ paths:
         '200':
           description: OK
 
-  /fallofthegods/characters/story/page:
+  /characters/story/page:
     get:
       summary: Page Characters from Story
       description: Retrieves a paginated list of all the characters from the whole universe of Fall of the Gods.
@@ -78,7 +70,7 @@ paths:
         '200':
           description: OK
 
-  /fallofthegods/characters/game/page:
+  /characters/game/page:
     get:
       summary: Page Characters from Games
       description: Retrieves a paginated list of all the characters from the games of Fall of the Gods.
@@ -97,7 +89,7 @@ paths:
         '200':
           description: OK
 
-  /fallofthegods/items/story/get:
+  /items/story/get:
     get:
       summary: Get Item from Story
       description: Retrieves a specific item from the whole universe of Fall of the Gods.
@@ -111,7 +103,7 @@ paths:
         '200':
           description: OK
 
-  /fallofthegods/items/game/get:
+  /items/game/get:
     get:
       summary: Get Item from Games
       description: Retrieves a specific item from the games of Fall of the Gods.
@@ -125,7 +117,7 @@ paths:
         '200':
           description: OK
 
-  /fallofthegods/items/story/list:
+  /items/story/list:
     get:
       summary: List Items from Story
       description: Retrieves a non-paginated list of all the items from the whole universe of Fall of the Gods.
@@ -133,7 +125,7 @@ paths:
         '200':
           description: OK
 
-  /fallofthegods/items/game/list:
+  /items/game/list:
     get:
       summary: List Items from Games
       description: Retrieves a non-paginated list of all the items from the games of Fall of the Gods.
@@ -141,7 +133,7 @@ paths:
         '200':
           description: OK
 
-  /fallofthegods/items/story/page:
+  /items/story/page:
     get:
       summary: Page Items from Story
       description: Retrieves a paginated list of all the items from the whole universe of Fall of the Gods.
@@ -160,7 +152,7 @@ paths:
         '200':
           description: OK
 
-  /fallofthegods/items/game/page:
+  /items/game/page:
     get:
       summary: Page Items from Games
       description: Retrieves a paginated list of all the items from the games of Fall of the Gods.
@@ -179,7 +171,7 @@ paths:
         '200':
           description: OK
 
-  /fallofthegods/stories/get:
+  /stories/get:
     get:
       summary: Get Story
       description: Retrieves a specific story from the whole universe of Fall of the Gods.
@@ -193,7 +185,7 @@ paths:
         '200':
           description: OK
 
-  /fallofthegods/stories/list:
+  /stories/list:
     get:
       summary: List Stories
       description: Retrieves a non-paginated list of all the stories from the whole universe of Fall of the Gods.
@@ -201,7 +193,7 @@ paths:
         '200':
           description: OK
 
-  /fallofthegods/stories/page:
+  /stories/page:
     get:
       summary: Page Stories
       description: Retrieves a paginated list of all the stories from the games of Fall of the Gods.
@@ -220,7 +212,7 @@ paths:
         '200':
           description: OK
 
-  /fallofthegods/worlds/get:
+  /worlds/get:
     get:
       summary: Get World
       description: Retrieves a specific world from the whole universe of Fall of the Gods.
@@ -234,7 +226,7 @@ paths:
         '200':
           description: OK
 
-  /fallofthegods/worlds/places/get:
+  /worlds/places/get:
     get:
       summary: Get Place
       description: Retrieves a specific place from the whole universe of Fall of the Gods.
@@ -248,7 +240,7 @@ paths:
         '200':
           description: OK
 
-  /fallofthegods/worlds/list:
+  /worlds/list:
     get:
       summary: List Worlds
       description: Retrieves a non-paginated list of all the worlds.
@@ -256,7 +248,7 @@ paths:
         '200':
           description: OK
 
-  /fallofthegods/worlds/places/listAll:
+  /worlds/places/listAll:
     get:
       summary: List Places
       description: Retrieves a non-paginated list of all the places.
@@ -264,7 +256,7 @@ paths:
         '200':
           description: OK
 
-  /fallofthegods/worlds/places/list:
+  /worlds/places/list:
     get:
       summary: List Places by World
       description: Retrieves a non-paginated list of all the places inside a specific world.
@@ -278,7 +270,7 @@ paths:
         '200':
           description: OK
 
-  /fallofthegods/worlds/page:
+  /worlds/page:
     get:
       summary: Page Worlds
       description: Retrieves a paginated list of all the worlds.
@@ -297,7 +289,7 @@ paths:
         '200':
           description: OK
 
-  /fallofthegods/worlds/places/pageAll:
+  /worlds/places/pageAll:
     get:
       summary: Page Places
       description: Retrieves a paginated list of all the places.
@@ -316,7 +308,7 @@ paths:
         '200':
           description: OK
 
-  /fallofthegods/worlds/places/page:
+  /worlds/places/page:
     get:
       summary: Page Places by World
       description: Retrieves a paginated list of all the places inside a specific world.
