@@ -1,18 +1,17 @@
-components:
-  parameters:
-    token:
-      name: token
-      in: header
-      required: true
-      schema:
-        type: string
-      description: Authentication token.
-      example: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c'
-    isReset:
-      name: isReset
-      in: query
-      required: true
-      schema:
-        type: boolean
-      description: Whether the operation of setting the data is a reset or a first-time set.
-      example: true
+token:
+  name: token
+  in: header
+  required: true
+  schema:
+    type: string
+  description: Authentication token.
+  example: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c'
+  
+isReset:
+  name: isReset
+  in: query
+  required: true
+  schema:
+    type: boolean
+  description: Whether the operation of setting the data is a reset or a first-time set.
+  example: true

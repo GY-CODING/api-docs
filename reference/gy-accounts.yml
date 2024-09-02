@@ -131,8 +131,13 @@ paths:
       summary: Set User Metadata
       description: Resets user metadata.
       parameters:
-        - $ref: 'parameters/gy-accounts.yml#/components/parameters/isReset'
-        - $ref: 'parameters/gy-accounts.yml#/components/parameters/token'
+        - $ref: '#/components/parameters/isReset'
+        - $ref: '#/components/parameters/token'
       responses:
         '200':
           description: OK
+
+components:
+  parameters:
+    - $ref: 'parameters/gy-accounts.yml#/token'
+    - $ref: 'parameters/gy-accounts.yml#/isReset'
