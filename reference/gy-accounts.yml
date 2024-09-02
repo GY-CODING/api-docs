@@ -131,8 +131,7 @@ paths:
       summary: Set User Metadata
       description: Resets user metadata.
       parameters:
-        - $ref: '#/components/parameters/isReset'
-        - $ref: '#/components/parameters/token'
+        - $ref: '#/components/parameters'
       responses:
         '200':
           description: OK
