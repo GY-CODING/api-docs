@@ -1,0 +1,8 @@
+components:
+  responses:
+    OKResponse:
+      description: OK
+    NoContentResponse:
+      description: No Content
+    MediaResponse:
+      description: OK with Media Response
