@@ -76,6 +76,15 @@ components:
           examples:
             AuthErrorResponse:
               $ref: '#/components/examples/AuthErrorResponseExample'
+    GatewayErrorResponse:
+      description: 500 response
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
+          examples:
+            GatewayErrorResponse:
+              $ref: '#/components/examples/GatewayErrorResponseExample'
     ServerErrorResponse:
       description: 500 response
       content:
@@ -147,6 +156,12 @@ components:
         message: An error with the authentication service has occurred, sorry for the inconvenience.
         status: 500
         owner: GYCODING
+    GatewayErrorResponseExample:
+      value:
+        code: GATEWAY_ERROR
+        message: An internal API Gateway error has occurred, sorry for the inconvenience.
+        status: 500
+        owner: API_GATEWAY
     ServerErrorResponseExample:
       value:
         code: SERVER_ERROR
