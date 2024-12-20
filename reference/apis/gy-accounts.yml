@@ -461,7 +461,6 @@ paths:
             - $ref: '../shared/errors.yml#/components/responses/ServerErrorResponse'
             - $ref: '../shared/errors.yml#/components/responses/AuthErrorResponse'
       x-roles:
-        - COMMON
         - ADMIN
 
 # ====================================================================== #
