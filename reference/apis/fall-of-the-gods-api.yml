@@ -31,7 +31,7 @@ paths:
           oneOf:
             - $ref: '../shared/errors.yml#/components/responses/ServerErrorResponse'
             - $ref: '../shared/errors.yml#/components/responses/DBErrorResponse'
-      roles:
+      x-roles:
         - COMMON
         - ADMIN
 
