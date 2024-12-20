@@ -31,15 +31,24 @@ components:
               $ref: '#/components/examples/ForbiddenServiceAPIErrorResponseExample'
             ForbiddenGatewayResponse:
               $ref: '#/components/examples/ForbiddenGatewayAPIErrorResponseExample'
-    NotFoundAPIErrorResponse:
+    ResourceNotFoundAPIErrorResponse:
       description: 404 response
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ApiError'
           examples:
-            NotFoundResponse:
-              $ref: '#/components/examples/NotFoundAPIErrorResponseExample'
+            ResourceNotFoundResponse:
+              $ref: '#/components/examples/ResourceNotFoundAPIErrorResponseExample'
+    TokenNotFoundAPIErrorResponse:
+      description: 404 response
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
+          examples:
+            TokenNotFoundResponse:
+              $ref: '#/components/examples/TokenNotFoundAPIErrorResponseExample'
     MethodNotAllowedAPIErrorResponse:
       description: 405 response
       content:
@@ -126,12 +135,18 @@ components:
         message: The user has no permission to access this resource.
         status: 403
         owner: API_GATEWAY
-    NotFoundAPIErrorResponseExample:
+    ResourceNotFoundAPIErrorResponseExample:
       value:
-        code: NOT_FOUND
+        code: RESOURCE_NOT_FOUND
         message: This resource was not found.
         status: 404
         owner: GYCODING
+    TokenNotFoundAPIErrorResponseExample:
+      value:
+        code: TOKEN_NOT_FOUND
+        message: Authentication token was not found.
+        status: 404
+        owner: API_GATEWAY
     MethodNotAllowedAPIErrorResponseExample:
       value:
         code: METHOD_NOT_ALLOWED

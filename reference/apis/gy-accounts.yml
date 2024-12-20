@@ -32,7 +32,9 @@ paths:
         '403':
           $ref: '../shared/errors.yml#/components/responses/ForbiddenAPIErrorResponse'
         '404':
-          $ref: '../shared/errors.yml#/components/responses/NotFoundAPIErrorResponse'
+          oneOf:
+          - $ref: '../shared/errors.yml#/components/responses/ResourceNotFoundAPIErrorResponse'
+          - $ref: '../shared/errors.yml#/components/responses/TokenNotFoundAPIErrorResponse'
         '405':
           $ref: '../shared/errors.yml#/components/responses/MethodNotAllowedAPIErrorResponse'
         '409':
@@ -41,6 +43,9 @@ paths:
           oneOf:
             - $ref: '../shared/errors.yml#/components/responses/ServerErrorResponse'
             - $ref: '../shared/errors.yml#/components/responses/AuthErrorResponse'
+      x-roles:
+        - COMMON
+        - ADMIN
 
   /auth/messages/chat/set:
     put:
@@ -63,7 +68,9 @@ paths:
         '403':
           $ref: '../shared/errors.yml#/components/responses/ForbiddenAPIErrorResponse'
         '404':
-          $ref: '../shared/errors.yml#/components/responses/NotFoundAPIErrorResponse'
+          oneOf:
+          - $ref: '../shared/errors.yml#/components/responses/ResourceNotFoundAPIErrorResponse'
+          - $ref: '../shared/errors.yml#/components/responses/TokenNotFoundAPIErrorResponse'
         '405':
           $ref: '../shared/errors.yml#/components/responses/MethodNotAllowedAPIErrorResponse'
         '409':
@@ -72,6 +79,9 @@ paths:
           oneOf:
             - $ref: '../shared/errors.yml#/components/responses/ServerErrorResponse'
             - $ref: '../shared/errors.yml#/components/responses/AuthErrorResponse'
+      x-roles:
+        - COMMON
+        - ADMIN
 
   /auth/messages/chat/remove:
     delete:
@@ -94,7 +104,9 @@ paths:
         '403':
           $ref: '../shared/errors.yml#/components/responses/ForbiddenAPIErrorResponse'
         '404':
-          $ref: '../shared/errors.yml#/components/responses/NotFoundAPIErrorResponse'
+          oneOf:
+          - $ref: '../shared/errors.yml#/components/responses/ResourceNotFoundAPIErrorResponse'
+          - $ref: '../shared/errors.yml#/components/responses/TokenNotFoundAPIErrorResponse'
         '405':
           $ref: '../shared/errors.yml#/components/responses/MethodNotAllowedAPIErrorResponse'
         '409':
@@ -103,6 +115,9 @@ paths:
           oneOf:
             - $ref: '../shared/errors.yml#/components/responses/ServerErrorResponse'
             - $ref: '../shared/errors.yml#/components/responses/AuthErrorResponse'
+      x-roles:
+        - COMMON
+        - ADMIN
 
   /auth/messages/chat/list:
     get:
@@ -120,7 +135,9 @@ paths:
         '403':
           $ref: '../shared/errors.yml#/components/responses/ForbiddenAPIErrorResponse'
         '404':
-          $ref: '../shared/errors.yml#/components/responses/NotFoundAPIErrorResponse'
+          oneOf:
+          - $ref: '../shared/errors.yml#/components/responses/ResourceNotFoundAPIErrorResponse'
+          - $ref: '../shared/errors.yml#/components/responses/TokenNotFoundAPIErrorResponse'
         '405':
           $ref: '../shared/errors.yml#/components/responses/MethodNotAllowedAPIErrorResponse'
         '409':
@@ -129,6 +146,9 @@ paths:
           oneOf:
             - $ref: '../shared/errors.yml#/components/responses/ServerErrorResponse'
             - $ref: '../shared/errors.yml#/components/responses/AuthErrorResponse'
+      x-roles:
+        - COMMON
+        - ADMIN
 
   /client/metadata/get:
     get:
@@ -146,7 +166,9 @@ paths:
         '403':
           $ref: '../shared/errors.yml#/components/responses/ForbiddenAPIErrorResponse'
         '404':
-          $ref: '../shared/errors.yml#/components/responses/NotFoundAPIErrorResponse'
+          oneOf:
+          - $ref: '../shared/errors.yml#/components/responses/ResourceNotFoundAPIErrorResponse'
+          - $ref: '../shared/errors.yml#/components/responses/TokenNotFoundAPIErrorResponse'
         '405':
           $ref: '../shared/errors.yml#/components/responses/MethodNotAllowedAPIErrorResponse'
         '409':
@@ -155,6 +177,9 @@ paths:
           oneOf:
             - $ref: '../shared/errors.yml#/components/responses/ServerErrorResponse'
             - $ref: '../shared/errors.yml#/components/responses/AuthErrorResponse'
+      x-roles:
+        - COMMON
+        - ADMIN
 
   /auth/login:
     post:
@@ -178,6 +203,9 @@ paths:
           oneOf:
             - $ref: '../shared/errors.yml#/components/responses/ServerErrorResponse'
             - $ref: '../shared/errors.yml#/components/responses/AuthErrorResponse'
+      x-roles:
+        - COMMON
+        - ADMIN
 
   /auth/signup:
     post:
@@ -203,6 +231,9 @@ paths:
           oneOf:
             - $ref: '../shared/errors.yml#/components/responses/ServerErrorResponse'
             - $ref: '../shared/errors.yml#/components/responses/AuthErrorResponse'
+      x-roles:
+        - COMMON
+        - ADMIN
 
   /auth/google:
     get:
@@ -245,6 +276,9 @@ paths:
           oneOf:
             - $ref: '../shared/errors.yml#/components/responses/ServerErrorResponse'
             - $ref: '../shared/errors.yml#/components/responses/AuthErrorResponse'
+      x-roles:
+        - COMMON
+        - ADMIN
 
   /auth/update/username:
     put:
@@ -274,6 +308,9 @@ paths:
           oneOf:
             - $ref: '../shared/errors.yml#/components/responses/ServerErrorResponse'
             - $ref: '../shared/errors.yml#/components/responses/AuthErrorResponse'
+      x-roles:
+        - COMMON
+        - ADMIN
 
   /auth/update/email:
     put:
@@ -303,6 +340,9 @@ paths:
           oneOf:
             - $ref: '../shared/errors.yml#/components/responses/ServerErrorResponse'
             - $ref: '../shared/errors.yml#/components/responses/AuthErrorResponse'
+      x-roles:
+        - COMMON
+        - ADMIN
 
   /auth/update/password:
     put:
@@ -332,6 +372,9 @@ paths:
           oneOf:
             - $ref: '../shared/errors.yml#/components/responses/ServerErrorResponse'
             - $ref: '../shared/errors.yml#/components/responses/AuthErrorResponse'
+      x-roles:
+        - COMMON
+        - ADMIN
 
   /auth/update/picture:
     put:
@@ -361,6 +404,9 @@ paths:
           oneOf:
             - $ref: '../shared/errors.yml#/components/responses/ServerErrorResponse'
             - $ref: '../shared/errors.yml#/components/responses/AuthErrorResponse'
+      x-roles:
+        - COMMON
+        - ADMIN
 
   /auth/get/picture/{user-id}:
     get:
@@ -378,13 +424,16 @@ paths:
         '403':
           $ref: '../shared/errors.yml#/components/responses/ForbiddenAPIErrorResponse'
         '404':
-          $ref: '../shared/errors.yml#/components/responses/NotFoundAPIErrorResponse'
+          $ref: '../shared/errors.yml#/components/responses/ResourceNotFoundAPIErrorResponse'
         '405':
           $ref: '../shared/errors.yml#/components/responses/MethodNotAllowedAPIErrorResponse'
         '500':
           oneOf:
             - $ref: '../shared/errors.yml#/components/responses/ServerErrorResponse'
             - $ref: '../shared/errors.yml#/components/responses/AuthErrorResponse'
+      x-roles:
+        - COMMON
+        - ADMIN
 
   /auth/get/profile:
     get:
@@ -402,13 +451,18 @@ paths:
         '403':
           $ref: '../shared/errors.yml#/components/responses/ForbiddenAPIErrorResponse'
         '404':
-          $ref: '../shared/errors.yml#/components/responses/NotFoundAPIErrorResponse'
+          oneOf:
+          - $ref: '../shared/errors.yml#/components/responses/ResourceNotFoundAPIErrorResponse'
+          - $ref: '../shared/errors.yml#/components/responses/TokenNotFoundAPIErrorResponse'
         '405':
           $ref: '../shared/errors.yml#/components/responses/MethodNotAllowedAPIErrorResponse'
         '500':
           oneOf:
             - $ref: '../shared/errors.yml#/components/responses/ServerErrorResponse'
             - $ref: '../shared/errors.yml#/components/responses/AuthErrorResponse'
+      x-roles:
+        - COMMON
+        - ADMIN
 
 # ====================================================================== #
 # ====================================================================== #

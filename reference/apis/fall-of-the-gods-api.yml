@@ -24,13 +24,16 @@ paths:
         '400':
           $ref: '../shared/errors.yml#/components/responses/BadRequestAPIErrorResponse'
         '404':
-          $ref: '../shared/errors.yml#/components/responses/NotFoundAPIErrorResponse'
+          $ref: '../shared/errors.yml#/components/responses/ResourceNotFoundAPIErrorResponse'
         '405':
           $ref: '../shared/errors.yml#/components/responses/MethodNotAllowedAPIErrorResponse'
         '500':
           oneOf:
             - $ref: '../shared/errors.yml#/components/responses/ServerErrorResponse'
             - $ref: '../shared/errors.yml#/components/responses/DBErrorResponse'
+      x-roles:
+        - COMMON
+        - ADMIN
 
   /characters/game/get:
     get:
@@ -45,13 +48,16 @@ paths:
         '400':
           $ref: '../shared/errors.yml#/components/responses/BadRequestAPIErrorResponse'
         '404':
-          $ref: '../shared/errors.yml#/components/responses/NotFoundAPIErrorResponse'
+          $ref: '../shared/errors.yml#/components/responses/ResourceNotFoundAPIErrorResponse'
         '405':
           $ref: '../shared/errors.yml#/components/responses/MethodNotAllowedAPIErrorResponse'
         '500':
           oneOf:
             - $ref: '../shared/errors.yml#/components/responses/ServerErrorResponse'
             - $ref: '../shared/errors.yml#/components/responses/DBErrorResponse'
+      x-roles:
+        - COMMON
+        - ADMIN
 
   /characters/story/list:
     get:
@@ -65,13 +71,16 @@ paths:
         '400':
           $ref: '../shared/errors.yml#/components/responses/BadRequestAPIErrorResponse'
         '404':
-          $ref: '../shared/errors.yml#/components/responses/NotFoundAPIErrorResponse'
+          $ref: '../shared/errors.yml#/components/responses/ResourceNotFoundAPIErrorResponse'
         '405':
           $ref: '../shared/errors.yml#/components/responses/MethodNotAllowedAPIErrorResponse'
         '500':
           oneOf:
             - $ref: '../shared/errors.yml#/components/responses/ServerErrorResponse'
             - $ref: '../shared/errors.yml#/components/responses/DBErrorResponse'
+      x-roles:
+        - COMMON
+        - ADMIN
 
   /characters/game/list:
     get:
@@ -85,13 +94,16 @@ paths:
         '400':
           $ref: '../shared/errors.yml#/components/responses/BadRequestAPIErrorResponse'
         '404':
-          $ref: '../shared/errors.yml#/components/responses/NotFoundAPIErrorResponse'
+          $ref: '../shared/errors.yml#/components/responses/ResourceNotFoundAPIErrorResponse'
         '405':
           $ref: '../shared/errors.yml#/components/responses/MethodNotAllowedAPIErrorResponse'
         '500':
           oneOf:
             - $ref: '../shared/errors.yml#/components/responses/ServerErrorResponse'
             - $ref: '../shared/errors.yml#/components/responses/DBErrorResponse'
+      x-roles:
+        - COMMON
+        - ADMIN
 
   /characters/story/page:
     get:
@@ -107,13 +119,16 @@ paths:
         '400':
           $ref: '../shared/errors.yml#/components/responses/BadRequestAPIErrorResponse'
         '404':
-          $ref: '../shared/errors.yml#/components/responses/NotFoundAPIErrorResponse'
+          $ref: '../shared/errors.yml#/components/responses/ResourceNotFoundAPIErrorResponse'
         '405':
           $ref: '../shared/errors.yml#/components/responses/MethodNotAllowedAPIErrorResponse'
         '500':
           oneOf:
             - $ref: '../shared/errors.yml#/components/responses/ServerErrorResponse'
             - $ref: '../shared/errors.yml#/components/responses/DBErrorResponse'
+      x-roles:
+        - COMMON
+        - ADMIN
 
   /characters/game/page:
     get:
@@ -129,13 +144,16 @@ paths:
         '400':
           $ref: '../shared/errors.yml#/components/responses/BadRequestAPIErrorResponse'
         '404':
-          $ref: '../shared/errors.yml#/components/responses/NotFoundAPIErrorResponse'
+          $ref: '../shared/errors.yml#/components/responses/ResourceNotFoundAPIErrorResponse'
         '405':
           $ref: '../shared/errors.yml#/components/responses/MethodNotAllowedAPIErrorResponse'
         '500':
           oneOf:
             - $ref: '../shared/errors.yml#/components/responses/ServerErrorResponse'
             - $ref: '../shared/errors.yml#/components/responses/DBErrorResponse'
+      x-roles:
+        - COMMON
+        - ADMIN
 
   /items/story/get:
     get:
@@ -150,7 +168,7 @@ paths:
         '400':
           $ref: '../shared/errors.yml#/components/responses/BadRequestAPIErrorResponse'
         '404':
-          $ref: '../shared/errors.yml#/components/responses/NotFoundAPIErrorResponse'
+          $ref: '../shared/errors.yml#/components/responses/ResourceNotFoundAPIErrorResponse'
         '405':
           $ref: '../shared/errors.yml#/components/responses/MethodNotAllowedAPIErrorResponse'
         '500':
@@ -171,13 +189,16 @@ paths:
         '400':
           $ref: '../shared/errors.yml#/components/responses/BadRequestAPIErrorResponse'
         '404':
-          $ref: '../shared/errors.yml#/components/responses/NotFoundAPIErrorResponse'
+          $ref: '../shared/errors.yml#/components/responses/ResourceNotFoundAPIErrorResponse'
         '405':
           $ref: '../shared/errors.yml#/components/responses/MethodNotAllowedAPIErrorResponse'
         '500':
           oneOf:
             - $ref: '../shared/errors.yml#/components/responses/ServerErrorResponse'
             - $ref: '../shared/errors.yml#/components/responses/DBErrorResponse'
+      x-roles:
+        - COMMON
+        - ADMIN
 
   /items/story/list:
     get:
@@ -191,13 +212,16 @@ paths:
         '400':
           $ref: '../shared/errors.yml#/components/responses/BadRequestAPIErrorResponse'
         '404':
-          $ref: '../shared/errors.yml#/components/responses/NotFoundAPIErrorResponse'
+          $ref: '../shared/errors.yml#/components/responses/ResourceNotFoundAPIErrorResponse'
         '405':
           $ref: '../shared/errors.yml#/components/responses/MethodNotAllowedAPIErrorResponse'
         '500':
           oneOf:
             - $ref: '../shared/errors.yml#/components/responses/ServerErrorResponse'
             - $ref: '../shared/errors.yml#/components/responses/DBErrorResponse'
+      x-roles:
+        - COMMON
+        - ADMIN
 
   /items/game/list:
     get:
@@ -211,13 +235,16 @@ paths:
         '400':
           $ref: '../shared/errors.yml#/components/responses/BadRequestAPIErrorResponse'
         '404':
-          $ref: '../shared/errors.yml#/components/responses/NotFoundAPIErrorResponse'
+          $ref: '../shared/errors.yml#/components/responses/ResourceNotFoundAPIErrorResponse'
         '405':
           $ref: '../shared/errors.yml#/components/responses/MethodNotAllowedAPIErrorResponse'
         '500':
           oneOf:
             - $ref: '../shared/errors.yml#/components/responses/ServerErrorResponse'
             - $ref: '../shared/errors.yml#/components/responses/DBErrorResponse'
+      x-roles:
+        - COMMON
+        - ADMIN
 
   /items/story/page:
     get:
@@ -233,13 +260,16 @@ paths:
         '400':
           $ref: '../shared/errors.yml#/components/responses/BadRequestAPIErrorResponse'
         '404':
-          $ref: '../shared/errors.yml#/components/responses/NotFoundAPIErrorResponse'
+          $ref: '../shared/errors.yml#/components/responses/ResourceNotFoundAPIErrorResponse'
         '405':
           $ref: '../shared/errors.yml#/components/responses/MethodNotAllowedAPIErrorResponse'
         '500':
           oneOf:
             - $ref: '../shared/errors.yml#/components/responses/ServerErrorResponse'
             - $ref: '../shared/errors.yml#/components/responses/DBErrorResponse'
+      x-roles:
+        - COMMON
+        - ADMIN
 
   /items/game/page:
     get:
@@ -255,13 +285,16 @@ paths:
         '400':
           $ref: '../shared/errors.yml#/components/responses/BadRequestAPIErrorResponse'
         '404':
-          $ref: '../shared/errors.yml#/components/responses/NotFoundAPIErrorResponse'
+          $ref: '../shared/errors.yml#/components/responses/ResourceNotFoundAPIErrorResponse'
         '405':
           $ref: '../shared/errors.yml#/components/responses/MethodNotAllowedAPIErrorResponse'
         '500':
           oneOf:
             - $ref: '../shared/errors.yml#/components/responses/ServerErrorResponse'
             - $ref: '../shared/errors.yml#/components/responses/DBErrorResponse'
+      x-roles:
+        - COMMON
+        - ADMIN
 
   /creatures/get:
     get:
@@ -276,13 +309,16 @@ paths:
         '400':
           $ref: '../shared/errors.yml#/components/responses/BadRequestAPIErrorResponse'
         '404':
-          $ref: '../shared/errors.yml#/components/responses/NotFoundAPIErrorResponse'
+          $ref: '../shared/errors.yml#/components/responses/ResourceNotFoundAPIErrorResponse'
         '405':
           $ref: '../shared/errors.yml#/components/responses/MethodNotAllowedAPIErrorResponse'
         '500':
           oneOf:
             - $ref: '../shared/errors.yml#/components/responses/ServerErrorResponse'
             - $ref: '../shared/errors.yml#/components/responses/DBErrorResponse'
+      x-roles:
+        - COMMON
+        - ADMIN
 
   /creatures/list:
     get:
@@ -296,13 +332,16 @@ paths:
         '400':
           $ref: '../shared/errors.yml#/components/responses/BadRequestAPIErrorResponse'
         '404':
-          $ref: '../shared/errors.yml#/components/responses/NotFoundAPIErrorResponse'
+          $ref: '../shared/errors.yml#/components/responses/ResourceNotFoundAPIErrorResponse'
         '405':
           $ref: '../shared/errors.yml#/components/responses/MethodNotAllowedAPIErrorResponse'
         '500':
           oneOf:
             - $ref: '../shared/errors.yml#/components/responses/ServerErrorResponse'
             - $ref: '../shared/errors.yml#/components/responses/DBErrorResponse'
+      x-roles:
+        - COMMON
+        - ADMIN
 
   /creatures/page:
     get:
@@ -318,13 +357,16 @@ paths:
         '400':
           $ref: '../shared/errors.yml#/components/responses/BadRequestAPIErrorResponse'
         '404':
-          $ref: '../shared/errors.yml#/components/responses/NotFoundAPIErrorResponse'
+          $ref: '../shared/errors.yml#/components/responses/ResourceNotFoundAPIErrorResponse'
         '405':
           $ref: '../shared/errors.yml#/components/responses/MethodNotAllowedAPIErrorResponse'
         '500':
           oneOf:
             - $ref: '../shared/errors.yml#/components/responses/ServerErrorResponse'
             - $ref: '../shared/errors.yml#/components/responses/DBErrorResponse'
+      x-roles:
+        - COMMON
+        - ADMIN
 
   /worlds/get:
     get:
@@ -339,13 +381,16 @@ paths:
         '400':
           $ref: '../shared/errors.yml#/components/responses/BadRequestAPIErrorResponse'
         '404':
-          $ref: '../shared/errors.yml#/components/responses/NotFoundAPIErrorResponse'
+          $ref: '../shared/errors.yml#/components/responses/ResourceNotFoundAPIErrorResponse'
         '405':
           $ref: '../shared/errors.yml#/components/responses/MethodNotAllowedAPIErrorResponse'
         '500':
           oneOf:
             - $ref: '../shared/errors.yml#/components/responses/ServerErrorResponse'
             - $ref: '../shared/errors.yml#/components/responses/DBErrorResponse'
+      x-roles:
+        - COMMON
+        - ADMIN
 
   /worlds/places/get:
     get:
@@ -360,13 +405,16 @@ paths:
         '400':
           $ref: '../shared/errors.yml#/components/responses/BadRequestAPIErrorResponse'
         '404':
-          $ref: '../shared/errors.yml#/components/responses/NotFoundAPIErrorResponse'
+          $ref: '../shared/errors.yml#/components/responses/ResourceNotFoundAPIErrorResponse'
         '405':
           $ref: '../shared/errors.yml#/components/responses/MethodNotAllowedAPIErrorResponse'
         '500':
           oneOf:
             - $ref: '../shared/errors.yml#/components/responses/ServerErrorResponse'
             - $ref: '../shared/errors.yml#/components/responses/DBErrorResponse'
+      x-roles:
+        - COMMON
+        - ADMIN
 
   /worlds/list:
     get:
@@ -380,13 +428,16 @@ paths:
         '400':
           $ref: '../shared/errors.yml#/components/responses/BadRequestAPIErrorResponse'
         '404':
-          $ref: '../shared/errors.yml#/components/responses/NotFoundAPIErrorResponse'
+          $ref: '../shared/errors.yml#/components/responses/ResourceNotFoundAPIErrorResponse'
         '405':
           $ref: '../shared/errors.yml#/components/responses/MethodNotAllowedAPIErrorResponse'
         '500':
           oneOf:
             - $ref: '../shared/errors.yml#/components/responses/ServerErrorResponse'
             - $ref: '../shared/errors.yml#/components/responses/DBErrorResponse'
+      x-roles:
+        - COMMON
+        - ADMIN
 
   /worlds/places/listAll:
     get:
@@ -400,13 +451,16 @@ paths:
         '400':
           $ref: '../shared/errors.yml#/components/responses/BadRequestAPIErrorResponse'
         '404':
-          $ref: '../shared/errors.yml#/components/responses/NotFoundAPIErrorResponse'
+          $ref: '../shared/errors.yml#/components/responses/ResourceNotFoundAPIErrorResponse'
         '405':
           $ref: '../shared/errors.yml#/components/responses/MethodNotAllowedAPIErrorResponse'
         '500':
           oneOf:
             - $ref: '../shared/errors.yml#/components/responses/ServerErrorResponse'
             - $ref: '../shared/errors.yml#/components/responses/DBErrorResponse'
+      x-roles:
+        - COMMON
+        - ADMIN
 
   /worlds/places/list:
     get:
@@ -421,13 +475,16 @@ paths:
         '400':
           $ref: '../shared/errors.yml#/components/responses/BadRequestAPIErrorResponse'
         '404':
-          $ref: '../shared/errors.yml#/components/responses/NotFoundAPIErrorResponse'
+          $ref: '../shared/errors.yml#/components/responses/ResourceNotFoundAPIErrorResponse'
         '405':
           $ref: '../shared/errors.yml#/components/responses/MethodNotAllowedAPIErrorResponse'
         '500':
           oneOf:
             - $ref: '../shared/errors.yml#/components/responses/ServerErrorResponse'
             - $ref: '../shared/errors.yml#/components/responses/DBErrorResponse'
+      x-roles:
+        - COMMON
+        - ADMIN
 
   /worlds/page:
     get:
@@ -443,13 +500,16 @@ paths:
         '400':
           $ref: '../shared/errors.yml#/components/responses/BadRequestAPIErrorResponse'
         '404':
-          $ref: '../shared/errors.yml#/components/responses/NotFoundAPIErrorResponse'
+          $ref: '../shared/errors.yml#/components/responses/ResourceNotFoundAPIErrorResponse'
         '405':
           $ref: '../shared/errors.yml#/components/responses/MethodNotAllowedAPIErrorResponse'
         '500':
           oneOf:
             - $ref: '../shared/errors.yml#/components/responses/ServerErrorResponse'
             - $ref: '../shared/errors.yml#/components/responses/DBErrorResponse'
+      x-roles:
+        - COMMON
+        - ADMIN
 
   /worlds/places/pageAll:
     get:
@@ -465,13 +525,16 @@ paths:
         '400':
           $ref: '../shared/errors.yml#/components/responses/BadRequestAPIErrorResponse'
         '404':
-          $ref: '../shared/errors.yml#/components/responses/NotFoundAPIErrorResponse'
+          $ref: '../shared/errors.yml#/components/responses/ResourceNotFoundAPIErrorResponse'
         '405':
           $ref: '../shared/errors.yml#/components/responses/MethodNotAllowedAPIErrorResponse'
         '500':
           oneOf:
             - $ref: '../shared/errors.yml#/components/responses/ServerErrorResponse'
             - $ref: '../shared/errors.yml#/components/responses/DBErrorResponse'
+      x-roles:
+        - COMMON
+        - ADMIN
 
   /worlds/places/page:
     get:
@@ -488,13 +551,16 @@ paths:
         '400':
           $ref: '../shared/errors.yml#/components/responses/BadRequestAPIErrorResponse'
         '404':
-          $ref: '../shared/errors.yml#/components/responses/NotFoundAPIErrorResponse'
+          $ref: '../shared/errors.yml#/components/responses/ResourceNotFoundAPIErrorResponse'
         '405':
           $ref: '../shared/errors.yml#/components/responses/MethodNotAllowedAPIErrorResponse'
         '500':
           oneOf:
             - $ref: '../shared/errors.yml#/components/responses/ServerErrorResponse'
             - $ref: '../shared/errors.yml#/components/responses/DBErrorResponse'
+      x-roles:
+        - COMMON
+        - ADMIN
 
 # ====================================================================== #
 # ====================================================================== #
