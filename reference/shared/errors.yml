@@ -105,18 +105,30 @@ components:
               $ref: '#/components/examples/ServerErrorResponseExample'
               
   examples:
+    ResourceNotModifiedAPIErrorResponseExample:
+      value:
+        code: RESOURCE_NOT_MODIFIED
+        message: The resource could not be modified due to some internal conflict or error.
+        status: 304
+        owner: GYCODING
     BadRequestAPIErrorResponseExample:
       value:
         code: BAD_REQUEST
         message: The endpoint is malformed.
         status: 400
+        owner: API_GATEWAY
+    InvalidLoginAPIErrorResponseExample:
+      value:
+        code: INVALID_LOGIN
+        message: Invalid login due to the non existance of the user or invalid password.
+        status: 401
         owner: GYCODING
     UnauthorizedServiceAPIErrorResponseExample:
       value:
         code: UNAUTHORIZED
         message: The user is not authorized to access this resource.
         status: 401
-        owner: GYCODING
+        owner: API_GATEWAY
     UnauthorizedGatewayAPIErrorResponseExample:
       value:
         code: UNAUTHORIZED
@@ -156,7 +168,13 @@ components:
     ConflictAPIErrorResponseExample:
       value:
         code: CONFLICT
-        message: An internal conflict between external data and the API has occured.
+        message: An internal conflict between external data and the API has occured. Requested data may already exist.
+        status: 409
+        owner: GYCODING
+    InvalidSignUpAPIErrorResponseExample:
+      value:
+        code: INVALID_SIGN_UP
+        message: Invalid sign up due to the already existance of the user or an authentication error.
         status: 409
         owner: GYCODING
     DBErrorResponseExample:
@@ -170,7 +188,10 @@ components:
         code: AUTH_ERROR
         message: An error with the authentication service has occurred, sorry for the inconvenience.
         status: 500
-        owner: GYCODING
+        owner: 
+          oneOf:
+            - GYCODING
+            - API_GATEWAY
     GatewayErrorResponseExample:
       value:
         code: GATEWAY_ERROR

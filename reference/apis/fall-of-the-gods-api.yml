@@ -22,7 +22,6 @@ paths:
         '200':
           $ref: '../shared/responses.yml#/components/responses/OKResponse'
         '400':
-          description: 404 response
           $ref: '../shared/errors.yml#/components/responses/BadRequestAPIErrorResponse'
         '404':
           $ref: '../shared/errors.yml#/components/responses/ResourceNotFoundAPIErrorResponse'

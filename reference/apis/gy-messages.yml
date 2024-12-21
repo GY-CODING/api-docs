@@ -235,6 +235,7 @@ paths:
         '500':
           oneOf:
             - $ref: '../shared/errors.yml#/components/responses/ServerErrorResponse'
+            - $ref: '../shared/errors.yml#/components/responses/DBErrorResponse'
             - $ref: '../shared/errors.yml#/components/responses/AuthErrorResponse'
       x-roles:
         - COMMON
