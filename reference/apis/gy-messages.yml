@@ -17,7 +17,7 @@ paths:
       description: Retrieves the whole list of messages from a specific chat.
       parameters:
         - $ref: '#/components/parameters/ChatId'
-        - $ref: '#/components/parameters/token'
+        - $ref: '#/components/parameters/Authorization'
       responses:
         '200':
           $ref: '../shared/responses.yml#/components/responses/OKResponse'
@@ -49,7 +49,7 @@ paths:
       description: Removes a chat completely, unassigning it from every user.
       parameters:
         - $ref: '#/components/parameters/ChatId'
-        - $ref: '#/components/parameters/token'
+        - $ref: '#/components/parameters/Authorization'
       responses:
         '200':
           $ref: '../shared/responses.yml#/components/responses/OKResponse'
@@ -81,7 +81,7 @@ paths:
       description: As a user, leaves a chat.
       parameters:
         - $ref: '#/components/parameters/ChatId'
-        - $ref: '#/components/parameters/token'
+        - $ref: '#/components/parameters/Authorization'
       responses:
         '200':
           $ref: '../shared/responses.yml#/components/responses/OKResponse'
@@ -113,7 +113,7 @@ paths:
       description: Sends a message to a specific chat.
       parameters:
         - $ref: '#/components/parameters/ChatId'
-        - $ref: '#/components/parameters/token'
+        - $ref: '#/components/parameters/Authorization'
       requestBody:
         content:
           application/json:
@@ -149,7 +149,7 @@ paths:
       summary: Create chat
       description: Creates a new chat.
       parameters:
-        - $ref: '#/components/parameters/token'
+        - $ref: '#/components/parameters/Authorization'
       requestBody:
         content:
           application/json:
@@ -186,7 +186,7 @@ paths:
       description: As a user, add myself into a chat.
       parameters:
         - $ref: '#/components/parameters/ChatId'
-        - $ref: '#/components/parameters/token'
+        - $ref: '#/components/parameters/Authorization'
       responses:
         '200':
           $ref: '../shared/responses.yml#/components/responses/OKResponse'
@@ -214,7 +214,7 @@ paths:
       summary: List chats
       description: Retrieves the whole list of chat from where the user belongs.
       parameters:
-        - $ref: '#/components/parameters/token'
+        - $ref: '#/components/parameters/Authorization'
       responses:
         '200':
           $ref: '../shared/responses.yml#/components/responses/OKResponse'
@@ -247,7 +247,7 @@ paths:
       description: Retrieves the whole list of members from a specific chat.
       parameters:
         - $ref: '#/components/parameters/ChatId'
-        - $ref: '#/components/parameters/token'
+        - $ref: '#/components/parameters/Authorization'
       responses:
         '200':
           $ref: '../shared/responses.yml#/components/responses/OKResponse'
@@ -278,8 +278,8 @@ paths:
 
 components:
   parameters:
-    token:
-      name: token
+    Authorization:
+      name: Authorization
       in: header
       required: true
       schema:

@@ -16,7 +16,7 @@ paths:
       summary: Add chat to metadata
       description: Adds a new chat to user metadata.
       parameters:
-        - $ref: '#/components/parameters/token'
+        - $ref: '#/components/parameters/Authorization'
       requestBody:
         content:
           application/json:
@@ -52,7 +52,7 @@ paths:
       summary: Set chat to user metadata
       description: Modifies an existing chat to user metadata.
       parameters:
-        - $ref: '#/components/parameters/token'
+        - $ref: '#/components/parameters/Authorization'
       requestBody:
         content:
           application/json:
@@ -88,7 +88,7 @@ paths:
       summary: Remove chat from metadata
       description: Removes existing chats from user metadata.
       parameters:
-        - $ref: '#/components/parameters/token'
+        - $ref: '#/components/parameters/Authorization'
       requestBody:
         content:
           application/json:
@@ -124,7 +124,7 @@ paths:
       summary: List user chats from metadata
       description: List user chats from metadata.
       parameters:
-        - $ref: '#/components/parameters/token'
+        - $ref: '#/components/parameters/Authorization'
       responses:
         '200':
           $ref: '../shared/responses.yml#/components/responses/OKResponse'
@@ -155,7 +155,7 @@ paths:
       summary: Get user client metadata
       description: Get user client metadata.
       parameters:
-        - $ref: '#/components/parameters/token'
+        - $ref: '#/components/parameters/Authorization'
       responses:
         '200':
           $ref: '../shared/responses.yml#/components/responses/OKResponse'
@@ -258,7 +258,7 @@ paths:
       summary: Set User Metadata
       description: Modifies user metadata.
       parameters:
-        - $ref: '#/components/parameters/token'
+        - $ref: '#/components/parameters/Authorization'
       responses:
         '200':
           $ref: '../shared/responses.yml#/components/responses/OKResponse'
@@ -285,7 +285,7 @@ paths:
       summary: Set User Username
       description: Modifies user username.
       parameters:
-        - $ref: '#/components/parameters/token'
+        - $ref: '#/components/parameters/Authorization'
       requestBody:
         content:
           text/plain:
@@ -317,7 +317,7 @@ paths:
       summary: Set User Email
       description: Modifies user email.
       parameters:
-        - $ref: '#/components/parameters/token'
+        - $ref: '#/components/parameters/Authorization'
       requestBody:
         content:
           text/plain:
@@ -349,7 +349,7 @@ paths:
       summary: Set User Password
       description: Modifies user password.
       parameters:
-        - $ref: '#/components/parameters/token'
+        - $ref: '#/components/parameters/Authorization'
       requestBody:
         content:
           text/plain:
@@ -381,7 +381,7 @@ paths:
       summary: Set User Picture
       description: Modifies user picture.
       parameters:
-        - $ref: '#/components/parameters/token'
+        - $ref: '#/components/parameters/Authorization'
       requestBody:
         content:
           text/plain:
@@ -440,7 +440,7 @@ paths:
       summary: Get User Profile
       description: Retrieves user profile.
       parameters:
-        - $ref: '#/components/parameters/token'
+        - $ref: '#/components/parameters/Authorization'
       responses:
         '200':
           $ref: '../shared/responses.yml#/components/responses/OKResponse'
@@ -469,8 +469,8 @@ paths:
 
 components:
   parameters:
-    token:
-      name: token
+    Authorization:
+      name: Authorization
       in: header
       required: true
       schema:
