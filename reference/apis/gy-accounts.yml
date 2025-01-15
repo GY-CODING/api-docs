@@ -254,7 +254,7 @@ paths:
             - $ref: '../shared/errors.yml#/components/responses/AuthErrorResponse'
 
   /auth/metadata/set:
-    put:
+    patch:
       summary: Set User Metadata
       description: Modifies user metadata.
       parameters:
@@ -280,8 +280,49 @@ paths:
         - COMMON
         - ADMIN
 
+  /auth/update/profile:
+    patch:
+      summary: Set User Profile
+      description: Modifies user profile.
+      parameters:
+        - $ref: '#/components/parameters/Authorization'
+      requestBody:
+        content:
+          text/plain:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                email:
+                  type: string
+                phoneNumber:
+                  type: string
+                picture:
+                  type: object
+      responses:
+        '200':
+          $ref: '../shared/responses.yml#/components/responses/OKResponse'
+        '400':
+          $ref: '../shared/errors.yml#/components/responses/BadRequestAPIErrorResponse'
+        '401':
+          $ref: '../shared/errors.yml#/components/responses/UnauthorizedAPIErrorResponse'
+        '403':
+          $ref: '../shared/errors.yml#/components/responses/ForbiddenAPIErrorResponse'
+        '405':
+          $ref: '../shared/errors.yml#/components/responses/MethodNotAllowedAPIErrorResponse'
+        '409':
+          $ref: '../shared/errors.yml#/components/responses/ConflictAPIErrorResponse'
+        '500':
+          oneOf:
+            - $ref: '../shared/errors.yml#/components/responses/ServerErrorResponse'
+            - $ref: '../shared/errors.yml#/components/responses/AuthErrorResponse'
+      x-roles:
+        - COMMON
+        - ADMIN
+
   /auth/update/username:
-    put:
+    patch:
       summary: Set User Username
       description: Modifies user username.
       parameters:
@@ -313,7 +354,7 @@ paths:
         - ADMIN
 
   /auth/update/email:
-    put:
+    patch:
       summary: Set User Email
       description: Modifies user email.
       parameters:
@@ -345,7 +386,7 @@ paths:
         - ADMIN
 
   /auth/update/password:
-    put:
+    patch:
       summary: Set User Password
       description: Modifies user password.
       parameters:
@@ -377,7 +418,7 @@ paths:
         - ADMIN
 
   /auth/update/picture:
-    put:
+    patch:
       summary: Set User Picture
       description: Modifies user picture.
       parameters:
