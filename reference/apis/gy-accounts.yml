@@ -281,7 +281,7 @@ paths:
         - ADMIN
 
   /auth/update/profile:
-    patch:
+    put:
       summary: Set User Profile
       description: Modifies user profile.
       parameters:
