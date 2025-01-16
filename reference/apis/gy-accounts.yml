@@ -11,176 +11,6 @@ servers:
 # ====================================================================== #
 
 paths:
-  /auth/messages/chat/add:
-    put:
-      summary: Add chat to metadata
-      description: Adds a new chat to user metadata.
-      parameters:
-        - $ref: '#/components/parameters/Authorization'
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ChatMetadata'
-      responses:
-        '200':
-          $ref: '../shared/responses.yml#/components/responses/OKResponse'
-        '400':
-          $ref: '../shared/errors.yml#/components/responses/BadRequestAPIErrorResponse'
-        '401':
-          $ref: '../shared/errors.yml#/components/responses/UnauthorizedAPIErrorResponse'
-        '403':
-          $ref: '../shared/errors.yml#/components/responses/ForbiddenAPIErrorResponse'
-        '404':
-          oneOf:
-          - $ref: '../shared/errors.yml#/components/responses/ResourceNotFoundAPIErrorResponse'
-          - $ref: '../shared/errors.yml#/components/responses/TokenNotFoundAPIErrorResponse'
-        '405':
-          $ref: '../shared/errors.yml#/components/responses/MethodNotAllowedAPIErrorResponse'
-        '409':
-          $ref: '../shared/errors.yml#/components/responses/ConflictAPIErrorResponse'
-        '500':
-          oneOf:
-            - $ref: '../shared/errors.yml#/components/responses/ServerErrorResponse'
-            - $ref: '../shared/errors.yml#/components/responses/AuthErrorResponse'
-      x-roles:
-        - COMMON
-        - ADMIN
-
-  /auth/messages/chat/set:
-    put:
-      summary: Set chat to user metadata
-      description: Modifies an existing chat to user metadata.
-      parameters:
-        - $ref: '#/components/parameters/Authorization'
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ChatMetadata'
-      responses:
-        '200':
-          $ref: '../shared/responses.yml#/components/responses/OKResponse'
-        '400':
-          $ref: '../shared/errors.yml#/components/responses/BadRequestAPIErrorResponse'
-        '401':
-          $ref: '../shared/errors.yml#/components/responses/UnauthorizedAPIErrorResponse'
-        '403':
-          $ref: '../shared/errors.yml#/components/responses/ForbiddenAPIErrorResponse'
-        '404':
-          oneOf:
-          - $ref: '../shared/errors.yml#/components/responses/ResourceNotFoundAPIErrorResponse'
-          - $ref: '../shared/errors.yml#/components/responses/TokenNotFoundAPIErrorResponse'
-        '405':
-          $ref: '../shared/errors.yml#/components/responses/MethodNotAllowedAPIErrorResponse'
-        '409':
-          $ref: '../shared/errors.yml#/components/responses/ConflictAPIErrorResponse'
-        '500':
-          oneOf:
-            - $ref: '../shared/errors.yml#/components/responses/ServerErrorResponse'
-            - $ref: '../shared/errors.yml#/components/responses/AuthErrorResponse'
-      x-roles:
-        - COMMON
-        - ADMIN
-
-  /auth/messages/chat/remove:
-    delete:
-      summary: Remove chat from metadata
-      description: Removes existing chats from user metadata.
-      parameters:
-        - $ref: '#/components/parameters/Authorization'
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ChatMetadataForRemoval'
-      responses:
-        '200':
-          $ref: '../shared/responses.yml#/components/responses/OKResponse'
-        '400':
-          $ref: '../shared/errors.yml#/components/responses/BadRequestAPIErrorResponse'
-        '401':
-          $ref: '../shared/errors.yml#/components/responses/UnauthorizedAPIErrorResponse'
-        '403':
-          $ref: '../shared/errors.yml#/components/responses/ForbiddenAPIErrorResponse'
-        '404':
-          oneOf:
-          - $ref: '../shared/errors.yml#/components/responses/ResourceNotFoundAPIErrorResponse'
-          - $ref: '../shared/errors.yml#/components/responses/TokenNotFoundAPIErrorResponse'
-        '405':
-          $ref: '../shared/errors.yml#/components/responses/MethodNotAllowedAPIErrorResponse'
-        '409':
-          $ref: '../shared/errors.yml#/components/responses/ConflictAPIErrorResponse'
-        '500':
-          oneOf:
-            - $ref: '../shared/errors.yml#/components/responses/ServerErrorResponse'
-            - $ref: '../shared/errors.yml#/components/responses/AuthErrorResponse'
-      x-roles:
-        - COMMON
-        - ADMIN
-
-  /auth/messages/chat/list:
-    get:
-      summary: List user chats from metadata
-      description: List user chats from metadata.
-      parameters:
-        - $ref: '#/components/parameters/Authorization'
-      responses:
-        '200':
-          $ref: '../shared/responses.yml#/components/responses/OKResponse'
-        '400':
-          $ref: '../shared/errors.yml#/components/responses/BadRequestAPIErrorResponse'
-        '401':
-          $ref: '../shared/errors.yml#/components/responses/UnauthorizedAPIErrorResponse'
-        '403':
-          $ref: '../shared/errors.yml#/components/responses/ForbiddenAPIErrorResponse'
-        '404':
-          oneOf:
-          - $ref: '../shared/errors.yml#/components/responses/ResourceNotFoundAPIErrorResponse'
-          - $ref: '../shared/errors.yml#/components/responses/TokenNotFoundAPIErrorResponse'
-        '405':
-          $ref: '../shared/errors.yml#/components/responses/MethodNotAllowedAPIErrorResponse'
-        '409':
-          $ref: '../shared/errors.yml#/components/responses/ConflictAPIErrorResponse'
-        '500':
-          oneOf:
-            - $ref: '../shared/errors.yml#/components/responses/ServerErrorResponse'
-            - $ref: '../shared/errors.yml#/components/responses/AuthErrorResponse'
-      x-roles:
-        - COMMON
-        - ADMIN
-
-  /client/metadata/get:
-    get:
-      summary: Get user client metadata
-      description: Get user client metadata.
-      parameters:
-        - $ref: '#/components/parameters/Authorization'
-      responses:
-        '200':
-          $ref: '../shared/responses.yml#/components/responses/OKResponse'
-        '400':
-          $ref: '../shared/errors.yml#/components/responses/BadRequestAPIErrorResponse'
-        '401':
-          $ref: '../shared/errors.yml#/components/responses/UnauthorizedAPIErrorResponse'
-        '403':
-          $ref: '../shared/errors.yml#/components/responses/ForbiddenAPIErrorResponse'
-        '404':
-          oneOf:
-          - $ref: '../shared/errors.yml#/components/responses/ResourceNotFoundAPIErrorResponse'
-          - $ref: '../shared/errors.yml#/components/responses/TokenNotFoundAPIErrorResponse'
-        '405':
-          $ref: '../shared/errors.yml#/components/responses/MethodNotAllowedAPIErrorResponse'
-        '409':
-          $ref: '../shared/errors.yml#/components/responses/ConflictAPIErrorResponse'
-        '500':
-          oneOf:
-            - $ref: '../shared/errors.yml#/components/responses/ServerErrorResponse'
-            - $ref: '../shared/errors.yml#/components/responses/AuthErrorResponse'
-      x-roles:
-        - COMMON
-        - ADMIN
-
   /auth/login:
     post:
       summary: Login
@@ -253,10 +83,10 @@ paths:
             - $ref: '../shared/errors.yml#/components/responses/ServerErrorResponse'
             - $ref: '../shared/errors.yml#/components/responses/AuthErrorResponse'
 
-  /auth/metadata/set:
-    patch:
-      summary: Set User Metadata
-      description: Modifies user metadata.
+  /user/profile:
+    get:
+      summary: Get User Profile
+      description: Retrieves user profile.
       parameters:
         - $ref: '#/components/parameters/Authorization'
       responses:
@@ -268,10 +98,39 @@ paths:
           $ref: '../shared/errors.yml#/components/responses/UnauthorizedAPIErrorResponse'
         '403':
           $ref: '../shared/errors.yml#/components/responses/ForbiddenAPIErrorResponse'
+        '404':
+          oneOf:
+          - $ref: '../shared/errors.yml#/components/responses/ResourceNotFoundAPIErrorResponse'
+          - $ref: '../shared/errors.yml#/components/responses/TokenNotFoundAPIErrorResponse'
         '405':
           $ref: '../shared/errors.yml#/components/responses/MethodNotAllowedAPIErrorResponse'
-        '409':
-          $ref: '../shared/errors.yml#/components/responses/ConflictAPIErrorResponse'
+        '500':
+          oneOf:
+            - $ref: '../shared/errors.yml#/components/responses/ServerErrorResponse'
+            - $ref: '../shared/errors.yml#/components/responses/AuthErrorResponse'
+      x-roles:
+        - COMMON
+        - ADMIN
+    put:
+      summary: Update User Profile
+      description: Modifies user profile.
+      parameters:
+        - $ref: '#/components/parameters/Authorization'
+      responses:
+        '200':
+          $ref: '../shared/responses.yml#/components/responses/OKResponse'
+        '400':
+          $ref: '../shared/errors.yml#/components/responses/BadRequestAPIErrorResponse'
+        '401':
+          $ref: '../shared/errors.yml#/components/responses/UnauthorizedAPIErrorResponse'
+        '403':
+          $ref: '../shared/errors.yml#/components/responses/ForbiddenAPIErrorResponse'
+        '404':
+          oneOf:
+          - $ref: '../shared/errors.yml#/components/responses/ResourceNotFoundAPIErrorResponse'
+          - $ref: '../shared/errors.yml#/components/responses/TokenNotFoundAPIErrorResponse'
+        '405':
+          $ref: '../shared/errors.yml#/components/responses/MethodNotAllowedAPIErrorResponse'
         '500':
           oneOf:
             - $ref: '../shared/errors.yml#/components/responses/ServerErrorResponse'
@@ -280,26 +139,17 @@ paths:
         - COMMON
         - ADMIN
 
-  /auth/update/profile:
-    patch:
-      summary: Set User Profile
-      description: Modifies user profile.
+  /user/username:
+    get:
+      summary: Retrieve User Username
+      description: Retrieves user username.
       parameters:
         - $ref: '#/components/parameters/Authorization'
       requestBody:
         content:
           text/plain:
             schema:
-              type: object
-              properties:
-                username:
-                  type: string
-                email:
-                  type: string
-                phoneNumber:
-                  type: string
-                picture:
-                  type: object
+              type: string
       responses:
         '200':
           $ref: '../shared/responses.yml#/components/responses/OKResponse'
@@ -320,10 +170,8 @@ paths:
       x-roles:
         - COMMON
         - ADMIN
-
-  /auth/update/username:
     patch:
-      summary: Set User Username
+      summary: Update User Username
       description: Modifies user username.
       parameters:
         - $ref: '#/components/parameters/Authorization'
@@ -353,9 +201,39 @@ paths:
         - COMMON
         - ADMIN
 
-  /auth/update/email:
+  /user/email:
+    get:
+      summary: Retrieve User Email
+      description: Retrieves user email.
+      parameters:
+        - $ref: '#/components/parameters/Authorization'
+      requestBody:
+        content:
+          text/plain:
+            schema:
+              type: string
+      responses:
+        '200':
+          $ref: '../shared/responses.yml#/components/responses/OKResponse'
+        '400':
+          $ref: '../shared/errors.yml#/components/responses/BadRequestAPIErrorResponse'
+        '401':
+          $ref: '../shared/errors.yml#/components/responses/UnauthorizedAPIErrorResponse'
+        '403':
+          $ref: '../shared/errors.yml#/components/responses/ForbiddenAPIErrorResponse'
+        '405':
+          $ref: '../shared/errors.yml#/components/responses/MethodNotAllowedAPIErrorResponse'
+        '409':
+          $ref: '../shared/errors.yml#/components/responses/ConflictAPIErrorResponse'
+        '500':
+          oneOf:
+            - $ref: '../shared/errors.yml#/components/responses/ServerErrorResponse'
+            - $ref: '../shared/errors.yml#/components/responses/AuthErrorResponse'
+      x-roles:
+        - COMMON
+        - ADMIN
     patch:
-      summary: Set User Email
+      summary: Update User Email
       description: Modifies user email.
       parameters:
         - $ref: '#/components/parameters/Authorization'
@@ -385,10 +263,40 @@ paths:
         - COMMON
         - ADMIN
 
-  /auth/update/password:
+  /user/phonenumber:
+    get:
+      summary: Retrieve User Phone Number
+      description: Retrieves user phone number.
+      parameters:
+        - $ref: '#/components/parameters/Authorization'
+      requestBody:
+        content:
+          text/plain:
+            schema:
+              type: string
+      responses:
+        '200':
+          $ref: '../shared/responses.yml#/components/responses/OKResponse'
+        '400':
+          $ref: '../shared/errors.yml#/components/responses/BadRequestAPIErrorResponse'
+        '401':
+          $ref: '../shared/errors.yml#/components/responses/UnauthorizedAPIErrorResponse'
+        '403':
+          $ref: '../shared/errors.yml#/components/responses/ForbiddenAPIErrorResponse'
+        '405':
+          $ref: '../shared/errors.yml#/components/responses/MethodNotAllowedAPIErrorResponse'
+        '409':
+          $ref: '../shared/errors.yml#/components/responses/ConflictAPIErrorResponse'
+        '500':
+          oneOf:
+            - $ref: '../shared/errors.yml#/components/responses/ServerErrorResponse'
+            - $ref: '../shared/errors.yml#/components/responses/AuthErrorResponse'
+      x-roles:
+        - COMMON
+        - ADMIN
     patch:
-      summary: Set User Password
-      description: Modifies user password.
+      summary: Update User Phone Number
+      description: Modifies user phone number.
       parameters:
         - $ref: '#/components/parameters/Authorization'
       requestBody:
@@ -417,9 +325,41 @@ paths:
         - COMMON
         - ADMIN
 
-  /auth/update/picture:
+  /user/picture/{user-id}:
+    get:
+      summary: Retrieve User Picture
+      description: Retrieves user picture.
+      parameters:
+        - $ref: '#/components/parameters/UserID'
+      requestBody:
+        content:
+          text/plain:
+            schema:
+              type: string
+      responses:
+        '200':
+          $ref: '../shared/responses.yml#/components/responses/OKResponse'
+        '400':
+          $ref: '../shared/errors.yml#/components/responses/BadRequestAPIErrorResponse'
+        '401':
+          $ref: '../shared/errors.yml#/components/responses/UnauthorizedAPIErrorResponse'
+        '403':
+          $ref: '../shared/errors.yml#/components/responses/ForbiddenAPIErrorResponse'
+        '405':
+          $ref: '../shared/errors.yml#/components/responses/MethodNotAllowedAPIErrorResponse'
+        '409':
+          $ref: '../shared/errors.yml#/components/responses/ConflictAPIErrorResponse'
+        '500':
+          oneOf:
+            - $ref: '../shared/errors.yml#/components/responses/ServerErrorResponse'
+            - $ref: '../shared/errors.yml#/components/responses/AuthErrorResponse'
+      x-roles:
+        - COMMON
+        - ADMIN
+
+  /user/picture:
     patch:
-      summary: Set User Picture
+      summary: Update User Picture
       description: Modifies user picture.
       parameters:
         - $ref: '#/components/parameters/Authorization'
@@ -449,25 +389,30 @@ paths:
         - COMMON
         - ADMIN
 
-  /auth/get/picture/{user-id}:
-    get:
-      summary: Get User Picture
-      description: Retrieves user picture.
+  /user/password:
+    patch:
+      summary: Update User Password
+      description: Modifies user password.
       parameters:
-        - $ref: '#/components/parameters/UserID'
+        - $ref: '#/components/parameters/Authorization'
+      requestBody:
+        content:
+          text/plain:
+            schema:
+              type: string
       responses:
         '200':
-          $ref: '../shared/responses.yml#/components/responses/MediaResponse'
+          $ref: '../shared/responses.yml#/components/responses/OKResponse'
         '400':
           $ref: '../shared/errors.yml#/components/responses/BadRequestAPIErrorResponse'
         '401':
           $ref: '../shared/errors.yml#/components/responses/UnauthorizedAPIErrorResponse'
         '403':
           $ref: '../shared/errors.yml#/components/responses/ForbiddenAPIErrorResponse'
-        '404':
-          $ref: '../shared/errors.yml#/components/responses/ResourceNotFoundAPIErrorResponse'
         '405':
           $ref: '../shared/errors.yml#/components/responses/MethodNotAllowedAPIErrorResponse'
+        '409':
+          $ref: '../shared/errors.yml#/components/responses/ConflictAPIErrorResponse'
         '500':
           oneOf:
             - $ref: '../shared/errors.yml#/components/responses/ServerErrorResponse'
@@ -476,10 +421,163 @@ paths:
         - COMMON
         - ADMIN
 
-  /auth/get/profile:
+  /user/metadata:
     get:
-      summary: Get User Profile
-      description: Retrieves user profile.
+      summary: Retrieve User Metadata
+      description: Retrieves user metadata.
+      parameters:
+        - $ref: '#/components/parameters/Authorization'
+      responses:
+        '200':
+          $ref: '../shared/responses.yml#/components/responses/OKResponse'
+        '400':
+          $ref: '../shared/errors.yml#/components/responses/BadRequestAPIErrorResponse'
+        '401':
+          $ref: '../shared/errors.yml#/components/responses/UnauthorizedAPIErrorResponse'
+        '403':
+          $ref: '../shared/errors.yml#/components/responses/ForbiddenAPIErrorResponse'
+        '405':
+          $ref: '../shared/errors.yml#/components/responses/MethodNotAllowedAPIErrorResponse'
+        '409':
+          $ref: '../shared/errors.yml#/components/responses/ConflictAPIErrorResponse'
+        '500':
+          oneOf:
+            - $ref: '../shared/errors.yml#/components/responses/ServerErrorResponse'
+            - $ref: '../shared/errors.yml#/components/responses/AuthErrorResponse'
+      x-roles:
+        - COMMON
+        - ADMIN
+    put:
+      summary: Set User Metadata
+      description: Sets user metadata.
+      parameters:
+        - $ref: '#/components/parameters/Authorization'
+      requestBody:
+        content:
+          application/json:
+            # TODO: Add metadata schema.
+      responses:
+        '200':
+          $ref: '../shared/responses.yml#/components/responses/OKResponse'
+        '400':
+          $ref: '../shared/errors.yml#/components/responses/BadRequestAPIErrorResponse'
+        '401':
+          $ref: '../shared/errors.yml#/components/responses/UnauthorizedAPIErrorResponse'
+        '403':
+          $ref: '../shared/errors.yml#/components/responses/ForbiddenAPIErrorResponse'
+        '405':
+          $ref: '../shared/errors.yml#/components/responses/MethodNotAllowedAPIErrorResponse'
+        '409':
+          $ref: '../shared/errors.yml#/components/responses/ConflictAPIErrorResponse'
+        '500':
+          oneOf:
+            - $ref: '../shared/errors.yml#/components/responses/ServerErrorResponse'
+            - $ref: '../shared/errors.yml#/components/responses/AuthErrorResponse'
+      x-roles:
+        - COMMON
+        - ADMIN
+    patch:
+      summary: Update User Metadata
+      description: Modifies user metadata.
+      parameters:
+        - $ref: '#/components/parameters/Authorization'
+      responses:
+        '200':
+          $ref: '../shared/responses.yml#/components/responses/OKResponse'
+        '400':
+          $ref: '../shared/errors.yml#/components/responses/BadRequestAPIErrorResponse'
+        '401':
+          $ref: '../shared/errors.yml#/components/responses/UnauthorizedAPIErrorResponse'
+        '403':
+          $ref: '../shared/errors.yml#/components/responses/ForbiddenAPIErrorResponse'
+        '405':
+          $ref: '../shared/errors.yml#/components/responses/MethodNotAllowedAPIErrorResponse'
+        '409':
+          $ref: '../shared/errors.yml#/components/responses/ConflictAPIErrorResponse'
+        '500':
+          oneOf:
+            - $ref: '../shared/errors.yml#/components/responses/ServerErrorResponse'
+            - $ref: '../shared/errors.yml#/components/responses/AuthErrorResponse'
+      x-roles:
+        - COMMON
+        - ADMIN
+
+  /messages/chats/add:
+    put:
+      summary: Add chat to metadata
+      description: Adds a new chat to user metadata.
+      parameters:
+        - $ref: '#/components/parameters/Authorization'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ChatMetadata'
+      responses:
+        '200':
+          $ref: '../shared/responses.yml#/components/responses/OKResponse'
+        '400':
+          $ref: '../shared/errors.yml#/components/responses/BadRequestAPIErrorResponse'
+        '401':
+          $ref: '../shared/errors.yml#/components/responses/UnauthorizedAPIErrorResponse'
+        '403':
+          $ref: '../shared/errors.yml#/components/responses/ForbiddenAPIErrorResponse'
+        '404':
+          oneOf:
+          - $ref: '../shared/errors.yml#/components/responses/ResourceNotFoundAPIErrorResponse'
+          - $ref: '../shared/errors.yml#/components/responses/TokenNotFoundAPIErrorResponse'
+        '405':
+          $ref: '../shared/errors.yml#/components/responses/MethodNotAllowedAPIErrorResponse'
+        '409':
+          $ref: '../shared/errors.yml#/components/responses/ConflictAPIErrorResponse'
+        '500':
+          oneOf:
+            - $ref: '../shared/errors.yml#/components/responses/ServerErrorResponse'
+            - $ref: '../shared/errors.yml#/components/responses/AuthErrorResponse'
+      x-roles:
+        - COMMON
+        - ADMIN
+
+  /messages/chats/admin:
+    put:
+      summary: Set chat to user metadata
+      description: Modifies an existing chat to user metadata.
+      parameters:
+        - $ref: '#/components/parameters/Authorization'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ChatMetadata'
+      responses:
+        '200':
+          $ref: '../shared/responses.yml#/components/responses/OKResponse'
+        '400':
+          $ref: '../shared/errors.yml#/components/responses/BadRequestAPIErrorResponse'
+        '401':
+          $ref: '../shared/errors.yml#/components/responses/UnauthorizedAPIErrorResponse'
+        '403':
+          $ref: '../shared/errors.yml#/components/responses/ForbiddenAPIErrorResponse'
+        '404':
+          oneOf:
+          - $ref: '../shared/errors.yml#/components/responses/ResourceNotFoundAPIErrorResponse'
+          - $ref: '../shared/errors.yml#/components/responses/TokenNotFoundAPIErrorResponse'
+        '405':
+          $ref: '../shared/errors.yml#/components/responses/MethodNotAllowedAPIErrorResponse'
+        '409':
+          $ref: '../shared/errors.yml#/components/responses/ConflictAPIErrorResponse'
+        '500':
+          oneOf:
+            - $ref: '../shared/errors.yml#/components/responses/ServerErrorResponse'
+            - $ref: '../shared/errors.yml#/components/responses/AuthErrorResponse'
+      x-roles:
+        - COMMON
+        - ADMIN
+
+  /messages/chats:
+    get:
+      summary: List user chats from metadata
+      description: List user chats from metadata.
       parameters:
         - $ref: '#/components/parameters/Authorization'
       responses:
@@ -497,6 +595,69 @@ paths:
           - $ref: '../shared/errors.yml#/components/responses/TokenNotFoundAPIErrorResponse'
         '405':
           $ref: '../shared/errors.yml#/components/responses/MethodNotAllowedAPIErrorResponse'
+        '409':
+          $ref: '../shared/errors.yml#/components/responses/ConflictAPIErrorResponse'
+        '500':
+          oneOf:
+            - $ref: '../shared/errors.yml#/components/responses/ServerErrorResponse'
+            - $ref: '../shared/errors.yml#/components/responses/AuthErrorResponse'
+      x-roles:
+        - COMMON
+        - ADMIN
+    delete:
+      summary: Remove chat from metadata
+      description: Removes existing chats from user metadata.
+      parameters:
+        - $ref: '#/components/parameters/Authorization'
+        - $ref: '#/components/parameters/ChatId'
+      responses:
+        '200':
+          $ref: '../shared/responses.yml#/components/responses/OKResponse'
+        '400':
+          $ref: '../shared/errors.yml#/components/responses/BadRequestAPIErrorResponse'
+        '401':
+          $ref: '../shared/errors.yml#/components/responses/UnauthorizedAPIErrorResponse'
+        '403':
+          $ref: '../shared/errors.yml#/components/responses/ForbiddenAPIErrorResponse'
+        '404':
+          oneOf:
+          - $ref: '../shared/errors.yml#/components/responses/ResourceNotFoundAPIErrorResponse'
+          - $ref: '../shared/errors.yml#/components/responses/TokenNotFoundAPIErrorResponse'
+        '405':
+          $ref: '../shared/errors.yml#/components/responses/MethodNotAllowedAPIErrorResponse'
+        '409':
+          $ref: '../shared/errors.yml#/components/responses/ConflictAPIErrorResponse'
+        '500':
+          oneOf:
+            - $ref: '../shared/errors.yml#/components/responses/ServerErrorResponse'
+            - $ref: '../shared/errors.yml#/components/responses/AuthErrorResponse'
+      x-roles:
+        - COMMON
+        - ADMIN
+
+  /client/metadata:
+    get:
+      summary: Get user client metadata
+      description: Get user client metadata.
+      parameters:
+        - $ref: '#/components/parameters/Authorization'
+      responses:
+        '200':
+          $ref: '../shared/responses.yml#/components/responses/OKResponse'
+        '400':
+          $ref: '../shared/errors.yml#/components/responses/BadRequestAPIErrorResponse'
+        '401':
+          $ref: '../shared/errors.yml#/components/responses/UnauthorizedAPIErrorResponse'
+        '403':
+          $ref: '../shared/errors.yml#/components/responses/ForbiddenAPIErrorResponse'
+        '404':
+          oneOf:
+          - $ref: '../shared/errors.yml#/components/responses/ResourceNotFoundAPIErrorResponse'
+          - $ref: '../shared/errors.yml#/components/responses/TokenNotFoundAPIErrorResponse'
+        '405':
+          $ref: '../shared/errors.yml#/components/responses/MethodNotAllowedAPIErrorResponse'
+        '409':
+          $ref: '../shared/errors.yml#/components/responses/ConflictAPIErrorResponse'
         '500':
           oneOf:
             - $ref: '../shared/errors.yml#/components/responses/ServerErrorResponse'
