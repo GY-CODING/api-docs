@@ -609,7 +609,7 @@ paths:
       description: Removes existing chats from user metadata.
       parameters:
         - $ref: '#/components/parameters/Authorization'
-        - $ref: '#/components/parameters/ChatId'
+        - $ref: '#/components/parameters/ChatID'
       responses:
         '200':
           $ref: '../shared/responses.yml#/components/responses/OKResponse'
@@ -686,6 +686,13 @@ components:
       schema:
         type: string
       description: User ID provided by the authorization service for each specific user.
+    ChatID:
+      name: chat-id
+      in: query
+      required: true
+      schema:
+        type: string
+      description: Chat ID.
 
   schemas:
     ChatMetadata:
