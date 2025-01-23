@@ -128,7 +128,7 @@ components:
         code: UNAUTHORIZED
         message: The user is not authorized to access this resource.
         status: 401
-        owner: API_GATEWAY
+        owner: GYCODING
     UnauthorizedGatewayAPIErrorResponseExample:
       value:
         code: UNAUTHORIZED
