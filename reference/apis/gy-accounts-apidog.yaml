@@ -1,19 +1,26 @@
-openapi: 3.0.1
+openapi: 3.1.0
 info:
   title: GY Accounts
-  description: GY Accounts is the official authentication and user management system for GYCODING products.
-  version: 1.0.0
+  description: >-
+    GY Accounts is the official authentication and user management system for
+    GYCODING products.
+  version: 3.2.0
 tags:
   - name: Authentication
-  - name: GY Messages
+  - name: Products
+  - name: Products/GY Messages
   - name: Users
+  - name: GY Messages
 paths:
   /auth/login:
     post:
       summary: Login
       deprecated: false
-      description: Checks the existance and the authentication of an user account basic Email/Username and Password authentication and returns a JWT.
+      description: >-
+        Checks the existance and the authentication of an user account basic
+        Email/Username and Password authentication and returns a JWT.
       tags:
+        - Authentication
         - Authentication
       parameters: []
       requestBody:
@@ -34,8 +41,8 @@ paths:
               required:
                 - password
             example:
-              email: 'test@gycoding.com'
-              password: 'testtest_0'
+              email: test@gycoding.com
+              password: testtest_0
       responses:
         '200':
           description: ''
@@ -48,7 +55,7 @@ paths:
           description: ''
           content:
             application/json:
-              schema:
+              schema: &ref_0
                 $ref: '#/components/schemas/Error%20Response'
               examples:
                 '1':
@@ -63,14 +70,15 @@ paths:
           description: ''
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
+              schema: *ref_0
               examples:
                 '1':
                   summary: Invalid Login
                   value:
                     code: INVALID_LOGIN
-                    message: Invalid login due to the non existance of the user or invalid password.
+                    message: >-
+                      Invalid login due to the non existance of the user or
+                      invalid password.
                     status: 401
                     owner: GYCODING
                 '2':
@@ -92,8 +100,7 @@ paths:
           description: ''
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
+              schema: *ref_0
               examples:
                 '1':
                   summary: Method Not Allowed
@@ -107,42 +114,51 @@ paths:
           description: ''
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
+              schema: *ref_0
               examples:
                 '1':
                   summary: Database Error
                   value:
                     code: DB_ERROR
-                    message: An error with the database has occurred, sorry for the inconvenience.
+                    message: >-
+                      An error with the database has occurred, sorry for the
+                      inconvenience.
                     status: 500
                     owner: GYCODING
                 '2':
                   summary: Auth Error from Service
                   value:
                     code: AUTH_ERROR
-                    message: An error with the authentication service has occurred, sorry for the inconvenience.
+                    message: >-
+                      An error with the authentication service has occurred,
+                      sorry for the inconvenience.
                     status: 500
                     owner: GYCODING
                 '3':
                   summary: Auth Error from API Gateway
                   value:
                     code: AUTH_ERROR
-                    message: An error with the authentication service has occurred, sorry for the inconvenience.
+                    message: >-
+                      An error with the authentication service has occurred,
+                      sorry for the inconvenience.
                     status: 500
                     owner: API_GATEWAY
                 '4':
                   summary: Gateway Error
                   value:
                     code: GATEWAY_ERROR
-                    message: An internal API Gateway error has occurred, sorry for the inconvenience.
+                    message: >-
+                      An internal API Gateway error has occurred, sorry for the
+                      inconvenience.
                     status: 500
                     owner: API_GATEWAY
                 '5':
                   summary: Server Error
                   value:
                     code: SERVER_ERROR
-                    message: An internal server error has occurred, sorry for the inconvenience.
+                    message: >-
+                      An internal server error has occurred, sorry for the
+                      inconvenience.
                     status: 500
                     owner: GYCODING
           headers: {}
@@ -154,8 +170,11 @@ paths:
     post:
       summary: Sign Up
       deprecated: false
-      description: Registers a new user account using basic Email/Username and Password authentication.
+      description: >-
+        Registers a new user account using basic Email/Username and Password
+        authentication.
       tags:
+        - Authentication
         - Authentication
       parameters: []
       requestBody:
@@ -180,8 +199,7 @@ paths:
           description: ''
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
+              schema: *ref_0
               examples:
                 '1':
                   summary: Bad Request
@@ -195,8 +213,7 @@ paths:
           description: ''
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
+              schema: *ref_0
               examples:
                 '1':
                   summary: Method Not Allowed
@@ -210,21 +227,24 @@ paths:
           description: ''
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
+              schema: *ref_0
               examples:
                 '1':
                   summary: Conflict
                   value:
                     code: CONFLICT
-                    message: An internal conflict between external data and the API has occured. Requested data may already exist.
+                    message: >-
+                      An internal conflict between external data and the API has
+                      occured. Requested data may already exist.
                     status: 409
                     owner: GYCODING
                 '2':
                   summary: Invalid Sign Up
                   value:
                     code: INVALID_SIGN_UP
-                    message: Invalid sign up due to the already existance of the user or an authentication error.
+                    message: >-
+                      Invalid sign up due to the already existance of the user
+                      or an authentication error.
                     status: 409
                     owner: GYCODING
           headers: {}
@@ -232,42 +252,51 @@ paths:
           description: ''
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
+              schema: *ref_0
               examples:
                 '1':
                   summary: Database Error
                   value:
                     code: DB_ERROR
-                    message: An error with the database has occurred, sorry for the inconvenience.
+                    message: >-
+                      An error with the database has occurred, sorry for the
+                      inconvenience.
                     status: 500
                     owner: GYCODING
                 '2':
                   summary: Auth Error from Service
                   value:
                     code: AUTH_ERROR
-                    message: An error with the authentication service has occurred, sorry for the inconvenience.
+                    message: >-
+                      An error with the authentication service has occurred,
+                      sorry for the inconvenience.
                     status: 500
                     owner: GYCODING
                 '3':
                   summary: Auth Error from API Gateway
                   value:
                     code: AUTH_ERROR
-                    message: An error with the authentication service has occurred, sorry for the inconvenience.
+                    message: >-
+                      An error with the authentication service has occurred,
+                      sorry for the inconvenience.
                     status: 500
                     owner: API_GATEWAY
                 '4':
                   summary: Gateway Error
                   value:
                     code: GATEWAY_ERROR
-                    message: An internal API Gateway error has occurred, sorry for the inconvenience.
+                    message: >-
+                      An internal API Gateway error has occurred, sorry for the
+                      inconvenience.
                     status: 500
                     owner: API_GATEWAY
                 '5':
                   summary: Server Error
                   value:
                     code: SERVER_ERROR
-                    message: An internal server error has occurred, sorry for the inconvenience.
+                    message: >-
+                      An internal server error has occurred, sorry for the
+                      inconvenience.
                     status: 500
                     owner: GYCODING
           headers: {}
@@ -281,6 +310,7 @@ paths:
       deprecated: false
       description: Returns a custom GYCODING authentication URL for Google Authentication.
       tags:
+        - Authentication
         - Authentication
       parameters: []
       responses:
@@ -296,8 +326,7 @@ paths:
           description: ''
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
+              schema: *ref_0
               examples:
                 '1':
                   summary: Bad Request
@@ -311,8 +340,7 @@ paths:
           description: ''
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
+              schema: *ref_0
               examples:
                 '1':
                   summary: Method Not Allowed
@@ -326,42 +354,51 @@ paths:
           description: ''
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
+              schema: *ref_0
               examples:
                 '1':
                   summary: Database Error
                   value:
                     code: DB_ERROR
-                    message: An error with the database has occurred, sorry for the inconvenience.
+                    message: >-
+                      An error with the database has occurred, sorry for the
+                      inconvenience.
                     status: 500
                     owner: GYCODING
                 '2':
                   summary: Auth Error from Service
                   value:
                     code: AUTH_ERROR
-                    message: An error with the authentication service has occurred, sorry for the inconvenience.
+                    message: >-
+                      An error with the authentication service has occurred,
+                      sorry for the inconvenience.
                     status: 500
                     owner: GYCODING
                 '3':
                   summary: Auth Error from API Gateway
                   value:
                     code: AUTH_ERROR
-                    message: An error with the authentication service has occurred, sorry for the inconvenience.
+                    message: >-
+                      An error with the authentication service has occurred,
+                      sorry for the inconvenience.
                     status: 500
                     owner: API_GATEWAY
                 '4':
                   summary: Gateway Error
                   value:
                     code: GATEWAY_ERROR
-                    message: An internal API Gateway error has occurred, sorry for the inconvenience.
+                    message: >-
+                      An internal API Gateway error has occurred, sorry for the
+                      inconvenience.
                     status: 500
                     owner: API_GATEWAY
                 '5':
                   summary: Server Error
                   value:
                     code: SERVER_ERROR
-                    message: An internal server error has occurred, sorry for the inconvenience.
+                    message: >-
+                      An internal server error has occurred, sorry for the
+                      inconvenience.
                     status: 500
                     owner: GYCODING
           headers: {}
@@ -375,16 +412,19 @@ paths:
       deprecated: false
       description: Adds a chat to the user's metadata.
       tags:
+        - Products/GY Messages
         - GY Messages
       parameters:
         - name: Authorization
           in: header
           description: Authorization token.
           required: false
-          example: eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..cGATxjlGSXP08LPq.HAXheZlEA_ti_1My5ckNynUeRircb4RAfF9EAuR97z9Xnr5pr8S4fVLb94e4_jHdjWXNzUPi2M9-m_suqgh4MbPq0wulFQjEOiQ8f-aeVi8MGyM3CKnNTbMBuxQIXnhZICY0zlg6q97j65BdMLWYf3_6reFmbn2dDho8HAjTrLbndySJUvzRmxQrypKsQF1tUIxcYcLLRjT_MbXBDVLxvZ-9wJ4kJv_goXgpCIiiJZSxy53xJ0d_f5EwxeqdPiHW3P3DRmwq3pbTFR2b4tQulKLr7vEKONvfUoS_Sc5GWXTdiecfkU5eJRDLETr5kdi0Z4onmYOI5JD_4OTAqH-3wPgJaHJuhIa09A.aLtbCGpqXOZHHqKxKqC-uA
+          example: >-
+            eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..cGATxjlGSXP08LPq.HAXheZlEA_ti_1My5ckNynUeRircb4RAfF9EAuR97z9Xnr5pr8S4fVLb94e4_jHdjWXNzUPi2M9-m_suqgh4MbPq0wulFQjEOiQ8f-aeVi8MGyM3CKnNTbMBuxQIXnhZICY0zlg6q97j65BdMLWYf3_6reFmbn2dDho8HAjTrLbndySJUvzRmxQrypKsQF1tUIxcYcLLRjT_MbXBDVLxvZ-9wJ4kJv_goXgpCIiiJZSxy53xJ0d_f5EwxeqdPiHW3P3DRmwq3pbTFR2b4tQulKLr7vEKONvfUoS_Sc5GWXTdiecfkU5eJRDLETr5kdi0Z4onmYOI5JD_4OTAqH-3wPgJaHJuhIa09A.aLtbCGpqXOZHHqKxKqC-uA
           schema:
             type: string
-            default: eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..cGATxjlGSXP08LPq.HAXheZlEA_ti_1My5ckNynUeRircb4RAfF9EAuR97z9Xnr5pr8S4fVLb94e4_jHdjWXNzUPi2M9-m_suqgh4MbPq0wulFQjEOiQ8f-aeVi8MGyM3CKnNTbMBuxQIXnhZICY0zlg6q97j65BdMLWYf3_6reFmbn2dDho8HAjTrLbndySJUvzRmxQrypKsQF1tUIxcYcLLRjT_MbXBDVLxvZ-9wJ4kJv_goXgpCIiiJZSxy53xJ0d_f5EwxeqdPiHW3P3DRmwq3pbTFR2b4tQulKLr7vEKONvfUoS_Sc5GWXTdiecfkU5eJRDLETr5kdi0Z4onmYOI5JD_4OTAqH-3wPgJaHJuhIa09A.aLtbCGpqXOZHHqKxKqC-uA
+            default: >-
+              eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..cGATxjlGSXP08LPq.HAXheZlEA_ti_1My5ckNynUeRircb4RAfF9EAuR97z9Xnr5pr8S4fVLb94e4_jHdjWXNzUPi2M9-m_suqgh4MbPq0wulFQjEOiQ8f-aeVi8MGyM3CKnNTbMBuxQIXnhZICY0zlg6q97j65BdMLWYf3_6reFmbn2dDho8HAjTrLbndySJUvzRmxQrypKsQF1tUIxcYcLLRjT_MbXBDVLxvZ-9wJ4kJv_goXgpCIiiJZSxy53xJ0d_f5EwxeqdPiHW3P3DRmwq3pbTFR2b4tQulKLr7vEKONvfUoS_Sc5GWXTdiecfkU5eJRDLETr5kdi0Z4onmYOI5JD_4OTAqH-3wPgJaHJuhIa09A.aLtbCGpqXOZHHqKxKqC-uA
       responses:
         '204':
           description: ''
@@ -398,14 +438,15 @@ paths:
           description: ''
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
+              schema: *ref_0
               examples:
                 '1':
                   summary: Resource Not Modified
                   value:
                     code: RESOURCE_NOT_MODIFIED
-                    message: The resource could not be modified due to some internal conflict or error.
+                    message: >-
+                      The resource could not be modified due to some internal
+                      conflict or error.
                     status: 304
                     owner: GYCODING
           headers: {}
@@ -413,8 +454,7 @@ paths:
           description: ''
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
+              schema: *ref_0
               examples:
                 '1':
                   summary: Bad Request
@@ -428,14 +468,15 @@ paths:
           description: ''
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
+              schema: *ref_0
               examples:
                 '1':
                   summary: Invalid Login
                   value:
                     code: INVALID_LOGIN
-                    message: Invalid login due to the non existance of the user or invalid password.
+                    message: >-
+                      Invalid login due to the non existance of the user or
+                      invalid password.
                     status: 401
                     owner: GYCODING
                 '2':
@@ -457,8 +498,7 @@ paths:
           description: ''
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
+              schema: *ref_0
               examples:
                 '1':
                   summary: Forbidden to Service
@@ -479,8 +519,7 @@ paths:
           description: ''
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
+              schema: *ref_0
               examples:
                 '1':
                   summary: Method Not Allowed
@@ -494,21 +533,24 @@ paths:
           description: ''
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
+              schema: *ref_0
               examples:
                 '1':
                   summary: Conflict
                   value:
                     code: CONFLICT
-                    message: An internal conflict between external data and the API has occured. Requested data may already exist.
+                    message: >-
+                      An internal conflict between external data and the API has
+                      occured. Requested data may already exist.
                     status: 409
                     owner: GYCODING
                 '2':
                   summary: Invalid Sign Up
                   value:
                     code: INVALID_SIGN_UP
-                    message: Invalid sign up due to the already existance of the user or an authentication error.
+                    message: >-
+                      Invalid sign up due to the already existance of the user
+                      or an authentication error.
                     status: 409
                     owner: GYCODING
           headers: {}
@@ -516,42 +558,51 @@ paths:
           description: ''
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
+              schema: *ref_0
               examples:
                 '1':
                   summary: Database Error
                   value:
                     code: DB_ERROR
-                    message: An error with the database has occurred, sorry for the inconvenience.
+                    message: >-
+                      An error with the database has occurred, sorry for the
+                      inconvenience.
                     status: 500
                     owner: GYCODING
                 '2':
                   summary: Auth Error from Service
                   value:
                     code: AUTH_ERROR
-                    message: An error with the authentication service has occurred, sorry for the inconvenience.
+                    message: >-
+                      An error with the authentication service has occurred,
+                      sorry for the inconvenience.
                     status: 500
                     owner: GYCODING
                 '3':
                   summary: Auth Error from API Gateway
                   value:
                     code: AUTH_ERROR
-                    message: An error with the authentication service has occurred, sorry for the inconvenience.
+                    message: >-
+                      An error with the authentication service has occurred,
+                      sorry for the inconvenience.
                     status: 500
                     owner: API_GATEWAY
                 '4':
                   summary: Gateway Error
                   value:
                     code: GATEWAY_ERROR
-                    message: An internal API Gateway error has occurred, sorry for the inconvenience.
+                    message: >-
+                      An internal API Gateway error has occurred, sorry for the
+                      inconvenience.
                     status: 500
                     owner: API_GATEWAY
                 '5':
                   summary: Server Error
                   value:
                     code: SERVER_ERROR
-                    message: An internal server error has occurred, sorry for the inconvenience.
+                    message: >-
+                      An internal server error has occurred, sorry for the
+                      inconvenience.
                     status: 500
                     owner: GYCODING
           headers: {}
@@ -565,20 +616,23 @@ paths:
       deprecated: false
       description: Sets user as admin of a specific chat.
       tags:
+        - Products/GY Messages
         - GY Messages
       parameters:
         - name: Authorization
           in: header
           description: Authorization token.
           required: false
-          example: eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..cGATxjlGSXP08LPq.HAXheZlEA_ti_1My5ckNynUeRircb4RAfF9EAuR97z9Xnr5pr8S4fVLb94e4_jHdjWXNzUPi2M9-m_suqgh4MbPq0wulFQjEOiQ8f-aeVi8MGyM3CKnNTbMBuxQIXnhZICY0zlg6q97j65BdMLWYf3_6reFmbn2dDho8HAjTrLbndySJUvzRmxQrypKsQF1tUIxcYcLLRjT_MbXBDVLxvZ-9wJ4kJv_goXgpCIiiJZSxy53xJ0d_f5EwxeqdPiHW3P3DRmwq3pbTFR2b4tQulKLr7vEKONvfUoS_Sc5GWXTdiecfkU5eJRDLETr5kdi0Z4onmYOI5JD_4OTAqH-3wPgJaHJuhIa09A.aLtbCGpqXOZHHqKxKqC-uA
+          example: >-
+            eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..cGATxjlGSXP08LPq.HAXheZlEA_ti_1My5ckNynUeRircb4RAfF9EAuR97z9Xnr5pr8S4fVLb94e4_jHdjWXNzUPi2M9-m_suqgh4MbPq0wulFQjEOiQ8f-aeVi8MGyM3CKnNTbMBuxQIXnhZICY0zlg6q97j65BdMLWYf3_6reFmbn2dDho8HAjTrLbndySJUvzRmxQrypKsQF1tUIxcYcLLRjT_MbXBDVLxvZ-9wJ4kJv_goXgpCIiiJZSxy53xJ0d_f5EwxeqdPiHW3P3DRmwq3pbTFR2b4tQulKLr7vEKONvfUoS_Sc5GWXTdiecfkU5eJRDLETr5kdi0Z4onmYOI5JD_4OTAqH-3wPgJaHJuhIa09A.aLtbCGpqXOZHHqKxKqC-uA
           schema:
             type: string
-            default: eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..cGATxjlGSXP08LPq.HAXheZlEA_ti_1My5ckNynUeRircb4RAfF9EAuR97z9Xnr5pr8S4fVLb94e4_jHdjWXNzUPi2M9-m_suqgh4MbPq0wulFQjEOiQ8f-aeVi8MGyM3CKnNTbMBuxQIXnhZICY0zlg6q97j65BdMLWYf3_6reFmbn2dDho8HAjTrLbndySJUvzRmxQrypKsQF1tUIxcYcLLRjT_MbXBDVLxvZ-9wJ4kJv_goXgpCIiiJZSxy53xJ0d_f5EwxeqdPiHW3P3DRmwq3pbTFR2b4tQulKLr7vEKONvfUoS_Sc5GWXTdiecfkU5eJRDLETr5kdi0Z4onmYOI5JD_4OTAqH-3wPgJaHJuhIa09A.aLtbCGpqXOZHHqKxKqC-uA
+            default: >-
+              eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..cGATxjlGSXP08LPq.HAXheZlEA_ti_1My5ckNynUeRircb4RAfF9EAuR97z9Xnr5pr8S4fVLb94e4_jHdjWXNzUPi2M9-m_suqgh4MbPq0wulFQjEOiQ8f-aeVi8MGyM3CKnNTbMBuxQIXnhZICY0zlg6q97j65BdMLWYf3_6reFmbn2dDho8HAjTrLbndySJUvzRmxQrypKsQF1tUIxcYcLLRjT_MbXBDVLxvZ-9wJ4kJv_goXgpCIiiJZSxy53xJ0d_f5EwxeqdPiHW3P3DRmwq3pbTFR2b4tQulKLr7vEKONvfUoS_Sc5GWXTdiecfkU5eJRDLETr5kdi0Z4onmYOI5JD_4OTAqH-3wPgJaHJuhIa09A.aLtbCGpqXOZHHqKxKqC-uA
       requestBody:
         content:
           application/json:
-            schema:
+            schema: &ref_1
               description: Chat object.
               $ref: '#/components/schemas/GY%20Messages%20Chat%20Metadata'
             example: "{\r\n    \"chatId\": \"{{test-chat}}\",\r\n    \"admin\": {{test-chat-isadmin}}\r\n}"
@@ -595,14 +649,15 @@ paths:
           description: ''
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
+              schema: *ref_0
               examples:
                 '1':
                   summary: Resource Not Modified
                   value:
                     code: RESOURCE_NOT_MODIFIED
-                    message: The resource could not be modified due to some internal conflict or error.
+                    message: >-
+                      The resource could not be modified due to some internal
+                      conflict or error.
                     status: 304
                     owner: GYCODING
           headers: {}
@@ -610,8 +665,7 @@ paths:
           description: ''
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
+              schema: *ref_0
               examples:
                 '1':
                   summary: Bad Request
@@ -625,14 +679,15 @@ paths:
           description: ''
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
+              schema: *ref_0
               examples:
                 '1':
                   summary: Invalid Login
                   value:
                     code: INVALID_LOGIN
-                    message: Invalid login due to the non existance of the user or invalid password.
+                    message: >-
+                      Invalid login due to the non existance of the user or
+                      invalid password.
                     status: 401
                     owner: GYCODING
                 '2':
@@ -654,8 +709,7 @@ paths:
           description: ''
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
+              schema: *ref_0
               examples:
                 '1':
                   summary: Forbidden to Service
@@ -676,8 +730,7 @@ paths:
           description: ''
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
+              schema: *ref_0
               examples:
                 '1':
                   summary: Token Not Found
@@ -698,8 +751,7 @@ paths:
           description: ''
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
+              schema: *ref_0
               examples:
                 '1':
                   summary: Method Not Allowed
@@ -713,42 +765,51 @@ paths:
           description: ''
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
+              schema: *ref_0
               examples:
                 '1':
                   summary: Database Error
                   value:
                     code: DB_ERROR
-                    message: An error with the database has occurred, sorry for the inconvenience.
+                    message: >-
+                      An error with the database has occurred, sorry for the
+                      inconvenience.
                     status: 500
                     owner: GYCODING
                 '2':
                   summary: Auth Error from Service
                   value:
                     code: AUTH_ERROR
-                    message: An error with the authentication service has occurred, sorry for the inconvenience.
+                    message: >-
+                      An error with the authentication service has occurred,
+                      sorry for the inconvenience.
                     status: 500
                     owner: GYCODING
                 '3':
                   summary: Auth Error from API Gateway
                   value:
                     code: AUTH_ERROR
-                    message: An error with the authentication service has occurred, sorry for the inconvenience.
+                    message: >-
+                      An error with the authentication service has occurred,
+                      sorry for the inconvenience.
                     status: 500
                     owner: API_GATEWAY
                 '4':
                   summary: Gateway Error
                   value:
                     code: GATEWAY_ERROR
-                    message: An internal API Gateway error has occurred, sorry for the inconvenience.
+                    message: >-
+                      An internal API Gateway error has occurred, sorry for the
+                      inconvenience.
                     status: 500
                     owner: API_GATEWAY
                 '5':
                   summary: Server Error
                   value:
                     code: SERVER_ERROR
-                    message: An internal server error has occurred, sorry for the inconvenience.
+                    message: >-
+                      An internal server error has occurred, sorry for the
+                      inconvenience.
                     status: 500
                     owner: GYCODING
           headers: {}
@@ -762,6 +823,7 @@ paths:
       deprecated: false
       description: Removes a chat from user metadata.
       tags:
+        - Products/GY Messages
         - GY Messages
       parameters:
         - name: chatId
@@ -776,10 +838,12 @@ paths:
           in: header
           description: Authorization token.
           required: false
-          example: eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..cGATxjlGSXP08LPq.HAXheZlEA_ti_1My5ckNynUeRircb4RAfF9EAuR97z9Xnr5pr8S4fVLb94e4_jHdjWXNzUPi2M9-m_suqgh4MbPq0wulFQjEOiQ8f-aeVi8MGyM3CKnNTbMBuxQIXnhZICY0zlg6q97j65BdMLWYf3_6reFmbn2dDho8HAjTrLbndySJUvzRmxQrypKsQF1tUIxcYcLLRjT_MbXBDVLxvZ-9wJ4kJv_goXgpCIiiJZSxy53xJ0d_f5EwxeqdPiHW3P3DRmwq3pbTFR2b4tQulKLr7vEKONvfUoS_Sc5GWXTdiecfkU5eJRDLETr5kdi0Z4onmYOI5JD_4OTAqH-3wPgJaHJuhIa09A.aLtbCGpqXOZHHqKxKqC-uA
+          example: >-
+            eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..cGATxjlGSXP08LPq.HAXheZlEA_ti_1My5ckNynUeRircb4RAfF9EAuR97z9Xnr5pr8S4fVLb94e4_jHdjWXNzUPi2M9-m_suqgh4MbPq0wulFQjEOiQ8f-aeVi8MGyM3CKnNTbMBuxQIXnhZICY0zlg6q97j65BdMLWYf3_6reFmbn2dDho8HAjTrLbndySJUvzRmxQrypKsQF1tUIxcYcLLRjT_MbXBDVLxvZ-9wJ4kJv_goXgpCIiiJZSxy53xJ0d_f5EwxeqdPiHW3P3DRmwq3pbTFR2b4tQulKLr7vEKONvfUoS_Sc5GWXTdiecfkU5eJRDLETr5kdi0Z4onmYOI5JD_4OTAqH-3wPgJaHJuhIa09A.aLtbCGpqXOZHHqKxKqC-uA
           schema:
             type: string
-            default: eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..cGATxjlGSXP08LPq.HAXheZlEA_ti_1My5ckNynUeRircb4RAfF9EAuR97z9Xnr5pr8S4fVLb94e4_jHdjWXNzUPi2M9-m_suqgh4MbPq0wulFQjEOiQ8f-aeVi8MGyM3CKnNTbMBuxQIXnhZICY0zlg6q97j65BdMLWYf3_6reFmbn2dDho8HAjTrLbndySJUvzRmxQrypKsQF1tUIxcYcLLRjT_MbXBDVLxvZ-9wJ4kJv_goXgpCIiiJZSxy53xJ0d_f5EwxeqdPiHW3P3DRmwq3pbTFR2b4tQulKLr7vEKONvfUoS_Sc5GWXTdiecfkU5eJRDLETr5kdi0Z4onmYOI5JD_4OTAqH-3wPgJaHJuhIa09A.aLtbCGpqXOZHHqKxKqC-uA
+            default: >-
+              eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..cGATxjlGSXP08LPq.HAXheZlEA_ti_1My5ckNynUeRircb4RAfF9EAuR97z9Xnr5pr8S4fVLb94e4_jHdjWXNzUPi2M9-m_suqgh4MbPq0wulFQjEOiQ8f-aeVi8MGyM3CKnNTbMBuxQIXnhZICY0zlg6q97j65BdMLWYf3_6reFmbn2dDho8HAjTrLbndySJUvzRmxQrypKsQF1tUIxcYcLLRjT_MbXBDVLxvZ-9wJ4kJv_goXgpCIiiJZSxy53xJ0d_f5EwxeqdPiHW3P3DRmwq3pbTFR2b4tQulKLr7vEKONvfUoS_Sc5GWXTdiecfkU5eJRDLETr5kdi0Z4onmYOI5JD_4OTAqH-3wPgJaHJuhIa09A.aLtbCGpqXOZHHqKxKqC-uA
       responses:
         '204':
           description: ''
@@ -793,14 +857,15 @@ paths:
           description: ''
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
+              schema: *ref_0
               examples:
                 '1':
                   summary: Resource Not Modified
                   value:
                     code: RESOURCE_NOT_MODIFIED
-                    message: The resource could not be modified due to some internal conflict or error.
+                    message: >-
+                      The resource could not be modified due to some internal
+                      conflict or error.
                     status: 304
                     owner: GYCODING
           headers: {}
@@ -808,8 +873,7 @@ paths:
           description: ''
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
+              schema: *ref_0
               examples:
                 '1':
                   summary: Bad Request
@@ -823,14 +887,15 @@ paths:
           description: ''
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
+              schema: *ref_0
               examples:
                 '1':
                   summary: Invalid Login
                   value:
                     code: INVALID_LOGIN
-                    message: Invalid login due to the non existance of the user or invalid password.
+                    message: >-
+                      Invalid login due to the non existance of the user or
+                      invalid password.
                     status: 401
                     owner: GYCODING
                 '2':
@@ -852,8 +917,7 @@ paths:
           description: ''
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
+              schema: *ref_0
               examples:
                 '1':
                   summary: Forbidden to Service
@@ -874,8 +938,7 @@ paths:
           description: ''
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
+              schema: *ref_0
               examples:
                 '1':
                   summary: Token Not Found
@@ -896,8 +959,7 @@ paths:
           description: ''
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
+              schema: *ref_0
               examples:
                 '1':
                   summary: Method Not Allowed
@@ -911,42 +973,51 @@ paths:
           description: ''
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
+              schema: *ref_0
               examples:
                 '1':
                   summary: Database Error
                   value:
                     code: DB_ERROR
-                    message: An error with the database has occurred, sorry for the inconvenience.
+                    message: >-
+                      An error with the database has occurred, sorry for the
+                      inconvenience.
                     status: 500
                     owner: GYCODING
                 '2':
                   summary: Auth Error from Service
                   value:
                     code: AUTH_ERROR
-                    message: An error with the authentication service has occurred, sorry for the inconvenience.
+                    message: >-
+                      An error with the authentication service has occurred,
+                      sorry for the inconvenience.
                     status: 500
                     owner: GYCODING
                 '3':
                   summary: Auth Error from API Gateway
                   value:
                     code: AUTH_ERROR
-                    message: An error with the authentication service has occurred, sorry for the inconvenience.
+                    message: >-
+                      An error with the authentication service has occurred,
+                      sorry for the inconvenience.
                     status: 500
                     owner: API_GATEWAY
                 '4':
                   summary: Gateway Error
                   value:
                     code: GATEWAY_ERROR
-                    message: An internal API Gateway error has occurred, sorry for the inconvenience.
+                    message: >-
+                      An internal API Gateway error has occurred, sorry for the
+                      inconvenience.
                     status: 500
                     owner: API_GATEWAY
                 '5':
                   summary: Server Error
                   value:
                     code: SERVER_ERROR
-                    message: An internal server error has occurred, sorry for the inconvenience.
+                    message: >-
+                      An internal server error has occurred, sorry for the
+                      inconvenience.
                     status: 500
                     owner: GYCODING
           headers: {}
@@ -959,16 +1030,19 @@ paths:
       deprecated: false
       description: Lists chats where the specified user belongs.
       tags:
+        - Products/GY Messages
         - GY Messages
       parameters:
         - name: Authorization
           in: header
           description: Authorization token.
           required: false
-          example: eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..cGATxjlGSXP08LPq.HAXheZlEA_ti_1My5ckNynUeRircb4RAfF9EAuR97z9Xnr5pr8S4fVLb94e4_jHdjWXNzUPi2M9-m_suqgh4MbPq0wulFQjEOiQ8f-aeVi8MGyM3CKnNTbMBuxQIXnhZICY0zlg6q97j65BdMLWYf3_6reFmbn2dDho8HAjTrLbndySJUvzRmxQrypKsQF1tUIxcYcLLRjT_MbXBDVLxvZ-9wJ4kJv_goXgpCIiiJZSxy53xJ0d_f5EwxeqdPiHW3P3DRmwq3pbTFR2b4tQulKLr7vEKONvfUoS_Sc5GWXTdiecfkU5eJRDLETr5kdi0Z4onmYOI5JD_4OTAqH-3wPgJaHJuhIa09A.aLtbCGpqXOZHHqKxKqC-uA
+          example: >-
+            eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..cGATxjlGSXP08LPq.HAXheZlEA_ti_1My5ckNynUeRircb4RAfF9EAuR97z9Xnr5pr8S4fVLb94e4_jHdjWXNzUPi2M9-m_suqgh4MbPq0wulFQjEOiQ8f-aeVi8MGyM3CKnNTbMBuxQIXnhZICY0zlg6q97j65BdMLWYf3_6reFmbn2dDho8HAjTrLbndySJUvzRmxQrypKsQF1tUIxcYcLLRjT_MbXBDVLxvZ-9wJ4kJv_goXgpCIiiJZSxy53xJ0d_f5EwxeqdPiHW3P3DRmwq3pbTFR2b4tQulKLr7vEKONvfUoS_Sc5GWXTdiecfkU5eJRDLETr5kdi0Z4onmYOI5JD_4OTAqH-3wPgJaHJuhIa09A.aLtbCGpqXOZHHqKxKqC-uA
           schema:
             type: string
-            default: eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..cGATxjlGSXP08LPq.HAXheZlEA_ti_1My5ckNynUeRircb4RAfF9EAuR97z9Xnr5pr8S4fVLb94e4_jHdjWXNzUPi2M9-m_suqgh4MbPq0wulFQjEOiQ8f-aeVi8MGyM3CKnNTbMBuxQIXnhZICY0zlg6q97j65BdMLWYf3_6reFmbn2dDho8HAjTrLbndySJUvzRmxQrypKsQF1tUIxcYcLLRjT_MbXBDVLxvZ-9wJ4kJv_goXgpCIiiJZSxy53xJ0d_f5EwxeqdPiHW3P3DRmwq3pbTFR2b4tQulKLr7vEKONvfUoS_Sc5GWXTdiecfkU5eJRDLETr5kdi0Z4onmYOI5JD_4OTAqH-3wPgJaHJuhIa09A.aLtbCGpqXOZHHqKxKqC-uA
+            default: >-
+              eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..cGATxjlGSXP08LPq.HAXheZlEA_ti_1My5ckNynUeRircb4RAfF9EAuR97z9Xnr5pr8S4fVLb94e4_jHdjWXNzUPi2M9-m_suqgh4MbPq0wulFQjEOiQ8f-aeVi8MGyM3CKnNTbMBuxQIXnhZICY0zlg6q97j65BdMLWYf3_6reFmbn2dDho8HAjTrLbndySJUvzRmxQrypKsQF1tUIxcYcLLRjT_MbXBDVLxvZ-9wJ4kJv_goXgpCIiiJZSxy53xJ0d_f5EwxeqdPiHW3P3DRmwq3pbTFR2b4tQulKLr7vEKONvfUoS_Sc5GWXTdiecfkU5eJRDLETr5kdi0Z4onmYOI5JD_4OTAqH-3wPgJaHJuhIa09A.aLtbCGpqXOZHHqKxKqC-uA
       responses:
         '200':
           description: ''
@@ -976,17 +1050,14 @@ paths:
             application/json:
               schema:
                 type: array
-                items:
-                  description: Chat object.
-                  $ref: '#/components/schemas/GY%20Messages%20Chat%20Metadata'
+                items: *ref_1
                 description: List of chats.
           headers: {}
         '400':
           description: ''
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
+              schema: *ref_0
               examples:
                 '1':
                   summary: Bad Request
@@ -1000,14 +1071,15 @@ paths:
           description: ''
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
+              schema: *ref_0
               examples:
                 '1':
                   summary: Invalid Login
                   value:
                     code: INVALID_LOGIN
-                    message: Invalid login due to the non existance of the user or invalid password.
+                    message: >-
+                      Invalid login due to the non existance of the user or
+                      invalid password.
                     status: 401
                     owner: GYCODING
                 '2':
@@ -1029,8 +1101,7 @@ paths:
           description: ''
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
+              schema: *ref_0
               examples:
                 '1':
                   summary: Forbidden to Service
@@ -1051,8 +1122,7 @@ paths:
           description: ''
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
+              schema: *ref_0
               examples:
                 '1':
                   summary: Token Not Found
@@ -1073,8 +1143,7 @@ paths:
           description: ''
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
+              schema: *ref_0
               examples:
                 '1':
                   summary: Method Not Allowed
@@ -1088,42 +1157,51 @@ paths:
           description: ''
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
+              schema: *ref_0
               examples:
                 '1':
                   summary: Database Error
                   value:
                     code: DB_ERROR
-                    message: An error with the database has occurred, sorry for the inconvenience.
+                    message: >-
+                      An error with the database has occurred, sorry for the
+                      inconvenience.
                     status: 500
                     owner: GYCODING
                 '2':
                   summary: Auth Error from Service
                   value:
                     code: AUTH_ERROR
-                    message: An error with the authentication service has occurred, sorry for the inconvenience.
+                    message: >-
+                      An error with the authentication service has occurred,
+                      sorry for the inconvenience.
                     status: 500
                     owner: GYCODING
                 '3':
                   summary: Auth Error from API Gateway
                   value:
                     code: AUTH_ERROR
-                    message: An error with the authentication service has occurred, sorry for the inconvenience.
+                    message: >-
+                      An error with the authentication service has occurred,
+                      sorry for the inconvenience.
                     status: 500
                     owner: API_GATEWAY
                 '4':
                   summary: Gateway Error
                   value:
                     code: GATEWAY_ERROR
-                    message: An internal API Gateway error has occurred, sorry for the inconvenience.
+                    message: >-
+                      An internal API Gateway error has occurred, sorry for the
+                      inconvenience.
                     status: 500
                     owner: API_GATEWAY
                 '5':
                   summary: Server Error
                   value:
                     code: SERVER_ERROR
-                    message: An internal server error has occurred, sorry for the inconvenience.
+                    message: >-
+                      An internal server error has occurred, sorry for the
+                      inconvenience.
                     status: 500
                     owner: GYCODING
           headers: {}
@@ -1135,24 +1213,29 @@ paths:
     get:
       summary: Get User Profile
       deprecated: false
-      description: Retrieves user whole profile, detailing the main aspects of the user's account.
+      description: >-
+        Retrieves user whole profile, detailing the main aspects of the user's
+        account.
       tags:
+        - Users
         - Users
       parameters:
         - name: Authorization
           in: header
           description: Authorization token.
           required: false
-          example: eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..cGATxjlGSXP08LPq.HAXheZlEA_ti_1My5ckNynUeRircb4RAfF9EAuR97z9Xnr5pr8S4fVLb94e4_jHdjWXNzUPi2M9-m_suqgh4MbPq0wulFQjEOiQ8f-aeVi8MGyM3CKnNTbMBuxQIXnhZICY0zlg6q97j65BdMLWYf3_6reFmbn2dDho8HAjTrLbndySJUvzRmxQrypKsQF1tUIxcYcLLRjT_MbXBDVLxvZ-9wJ4kJv_goXgpCIiiJZSxy53xJ0d_f5EwxeqdPiHW3P3DRmwq3pbTFR2b4tQulKLr7vEKONvfUoS_Sc5GWXTdiecfkU5eJRDLETr5kdi0Z4onmYOI5JD_4OTAqH-3wPgJaHJuhIa09A.aLtbCGpqXOZHHqKxKqC-uA
+          example: >-
+            eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..cGATxjlGSXP08LPq.HAXheZlEA_ti_1My5ckNynUeRircb4RAfF9EAuR97z9Xnr5pr8S4fVLb94e4_jHdjWXNzUPi2M9-m_suqgh4MbPq0wulFQjEOiQ8f-aeVi8MGyM3CKnNTbMBuxQIXnhZICY0zlg6q97j65BdMLWYf3_6reFmbn2dDho8HAjTrLbndySJUvzRmxQrypKsQF1tUIxcYcLLRjT_MbXBDVLxvZ-9wJ4kJv_goXgpCIiiJZSxy53xJ0d_f5EwxeqdPiHW3P3DRmwq3pbTFR2b4tQulKLr7vEKONvfUoS_Sc5GWXTdiecfkU5eJRDLETr5kdi0Z4onmYOI5JD_4OTAqH-3wPgJaHJuhIa09A.aLtbCGpqXOZHHqKxKqC-uA
           schema:
             type: string
-            default: eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..cGATxjlGSXP08LPq.HAXheZlEA_ti_1My5ckNynUeRircb4RAfF9EAuR97z9Xnr5pr8S4fVLb94e4_jHdjWXNzUPi2M9-m_suqgh4MbPq0wulFQjEOiQ8f-aeVi8MGyM3CKnNTbMBuxQIXnhZICY0zlg6q97j65BdMLWYf3_6reFmbn2dDho8HAjTrLbndySJUvzRmxQrypKsQF1tUIxcYcLLRjT_MbXBDVLxvZ-9wJ4kJv_goXgpCIiiJZSxy53xJ0d_f5EwxeqdPiHW3P3DRmwq3pbTFR2b4tQulKLr7vEKONvfUoS_Sc5GWXTdiecfkU5eJRDLETr5kdi0Z4onmYOI5JD_4OTAqH-3wPgJaHJuhIa09A.aLtbCGpqXOZHHqKxKqC-uA
+            default: >-
+              eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..cGATxjlGSXP08LPq.HAXheZlEA_ti_1My5ckNynUeRircb4RAfF9EAuR97z9Xnr5pr8S4fVLb94e4_jHdjWXNzUPi2M9-m_suqgh4MbPq0wulFQjEOiQ8f-aeVi8MGyM3CKnNTbMBuxQIXnhZICY0zlg6q97j65BdMLWYf3_6reFmbn2dDho8HAjTrLbndySJUvzRmxQrypKsQF1tUIxcYcLLRjT_MbXBDVLxvZ-9wJ4kJv_goXgpCIiiJZSxy53xJ0d_f5EwxeqdPiHW3P3DRmwq3pbTFR2b4tQulKLr7vEKONvfUoS_Sc5GWXTdiecfkU5eJRDLETr5kdi0Z4onmYOI5JD_4OTAqH-3wPgJaHJuhIa09A.aLtbCGpqXOZHHqKxKqC-uA
       responses:
         '200':
           description: ''
           content:
             application/json:
-              schema:
+              schema: &ref_2
                 $ref: '#/components/schemas/User%20Profile'
                 description: User Profile object.
           headers: {}
@@ -1160,8 +1243,7 @@ paths:
           description: ''
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
+              schema: *ref_0
               examples:
                 '1':
                   summary: Bad Request
@@ -1175,14 +1257,15 @@ paths:
           description: ''
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
+              schema: *ref_0
               examples:
                 '1':
                   summary: Invalid Login
                   value:
                     code: INVALID_LOGIN
-                    message: Invalid login due to the non existance of the user or invalid password.
+                    message: >-
+                      Invalid login due to the non existance of the user or
+                      invalid password.
                     status: 401
                     owner: GYCODING
                 '2':
@@ -1204,8 +1287,7 @@ paths:
           description: ''
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
+              schema: *ref_0
               examples:
                 '1':
                   summary: Forbidden to Service
@@ -1226,8 +1308,7 @@ paths:
           description: ''
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
+              schema: *ref_0
               examples:
                 '1':
                   summary: Token Not Found
@@ -1248,8 +1329,7 @@ paths:
           description: ''
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
+              schema: *ref_0
               examples:
                 '1':
                   summary: Method Not Allowed
@@ -1263,42 +1343,51 @@ paths:
           description: ''
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
+              schema: *ref_0
               examples:
                 '1':
                   summary: Database Error
                   value:
                     code: DB_ERROR
-                    message: An error with the database has occurred, sorry for the inconvenience.
+                    message: >-
+                      An error with the database has occurred, sorry for the
+                      inconvenience.
                     status: 500
                     owner: GYCODING
                 '2':
                   summary: Auth Error from Service
                   value:
                     code: AUTH_ERROR
-                    message: An error with the authentication service has occurred, sorry for the inconvenience.
+                    message: >-
+                      An error with the authentication service has occurred,
+                      sorry for the inconvenience.
                     status: 500
                     owner: GYCODING
                 '3':
                   summary: Auth Error from API Gateway
                   value:
                     code: AUTH_ERROR
-                    message: An error with the authentication service has occurred, sorry for the inconvenience.
+                    message: >-
+                      An error with the authentication service has occurred,
+                      sorry for the inconvenience.
                     status: 500
                     owner: API_GATEWAY
                 '4':
                   summary: Gateway Error
                   value:
                     code: GATEWAY_ERROR
-                    message: An internal API Gateway error has occurred, sorry for the inconvenience.
+                    message: >-
+                      An internal API Gateway error has occurred, sorry for the
+                      inconvenience.
                     status: 500
                     owner: API_GATEWAY
                 '5':
                   summary: Server Error
                   value:
                     code: SERVER_ERROR
-                    message: An internal server error has occurred, sorry for the inconvenience.
+                    message: >-
+                      An internal server error has occurred, sorry for the
+                      inconvenience.
                     status: 500
                     owner: GYCODING
           headers: {}
@@ -1312,21 +1401,22 @@ paths:
       description: Updates user's profile entirely.
       tags:
         - Users
+        - Users
       parameters:
         - name: Authorization
           in: header
           description: Authorization token.
           required: false
-          example: eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..cGATxjlGSXP08LPq.HAXheZlEA_ti_1My5ckNynUeRircb4RAfF9EAuR97z9Xnr5pr8S4fVLb94e4_jHdjWXNzUPi2M9-m_suqgh4MbPq0wulFQjEOiQ8f-aeVi8MGyM3CKnNTbMBuxQIXnhZICY0zlg6q97j65BdMLWYf3_6reFmbn2dDho8HAjTrLbndySJUvzRmxQrypKsQF1tUIxcYcLLRjT_MbXBDVLxvZ-9wJ4kJv_goXgpCIiiJZSxy53xJ0d_f5EwxeqdPiHW3P3DRmwq3pbTFR2b4tQulKLr7vEKONvfUoS_Sc5GWXTdiecfkU5eJRDLETr5kdi0Z4onmYOI5JD_4OTAqH-3wPgJaHJuhIa09A.aLtbCGpqXOZHHqKxKqC-uA
+          example: >-
+            eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..cGATxjlGSXP08LPq.HAXheZlEA_ti_1My5ckNynUeRircb4RAfF9EAuR97z9Xnr5pr8S4fVLb94e4_jHdjWXNzUPi2M9-m_suqgh4MbPq0wulFQjEOiQ8f-aeVi8MGyM3CKnNTbMBuxQIXnhZICY0zlg6q97j65BdMLWYf3_6reFmbn2dDho8HAjTrLbndySJUvzRmxQrypKsQF1tUIxcYcLLRjT_MbXBDVLxvZ-9wJ4kJv_goXgpCIiiJZSxy53xJ0d_f5EwxeqdPiHW3P3DRmwq3pbTFR2b4tQulKLr7vEKONvfUoS_Sc5GWXTdiecfkU5eJRDLETr5kdi0Z4onmYOI5JD_4OTAqH-3wPgJaHJuhIa09A.aLtbCGpqXOZHHqKxKqC-uA
           schema:
             type: string
-            default: eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..cGATxjlGSXP08LPq.HAXheZlEA_ti_1My5ckNynUeRircb4RAfF9EAuR97z9Xnr5pr8S4fVLb94e4_jHdjWXNzUPi2M9-m_suqgh4MbPq0wulFQjEOiQ8f-aeVi8MGyM3CKnNTbMBuxQIXnhZICY0zlg6q97j65BdMLWYf3_6reFmbn2dDho8HAjTrLbndySJUvzRmxQrypKsQF1tUIxcYcLLRjT_MbXBDVLxvZ-9wJ4kJv_goXgpCIiiJZSxy53xJ0d_f5EwxeqdPiHW3P3DRmwq3pbTFR2b4tQulKLr7vEKONvfUoS_Sc5GWXTdiecfkU5eJRDLETr5kdi0Z4onmYOI5JD_4OTAqH-3wPgJaHJuhIa09A.aLtbCGpqXOZHHqKxKqC-uA
+            default: >-
+              eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..cGATxjlGSXP08LPq.HAXheZlEA_ti_1My5ckNynUeRircb4RAfF9EAuR97z9Xnr5pr8S4fVLb94e4_jHdjWXNzUPi2M9-m_suqgh4MbPq0wulFQjEOiQ8f-aeVi8MGyM3CKnNTbMBuxQIXnhZICY0zlg6q97j65BdMLWYf3_6reFmbn2dDho8HAjTrLbndySJUvzRmxQrypKsQF1tUIxcYcLLRjT_MbXBDVLxvZ-9wJ4kJv_goXgpCIiiJZSxy53xJ0d_f5EwxeqdPiHW3P3DRmwq3pbTFR2b4tQulKLr7vEKONvfUoS_Sc5GWXTdiecfkU5eJRDLETr5kdi0Z4onmYOI5JD_4OTAqH-3wPgJaHJuhIa09A.aLtbCGpqXOZHHqKxKqC-uA
       requestBody:
         content:
           application/json:
-            schema:
-              $ref: '#/components/schemas/User%20Profile'
-              description: User Profile object.
+            schema: *ref_2
             example:
               username: test
               email: '{{test-email}}'
@@ -1337,22 +1427,21 @@ paths:
           description: ''
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/User%20Profile'
-                description: User Profile object.
+              schema: *ref_2
           headers: {}
         '304':
           description: ''
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
+              schema: *ref_0
               examples:
                 '1':
                   summary: Resource Not Modified
                   value:
                     code: RESOURCE_NOT_MODIFIED
-                    message: The resource could not be modified due to some internal conflict or error.
+                    message: >-
+                      The resource could not be modified due to some internal
+                      conflict or error.
                     status: 304
                     owner: GYCODING
           headers: {}
@@ -1360,8 +1449,7 @@ paths:
           description: ''
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
+              schema: *ref_0
               examples:
                 '1':
                   summary: Bad Request
@@ -1375,14 +1463,15 @@ paths:
           description: ''
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
+              schema: *ref_0
               examples:
                 '1':
                   summary: Invalid Login
                   value:
                     code: INVALID_LOGIN
-                    message: Invalid login due to the non existance of the user or invalid password.
+                    message: >-
+                      Invalid login due to the non existance of the user or
+                      invalid password.
                     status: 401
                     owner: GYCODING
                 '2':
@@ -1404,8 +1493,7 @@ paths:
           description: ''
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
+              schema: *ref_0
               examples:
                 '1':
                   summary: Forbidden to Service
@@ -1426,8 +1514,7 @@ paths:
           description: ''
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
+              schema: *ref_0
               examples:
                 '1':
                   summary: Method Not Allowed
@@ -1441,42 +1528,51 @@ paths:
           description: ''
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
+              schema: *ref_0
               examples:
                 '1':
                   summary: Database Error
                   value:
                     code: DB_ERROR
-                    message: An error with the database has occurred, sorry for the inconvenience.
+                    message: >-
+                      An error with the database has occurred, sorry for the
+                      inconvenience.
                     status: 500
                     owner: GYCODING
                 '2':
                   summary: Auth Error from Service
                   value:
                     code: AUTH_ERROR
-                    message: An error with the authentication service has occurred, sorry for the inconvenience.
+                    message: >-
+                      An error with the authentication service has occurred,
+                      sorry for the inconvenience.
                     status: 500
                     owner: GYCODING
                 '3':
                   summary: Auth Error from API Gateway
                   value:
                     code: AUTH_ERROR
-                    message: An error with the authentication service has occurred, sorry for the inconvenience.
+                    message: >-
+                      An error with the authentication service has occurred,
+                      sorry for the inconvenience.
                     status: 500
                     owner: API_GATEWAY
                 '4':
                   summary: Gateway Error
                   value:
                     code: GATEWAY_ERROR
-                    message: An internal API Gateway error has occurred, sorry for the inconvenience.
+                    message: >-
+                      An internal API Gateway error has occurred, sorry for the
+                      inconvenience.
                     status: 500
                     owner: API_GATEWAY
                 '5':
                   summary: Server Error
                   value:
                     code: SERVER_ERROR
-                    message: An internal server error has occurred, sorry for the inconvenience.
+                    message: >-
+                      An internal server error has occurred, sorry for the
+                      inconvenience.
                     status: 500
                     owner: GYCODING
           headers: {}
@@ -1491,15 +1587,18 @@ paths:
       description: Retrieves current user username.
       tags:
         - Users
+        - Users
       parameters:
         - name: Authorization
           in: header
           description: Authorization token.
           required: false
-          example: eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..cGATxjlGSXP08LPq.HAXheZlEA_ti_1My5ckNynUeRircb4RAfF9EAuR97z9Xnr5pr8S4fVLb94e4_jHdjWXNzUPi2M9-m_suqgh4MbPq0wulFQjEOiQ8f-aeVi8MGyM3CKnNTbMBuxQIXnhZICY0zlg6q97j65BdMLWYf3_6reFmbn2dDho8HAjTrLbndySJUvzRmxQrypKsQF1tUIxcYcLLRjT_MbXBDVLxvZ-9wJ4kJv_goXgpCIiiJZSxy53xJ0d_f5EwxeqdPiHW3P3DRmwq3pbTFR2b4tQulKLr7vEKONvfUoS_Sc5GWXTdiecfkU5eJRDLETr5kdi0Z4onmYOI5JD_4OTAqH-3wPgJaHJuhIa09A.aLtbCGpqXOZHHqKxKqC-uA
+          example: >-
+            eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..cGATxjlGSXP08LPq.HAXheZlEA_ti_1My5ckNynUeRircb4RAfF9EAuR97z9Xnr5pr8S4fVLb94e4_jHdjWXNzUPi2M9-m_suqgh4MbPq0wulFQjEOiQ8f-aeVi8MGyM3CKnNTbMBuxQIXnhZICY0zlg6q97j65BdMLWYf3_6reFmbn2dDho8HAjTrLbndySJUvzRmxQrypKsQF1tUIxcYcLLRjT_MbXBDVLxvZ-9wJ4kJv_goXgpCIiiJZSxy53xJ0d_f5EwxeqdPiHW3P3DRmwq3pbTFR2b4tQulKLr7vEKONvfUoS_Sc5GWXTdiecfkU5eJRDLETr5kdi0Z4onmYOI5JD_4OTAqH-3wPgJaHJuhIa09A.aLtbCGpqXOZHHqKxKqC-uA
           schema:
             type: string
-            default: eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..cGATxjlGSXP08LPq.HAXheZlEA_ti_1My5ckNynUeRircb4RAfF9EAuR97z9Xnr5pr8S4fVLb94e4_jHdjWXNzUPi2M9-m_suqgh4MbPq0wulFQjEOiQ8f-aeVi8MGyM3CKnNTbMBuxQIXnhZICY0zlg6q97j65BdMLWYf3_6reFmbn2dDho8HAjTrLbndySJUvzRmxQrypKsQF1tUIxcYcLLRjT_MbXBDVLxvZ-9wJ4kJv_goXgpCIiiJZSxy53xJ0d_f5EwxeqdPiHW3P3DRmwq3pbTFR2b4tQulKLr7vEKONvfUoS_Sc5GWXTdiecfkU5eJRDLETr5kdi0Z4onmYOI5JD_4OTAqH-3wPgJaHJuhIa09A.aLtbCGpqXOZHHqKxKqC-uA
+            default: >-
+              eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..cGATxjlGSXP08LPq.HAXheZlEA_ti_1My5ckNynUeRircb4RAfF9EAuR97z9Xnr5pr8S4fVLb94e4_jHdjWXNzUPi2M9-m_suqgh4MbPq0wulFQjEOiQ8f-aeVi8MGyM3CKnNTbMBuxQIXnhZICY0zlg6q97j65BdMLWYf3_6reFmbn2dDho8HAjTrLbndySJUvzRmxQrypKsQF1tUIxcYcLLRjT_MbXBDVLxvZ-9wJ4kJv_goXgpCIiiJZSxy53xJ0d_f5EwxeqdPiHW3P3DRmwq3pbTFR2b4tQulKLr7vEKONvfUoS_Sc5GWXTdiecfkU5eJRDLETr5kdi0Z4onmYOI5JD_4OTAqH-3wPgJaHJuhIa09A.aLtbCGpqXOZHHqKxKqC-uA
       responses:
         '200':
           description: ''
@@ -1513,8 +1612,7 @@ paths:
           description: ''
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
+              schema: *ref_0
               examples:
                 '1':
                   summary: Bad Request
@@ -1528,14 +1626,15 @@ paths:
           description: ''
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
+              schema: *ref_0
               examples:
                 '1':
                   summary: Invalid Login
                   value:
                     code: INVALID_LOGIN
-                    message: Invalid login due to the non existance of the user or invalid password.
+                    message: >-
+                      Invalid login due to the non existance of the user or
+                      invalid password.
                     status: 401
                     owner: GYCODING
                 '2':
@@ -1557,8 +1656,7 @@ paths:
           description: ''
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
+              schema: *ref_0
               examples:
                 '1':
                   summary: Forbidden to Service
@@ -1579,8 +1677,7 @@ paths:
           description: ''
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
+              schema: *ref_0
               examples:
                 '1':
                   summary: Token Not Found
@@ -1601,8 +1698,7 @@ paths:
           description: ''
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
+              schema: *ref_0
               examples:
                 '1':
                   summary: Method Not Allowed
@@ -1616,42 +1712,51 @@ paths:
           description: ''
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
+              schema: *ref_0
               examples:
                 '1':
                   summary: Database Error
                   value:
                     code: DB_ERROR
-                    message: An error with the database has occurred, sorry for the inconvenience.
+                    message: >-
+                      An error with the database has occurred, sorry for the
+                      inconvenience.
                     status: 500
                     owner: GYCODING
                 '2':
                   summary: Auth Error from Service
                   value:
                     code: AUTH_ERROR
-                    message: An error with the authentication service has occurred, sorry for the inconvenience.
+                    message: >-
+                      An error with the authentication service has occurred,
+                      sorry for the inconvenience.
                     status: 500
                     owner: GYCODING
                 '3':
                   summary: Auth Error from API Gateway
                   value:
                     code: AUTH_ERROR
-                    message: An error with the authentication service has occurred, sorry for the inconvenience.
+                    message: >-
+                      An error with the authentication service has occurred,
+                      sorry for the inconvenience.
                     status: 500
                     owner: API_GATEWAY
                 '4':
                   summary: Gateway Error
                   value:
                     code: GATEWAY_ERROR
-                    message: An internal API Gateway error has occurred, sorry for the inconvenience.
+                    message: >-
+                      An internal API Gateway error has occurred, sorry for the
+                      inconvenience.
                     status: 500
                     owner: API_GATEWAY
                 '5':
                   summary: Server Error
                   value:
                     code: SERVER_ERROR
-                    message: An internal server error has occurred, sorry for the inconvenience.
+                    message: >-
+                      An internal server error has occurred, sorry for the
+                      inconvenience.
                     status: 500
                     owner: GYCODING
           headers: {}
@@ -1665,15 +1770,18 @@ paths:
       description: Modifies user's username.
       tags:
         - Users
+        - Users
       parameters:
         - name: Authorization
           in: header
           description: Authorization token.
           required: false
-          example: eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..cGATxjlGSXP08LPq.HAXheZlEA_ti_1My5ckNynUeRircb4RAfF9EAuR97z9Xnr5pr8S4fVLb94e4_jHdjWXNzUPi2M9-m_suqgh4MbPq0wulFQjEOiQ8f-aeVi8MGyM3CKnNTbMBuxQIXnhZICY0zlg6q97j65BdMLWYf3_6reFmbn2dDho8HAjTrLbndySJUvzRmxQrypKsQF1tUIxcYcLLRjT_MbXBDVLxvZ-9wJ4kJv_goXgpCIiiJZSxy53xJ0d_f5EwxeqdPiHW3P3DRmwq3pbTFR2b4tQulKLr7vEKONvfUoS_Sc5GWXTdiecfkU5eJRDLETr5kdi0Z4onmYOI5JD_4OTAqH-3wPgJaHJuhIa09A.aLtbCGpqXOZHHqKxKqC-uA
+          example: >-
+            eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..cGATxjlGSXP08LPq.HAXheZlEA_ti_1My5ckNynUeRircb4RAfF9EAuR97z9Xnr5pr8S4fVLb94e4_jHdjWXNzUPi2M9-m_suqgh4MbPq0wulFQjEOiQ8f-aeVi8MGyM3CKnNTbMBuxQIXnhZICY0zlg6q97j65BdMLWYf3_6reFmbn2dDho8HAjTrLbndySJUvzRmxQrypKsQF1tUIxcYcLLRjT_MbXBDVLxvZ-9wJ4kJv_goXgpCIiiJZSxy53xJ0d_f5EwxeqdPiHW3P3DRmwq3pbTFR2b4tQulKLr7vEKONvfUoS_Sc5GWXTdiecfkU5eJRDLETr5kdi0Z4onmYOI5JD_4OTAqH-3wPgJaHJuhIa09A.aLtbCGpqXOZHHqKxKqC-uA
           schema:
             type: string
-            default: eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..cGATxjlGSXP08LPq.HAXheZlEA_ti_1My5ckNynUeRircb4RAfF9EAuR97z9Xnr5pr8S4fVLb94e4_jHdjWXNzUPi2M9-m_suqgh4MbPq0wulFQjEOiQ8f-aeVi8MGyM3CKnNTbMBuxQIXnhZICY0zlg6q97j65BdMLWYf3_6reFmbn2dDho8HAjTrLbndySJUvzRmxQrypKsQF1tUIxcYcLLRjT_MbXBDVLxvZ-9wJ4kJv_goXgpCIiiJZSxy53xJ0d_f5EwxeqdPiHW3P3DRmwq3pbTFR2b4tQulKLr7vEKONvfUoS_Sc5GWXTdiecfkU5eJRDLETr5kdi0Z4onmYOI5JD_4OTAqH-3wPgJaHJuhIa09A.aLtbCGpqXOZHHqKxKqC-uA
+            default: >-
+              eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..cGATxjlGSXP08LPq.HAXheZlEA_ti_1My5ckNynUeRircb4RAfF9EAuR97z9Xnr5pr8S4fVLb94e4_jHdjWXNzUPi2M9-m_suqgh4MbPq0wulFQjEOiQ8f-aeVi8MGyM3CKnNTbMBuxQIXnhZICY0zlg6q97j65BdMLWYf3_6reFmbn2dDho8HAjTrLbndySJUvzRmxQrypKsQF1tUIxcYcLLRjT_MbXBDVLxvZ-9wJ4kJv_goXgpCIiiJZSxy53xJ0d_f5EwxeqdPiHW3P3DRmwq3pbTFR2b4tQulKLr7vEKONvfUoS_Sc5GWXTdiecfkU5eJRDLETr5kdi0Z4onmYOI5JD_4OTAqH-3wPgJaHJuhIa09A.aLtbCGpqXOZHHqKxKqC-uA
       requestBody:
         content:
           text/plain:
@@ -1693,14 +1801,15 @@ paths:
           description: ''
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
+              schema: *ref_0
               examples:
                 '1':
                   summary: Resource Not Modified
                   value:
                     code: RESOURCE_NOT_MODIFIED
-                    message: The resource could not be modified due to some internal conflict or error.
+                    message: >-
+                      The resource could not be modified due to some internal
+                      conflict or error.
                     status: 304
                     owner: GYCODING
           headers: {}
@@ -1708,8 +1817,7 @@ paths:
           description: ''
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
+              schema: *ref_0
               examples:
                 '1':
                   summary: Bad Request
@@ -1723,14 +1831,15 @@ paths:
           description: ''
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
+              schema: *ref_0
               examples:
                 '1':
                   summary: Invalid Login
                   value:
                     code: INVALID_LOGIN
-                    message: Invalid login due to the non existance of the user or invalid password.
+                    message: >-
+                      Invalid login due to the non existance of the user or
+                      invalid password.
                     status: 401
                     owner: GYCODING
                 '2':
@@ -1752,8 +1861,7 @@ paths:
           description: ''
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
+              schema: *ref_0
               examples:
                 '1':
                   summary: Forbidden to Service
@@ -1774,8 +1882,7 @@ paths:
           description: ''
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
+              schema: *ref_0
               examples:
                 '1':
                   summary: Method Not Allowed
@@ -1789,42 +1896,51 @@ paths:
           description: ''
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
+              schema: *ref_0
               examples:
                 '1':
                   summary: Database Error
                   value:
                     code: DB_ERROR
-                    message: An error with the database has occurred, sorry for the inconvenience.
+                    message: >-
+                      An error with the database has occurred, sorry for the
+                      inconvenience.
                     status: 500
                     owner: GYCODING
                 '2':
                   summary: Auth Error from Service
                   value:
                     code: AUTH_ERROR
-                    message: An error with the authentication service has occurred, sorry for the inconvenience.
+                    message: >-
+                      An error with the authentication service has occurred,
+                      sorry for the inconvenience.
                     status: 500
                     owner: GYCODING
                 '3':
                   summary: Auth Error from API Gateway
                   value:
                     code: AUTH_ERROR
-                    message: An error with the authentication service has occurred, sorry for the inconvenience.
+                    message: >-
+                      An error with the authentication service has occurred,
+                      sorry for the inconvenience.
                     status: 500
                     owner: API_GATEWAY
                 '4':
                   summary: Gateway Error
                   value:
                     code: GATEWAY_ERROR
-                    message: An internal API Gateway error has occurred, sorry for the inconvenience.
+                    message: >-
+                      An internal API Gateway error has occurred, sorry for the
+                      inconvenience.
                     status: 500
                     owner: API_GATEWAY
                 '5':
                   summary: Server Error
                   value:
                     code: SERVER_ERROR
-                    message: An internal server error has occurred, sorry for the inconvenience.
+                    message: >-
+                      An internal server error has occurred, sorry for the
+                      inconvenience.
                     status: 500
                     owner: GYCODING
           headers: {}
@@ -1839,29 +1955,39 @@ paths:
       description: Retrieves current user profile picture.
       tags:
         - Users
+        - Users
       parameters:
         - name: Authorization
           in: header
           description: Authorization token.
           required: false
-          example: eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..cGATxjlGSXP08LPq.HAXheZlEA_ti_1My5ckNynUeRircb4RAfF9EAuR97z9Xnr5pr8S4fVLb94e4_jHdjWXNzUPi2M9-m_suqgh4MbPq0wulFQjEOiQ8f-aeVi8MGyM3CKnNTbMBuxQIXnhZICY0zlg6q97j65BdMLWYf3_6reFmbn2dDho8HAjTrLbndySJUvzRmxQrypKsQF1tUIxcYcLLRjT_MbXBDVLxvZ-9wJ4kJv_goXgpCIiiJZSxy53xJ0d_f5EwxeqdPiHW3P3DRmwq3pbTFR2b4tQulKLr7vEKONvfUoS_Sc5GWXTdiecfkU5eJRDLETr5kdi0Z4onmYOI5JD_4OTAqH-3wPgJaHJuhIa09A.aLtbCGpqXOZHHqKxKqC-uA
+          example: >-
+            eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..cGATxjlGSXP08LPq.HAXheZlEA_ti_1My5ckNynUeRircb4RAfF9EAuR97z9Xnr5pr8S4fVLb94e4_jHdjWXNzUPi2M9-m_suqgh4MbPq0wulFQjEOiQ8f-aeVi8MGyM3CKnNTbMBuxQIXnhZICY0zlg6q97j65BdMLWYf3_6reFmbn2dDho8HAjTrLbndySJUvzRmxQrypKsQF1tUIxcYcLLRjT_MbXBDVLxvZ-9wJ4kJv_goXgpCIiiJZSxy53xJ0d_f5EwxeqdPiHW3P3DRmwq3pbTFR2b4tQulKLr7vEKONvfUoS_Sc5GWXTdiecfkU5eJRDLETr5kdi0Z4onmYOI5JD_4OTAqH-3wPgJaHJuhIa09A.aLtbCGpqXOZHHqKxKqC-uA
           schema:
             type: string
-            default: eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..cGATxjlGSXP08LPq.HAXheZlEA_ti_1My5ckNynUeRircb4RAfF9EAuR97z9Xnr5pr8S4fVLb94e4_jHdjWXNzUPi2M9-m_suqgh4MbPq0wulFQjEOiQ8f-aeVi8MGyM3CKnNTbMBuxQIXnhZICY0zlg6q97j65BdMLWYf3_6reFmbn2dDho8HAjTrLbndySJUvzRmxQrypKsQF1tUIxcYcLLRjT_MbXBDVLxvZ-9wJ4kJv_goXgpCIiiJZSxy53xJ0d_f5EwxeqdPiHW3P3DRmwq3pbTFR2b4tQulKLr7vEKONvfUoS_Sc5GWXTdiecfkU5eJRDLETr5kdi0Z4onmYOI5JD_4OTAqH-3wPgJaHJuhIa09A.aLtbCGpqXOZHHqKxKqC-uA
+            default: >-
+              eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..cGATxjlGSXP08LPq.HAXheZlEA_ti_1My5ckNynUeRircb4RAfF9EAuR97z9Xnr5pr8S4fVLb94e4_jHdjWXNzUPi2M9-m_suqgh4MbPq0wulFQjEOiQ8f-aeVi8MGyM3CKnNTbMBuxQIXnhZICY0zlg6q97j65BdMLWYf3_6reFmbn2dDho8HAjTrLbndySJUvzRmxQrypKsQF1tUIxcYcLLRjT_MbXBDVLxvZ-9wJ4kJv_goXgpCIiiJZSxy53xJ0d_f5EwxeqdPiHW3P3DRmwq3pbTFR2b4tQulKLr7vEKONvfUoS_Sc5GWXTdiecfkU5eJRDLETr5kdi0Z4onmYOI5JD_4OTAqH-3wPgJaHJuhIa09A.aLtbCGpqXOZHHqKxKqC-uA
       responses:
         '200':
           description: ''
           content:
             application/json:
               schema:
-                type: string
+                type:
+                  - string
+                  - integer
+                  - boolean
+                  - array
+                  - object
+                  - number
+                  - 'null'
+                description: User profile picture.
           headers: {}
         '400':
           description: ''
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
+              schema: *ref_0
               examples:
                 '1':
                   summary: Bad Request
@@ -1875,14 +2001,15 @@ paths:
           description: ''
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
+              schema: *ref_0
               examples:
                 '1':
                   summary: Invalid Login
                   value:
                     code: INVALID_LOGIN
-                    message: Invalid login due to the non existance of the user or invalid password.
+                    message: >-
+                      Invalid login due to the non existance of the user or
+                      invalid password.
                     status: 401
                     owner: GYCODING
                 '2':
@@ -1904,8 +2031,7 @@ paths:
           description: ''
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
+              schema: *ref_0
               examples:
                 '1':
                   summary: Forbidden to Service
@@ -1926,8 +2052,7 @@ paths:
           description: ''
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
+              schema: *ref_0
               examples:
                 '1':
                   summary: Token Not Found
@@ -1948,8 +2073,7 @@ paths:
           description: ''
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
+              schema: *ref_0
               examples:
                 '1':
                   summary: Method Not Allowed
@@ -1963,42 +2087,51 @@ paths:
           description: ''
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
+              schema: *ref_0
               examples:
                 '1':
                   summary: Database Error
                   value:
                     code: DB_ERROR
-                    message: An error with the database has occurred, sorry for the inconvenience.
+                    message: >-
+                      An error with the database has occurred, sorry for the
+                      inconvenience.
                     status: 500
                     owner: GYCODING
                 '2':
                   summary: Auth Error from Service
                   value:
                     code: AUTH_ERROR
-                    message: An error with the authentication service has occurred, sorry for the inconvenience.
+                    message: >-
+                      An error with the authentication service has occurred,
+                      sorry for the inconvenience.
                     status: 500
                     owner: GYCODING
                 '3':
                   summary: Auth Error from API Gateway
                   value:
                     code: AUTH_ERROR
-                    message: An error with the authentication service has occurred, sorry for the inconvenience.
+                    message: >-
+                      An error with the authentication service has occurred,
+                      sorry for the inconvenience.
                     status: 500
                     owner: API_GATEWAY
                 '4':
                   summary: Gateway Error
                   value:
                     code: GATEWAY_ERROR
-                    message: An internal API Gateway error has occurred, sorry for the inconvenience.
+                    message: >-
+                      An internal API Gateway error has occurred, sorry for the
+                      inconvenience.
                     status: 500
                     owner: API_GATEWAY
                 '5':
                   summary: Server Error
                   value:
                     code: SERVER_ERROR
-                    message: An internal server error has occurred, sorry for the inconvenience.
+                    message: >-
+                      An internal server error has occurred, sorry for the
+                      inconvenience.
                     status: 500
                     owner: GYCODING
           headers: {}
@@ -2013,21 +2146,25 @@ paths:
       description: Modifies user's profile picture.
       tags:
         - Users
+        - Users
       parameters:
         - name: Authorization
           in: header
           description: Authorization token.
           required: false
-          example: eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..cGATxjlGSXP08LPq.HAXheZlEA_ti_1My5ckNynUeRircb4RAfF9EAuR97z9Xnr5pr8S4fVLb94e4_jHdjWXNzUPi2M9-m_suqgh4MbPq0wulFQjEOiQ8f-aeVi8MGyM3CKnNTbMBuxQIXnhZICY0zlg6q97j65BdMLWYf3_6reFmbn2dDho8HAjTrLbndySJUvzRmxQrypKsQF1tUIxcYcLLRjT_MbXBDVLxvZ-9wJ4kJv_goXgpCIiiJZSxy53xJ0d_f5EwxeqdPiHW3P3DRmwq3pbTFR2b4tQulKLr7vEKONvfUoS_Sc5GWXTdiecfkU5eJRDLETr5kdi0Z4onmYOI5JD_4OTAqH-3wPgJaHJuhIa09A.aLtbCGpqXOZHHqKxKqC-uA
+          example: >-
+            eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..cGATxjlGSXP08LPq.HAXheZlEA_ti_1My5ckNynUeRircb4RAfF9EAuR97z9Xnr5pr8S4fVLb94e4_jHdjWXNzUPi2M9-m_suqgh4MbPq0wulFQjEOiQ8f-aeVi8MGyM3CKnNTbMBuxQIXnhZICY0zlg6q97j65BdMLWYf3_6reFmbn2dDho8HAjTrLbndySJUvzRmxQrypKsQF1tUIxcYcLLRjT_MbXBDVLxvZ-9wJ4kJv_goXgpCIiiJZSxy53xJ0d_f5EwxeqdPiHW3P3DRmwq3pbTFR2b4tQulKLr7vEKONvfUoS_Sc5GWXTdiecfkU5eJRDLETr5kdi0Z4onmYOI5JD_4OTAqH-3wPgJaHJuhIa09A.aLtbCGpqXOZHHqKxKqC-uA
           schema:
             type: string
-            default: eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..cGATxjlGSXP08LPq.HAXheZlEA_ti_1My5ckNynUeRircb4RAfF9EAuR97z9Xnr5pr8S4fVLb94e4_jHdjWXNzUPi2M9-m_suqgh4MbPq0wulFQjEOiQ8f-aeVi8MGyM3CKnNTbMBuxQIXnhZICY0zlg6q97j65BdMLWYf3_6reFmbn2dDho8HAjTrLbndySJUvzRmxQrypKsQF1tUIxcYcLLRjT_MbXBDVLxvZ-9wJ4kJv_goXgpCIiiJZSxy53xJ0d_f5EwxeqdPiHW3P3DRmwq3pbTFR2b4tQulKLr7vEKONvfUoS_Sc5GWXTdiecfkU5eJRDLETr5kdi0Z4onmYOI5JD_4OTAqH-3wPgJaHJuhIa09A.aLtbCGpqXOZHHqKxKqC-uA
+            default: >-
+              eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..cGATxjlGSXP08LPq.HAXheZlEA_ti_1My5ckNynUeRircb4RAfF9EAuR97z9Xnr5pr8S4fVLb94e4_jHdjWXNzUPi2M9-m_suqgh4MbPq0wulFQjEOiQ8f-aeVi8MGyM3CKnNTbMBuxQIXnhZICY0zlg6q97j65BdMLWYf3_6reFmbn2dDho8HAjTrLbndySJUvzRmxQrypKsQF1tUIxcYcLLRjT_MbXBDVLxvZ-9wJ4kJv_goXgpCIiiJZSxy53xJ0d_f5EwxeqdPiHW3P3DRmwq3pbTFR2b4tQulKLr7vEKONvfUoS_Sc5GWXTdiecfkU5eJRDLETr5kdi0Z4onmYOI5JD_4OTAqH-3wPgJaHJuhIa09A.aLtbCGpqXOZHHqKxKqC-uA
       requestBody:
         content:
           text/plain:
             schema:
               type: string
-            example: https://lh3.googleusercontent.com/a/ACg8ocJrdg1JZzP7rkgxnBCnr9xI-jeSnmoH-dZ82-SBD_3dbK4m7kI=s96-c
+            example: >-
+              https://lh3.googleusercontent.com/a/ACg8ocJrdg1JZzP7rkgxnBCnr9xI-jeSnmoH-dZ82-SBD_3dbK4m7kI=s96-c
       responses:
         '200':
           description: ''
@@ -2042,14 +2179,15 @@ paths:
           description: ''
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
+              schema: *ref_0
               examples:
                 '1':
                   summary: Resource Not Modified
                   value:
                     code: RESOURCE_NOT_MODIFIED
-                    message: The resource could not be modified due to some internal conflict or error.
+                    message: >-
+                      The resource could not be modified due to some internal
+                      conflict or error.
                     status: 304
                     owner: GYCODING
           headers: {}
@@ -2057,8 +2195,7 @@ paths:
           description: ''
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
+              schema: *ref_0
               examples:
                 '1':
                   summary: Bad Request
@@ -2072,14 +2209,15 @@ paths:
           description: ''
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
+              schema: *ref_0
               examples:
                 '1':
                   summary: Invalid Login
                   value:
                     code: INVALID_LOGIN
-                    message: Invalid login due to the non existance of the user or invalid password.
+                    message: >-
+                      Invalid login due to the non existance of the user or
+                      invalid password.
                     status: 401
                     owner: GYCODING
                 '2':
@@ -2101,8 +2239,7 @@ paths:
           description: ''
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
+              schema: *ref_0
               examples:
                 '1':
                   summary: Forbidden to Service
@@ -2123,8 +2260,7 @@ paths:
           description: ''
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
+              schema: *ref_0
               examples:
                 '1':
                   summary: Method Not Allowed
@@ -2138,42 +2274,51 @@ paths:
           description: ''
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
+              schema: *ref_0
               examples:
                 '1':
                   summary: Database Error
                   value:
                     code: DB_ERROR
-                    message: An error with the database has occurred, sorry for the inconvenience.
+                    message: >-
+                      An error with the database has occurred, sorry for the
+                      inconvenience.
                     status: 500
                     owner: GYCODING
                 '2':
                   summary: Auth Error from Service
                   value:
                     code: AUTH_ERROR
-                    message: An error with the authentication service has occurred, sorry for the inconvenience.
+                    message: >-
+                      An error with the authentication service has occurred,
+                      sorry for the inconvenience.
                     status: 500
                     owner: GYCODING
                 '3':
                   summary: Auth Error from API Gateway
                   value:
                     code: AUTH_ERROR
-                    message: An error with the authentication service has occurred, sorry for the inconvenience.
+                    message: >-
+                      An error with the authentication service has occurred,
+                      sorry for the inconvenience.
                     status: 500
                     owner: API_GATEWAY
                 '4':
                   summary: Gateway Error
                   value:
                     code: GATEWAY_ERROR
-                    message: An internal API Gateway error has occurred, sorry for the inconvenience.
+                    message: >-
+                      An internal API Gateway error has occurred, sorry for the
+                      inconvenience.
                     status: 500
                     owner: API_GATEWAY
                 '5':
                   summary: Server Error
                   value:
                     code: SERVER_ERROR
-                    message: An internal server error has occurred, sorry for the inconvenience.
+                    message: >-
+                      An internal server error has occurred, sorry for the
+                      inconvenience.
                     status: 500
                     owner: GYCODING
           headers: {}
@@ -2188,15 +2333,18 @@ paths:
       description: Retrieves current user phone number.
       tags:
         - Users
+        - Users
       parameters:
         - name: Authorization
           in: header
           description: Authorization token.
           required: false
-          example: eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..cGATxjlGSXP08LPq.HAXheZlEA_ti_1My5ckNynUeRircb4RAfF9EAuR97z9Xnr5pr8S4fVLb94e4_jHdjWXNzUPi2M9-m_suqgh4MbPq0wulFQjEOiQ8f-aeVi8MGyM3CKnNTbMBuxQIXnhZICY0zlg6q97j65BdMLWYf3_6reFmbn2dDho8HAjTrLbndySJUvzRmxQrypKsQF1tUIxcYcLLRjT_MbXBDVLxvZ-9wJ4kJv_goXgpCIiiJZSxy53xJ0d_f5EwxeqdPiHW3P3DRmwq3pbTFR2b4tQulKLr7vEKONvfUoS_Sc5GWXTdiecfkU5eJRDLETr5kdi0Z4onmYOI5JD_4OTAqH-3wPgJaHJuhIa09A.aLtbCGpqXOZHHqKxKqC-uA
+          example: >-
+            eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..cGATxjlGSXP08LPq.HAXheZlEA_ti_1My5ckNynUeRircb4RAfF9EAuR97z9Xnr5pr8S4fVLb94e4_jHdjWXNzUPi2M9-m_suqgh4MbPq0wulFQjEOiQ8f-aeVi8MGyM3CKnNTbMBuxQIXnhZICY0zlg6q97j65BdMLWYf3_6reFmbn2dDho8HAjTrLbndySJUvzRmxQrypKsQF1tUIxcYcLLRjT_MbXBDVLxvZ-9wJ4kJv_goXgpCIiiJZSxy53xJ0d_f5EwxeqdPiHW3P3DRmwq3pbTFR2b4tQulKLr7vEKONvfUoS_Sc5GWXTdiecfkU5eJRDLETr5kdi0Z4onmYOI5JD_4OTAqH-3wPgJaHJuhIa09A.aLtbCGpqXOZHHqKxKqC-uA
           schema:
             type: string
-            default: eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..cGATxjlGSXP08LPq.HAXheZlEA_ti_1My5ckNynUeRircb4RAfF9EAuR97z9Xnr5pr8S4fVLb94e4_jHdjWXNzUPi2M9-m_suqgh4MbPq0wulFQjEOiQ8f-aeVi8MGyM3CKnNTbMBuxQIXnhZICY0zlg6q97j65BdMLWYf3_6reFmbn2dDho8HAjTrLbndySJUvzRmxQrypKsQF1tUIxcYcLLRjT_MbXBDVLxvZ-9wJ4kJv_goXgpCIiiJZSxy53xJ0d_f5EwxeqdPiHW3P3DRmwq3pbTFR2b4tQulKLr7vEKONvfUoS_Sc5GWXTdiecfkU5eJRDLETr5kdi0Z4onmYOI5JD_4OTAqH-3wPgJaHJuhIa09A.aLtbCGpqXOZHHqKxKqC-uA
+            default: >-
+              eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..cGATxjlGSXP08LPq.HAXheZlEA_ti_1My5ckNynUeRircb4RAfF9EAuR97z9Xnr5pr8S4fVLb94e4_jHdjWXNzUPi2M9-m_suqgh4MbPq0wulFQjEOiQ8f-aeVi8MGyM3CKnNTbMBuxQIXnhZICY0zlg6q97j65BdMLWYf3_6reFmbn2dDho8HAjTrLbndySJUvzRmxQrypKsQF1tUIxcYcLLRjT_MbXBDVLxvZ-9wJ4kJv_goXgpCIiiJZSxy53xJ0d_f5EwxeqdPiHW3P3DRmwq3pbTFR2b4tQulKLr7vEKONvfUoS_Sc5GWXTdiecfkU5eJRDLETr5kdi0Z4onmYOI5JD_4OTAqH-3wPgJaHJuhIa09A.aLtbCGpqXOZHHqKxKqC-uA
       responses:
         '200':
           description: ''
@@ -2210,8 +2358,7 @@ paths:
           description: ''
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
+              schema: *ref_0
               examples:
                 '1':
                   summary: Bad Request
@@ -2225,14 +2372,15 @@ paths:
           description: ''
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
+              schema: *ref_0
               examples:
                 '1':
                   summary: Invalid Login
                   value:
                     code: INVALID_LOGIN
-                    message: Invalid login due to the non existance of the user or invalid password.
+                    message: >-
+                      Invalid login due to the non existance of the user or
+                      invalid password.
                     status: 401
                     owner: GYCODING
                 '2':
@@ -2254,8 +2402,7 @@ paths:
           description: ''
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
+              schema: *ref_0
               examples:
                 '1':
                   summary: Forbidden to Service
@@ -2276,8 +2423,7 @@ paths:
           description: ''
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
+              schema: *ref_0
               examples:
                 '1':
                   summary: Token Not Found
@@ -2298,8 +2444,7 @@ paths:
           description: ''
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
+              schema: *ref_0
               examples:
                 '1':
                   summary: Method Not Allowed
@@ -2313,42 +2458,51 @@ paths:
           description: ''
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
+              schema: *ref_0
               examples:
                 '1':
                   summary: Database Error
                   value:
                     code: DB_ERROR
-                    message: An error with the database has occurred, sorry for the inconvenience.
+                    message: >-
+                      An error with the database has occurred, sorry for the
+                      inconvenience.
                     status: 500
                     owner: GYCODING
                 '2':
                   summary: Auth Error from Service
                   value:
                     code: AUTH_ERROR
-                    message: An error with the authentication service has occurred, sorry for the inconvenience.
+                    message: >-
+                      An error with the authentication service has occurred,
+                      sorry for the inconvenience.
                     status: 500
                     owner: GYCODING
                 '3':
                   summary: Auth Error from API Gateway
                   value:
                     code: AUTH_ERROR
-                    message: An error with the authentication service has occurred, sorry for the inconvenience.
+                    message: >-
+                      An error with the authentication service has occurred,
+                      sorry for the inconvenience.
                     status: 500
                     owner: API_GATEWAY
                 '4':
                   summary: Gateway Error
                   value:
                     code: GATEWAY_ERROR
-                    message: An internal API Gateway error has occurred, sorry for the inconvenience.
+                    message: >-
+                      An internal API Gateway error has occurred, sorry for the
+                      inconvenience.
                     status: 500
                     owner: API_GATEWAY
                 '5':
                   summary: Server Error
                   value:
                     code: SERVER_ERROR
-                    message: An internal server error has occurred, sorry for the inconvenience.
+                    message: >-
+                      An internal server error has occurred, sorry for the
+                      inconvenience.
                     status: 500
                     owner: GYCODING
           headers: {}
@@ -2362,15 +2516,18 @@ paths:
       description: Modifies user's phone number.
       tags:
         - Users
+        - Users
       parameters:
         - name: Authorization
           in: header
           description: Authorization token.
           required: false
-          example: eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..cGATxjlGSXP08LPq.HAXheZlEA_ti_1My5ckNynUeRircb4RAfF9EAuR97z9Xnr5pr8S4fVLb94e4_jHdjWXNzUPi2M9-m_suqgh4MbPq0wulFQjEOiQ8f-aeVi8MGyM3CKnNTbMBuxQIXnhZICY0zlg6q97j65BdMLWYf3_6reFmbn2dDho8HAjTrLbndySJUvzRmxQrypKsQF1tUIxcYcLLRjT_MbXBDVLxvZ-9wJ4kJv_goXgpCIiiJZSxy53xJ0d_f5EwxeqdPiHW3P3DRmwq3pbTFR2b4tQulKLr7vEKONvfUoS_Sc5GWXTdiecfkU5eJRDLETr5kdi0Z4onmYOI5JD_4OTAqH-3wPgJaHJuhIa09A.aLtbCGpqXOZHHqKxKqC-uA
+          example: >-
+            eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..cGATxjlGSXP08LPq.HAXheZlEA_ti_1My5ckNynUeRircb4RAfF9EAuR97z9Xnr5pr8S4fVLb94e4_jHdjWXNzUPi2M9-m_suqgh4MbPq0wulFQjEOiQ8f-aeVi8MGyM3CKnNTbMBuxQIXnhZICY0zlg6q97j65BdMLWYf3_6reFmbn2dDho8HAjTrLbndySJUvzRmxQrypKsQF1tUIxcYcLLRjT_MbXBDVLxvZ-9wJ4kJv_goXgpCIiiJZSxy53xJ0d_f5EwxeqdPiHW3P3DRmwq3pbTFR2b4tQulKLr7vEKONvfUoS_Sc5GWXTdiecfkU5eJRDLETr5kdi0Z4onmYOI5JD_4OTAqH-3wPgJaHJuhIa09A.aLtbCGpqXOZHHqKxKqC-uA
           schema:
             type: string
-            default: eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..cGATxjlGSXP08LPq.HAXheZlEA_ti_1My5ckNynUeRircb4RAfF9EAuR97z9Xnr5pr8S4fVLb94e4_jHdjWXNzUPi2M9-m_suqgh4MbPq0wulFQjEOiQ8f-aeVi8MGyM3CKnNTbMBuxQIXnhZICY0zlg6q97j65BdMLWYf3_6reFmbn2dDho8HAjTrLbndySJUvzRmxQrypKsQF1tUIxcYcLLRjT_MbXBDVLxvZ-9wJ4kJv_goXgpCIiiJZSxy53xJ0d_f5EwxeqdPiHW3P3DRmwq3pbTFR2b4tQulKLr7vEKONvfUoS_Sc5GWXTdiecfkU5eJRDLETr5kdi0Z4onmYOI5JD_4OTAqH-3wPgJaHJuhIa09A.aLtbCGpqXOZHHqKxKqC-uA
+            default: >-
+              eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..cGATxjlGSXP08LPq.HAXheZlEA_ti_1My5ckNynUeRircb4RAfF9EAuR97z9Xnr5pr8S4fVLb94e4_jHdjWXNzUPi2M9-m_suqgh4MbPq0wulFQjEOiQ8f-aeVi8MGyM3CKnNTbMBuxQIXnhZICY0zlg6q97j65BdMLWYf3_6reFmbn2dDho8HAjTrLbndySJUvzRmxQrypKsQF1tUIxcYcLLRjT_MbXBDVLxvZ-9wJ4kJv_goXgpCIiiJZSxy53xJ0d_f5EwxeqdPiHW3P3DRmwq3pbTFR2b4tQulKLr7vEKONvfUoS_Sc5GWXTdiecfkU5eJRDLETr5kdi0Z4onmYOI5JD_4OTAqH-3wPgJaHJuhIa09A.aLtbCGpqXOZHHqKxKqC-uA
       requestBody:
         content:
           text/plain:
@@ -2390,14 +2547,15 @@ paths:
           description: ''
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
+              schema: *ref_0
               examples:
                 '1':
                   summary: Resource Not Modified
                   value:
                     code: RESOURCE_NOT_MODIFIED
-                    message: The resource could not be modified due to some internal conflict or error.
+                    message: >-
+                      The resource could not be modified due to some internal
+                      conflict or error.
                     status: 304
                     owner: GYCODING
           headers: {}
@@ -2405,8 +2563,7 @@ paths:
           description: ''
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
+              schema: *ref_0
               examples:
                 '1':
                   summary: Bad Request
@@ -2420,14 +2577,15 @@ paths:
           description: ''
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
+              schema: *ref_0
               examples:
                 '1':
                   summary: Invalid Login
                   value:
                     code: INVALID_LOGIN
-                    message: Invalid login due to the non existance of the user or invalid password.
+                    message: >-
+                      Invalid login due to the non existance of the user or
+                      invalid password.
                     status: 401
                     owner: GYCODING
                 '2':
@@ -2449,8 +2607,7 @@ paths:
           description: ''
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
+              schema: *ref_0
               examples:
                 '1':
                   summary: Forbidden to Service
@@ -2471,8 +2628,7 @@ paths:
           description: ''
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
+              schema: *ref_0
               examples:
                 '1':
                   summary: Method Not Allowed
@@ -2486,42 +2642,51 @@ paths:
           description: ''
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
+              schema: *ref_0
               examples:
                 '1':
                   summary: Database Error
                   value:
                     code: DB_ERROR
-                    message: An error with the database has occurred, sorry for the inconvenience.
+                    message: >-
+                      An error with the database has occurred, sorry for the
+                      inconvenience.
                     status: 500
                     owner: GYCODING
                 '2':
                   summary: Auth Error from Service
                   value:
                     code: AUTH_ERROR
-                    message: An error with the authentication service has occurred, sorry for the inconvenience.
+                    message: >-
+                      An error with the authentication service has occurred,
+                      sorry for the inconvenience.
                     status: 500
                     owner: GYCODING
                 '3':
                   summary: Auth Error from API Gateway
                   value:
                     code: AUTH_ERROR
-                    message: An error with the authentication service has occurred, sorry for the inconvenience.
+                    message: >-
+                      An error with the authentication service has occurred,
+                      sorry for the inconvenience.
                     status: 500
                     owner: API_GATEWAY
                 '4':
                   summary: Gateway Error
                   value:
                     code: GATEWAY_ERROR
-                    message: An internal API Gateway error has occurred, sorry for the inconvenience.
+                    message: >-
+                      An internal API Gateway error has occurred, sorry for the
+                      inconvenience.
                     status: 500
                     owner: API_GATEWAY
                 '5':
                   summary: Server Error
                   value:
                     code: SERVER_ERROR
-                    message: An internal server error has occurred, sorry for the inconvenience.
+                    message: >-
+                      An internal server error has occurred, sorry for the
+                      inconvenience.
                     status: 500
                     owner: GYCODING
           headers: {}
@@ -2536,15 +2701,18 @@ paths:
       description: Modifies user's password.
       tags:
         - Users
+        - Users
       parameters:
         - name: Authorization
           in: header
           description: Authorization token.
           required: false
-          example: eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..cGATxjlGSXP08LPq.HAXheZlEA_ti_1My5ckNynUeRircb4RAfF9EAuR97z9Xnr5pr8S4fVLb94e4_jHdjWXNzUPi2M9-m_suqgh4MbPq0wulFQjEOiQ8f-aeVi8MGyM3CKnNTbMBuxQIXnhZICY0zlg6q97j65BdMLWYf3_6reFmbn2dDho8HAjTrLbndySJUvzRmxQrypKsQF1tUIxcYcLLRjT_MbXBDVLxvZ-9wJ4kJv_goXgpCIiiJZSxy53xJ0d_f5EwxeqdPiHW3P3DRmwq3pbTFR2b4tQulKLr7vEKONvfUoS_Sc5GWXTdiecfkU5eJRDLETr5kdi0Z4onmYOI5JD_4OTAqH-3wPgJaHJuhIa09A.aLtbCGpqXOZHHqKxKqC-uA
+          example: >-
+            eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..cGATxjlGSXP08LPq.HAXheZlEA_ti_1My5ckNynUeRircb4RAfF9EAuR97z9Xnr5pr8S4fVLb94e4_jHdjWXNzUPi2M9-m_suqgh4MbPq0wulFQjEOiQ8f-aeVi8MGyM3CKnNTbMBuxQIXnhZICY0zlg6q97j65BdMLWYf3_6reFmbn2dDho8HAjTrLbndySJUvzRmxQrypKsQF1tUIxcYcLLRjT_MbXBDVLxvZ-9wJ4kJv_goXgpCIiiJZSxy53xJ0d_f5EwxeqdPiHW3P3DRmwq3pbTFR2b4tQulKLr7vEKONvfUoS_Sc5GWXTdiecfkU5eJRDLETr5kdi0Z4onmYOI5JD_4OTAqH-3wPgJaHJuhIa09A.aLtbCGpqXOZHHqKxKqC-uA
           schema:
             type: string
-            default: eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..cGATxjlGSXP08LPq.HAXheZlEA_ti_1My5ckNynUeRircb4RAfF9EAuR97z9Xnr5pr8S4fVLb94e4_jHdjWXNzUPi2M9-m_suqgh4MbPq0wulFQjEOiQ8f-aeVi8MGyM3CKnNTbMBuxQIXnhZICY0zlg6q97j65BdMLWYf3_6reFmbn2dDho8HAjTrLbndySJUvzRmxQrypKsQF1tUIxcYcLLRjT_MbXBDVLxvZ-9wJ4kJv_goXgpCIiiJZSxy53xJ0d_f5EwxeqdPiHW3P3DRmwq3pbTFR2b4tQulKLr7vEKONvfUoS_Sc5GWXTdiecfkU5eJRDLETr5kdi0Z4onmYOI5JD_4OTAqH-3wPgJaHJuhIa09A.aLtbCGpqXOZHHqKxKqC-uA
+            default: >-
+              eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..cGATxjlGSXP08LPq.HAXheZlEA_ti_1My5ckNynUeRircb4RAfF9EAuR97z9Xnr5pr8S4fVLb94e4_jHdjWXNzUPi2M9-m_suqgh4MbPq0wulFQjEOiQ8f-aeVi8MGyM3CKnNTbMBuxQIXnhZICY0zlg6q97j65BdMLWYf3_6reFmbn2dDho8HAjTrLbndySJUvzRmxQrypKsQF1tUIxcYcLLRjT_MbXBDVLxvZ-9wJ4kJv_goXgpCIiiJZSxy53xJ0d_f5EwxeqdPiHW3P3DRmwq3pbTFR2b4tQulKLr7vEKONvfUoS_Sc5GWXTdiecfkU5eJRDLETr5kdi0Z4onmYOI5JD_4OTAqH-3wPgJaHJuhIa09A.aLtbCGpqXOZHHqKxKqC-uA
       requestBody:
         content:
           text/plain:
@@ -2564,14 +2732,15 @@ paths:
           description: ''
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
+              schema: *ref_0
               examples:
                 '1':
                   summary: Resource Not Modified
                   value:
                     code: RESOURCE_NOT_MODIFIED
-                    message: The resource could not be modified due to some internal conflict or error.
+                    message: >-
+                      The resource could not be modified due to some internal
+                      conflict or error.
                     status: 304
                     owner: GYCODING
           headers: {}
@@ -2579,8 +2748,7 @@ paths:
           description: ''
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
+              schema: *ref_0
               examples:
                 '1':
                   summary: Bad Request
@@ -2594,14 +2762,15 @@ paths:
           description: ''
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
+              schema: *ref_0
               examples:
                 '1':
                   summary: Invalid Login
                   value:
                     code: INVALID_LOGIN
-                    message: Invalid login due to the non existance of the user or invalid password.
+                    message: >-
+                      Invalid login due to the non existance of the user or
+                      invalid password.
                     status: 401
                     owner: GYCODING
                 '2':
@@ -2623,8 +2792,7 @@ paths:
           description: ''
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
+              schema: *ref_0
               examples:
                 '1':
                   summary: Forbidden to Service
@@ -2645,8 +2813,7 @@ paths:
           description: ''
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
+              schema: *ref_0
               examples:
                 '1':
                   summary: Method Not Allowed
@@ -2660,42 +2827,51 @@ paths:
           description: ''
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
+              schema: *ref_0
               examples:
                 '1':
                   summary: Database Error
                   value:
                     code: DB_ERROR
-                    message: An error with the database has occurred, sorry for the inconvenience.
+                    message: >-
+                      An error with the database has occurred, sorry for the
+                      inconvenience.
                     status: 500
                     owner: GYCODING
                 '2':
                   summary: Auth Error from Service
                   value:
                     code: AUTH_ERROR
-                    message: An error with the authentication service has occurred, sorry for the inconvenience.
+                    message: >-
+                      An error with the authentication service has occurred,
+                      sorry for the inconvenience.
                     status: 500
                     owner: GYCODING
                 '3':
                   summary: Auth Error from API Gateway
                   value:
                     code: AUTH_ERROR
-                    message: An error with the authentication service has occurred, sorry for the inconvenience.
+                    message: >-
+                      An error with the authentication service has occurred,
+                      sorry for the inconvenience.
                     status: 500
                     owner: API_GATEWAY
                 '4':
                   summary: Gateway Error
                   value:
                     code: GATEWAY_ERROR
-                    message: An internal API Gateway error has occurred, sorry for the inconvenience.
+                    message: >-
+                      An internal API Gateway error has occurred, sorry for the
+                      inconvenience.
                     status: 500
                     owner: API_GATEWAY
                 '5':
                   summary: Server Error
                   value:
                     code: SERVER_ERROR
-                    message: An internal server error has occurred, sorry for the inconvenience.
+                    message: >-
+                      An internal server error has occurred, sorry for the
+                      inconvenience.
                     status: 500
                     owner: GYCODING
           headers: {}
@@ -2710,15 +2886,18 @@ paths:
       description: Retrieves current user metadata.
       tags:
         - Users
+        - Users
       parameters:
         - name: Authorization
           in: header
           description: Authorization token.
           required: false
-          example: eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..cGATxjlGSXP08LPq.HAXheZlEA_ti_1My5ckNynUeRircb4RAfF9EAuR97z9Xnr5pr8S4fVLb94e4_jHdjWXNzUPi2M9-m_suqgh4MbPq0wulFQjEOiQ8f-aeVi8MGyM3CKnNTbMBuxQIXnhZICY0zlg6q97j65BdMLWYf3_6reFmbn2dDho8HAjTrLbndySJUvzRmxQrypKsQF1tUIxcYcLLRjT_MbXBDVLxvZ-9wJ4kJv_goXgpCIiiJZSxy53xJ0d_f5EwxeqdPiHW3P3DRmwq3pbTFR2b4tQulKLr7vEKONvfUoS_Sc5GWXTdiecfkU5eJRDLETr5kdi0Z4onmYOI5JD_4OTAqH-3wPgJaHJuhIa09A.aLtbCGpqXOZHHqKxKqC-uA
+          example: >-
+            eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..cGATxjlGSXP08LPq.HAXheZlEA_ti_1My5ckNynUeRircb4RAfF9EAuR97z9Xnr5pr8S4fVLb94e4_jHdjWXNzUPi2M9-m_suqgh4MbPq0wulFQjEOiQ8f-aeVi8MGyM3CKnNTbMBuxQIXnhZICY0zlg6q97j65BdMLWYf3_6reFmbn2dDho8HAjTrLbndySJUvzRmxQrypKsQF1tUIxcYcLLRjT_MbXBDVLxvZ-9wJ4kJv_goXgpCIiiJZSxy53xJ0d_f5EwxeqdPiHW3P3DRmwq3pbTFR2b4tQulKLr7vEKONvfUoS_Sc5GWXTdiecfkU5eJRDLETr5kdi0Z4onmYOI5JD_4OTAqH-3wPgJaHJuhIa09A.aLtbCGpqXOZHHqKxKqC-uA
           schema:
             type: string
-            default: eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..cGATxjlGSXP08LPq.HAXheZlEA_ti_1My5ckNynUeRircb4RAfF9EAuR97z9Xnr5pr8S4fVLb94e4_jHdjWXNzUPi2M9-m_suqgh4MbPq0wulFQjEOiQ8f-aeVi8MGyM3CKnNTbMBuxQIXnhZICY0zlg6q97j65BdMLWYf3_6reFmbn2dDho8HAjTrLbndySJUvzRmxQrypKsQF1tUIxcYcLLRjT_MbXBDVLxvZ-9wJ4kJv_goXgpCIiiJZSxy53xJ0d_f5EwxeqdPiHW3P3DRmwq3pbTFR2b4tQulKLr7vEKONvfUoS_Sc5GWXTdiecfkU5eJRDLETr5kdi0Z4onmYOI5JD_4OTAqH-3wPgJaHJuhIa09A.aLtbCGpqXOZHHqKxKqC-uA
+            default: >-
+              eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..cGATxjlGSXP08LPq.HAXheZlEA_ti_1My5ckNynUeRircb4RAfF9EAuR97z9Xnr5pr8S4fVLb94e4_jHdjWXNzUPi2M9-m_suqgh4MbPq0wulFQjEOiQ8f-aeVi8MGyM3CKnNTbMBuxQIXnhZICY0zlg6q97j65BdMLWYf3_6reFmbn2dDho8HAjTrLbndySJUvzRmxQrypKsQF1tUIxcYcLLRjT_MbXBDVLxvZ-9wJ4kJv_goXgpCIiiJZSxy53xJ0d_f5EwxeqdPiHW3P3DRmwq3pbTFR2b4tQulKLr7vEKONvfUoS_Sc5GWXTdiecfkU5eJRDLETr5kdi0Z4onmYOI5JD_4OTAqH-3wPgJaHJuhIa09A.aLtbCGpqXOZHHqKxKqC-uA
       responses:
         '200':
           description: ''
@@ -2731,8 +2910,7 @@ paths:
           description: ''
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
+              schema: *ref_0
               examples:
                 '1':
                   summary: Bad Request
@@ -2746,14 +2924,15 @@ paths:
           description: ''
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
+              schema: *ref_0
               examples:
                 '1':
                   summary: Invalid Login
                   value:
                     code: INVALID_LOGIN
-                    message: Invalid login due to the non existance of the user or invalid password.
+                    message: >-
+                      Invalid login due to the non existance of the user or
+                      invalid password.
                     status: 401
                     owner: GYCODING
                 '2':
@@ -2775,8 +2954,7 @@ paths:
           description: ''
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
+              schema: *ref_0
               examples:
                 '1':
                   summary: Forbidden to Service
@@ -2797,8 +2975,7 @@ paths:
           description: ''
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
+              schema: *ref_0
               examples:
                 '1':
                   summary: Token Not Found
@@ -2819,8 +2996,7 @@ paths:
           description: ''
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
+              schema: *ref_0
               examples:
                 '1':
                   summary: Method Not Allowed
@@ -2834,42 +3010,51 @@ paths:
           description: ''
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
+              schema: *ref_0
               examples:
                 '1':
                   summary: Database Error
                   value:
                     code: DB_ERROR
-                    message: An error with the database has occurred, sorry for the inconvenience.
+                    message: >-
+                      An error with the database has occurred, sorry for the
+                      inconvenience.
                     status: 500
                     owner: GYCODING
                 '2':
                   summary: Auth Error from Service
                   value:
                     code: AUTH_ERROR
-                    message: An error with the authentication service has occurred, sorry for the inconvenience.
+                    message: >-
+                      An error with the authentication service has occurred,
+                      sorry for the inconvenience.
                     status: 500
                     owner: GYCODING
                 '3':
                   summary: Auth Error from API Gateway
                   value:
                     code: AUTH_ERROR
-                    message: An error with the authentication service has occurred, sorry for the inconvenience.
+                    message: >-
+                      An error with the authentication service has occurred,
+                      sorry for the inconvenience.
                     status: 500
                     owner: API_GATEWAY
                 '4':
                   summary: Gateway Error
                   value:
                     code: GATEWAY_ERROR
-                    message: An internal API Gateway error has occurred, sorry for the inconvenience.
+                    message: >-
+                      An internal API Gateway error has occurred, sorry for the
+                      inconvenience.
                     status: 500
                     owner: API_GATEWAY
                 '5':
                   summary: Server Error
                   value:
                     code: SERVER_ERROR
-                    message: An internal server error has occurred, sorry for the inconvenience.
+                    message: >-
+                      An internal server error has occurred, sorry for the
+                      inconvenience.
                     status: 500
                     owner: GYCODING
           headers: {}
@@ -2882,6 +3067,7 @@ paths:
       deprecated: false
       description: Modifies user's metadata.
       tags:
+        - Users
         - Users
       parameters:
         - name: x-user-id
@@ -2904,14 +3090,15 @@ paths:
           description: ''
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
+              schema: *ref_0
               examples:
                 '1':
                   summary: Resource Not Modified
                   value:
                     code: RESOURCE_NOT_MODIFIED
-                    message: The resource could not be modified due to some internal conflict or error.
+                    message: >-
+                      The resource could not be modified due to some internal
+                      conflict or error.
                     status: 304
                     owner: GYCODING
           headers: {}
@@ -2919,8 +3106,7 @@ paths:
           description: ''
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
+              schema: *ref_0
               examples:
                 '1':
                   summary: Bad Request
@@ -2934,14 +3120,15 @@ paths:
           description: ''
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
+              schema: *ref_0
               examples:
                 '1':
                   summary: Invalid Login
                   value:
                     code: INVALID_LOGIN
-                    message: Invalid login due to the non existance of the user or invalid password.
+                    message: >-
+                      Invalid login due to the non existance of the user or
+                      invalid password.
                     status: 401
                     owner: GYCODING
                 '2':
@@ -2963,8 +3150,7 @@ paths:
           description: ''
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
+              schema: *ref_0
               examples:
                 '1':
                   summary: Forbidden to Service
@@ -2985,8 +3171,7 @@ paths:
           description: ''
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
+              schema: *ref_0
               examples:
                 '1':
                   summary: Method Not Allowed
@@ -3000,42 +3185,51 @@ paths:
           description: ''
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
+              schema: *ref_0
               examples:
                 '1':
                   summary: Database Error
                   value:
                     code: DB_ERROR
-                    message: An error with the database has occurred, sorry for the inconvenience.
+                    message: >-
+                      An error with the database has occurred, sorry for the
+                      inconvenience.
                     status: 500
                     owner: GYCODING
                 '2':
                   summary: Auth Error from Service
                   value:
                     code: AUTH_ERROR
-                    message: An error with the authentication service has occurred, sorry for the inconvenience.
+                    message: >-
+                      An error with the authentication service has occurred,
+                      sorry for the inconvenience.
                     status: 500
                     owner: GYCODING
                 '3':
                   summary: Auth Error from API Gateway
                   value:
                     code: AUTH_ERROR
-                    message: An error with the authentication service has occurred, sorry for the inconvenience.
+                    message: >-
+                      An error with the authentication service has occurred,
+                      sorry for the inconvenience.
                     status: 500
                     owner: API_GATEWAY
                 '4':
                   summary: Gateway Error
                   value:
                     code: GATEWAY_ERROR
-                    message: An internal API Gateway error has occurred, sorry for the inconvenience.
+                    message: >-
+                      An internal API Gateway error has occurred, sorry for the
+                      inconvenience.
                     status: 500
                     owner: API_GATEWAY
                 '5':
                   summary: Server Error
                   value:
                     code: SERVER_ERROR
-                    message: An internal server error has occurred, sorry for the inconvenience.
+                    message: >-
+                      An internal server error has occurred, sorry for the
+                      inconvenience.
                     status: 500
                     owner: GYCODING
           headers: {}
@@ -3134,9 +3328,7 @@ components:
       properties:
         chats:
           type: array
-          items:
-            description: Chat object.
-            $ref: '#/components/schemas/GY%20Messages%20Chat%20Metadata'
+          items: *ref_1
           description: Chats where the user belong.
       required:
         - chats
@@ -3161,9 +3353,7 @@ components:
         gyMessages:
           $ref: '#/components/schemas/GY%20Messages%20Metadata'
           description: User GY Messages Metadata object.
-        profile:
-          $ref: '#/components/schemas/User%20Profile'
-          description: User Profile object.
+        profile: *ref_2
       required:
         - gyMessages
         - profile
@@ -3209,4 +3399,6 @@ components:
         - owner
       description: Error Response object.
   securitySchemes: {}
-servers: []
+servers:
+  - url: https://api.gycoding.com/accounts
+    description: Production
