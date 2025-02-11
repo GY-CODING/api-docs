@@ -6,20 +6,24 @@ info:
     products.
   version: 1.1.2
 tags:
-  - name: Group Chats
-  - name: messages
-  - name: group
+  - name: Group
 paths:
-  /group/chat-id/messages/list:
+  /group/{chatId}/messages/list:
     get:
       summary: List Messages
       deprecated: false
       description: Retrieves the whole list of messages from a specific chat.
       tags:
-        - Group Chats
-        - messages
-        - group
+        - Group
       parameters:
+        - name: chatId
+          in: path
+          description: Chat ID.
+          required: true
+          example: e6b1e91a-ad50-4899-8d67-d5d541c32a3b
+          schema:
+            type: string
+            format: uuid
         - name: Authorization
           in: header
           description: Authorization token.
@@ -95,16 +99,22 @@ paths:
       x-roles:
         - COMMON
         - ADMIN
-  /group/chat-id:
+  /group/{chatId}:
     delete:
       summary: Delete Chat
       deprecated: false
       description: Removes a chat completely, unassigning it from every user.
       tags:
-        - Group Chats
-        - messages
-        - group
+        - Group
       parameters:
+        - name: chatId
+          in: path
+          description: Chat ID.
+          required: true
+          example: e6b1e91a-ad50-4899-8d67-d5d541c32a3b
+          schema:
+            type: string
+            format: uuid
         - name: Authorization
           in: header
           description: Authorization token.
@@ -184,10 +194,16 @@ paths:
       deprecated: false
       description: Retrieves a group chat.
       tags:
-        - Group Chats
-        - messages
-        - group
+        - Group
       parameters:
+        - name: chatId
+          in: path
+          description: Chat ID.
+          required: true
+          example: e6b1e91a-ad50-4899-8d67-d5d541c32a3b
+          schema:
+            type: string
+            format: uuid
         - name: Authorization
           in: header
           description: Authorization token.
@@ -262,14 +278,22 @@ paths:
       x-roles:
         - COMMON
         - ADMIN
-  /group/chat-id/members:
+  /group/{chatId}/members:
     delete:
       summary: Leave Chat
       deprecated: false
       description: As a user, leaves a chat.
       tags:
-        - Group Chats
+        - Group
       parameters:
+        - name: chatId
+          in: path
+          description: Chat ID.
+          required: true
+          example: e6b1e91a-ad50-4899-8d67-d5d541c32a3b
+          schema:
+            type: string
+            format: uuid
         - name: Authorization
           in: header
           description: Authorization token.
@@ -344,16 +368,111 @@ paths:
       x-roles:
         - COMMON
         - ADMIN
-  /group/chat-id/messages:
+    post:
+      summary: Add Member
+      deprecated: false
+      description: As a user, add myself into a chat.
+      tags:
+        - Group
+      parameters:
+        - name: chatId
+          in: path
+          description: Chat ID.
+          required: true
+          example: e6b1e91a-ad50-4899-8d67-d5d541c32a3b
+          schema:
+            type: string
+            format: uuid
+        - name: Authorization
+          in: header
+          description: Authorization token.
+          example: >-
+            eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..cGATxjlGSXP08LPq.HAXheZlEA_ti_1My5ckNynUeRircb4RAfF9EAuR97z9Xnr5pr8S4fVLb94e4_jHdjWXNzUPi2M9-m_suqgh4MbPq0wulFQjEOiQ8f-aeVi8MGyM3CKnNTbMBuxQIXnhZICY0zlg6q97j65BdMLWYf3_6reFmbn2dDho8HAjTrLbndySJUvzRmxQrypKsQF1tUIxcYcLLRjT_MbXBDVLxvZ-9wJ4kJv_goXgpCIiiJZSxy53xJ0d_f5EwxeqdPiHW3P3DRmwq3pbTFR2b4tQulKLr7vEKONvfUoS_Sc5GWXTdiecfkU5eJRDLETr5kdi0Z4onmYOI5JD_4OTAqH-3wPgJaHJuhIa09A.aLtbCGpqXOZHHqKxKqC-uA
+          schema:
+            type: string
+            default: >-
+              eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..cGATxjlGSXP08LPq.HAXheZlEA_ti_1My5ckNynUeRircb4RAfF9EAuR97z9Xnr5pr8S4fVLb94e4_jHdjWXNzUPi2M9-m_suqgh4MbPq0wulFQjEOiQ8f-aeVi8MGyM3CKnNTbMBuxQIXnhZICY0zlg6q97j65BdMLWYf3_6reFmbn2dDho8HAjTrLbndySJUvzRmxQrypKsQF1tUIxcYcLLRjT_MbXBDVLxvZ-9wJ4kJv_goXgpCIiiJZSxy53xJ0d_f5EwxeqdPiHW3P3DRmwq3pbTFR2b4tQulKLr7vEKONvfUoS_Sc5GWXTdiecfkU5eJRDLETr5kdi0Z4onmYOI5JD_4OTAqH-3wPgJaHJuhIa09A.aLtbCGpqXOZHHqKxKqC-uA
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+          headers: {}
+        '500':
+          description: ''
+          content:
+            application/json:
+              schema: *ref_0
+              examples:
+                '1':
+                  summary: Database Error
+                  value:
+                    code: DB_ERROR
+                    message: >-
+                      An error with the database has occurred, sorry for the
+                      inconvenience.
+                    status: 500
+                    owner: GYCODING
+                '2':
+                  summary: Auth Error from Service
+                  value:
+                    code: AUTH_ERROR
+                    message: >-
+                      An error with the authentication service has occurred,
+                      sorry for the inconvenience.
+                    status: 500
+                    owner: GYCODING
+                '3':
+                  summary: Auth Error from API Gateway
+                  value:
+                    code: AUTH_ERROR
+                    message: >-
+                      An error with the authentication service has occurred,
+                      sorry for the inconvenience.
+                    status: 500
+                    owner: API_GATEWAY
+                '4':
+                  summary: Gateway Error
+                  value:
+                    code: GATEWAY_ERROR
+                    message: >-
+                      An internal API Gateway error has occurred, sorry for the
+                      inconvenience.
+                    status: 500
+                    owner: API_GATEWAY
+                '5':
+                  summary: Server Error
+                  value:
+                    code: SERVER_ERROR
+                    message: >-
+                      An internal server error has occurred, sorry for the
+                      inconvenience.
+                    status: 500
+                    owner: GYCODING
+          headers: {}
+      security: []
+      x-roles:
+        - COMMON
+        - ADMIN
+  /group/{chatId}/messages:
     post:
       summary: Send Message
       deprecated: false
       description: Sends a message to a specific chat.
       tags:
-        - Group Chats
-        - messages
-        - group
+        - Group
       parameters:
+        - name: chatId
+          in: path
+          description: Chat ID.
+          required: true
+          example: e6b1e91a-ad50-4899-8d67-d5d541c32a3b
+          schema:
+            type: string
+            format: uuid
         - name: Authorization
           in: header
           description: Authorization token.
@@ -446,9 +565,7 @@ paths:
       deprecated: false
       description: Creates a new chat.
       tags:
-        - Group Chats
-        - messages
-        - group
+        - Group
       parameters:
         - name: Authorization
           in: header
@@ -536,100 +653,22 @@ paths:
       x-roles:
         - COMMON
         - ADMIN
-  /group/test-chat/members:
-    post:
-      summary: Add Member
-      deprecated: false
-      description: As a user, add myself into a chat.
-      tags:
-        - Group Chats
-        - messages
-        - group
-      parameters:
-        - name: Authorization
-          in: header
-          description: Authorization token.
-          example: >-
-            eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..cGATxjlGSXP08LPq.HAXheZlEA_ti_1My5ckNynUeRircb4RAfF9EAuR97z9Xnr5pr8S4fVLb94e4_jHdjWXNzUPi2M9-m_suqgh4MbPq0wulFQjEOiQ8f-aeVi8MGyM3CKnNTbMBuxQIXnhZICY0zlg6q97j65BdMLWYf3_6reFmbn2dDho8HAjTrLbndySJUvzRmxQrypKsQF1tUIxcYcLLRjT_MbXBDVLxvZ-9wJ4kJv_goXgpCIiiJZSxy53xJ0d_f5EwxeqdPiHW3P3DRmwq3pbTFR2b4tQulKLr7vEKONvfUoS_Sc5GWXTdiecfkU5eJRDLETr5kdi0Z4onmYOI5JD_4OTAqH-3wPgJaHJuhIa09A.aLtbCGpqXOZHHqKxKqC-uA
-          schema:
-            type: string
-            default: >-
-              eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..cGATxjlGSXP08LPq.HAXheZlEA_ti_1My5ckNynUeRircb4RAfF9EAuR97z9Xnr5pr8S4fVLb94e4_jHdjWXNzUPi2M9-m_suqgh4MbPq0wulFQjEOiQ8f-aeVi8MGyM3CKnNTbMBuxQIXnhZICY0zlg6q97j65BdMLWYf3_6reFmbn2dDho8HAjTrLbndySJUvzRmxQrypKsQF1tUIxcYcLLRjT_MbXBDVLxvZ-9wJ4kJv_goXgpCIiiJZSxy53xJ0d_f5EwxeqdPiHW3P3DRmwq3pbTFR2b4tQulKLr7vEKONvfUoS_Sc5GWXTdiecfkU5eJRDLETr5kdi0Z4onmYOI5JD_4OTAqH-3wPgJaHJuhIa09A.aLtbCGpqXOZHHqKxKqC-uA
-      responses:
-        '200':
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                properties: {}
-          headers: {}
-        '500':
-          description: ''
-          content:
-            application/json:
-              schema: *ref_0
-              examples:
-                '1':
-                  summary: Database Error
-                  value:
-                    code: DB_ERROR
-                    message: >-
-                      An error with the database has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: GYCODING
-                '2':
-                  summary: Auth Error from Service
-                  value:
-                    code: AUTH_ERROR
-                    message: >-
-                      An error with the authentication service has occurred,
-                      sorry for the inconvenience.
-                    status: 500
-                    owner: GYCODING
-                '3':
-                  summary: Auth Error from API Gateway
-                  value:
-                    code: AUTH_ERROR
-                    message: >-
-                      An error with the authentication service has occurred,
-                      sorry for the inconvenience.
-                    status: 500
-                    owner: API_GATEWAY
-                '4':
-                  summary: Gateway Error
-                  value:
-                    code: GATEWAY_ERROR
-                    message: >-
-                      An internal API Gateway error has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: API_GATEWAY
-                '5':
-                  summary: Server Error
-                  value:
-                    code: SERVER_ERROR
-                    message: >-
-                      An internal server error has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: GYCODING
-          headers: {}
-      security: []
-      x-roles:
-        - COMMON
-        - ADMIN
-  /group/chat-id/members/list:
+  /group/{chatId}/members/list:
     get:
       summary: List Members
       deprecated: false
       description: Retrieves the whole list of members from a specific chat.
       tags:
-        - Group Chats
-        - messages
-        - group
+        - Group
       parameters:
+        - name: chatId
+          in: path
+          description: Chat ID.
+          required: true
+          example: e6b1e91a-ad50-4899-8d67-d5d541c32a3b
+          schema:
+            type: string
+            format: uuid
         - name: Authorization
           in: header
           description: Authorization token.
@@ -706,7 +745,7 @@ paths:
         - ADMIN
 components:
   schemas:
-    Chat:
+    Group Chat:
       type: object
       properties:
         chatId:
@@ -757,7 +796,7 @@ components:
         - userId
         - isAdmin
       description: Member object.
-    Chat1:
+    Private Chat:
       type: object
       properties:
         chatId:
