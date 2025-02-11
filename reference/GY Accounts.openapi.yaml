@@ -7,10 +7,9 @@ info:
   version: 3.2.0
 tags:
   - name: Authentication
-  - name: Products
   - name: Products/GY Messages
-  - name: Users
   - name: GY Messages
+  - name: Users
 paths:
   /auth/login:
     post:
@@ -20,7 +19,6 @@ paths:
         Checks the existance and the authentication of an user account basic
         Email/Username and Password authentication and returns a JWT.
       tags:
-        - Authentication
         - Authentication
       parameters: []
       requestBody:
@@ -175,7 +173,6 @@ paths:
         authentication.
       tags:
         - Authentication
-        - Authentication
       parameters: []
       requestBody:
         content:
@@ -311,7 +308,6 @@ paths:
       description: Returns a custom GYCODING authentication URL for Google Authentication.
       tags:
         - Authentication
-        - Authentication
       parameters: []
       responses:
         '200':
@@ -413,7 +409,6 @@ paths:
       description: Adds a chat to the user's metadata.
       tags:
         - Products/GY Messages
-        - GY Messages
       parameters:
         - name: Authorization
           in: header
@@ -617,7 +612,6 @@ paths:
       description: Sets user as admin of a specific chat.
       tags:
         - Products/GY Messages
-        - GY Messages
       parameters:
         - name: Authorization
           in: header
@@ -823,7 +817,6 @@ paths:
       deprecated: false
       description: Removes a chat from user metadata.
       tags:
-        - Products/GY Messages
         - GY Messages
       parameters:
         - name: chatId
@@ -1031,7 +1024,6 @@ paths:
       description: Lists chats where the specified user belongs.
       tags:
         - Products/GY Messages
-        - GY Messages
       parameters:
         - name: Authorization
           in: header
@@ -1218,7 +1210,6 @@ paths:
         account.
       tags:
         - Users
-        - Users
       parameters:
         - name: Authorization
           in: header
@@ -1400,7 +1391,6 @@ paths:
       deprecated: false
       description: Updates user's profile entirely.
       tags:
-        - Users
         - Users
       parameters:
         - name: Authorization
@@ -1587,7 +1577,6 @@ paths:
       description: Retrieves current user username.
       tags:
         - Users
-        - Users
       parameters:
         - name: Authorization
           in: header
@@ -1770,7 +1759,6 @@ paths:
       description: Modifies user's username.
       tags:
         - Users
-        - Users
       parameters:
         - name: Authorization
           in: header
@@ -1948,25 +1936,21 @@ paths:
       x-roles:
         - COMMON
         - ADMIN
-  /user/picture/103352708560126488769:
+  /user/picture/{userId}:
     get:
       summary: Get Picture
       deprecated: false
       description: Retrieves current user profile picture.
       tags:
         - Users
-        - Users
       parameters:
-        - name: Authorization
-          in: header
-          description: Authorization token.
-          required: false
-          example: >-
-            eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..cGATxjlGSXP08LPq.HAXheZlEA_ti_1My5ckNynUeRircb4RAfF9EAuR97z9Xnr5pr8S4fVLb94e4_jHdjWXNzUPi2M9-m_suqgh4MbPq0wulFQjEOiQ8f-aeVi8MGyM3CKnNTbMBuxQIXnhZICY0zlg6q97j65BdMLWYf3_6reFmbn2dDho8HAjTrLbndySJUvzRmxQrypKsQF1tUIxcYcLLRjT_MbXBDVLxvZ-9wJ4kJv_goXgpCIiiJZSxy53xJ0d_f5EwxeqdPiHW3P3DRmwq3pbTFR2b4tQulKLr7vEKONvfUoS_Sc5GWXTdiecfkU5eJRDLETr5kdi0Z4onmYOI5JD_4OTAqH-3wPgJaHJuhIa09A.aLtbCGpqXOZHHqKxKqC-uA
+        - name: userId
+          in: path
+          description: User ID.
+          required: true
+          example: '118026854282768251823'
           schema:
             type: string
-            default: >-
-              eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..cGATxjlGSXP08LPq.HAXheZlEA_ti_1My5ckNynUeRircb4RAfF9EAuR97z9Xnr5pr8S4fVLb94e4_jHdjWXNzUPi2M9-m_suqgh4MbPq0wulFQjEOiQ8f-aeVi8MGyM3CKnNTbMBuxQIXnhZICY0zlg6q97j65BdMLWYf3_6reFmbn2dDho8HAjTrLbndySJUvzRmxQrypKsQF1tUIxcYcLLRjT_MbXBDVLxvZ-9wJ4kJv_goXgpCIiiJZSxy53xJ0d_f5EwxeqdPiHW3P3DRmwq3pbTFR2b4tQulKLr7vEKONvfUoS_Sc5GWXTdiecfkU5eJRDLETr5kdi0Z4onmYOI5JD_4OTAqH-3wPgJaHJuhIa09A.aLtbCGpqXOZHHqKxKqC-uA
       responses:
         '200':
           description: ''
@@ -2145,7 +2129,6 @@ paths:
       deprecated: false
       description: Modifies user's profile picture.
       tags:
-        - Users
         - Users
       parameters:
         - name: Authorization
@@ -2333,7 +2316,6 @@ paths:
       description: Retrieves current user phone number.
       tags:
         - Users
-        - Users
       parameters:
         - name: Authorization
           in: header
@@ -2515,7 +2497,6 @@ paths:
       deprecated: false
       description: Modifies user's phone number.
       tags:
-        - Users
         - Users
       parameters:
         - name: Authorization
@@ -2701,7 +2682,6 @@ paths:
       description: Modifies user's password.
       tags:
         - Users
-        - Users
       parameters:
         - name: Authorization
           in: header
@@ -2886,7 +2866,6 @@ paths:
       description: Retrieves current user metadata.
       tags:
         - Users
-        - Users
       parameters:
         - name: Authorization
           in: header
@@ -3067,7 +3046,6 @@ paths:
       deprecated: false
       description: Modifies user's metadata.
       tags:
-        - Users
         - Users
       parameters:
         - name: x-user-id
