@@ -218,9 +218,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema:
-                type: object
-                properties: {}
+              schema: &ref_1
+                $ref: '#/components/schemas/Group%20Chat'
           headers: {}
         '500':
           description: ''
@@ -653,6 +652,87 @@ paths:
       x-roles:
         - COMMON
         - ADMIN
+    get:
+      summary: List Chats
+      deprecated: false
+      description: Lists all group chats from a user.
+      tags:
+        - Group
+      parameters:
+        - name: Authorization
+          in: header
+          description: Authorization token.
+          example: >-
+            eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..cGATxjlGSXP08LPq.HAXheZlEA_ti_1My5ckNynUeRircb4RAfF9EAuR97z9Xnr5pr8S4fVLb94e4_jHdjWXNzUPi2M9-m_suqgh4MbPq0wulFQjEOiQ8f-aeVi8MGyM3CKnNTbMBuxQIXnhZICY0zlg6q97j65BdMLWYf3_6reFmbn2dDho8HAjTrLbndySJUvzRmxQrypKsQF1tUIxcYcLLRjT_MbXBDVLxvZ-9wJ4kJv_goXgpCIiiJZSxy53xJ0d_f5EwxeqdPiHW3P3DRmwq3pbTFR2b4tQulKLr7vEKONvfUoS_Sc5GWXTdiecfkU5eJRDLETr5kdi0Z4onmYOI5JD_4OTAqH-3wPgJaHJuhIa09A.aLtbCGpqXOZHHqKxKqC-uA
+          schema:
+            type: string
+            default: >-
+              eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..cGATxjlGSXP08LPq.HAXheZlEA_ti_1My5ckNynUeRircb4RAfF9EAuR97z9Xnr5pr8S4fVLb94e4_jHdjWXNzUPi2M9-m_suqgh4MbPq0wulFQjEOiQ8f-aeVi8MGyM3CKnNTbMBuxQIXnhZICY0zlg6q97j65BdMLWYf3_6reFmbn2dDho8HAjTrLbndySJUvzRmxQrypKsQF1tUIxcYcLLRjT_MbXBDVLxvZ-9wJ4kJv_goXgpCIiiJZSxy53xJ0d_f5EwxeqdPiHW3P3DRmwq3pbTFR2b4tQulKLr7vEKONvfUoS_Sc5GWXTdiecfkU5eJRDLETr5kdi0Z4onmYOI5JD_4OTAqH-3wPgJaHJuhIa09A.aLtbCGpqXOZHHqKxKqC-uA
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items: *ref_1
+          headers: {}
+        '500':
+          description: ''
+          content:
+            application/json:
+              schema: *ref_0
+              examples:
+                '1':
+                  summary: Database Error
+                  value:
+                    code: DB_ERROR
+                    message: >-
+                      An error with the database has occurred, sorry for the
+                      inconvenience.
+                    status: 500
+                    owner: GYCODING
+                '2':
+                  summary: Auth Error from Service
+                  value:
+                    code: AUTH_ERROR
+                    message: >-
+                      An error with the authentication service has occurred,
+                      sorry for the inconvenience.
+                    status: 500
+                    owner: GYCODING
+                '3':
+                  summary: Auth Error from API Gateway
+                  value:
+                    code: AUTH_ERROR
+                    message: >-
+                      An error with the authentication service has occurred,
+                      sorry for the inconvenience.
+                    status: 500
+                    owner: API_GATEWAY
+                '4':
+                  summary: Gateway Error
+                  value:
+                    code: GATEWAY_ERROR
+                    message: >-
+                      An internal API Gateway error has occurred, sorry for the
+                      inconvenience.
+                    status: 500
+                    owner: API_GATEWAY
+                '5':
+                  summary: Server Error
+                  value:
+                    code: SERVER_ERROR
+                    message: >-
+                      An internal server error has occurred, sorry for the
+                      inconvenience.
+                    status: 500
+                    owner: GYCODING
+          headers: {}
+      security: []
+      x-roles:
+        - COMMON
+        - ADMIN
   /group/{chatId}/members/list:
     get:
       summary: List Members
@@ -771,7 +851,7 @@ components:
           description: Chat members.
         messages:
           type: array
-          items: &ref_1
+          items: &ref_2
             description: Chat Message object.
             $ref: '#/components/schemas/Message'
           description: Chat messages.
@@ -805,7 +885,7 @@ components:
           description: Chat ID.
         messages:
           type: array
-          items: *ref_1
+          items: *ref_2
           description: Chat messages.
       required:
         - chatId
