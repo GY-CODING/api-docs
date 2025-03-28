@@ -4,7 +4,7 @@ info:
   description: >-
     GY Accounts is the official authentication and user management system for
     GYCODING products.
-  version: 3.2.0
+  version: 3.2.1
 tags:
   - name: Authentication
   - name: Products/GY Messages
@@ -55,58 +55,28 @@ paths:
             application/json:
               schema: &ref_0
                 $ref: '#/components/schemas/Error%20Response'
-              examples:
-                '1':
-                  summary: Bad Request
-                  value:
-                    code: BAD_REQUEST
-                    message: The endpoint is malformed.
-                    status: 400
-                    owner: API_GATEWAY
+              example:
+                code: BAD_REQUEST
+                message: The endpoint is malformed.
+                status: 400
+                owner: API_GATEWAY
           headers: {}
         '401':
           description: ''
           content:
             application/json:
               schema: *ref_0
-              examples:
-                '1':
-                  summary: Invalid Login
-                  value:
-                    code: INVALID_LOGIN
-                    message: >-
-                      Invalid login due to the non existance of the user or
-                      invalid password.
-                    status: 401
-                    owner: GYCODING
-                '2':
-                  summary: Unauthorized to Service
-                  value:
-                    code: UNAUTHORIZED
-                    message: The user is not authorized to access this resource.
-                    status: 401
-                    owner: GYCODING
-                '3':
-                  summary: Unauthorized to API Gateway
-                  value:
-                    code: UNAUTHORIZED
-                    message: The user is not authorized to access this resource.
-                    status: 401
-                    owner: API_GATEWAY
           headers: {}
         '405':
           description: ''
           content:
             application/json:
               schema: *ref_0
-              examples:
-                '1':
-                  summary: Method Not Allowed
-                  value:
-                    code: METHOD_NOT_ALLOWED
-                    message: Method used to access this resource is not allowed.
-                    status: 405
-                    owner: GYCODING
+              example:
+                code: METHOD_NOT_ALLOWED
+                message: Method used to access this resource is not allowed.
+                status: 405
+                owner: GYCODING
           headers: {}
         '500':
           description: ''
@@ -114,8 +84,9 @@ paths:
             application/json:
               schema: *ref_0
               examples:
-                '1':
+                '2':
                   summary: Database Error
+                  description: null
                   value:
                     code: DB_ERROR
                     message: >-
@@ -123,8 +94,9 @@ paths:
                       inconvenience.
                     status: 500
                     owner: GYCODING
-                '2':
+                '3':
                   summary: Auth Error from Service
+                  description: null
                   value:
                     code: AUTH_ERROR
                     message: >-
@@ -132,8 +104,9 @@ paths:
                       sorry for the inconvenience.
                     status: 500
                     owner: GYCODING
-                '3':
+                '4':
                   summary: Auth Error from API Gateway
+                  description: null
                   value:
                     code: AUTH_ERROR
                     message: >-
@@ -141,8 +114,9 @@ paths:
                       sorry for the inconvenience.
                     status: 500
                     owner: API_GATEWAY
-                '4':
+                '5':
                   summary: Gateway Error
+                  description: null
                   value:
                     code: GATEWAY_ERROR
                     message: >-
@@ -150,8 +124,9 @@ paths:
                       inconvenience.
                     status: 500
                     owner: API_GATEWAY
-                '5':
+                '6':
                   summary: Server Error
+                  description: null
                   value:
                     code: SERVER_ERROR
                     message: >-
@@ -197,28 +172,22 @@ paths:
           content:
             application/json:
               schema: *ref_0
-              examples:
-                '1':
-                  summary: Bad Request
-                  value:
-                    code: BAD_REQUEST
-                    message: The endpoint is malformed.
-                    status: 400
-                    owner: API_GATEWAY
+              example:
+                code: BAD_REQUEST
+                message: The endpoint is malformed.
+                status: 400
+                owner: API_GATEWAY
           headers: {}
         '405':
           description: ''
           content:
             application/json:
               schema: *ref_0
-              examples:
-                '1':
-                  summary: Method Not Allowed
-                  value:
-                    code: METHOD_NOT_ALLOWED
-                    message: Method used to access this resource is not allowed.
-                    status: 405
-                    owner: GYCODING
+              example:
+                code: METHOD_NOT_ALLOWED
+                message: Method used to access this resource is not allowed.
+                status: 405
+                owner: GYCODING
           headers: {}
         '409':
           description: ''
@@ -226,8 +195,9 @@ paths:
             application/json:
               schema: *ref_0
               examples:
-                '1':
+                '2':
                   summary: Conflict
+                  description: null
                   value:
                     code: CONFLICT
                     message: >-
@@ -235,8 +205,9 @@ paths:
                       occured. Requested data may already exist.
                     status: 409
                     owner: GYCODING
-                '2':
+                '3':
                   summary: Invalid Sign Up
+                  description: null
                   value:
                     code: INVALID_SIGN_UP
                     message: >-
@@ -251,8 +222,9 @@ paths:
             application/json:
               schema: *ref_0
               examples:
-                '1':
+                '4':
                   summary: Database Error
+                  description: null
                   value:
                     code: DB_ERROR
                     message: >-
@@ -260,8 +232,9 @@ paths:
                       inconvenience.
                     status: 500
                     owner: GYCODING
-                '2':
+                '5':
                   summary: Auth Error from Service
+                  description: null
                   value:
                     code: AUTH_ERROR
                     message: >-
@@ -269,8 +242,9 @@ paths:
                       sorry for the inconvenience.
                     status: 500
                     owner: GYCODING
-                '3':
+                '6':
                   summary: Auth Error from API Gateway
+                  description: null
                   value:
                     code: AUTH_ERROR
                     message: >-
@@ -278,8 +252,9 @@ paths:
                       sorry for the inconvenience.
                     status: 500
                     owner: API_GATEWAY
-                '4':
+                '7':
                   summary: Gateway Error
+                  description: null
                   value:
                     code: GATEWAY_ERROR
                     message: >-
@@ -287,8 +262,9 @@ paths:
                       inconvenience.
                     status: 500
                     owner: API_GATEWAY
-                '5':
+                '8':
                   summary: Server Error
+                  description: null
                   value:
                     code: SERVER_ERROR
                     message: >-
@@ -323,28 +299,22 @@ paths:
           content:
             application/json:
               schema: *ref_0
-              examples:
-                '1':
-                  summary: Bad Request
-                  value:
-                    code: BAD_REQUEST
-                    message: The endpoint is malformed.
-                    status: 400
-                    owner: API_GATEWAY
+              example:
+                code: BAD_REQUEST
+                message: The endpoint is malformed.
+                status: 400
+                owner: API_GATEWAY
           headers: {}
         '405':
           description: ''
           content:
             application/json:
               schema: *ref_0
-              examples:
-                '1':
-                  summary: Method Not Allowed
-                  value:
-                    code: METHOD_NOT_ALLOWED
-                    message: Method used to access this resource is not allowed.
-                    status: 405
-                    owner: GYCODING
+              example:
+                code: METHOD_NOT_ALLOWED
+                message: Method used to access this resource is not allowed.
+                status: 405
+                owner: GYCODING
           headers: {}
         '500':
           description: ''
@@ -352,8 +322,9 @@ paths:
             application/json:
               schema: *ref_0
               examples:
-                '1':
+                '2':
                   summary: Database Error
+                  description: null
                   value:
                     code: DB_ERROR
                     message: >-
@@ -361,8 +332,9 @@ paths:
                       inconvenience.
                     status: 500
                     owner: GYCODING
-                '2':
+                '3':
                   summary: Auth Error from Service
+                  description: null
                   value:
                     code: AUTH_ERROR
                     message: >-
@@ -370,8 +342,9 @@ paths:
                       sorry for the inconvenience.
                     status: 500
                     owner: GYCODING
-                '3':
+                '4':
                   summary: Auth Error from API Gateway
+                  description: null
                   value:
                     code: AUTH_ERROR
                     message: >-
@@ -379,8 +352,9 @@ paths:
                       sorry for the inconvenience.
                     status: 500
                     owner: API_GATEWAY
-                '4':
+                '5':
                   summary: Gateway Error
+                  description: null
                   value:
                     code: GATEWAY_ERROR
                     message: >-
@@ -388,8 +362,9 @@ paths:
                       inconvenience.
                     status: 500
                     owner: API_GATEWAY
-                '5':
+                '6':
                   summary: Server Error
+                  description: null
                   value:
                     code: SERVER_ERROR
                     message: >-
@@ -407,209 +382,6 @@ paths:
       summary: Add chat to metadata
       deprecated: false
       description: Adds a chat to the user's metadata.
-      tags:
-        - Products/GY Messages
-      parameters:
-        - name: Authorization
-          in: header
-          description: Authorization token.
-          required: false
-          example: >-
-            eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..cGATxjlGSXP08LPq.HAXheZlEA_ti_1My5ckNynUeRircb4RAfF9EAuR97z9Xnr5pr8S4fVLb94e4_jHdjWXNzUPi2M9-m_suqgh4MbPq0wulFQjEOiQ8f-aeVi8MGyM3CKnNTbMBuxQIXnhZICY0zlg6q97j65BdMLWYf3_6reFmbn2dDho8HAjTrLbndySJUvzRmxQrypKsQF1tUIxcYcLLRjT_MbXBDVLxvZ-9wJ4kJv_goXgpCIiiJZSxy53xJ0d_f5EwxeqdPiHW3P3DRmwq3pbTFR2b4tQulKLr7vEKONvfUoS_Sc5GWXTdiecfkU5eJRDLETr5kdi0Z4onmYOI5JD_4OTAqH-3wPgJaHJuhIa09A.aLtbCGpqXOZHHqKxKqC-uA
-          schema:
-            type: string
-            default: >-
-              eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..cGATxjlGSXP08LPq.HAXheZlEA_ti_1My5ckNynUeRircb4RAfF9EAuR97z9Xnr5pr8S4fVLb94e4_jHdjWXNzUPi2M9-m_suqgh4MbPq0wulFQjEOiQ8f-aeVi8MGyM3CKnNTbMBuxQIXnhZICY0zlg6q97j65BdMLWYf3_6reFmbn2dDho8HAjTrLbndySJUvzRmxQrypKsQF1tUIxcYcLLRjT_MbXBDVLxvZ-9wJ4kJv_goXgpCIiiJZSxy53xJ0d_f5EwxeqdPiHW3P3DRmwq3pbTFR2b4tQulKLr7vEKONvfUoS_Sc5GWXTdiecfkU5eJRDLETr5kdi0Z4onmYOI5JD_4OTAqH-3wPgJaHJuhIa09A.aLtbCGpqXOZHHqKxKqC-uA
-      responses:
-        '204':
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                properties: {}
-          headers: {}
-        '304':
-          description: ''
-          content:
-            application/json:
-              schema: *ref_0
-              examples:
-                '1':
-                  summary: Resource Not Modified
-                  value:
-                    code: RESOURCE_NOT_MODIFIED
-                    message: >-
-                      The resource could not be modified due to some internal
-                      conflict or error.
-                    status: 304
-                    owner: GYCODING
-          headers: {}
-        '400':
-          description: ''
-          content:
-            application/json:
-              schema: *ref_0
-              examples:
-                '1':
-                  summary: Bad Request
-                  value:
-                    code: BAD_REQUEST
-                    message: The endpoint is malformed.
-                    status: 400
-                    owner: API_GATEWAY
-          headers: {}
-        '401':
-          description: ''
-          content:
-            application/json:
-              schema: *ref_0
-              examples:
-                '1':
-                  summary: Invalid Login
-                  value:
-                    code: INVALID_LOGIN
-                    message: >-
-                      Invalid login due to the non existance of the user or
-                      invalid password.
-                    status: 401
-                    owner: GYCODING
-                '2':
-                  summary: Unauthorized to Service
-                  value:
-                    code: UNAUTHORIZED
-                    message: The user is not authorized to access this resource.
-                    status: 401
-                    owner: GYCODING
-                '3':
-                  summary: Unauthorized to API Gateway
-                  value:
-                    code: UNAUTHORIZED
-                    message: The user is not authorized to access this resource.
-                    status: 401
-                    owner: API_GATEWAY
-          headers: {}
-        '403':
-          description: ''
-          content:
-            application/json:
-              schema: *ref_0
-              examples:
-                '1':
-                  summary: Forbidden to Service
-                  value:
-                    code: FORBIDDEN
-                    message: The user has no permission to access this resource.
-                    status: 403
-                    owner: GYCODING
-                '2':
-                  summary: Forbidden to API Gateway
-                  value:
-                    code: FORBIDDEN
-                    message: The user has no permission to access this resource.
-                    status: 403
-                    owner: API_GATEWAY
-          headers: {}
-        '405':
-          description: ''
-          content:
-            application/json:
-              schema: *ref_0
-              examples:
-                '1':
-                  summary: Method Not Allowed
-                  value:
-                    code: METHOD_NOT_ALLOWED
-                    message: Method used to access this resource is not allowed.
-                    status: 405
-                    owner: GYCODING
-          headers: {}
-        '409':
-          description: ''
-          content:
-            application/json:
-              schema: *ref_0
-              examples:
-                '1':
-                  summary: Conflict
-                  value:
-                    code: CONFLICT
-                    message: >-
-                      An internal conflict between external data and the API has
-                      occured. Requested data may already exist.
-                    status: 409
-                    owner: GYCODING
-                '2':
-                  summary: Invalid Sign Up
-                  value:
-                    code: INVALID_SIGN_UP
-                    message: >-
-                      Invalid sign up due to the already existance of the user
-                      or an authentication error.
-                    status: 409
-                    owner: GYCODING
-          headers: {}
-        '500':
-          description: ''
-          content:
-            application/json:
-              schema: *ref_0
-              examples:
-                '1':
-                  summary: Database Error
-                  value:
-                    code: DB_ERROR
-                    message: >-
-                      An error with the database has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: GYCODING
-                '2':
-                  summary: Auth Error from Service
-                  value:
-                    code: AUTH_ERROR
-                    message: >-
-                      An error with the authentication service has occurred,
-                      sorry for the inconvenience.
-                    status: 500
-                    owner: GYCODING
-                '3':
-                  summary: Auth Error from API Gateway
-                  value:
-                    code: AUTH_ERROR
-                    message: >-
-                      An error with the authentication service has occurred,
-                      sorry for the inconvenience.
-                    status: 500
-                    owner: API_GATEWAY
-                '4':
-                  summary: Gateway Error
-                  value:
-                    code: GATEWAY_ERROR
-                    message: >-
-                      An internal API Gateway error has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: API_GATEWAY
-                '5':
-                  summary: Server Error
-                  value:
-                    code: SERVER_ERROR
-                    message: >-
-                      An internal server error has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: GYCODING
-          headers: {}
-      security: []
-      x-roles:
-        - COMMON
-        - ADMIN
-  /messages/chats/admin:
-    put:
-      summary: Set user admin state in a chat metadata
-      deprecated: false
-      description: Sets user as admin of a specific chat.
       tags:
         - Products/GY Messages
       parameters:
@@ -644,60 +416,30 @@ paths:
           content:
             application/json:
               schema: *ref_0
-              examples:
-                '1':
-                  summary: Resource Not Modified
-                  value:
-                    code: RESOURCE_NOT_MODIFIED
-                    message: >-
-                      The resource could not be modified due to some internal
-                      conflict or error.
-                    status: 304
-                    owner: GYCODING
+              example:
+                code: RESOURCE_NOT_MODIFIED
+                message: >-
+                  The resource could not be modified due to some internal
+                  conflict or error.
+                status: 304
+                owner: GYCODING
           headers: {}
         '400':
           description: ''
           content:
             application/json:
               schema: *ref_0
-              examples:
-                '1':
-                  summary: Bad Request
-                  value:
-                    code: BAD_REQUEST
-                    message: The endpoint is malformed.
-                    status: 400
-                    owner: API_GATEWAY
+              example:
+                code: BAD_REQUEST
+                message: The endpoint is malformed.
+                status: 400
+                owner: API_GATEWAY
           headers: {}
         '401':
           description: ''
           content:
             application/json:
               schema: *ref_0
-              examples:
-                '1':
-                  summary: Invalid Login
-                  value:
-                    code: INVALID_LOGIN
-                    message: >-
-                      Invalid login due to the non existance of the user or
-                      invalid password.
-                    status: 401
-                    owner: GYCODING
-                '2':
-                  summary: Unauthorized to Service
-                  value:
-                    code: UNAUTHORIZED
-                    message: The user is not authorized to access this resource.
-                    status: 401
-                    owner: GYCODING
-                '3':
-                  summary: Unauthorized to API Gateway
-                  value:
-                    code: UNAUTHORIZED
-                    message: The user is not authorized to access this resource.
-                    status: 401
-                    owner: API_GATEWAY
           headers: {}
         '403':
           description: ''
@@ -705,15 +447,201 @@ paths:
             application/json:
               schema: *ref_0
               examples:
-                '1':
+                '2':
                   summary: Forbidden to Service
+                  description: null
                   value:
                     code: FORBIDDEN
                     message: The user has no permission to access this resource.
                     status: 403
                     owner: GYCODING
-                '2':
+                '3':
                   summary: Forbidden to API Gateway
+                  description: null
+                  value:
+                    code: FORBIDDEN
+                    message: The user has no permission to access this resource.
+                    status: 403
+                    owner: API_GATEWAY
+          headers: {}
+        '405':
+          description: ''
+          content:
+            application/json:
+              schema: *ref_0
+              example:
+                code: METHOD_NOT_ALLOWED
+                message: Method used to access this resource is not allowed.
+                status: 405
+                owner: GYCODING
+          headers: {}
+        '409':
+          description: ''
+          content:
+            application/json:
+              schema: *ref_0
+              examples:
+                '4':
+                  summary: Conflict
+                  description: null
+                  value:
+                    code: CONFLICT
+                    message: >-
+                      An internal conflict between external data and the API has
+                      occured. Requested data may already exist.
+                    status: 409
+                    owner: GYCODING
+                '5':
+                  summary: Invalid Sign Up
+                  description: null
+                  value:
+                    code: INVALID_SIGN_UP
+                    message: >-
+                      Invalid sign up due to the already existance of the user
+                      or an authentication error.
+                    status: 409
+                    owner: GYCODING
+          headers: {}
+        '500':
+          description: ''
+          content:
+            application/json:
+              schema: *ref_0
+              examples:
+                '6':
+                  summary: Database Error
+                  description: null
+                  value:
+                    code: DB_ERROR
+                    message: >-
+                      An error with the database has occurred, sorry for the
+                      inconvenience.
+                    status: 500
+                    owner: GYCODING
+                '7':
+                  summary: Auth Error from Service
+                  description: null
+                  value:
+                    code: AUTH_ERROR
+                    message: >-
+                      An error with the authentication service has occurred,
+                      sorry for the inconvenience.
+                    status: 500
+                    owner: GYCODING
+                '8':
+                  summary: Auth Error from API Gateway
+                  description: null
+                  value:
+                    code: AUTH_ERROR
+                    message: >-
+                      An error with the authentication service has occurred,
+                      sorry for the inconvenience.
+                    status: 500
+                    owner: API_GATEWAY
+                '9':
+                  summary: Gateway Error
+                  description: null
+                  value:
+                    code: GATEWAY_ERROR
+                    message: >-
+                      An internal API Gateway error has occurred, sorry for the
+                      inconvenience.
+                    status: 500
+                    owner: API_GATEWAY
+                '10':
+                  summary: Server Error
+                  description: null
+                  value:
+                    code: SERVER_ERROR
+                    message: >-
+                      An internal server error has occurred, sorry for the
+                      inconvenience.
+                    status: 500
+                    owner: GYCODING
+          headers: {}
+      security: []
+      x-roles:
+        - COMMON
+        - ADMIN
+  /messages/chats/admin:
+    put:
+      summary: Set user admin state in a chat metadata
+      deprecated: false
+      description: Sets user as admin of a specific chat.
+      tags:
+        - Products/GY Messages
+      parameters:
+        - name: Authorization
+          in: header
+          description: Authorization token.
+          required: false
+          example: >-
+            eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..cGATxjlGSXP08LPq.HAXheZlEA_ti_1My5ckNynUeRircb4RAfF9EAuR97z9Xnr5pr8S4fVLb94e4_jHdjWXNzUPi2M9-m_suqgh4MbPq0wulFQjEOiQ8f-aeVi8MGyM3CKnNTbMBuxQIXnhZICY0zlg6q97j65BdMLWYf3_6reFmbn2dDho8HAjTrLbndySJUvzRmxQrypKsQF1tUIxcYcLLRjT_MbXBDVLxvZ-9wJ4kJv_goXgpCIiiJZSxy53xJ0d_f5EwxeqdPiHW3P3DRmwq3pbTFR2b4tQulKLr7vEKONvfUoS_Sc5GWXTdiecfkU5eJRDLETr5kdi0Z4onmYOI5JD_4OTAqH-3wPgJaHJuhIa09A.aLtbCGpqXOZHHqKxKqC-uA
+          schema:
+            type: string
+            default: >-
+              eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..cGATxjlGSXP08LPq.HAXheZlEA_ti_1My5ckNynUeRircb4RAfF9EAuR97z9Xnr5pr8S4fVLb94e4_jHdjWXNzUPi2M9-m_suqgh4MbPq0wulFQjEOiQ8f-aeVi8MGyM3CKnNTbMBuxQIXnhZICY0zlg6q97j65BdMLWYf3_6reFmbn2dDho8HAjTrLbndySJUvzRmxQrypKsQF1tUIxcYcLLRjT_MbXBDVLxvZ-9wJ4kJv_goXgpCIiiJZSxy53xJ0d_f5EwxeqdPiHW3P3DRmwq3pbTFR2b4tQulKLr7vEKONvfUoS_Sc5GWXTdiecfkU5eJRDLETr5kdi0Z4onmYOI5JD_4OTAqH-3wPgJaHJuhIa09A.aLtbCGpqXOZHHqKxKqC-uA
+      requestBody:
+        content:
+          application/json:
+            schema: *ref_1
+            example: "{\r\n    \"chatId\": \"{{test-chat}}\",\r\n    \"admin\": {{test-chat-isadmin}}\r\n}"
+      responses:
+        '204':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+          headers: {}
+        '304':
+          description: ''
+          content:
+            application/json:
+              schema: *ref_0
+              example:
+                code: RESOURCE_NOT_MODIFIED
+                message: >-
+                  The resource could not be modified due to some internal
+                  conflict or error.
+                status: 304
+                owner: GYCODING
+          headers: {}
+        '400':
+          description: ''
+          content:
+            application/json:
+              schema: *ref_0
+              example:
+                code: BAD_REQUEST
+                message: The endpoint is malformed.
+                status: 400
+                owner: API_GATEWAY
+          headers: {}
+        '401':
+          description: ''
+          content:
+            application/json:
+              schema: *ref_0
+          headers: {}
+        '403':
+          description: ''
+          content:
+            application/json:
+              schema: *ref_0
+              examples:
+                '2':
+                  summary: Forbidden to Service
+                  description: null
+                  value:
+                    code: FORBIDDEN
+                    message: The user has no permission to access this resource.
+                    status: 403
+                    owner: GYCODING
+                '3':
+                  summary: Forbidden to API Gateway
+                  description: null
                   value:
                     code: FORBIDDEN
                     message: The user has no permission to access this resource.
@@ -725,35 +653,17 @@ paths:
           content:
             application/json:
               schema: *ref_0
-              examples:
-                '1':
-                  summary: Token Not Found
-                  value:
-                    code: TOKEN_NOT_FOUND
-                    message: Authentication token was not found.
-                    status: 404
-                    owner: API_GATEWAY
-                '2':
-                  summary: Resource Not Found
-                  value:
-                    code: RESOURCE_NOT_FOUND
-                    message: This resource was not found.
-                    status: 404
-                    owner: GYCODING
           headers: {}
         '405':
           description: ''
           content:
             application/json:
               schema: *ref_0
-              examples:
-                '1':
-                  summary: Method Not Allowed
-                  value:
-                    code: METHOD_NOT_ALLOWED
-                    message: Method used to access this resource is not allowed.
-                    status: 405
-                    owner: GYCODING
+              example:
+                code: METHOD_NOT_ALLOWED
+                message: Method used to access this resource is not allowed.
+                status: 405
+                owner: GYCODING
           headers: {}
         '500':
           description: ''
@@ -761,8 +671,9 @@ paths:
             application/json:
               schema: *ref_0
               examples:
-                '1':
+                '4':
                   summary: Database Error
+                  description: null
                   value:
                     code: DB_ERROR
                     message: >-
@@ -770,8 +681,9 @@ paths:
                       inconvenience.
                     status: 500
                     owner: GYCODING
-                '2':
+                '5':
                   summary: Auth Error from Service
+                  description: null
                   value:
                     code: AUTH_ERROR
                     message: >-
@@ -779,8 +691,9 @@ paths:
                       sorry for the inconvenience.
                     status: 500
                     owner: GYCODING
-                '3':
+                '6':
                   summary: Auth Error from API Gateway
+                  description: null
                   value:
                     code: AUTH_ERROR
                     message: >-
@@ -788,8 +701,9 @@ paths:
                       sorry for the inconvenience.
                     status: 500
                     owner: API_GATEWAY
-                '4':
+                '7':
                   summary: Gateway Error
+                  description: null
                   value:
                     code: GATEWAY_ERROR
                     message: >-
@@ -797,8 +711,9 @@ paths:
                       inconvenience.
                     status: 500
                     owner: API_GATEWAY
-                '5':
+                '8':
                   summary: Server Error
+                  description: null
                   value:
                     code: SERVER_ERROR
                     message: >-
@@ -851,60 +766,30 @@ paths:
           content:
             application/json:
               schema: *ref_0
-              examples:
-                '1':
-                  summary: Resource Not Modified
-                  value:
-                    code: RESOURCE_NOT_MODIFIED
-                    message: >-
-                      The resource could not be modified due to some internal
-                      conflict or error.
-                    status: 304
-                    owner: GYCODING
+              example:
+                code: RESOURCE_NOT_MODIFIED
+                message: >-
+                  The resource could not be modified due to some internal
+                  conflict or error.
+                status: 304
+                owner: GYCODING
           headers: {}
         '400':
           description: ''
           content:
             application/json:
               schema: *ref_0
-              examples:
-                '1':
-                  summary: Bad Request
-                  value:
-                    code: BAD_REQUEST
-                    message: The endpoint is malformed.
-                    status: 400
-                    owner: API_GATEWAY
+              example:
+                code: BAD_REQUEST
+                message: The endpoint is malformed.
+                status: 400
+                owner: API_GATEWAY
           headers: {}
         '401':
           description: ''
           content:
             application/json:
               schema: *ref_0
-              examples:
-                '1':
-                  summary: Invalid Login
-                  value:
-                    code: INVALID_LOGIN
-                    message: >-
-                      Invalid login due to the non existance of the user or
-                      invalid password.
-                    status: 401
-                    owner: GYCODING
-                '2':
-                  summary: Unauthorized to Service
-                  value:
-                    code: UNAUTHORIZED
-                    message: The user is not authorized to access this resource.
-                    status: 401
-                    owner: GYCODING
-                '3':
-                  summary: Unauthorized to API Gateway
-                  value:
-                    code: UNAUTHORIZED
-                    message: The user is not authorized to access this resource.
-                    status: 401
-                    owner: API_GATEWAY
           headers: {}
         '403':
           description: ''
@@ -912,15 +797,17 @@ paths:
             application/json:
               schema: *ref_0
               examples:
-                '1':
+                '2':
                   summary: Forbidden to Service
+                  description: null
                   value:
                     code: FORBIDDEN
                     message: The user has no permission to access this resource.
                     status: 403
                     owner: GYCODING
-                '2':
+                '3':
                   summary: Forbidden to API Gateway
+                  description: null
                   value:
                     code: FORBIDDEN
                     message: The user has no permission to access this resource.
@@ -932,35 +819,17 @@ paths:
           content:
             application/json:
               schema: *ref_0
-              examples:
-                '1':
-                  summary: Token Not Found
-                  value:
-                    code: TOKEN_NOT_FOUND
-                    message: Authentication token was not found.
-                    status: 404
-                    owner: API_GATEWAY
-                '2':
-                  summary: Resource Not Found
-                  value:
-                    code: RESOURCE_NOT_FOUND
-                    message: This resource was not found.
-                    status: 404
-                    owner: GYCODING
           headers: {}
         '405':
           description: ''
           content:
             application/json:
               schema: *ref_0
-              examples:
-                '1':
-                  summary: Method Not Allowed
-                  value:
-                    code: METHOD_NOT_ALLOWED
-                    message: Method used to access this resource is not allowed.
-                    status: 405
-                    owner: GYCODING
+              example:
+                code: METHOD_NOT_ALLOWED
+                message: Method used to access this resource is not allowed.
+                status: 405
+                owner: GYCODING
           headers: {}
         '500':
           description: ''
@@ -968,8 +837,9 @@ paths:
             application/json:
               schema: *ref_0
               examples:
-                '1':
+                '4':
                   summary: Database Error
+                  description: null
                   value:
                     code: DB_ERROR
                     message: >-
@@ -977,8 +847,9 @@ paths:
                       inconvenience.
                     status: 500
                     owner: GYCODING
-                '2':
+                '5':
                   summary: Auth Error from Service
+                  description: null
                   value:
                     code: AUTH_ERROR
                     message: >-
@@ -986,8 +857,9 @@ paths:
                       sorry for the inconvenience.
                     status: 500
                     owner: GYCODING
-                '3':
+                '6':
                   summary: Auth Error from API Gateway
+                  description: null
                   value:
                     code: AUTH_ERROR
                     message: >-
@@ -995,8 +867,9 @@ paths:
                       sorry for the inconvenience.
                     status: 500
                     owner: API_GATEWAY
-                '4':
+                '7':
                   summary: Gateway Error
+                  description: null
                   value:
                     code: GATEWAY_ERROR
                     message: >-
@@ -1004,8 +877,9 @@ paths:
                       inconvenience.
                     status: 500
                     owner: API_GATEWAY
-                '5':
+                '8':
                   summary: Server Error
+                  description: null
                   value:
                     code: SERVER_ERROR
                     message: >-
@@ -1050,44 +924,17 @@ paths:
           content:
             application/json:
               schema: *ref_0
-              examples:
-                '1':
-                  summary: Bad Request
-                  value:
-                    code: BAD_REQUEST
-                    message: The endpoint is malformed.
-                    status: 400
-                    owner: API_GATEWAY
+              example:
+                code: BAD_REQUEST
+                message: The endpoint is malformed.
+                status: 400
+                owner: API_GATEWAY
           headers: {}
         '401':
           description: ''
           content:
             application/json:
               schema: *ref_0
-              examples:
-                '1':
-                  summary: Invalid Login
-                  value:
-                    code: INVALID_LOGIN
-                    message: >-
-                      Invalid login due to the non existance of the user or
-                      invalid password.
-                    status: 401
-                    owner: GYCODING
-                '2':
-                  summary: Unauthorized to Service
-                  value:
-                    code: UNAUTHORIZED
-                    message: The user is not authorized to access this resource.
-                    status: 401
-                    owner: GYCODING
-                '3':
-                  summary: Unauthorized to API Gateway
-                  value:
-                    code: UNAUTHORIZED
-                    message: The user is not authorized to access this resource.
-                    status: 401
-                    owner: API_GATEWAY
           headers: {}
         '403':
           description: ''
@@ -1095,15 +942,17 @@ paths:
             application/json:
               schema: *ref_0
               examples:
-                '1':
+                '2':
                   summary: Forbidden to Service
+                  description: null
                   value:
                     code: FORBIDDEN
                     message: The user has no permission to access this resource.
                     status: 403
                     owner: GYCODING
-                '2':
+                '3':
                   summary: Forbidden to API Gateway
+                  description: null
                   value:
                     code: FORBIDDEN
                     message: The user has no permission to access this resource.
@@ -1115,35 +964,17 @@ paths:
           content:
             application/json:
               schema: *ref_0
-              examples:
-                '1':
-                  summary: Token Not Found
-                  value:
-                    code: TOKEN_NOT_FOUND
-                    message: Authentication token was not found.
-                    status: 404
-                    owner: API_GATEWAY
-                '2':
-                  summary: Resource Not Found
-                  value:
-                    code: RESOURCE_NOT_FOUND
-                    message: This resource was not found.
-                    status: 404
-                    owner: GYCODING
           headers: {}
         '405':
           description: ''
           content:
             application/json:
               schema: *ref_0
-              examples:
-                '1':
-                  summary: Method Not Allowed
-                  value:
-                    code: METHOD_NOT_ALLOWED
-                    message: Method used to access this resource is not allowed.
-                    status: 405
-                    owner: GYCODING
+              example:
+                code: METHOD_NOT_ALLOWED
+                message: Method used to access this resource is not allowed.
+                status: 405
+                owner: GYCODING
           headers: {}
         '500':
           description: ''
@@ -1151,8 +982,9 @@ paths:
             application/json:
               schema: *ref_0
               examples:
-                '1':
+                '4':
                   summary: Database Error
+                  description: null
                   value:
                     code: DB_ERROR
                     message: >-
@@ -1160,8 +992,9 @@ paths:
                       inconvenience.
                     status: 500
                     owner: GYCODING
-                '2':
+                '5':
                   summary: Auth Error from Service
+                  description: null
                   value:
                     code: AUTH_ERROR
                     message: >-
@@ -1169,8 +1002,9 @@ paths:
                       sorry for the inconvenience.
                     status: 500
                     owner: GYCODING
-                '3':
+                '6':
                   summary: Auth Error from API Gateway
+                  description: null
                   value:
                     code: AUTH_ERROR
                     message: >-
@@ -1178,8 +1012,9 @@ paths:
                       sorry for the inconvenience.
                     status: 500
                     owner: API_GATEWAY
-                '4':
+                '7':
                   summary: Gateway Error
+                  description: null
                   value:
                     code: GATEWAY_ERROR
                     message: >-
@@ -1187,8 +1022,9 @@ paths:
                       inconvenience.
                     status: 500
                     owner: API_GATEWAY
-                '5':
+                '8':
                   summary: Server Error
+                  description: null
                   value:
                     code: SERVER_ERROR
                     message: >-
@@ -1235,44 +1071,17 @@ paths:
           content:
             application/json:
               schema: *ref_0
-              examples:
-                '1':
-                  summary: Bad Request
-                  value:
-                    code: BAD_REQUEST
-                    message: The endpoint is malformed.
-                    status: 400
-                    owner: API_GATEWAY
+              example:
+                code: BAD_REQUEST
+                message: The endpoint is malformed.
+                status: 400
+                owner: API_GATEWAY
           headers: {}
         '401':
           description: ''
           content:
             application/json:
               schema: *ref_0
-              examples:
-                '1':
-                  summary: Invalid Login
-                  value:
-                    code: INVALID_LOGIN
-                    message: >-
-                      Invalid login due to the non existance of the user or
-                      invalid password.
-                    status: 401
-                    owner: GYCODING
-                '2':
-                  summary: Unauthorized to Service
-                  value:
-                    code: UNAUTHORIZED
-                    message: The user is not authorized to access this resource.
-                    status: 401
-                    owner: GYCODING
-                '3':
-                  summary: Unauthorized to API Gateway
-                  value:
-                    code: UNAUTHORIZED
-                    message: The user is not authorized to access this resource.
-                    status: 401
-                    owner: API_GATEWAY
           headers: {}
         '403':
           description: ''
@@ -1280,15 +1089,17 @@ paths:
             application/json:
               schema: *ref_0
               examples:
-                '1':
+                '2':
                   summary: Forbidden to Service
+                  description: null
                   value:
                     code: FORBIDDEN
                     message: The user has no permission to access this resource.
                     status: 403
                     owner: GYCODING
-                '2':
+                '3':
                   summary: Forbidden to API Gateway
+                  description: null
                   value:
                     code: FORBIDDEN
                     message: The user has no permission to access this resource.
@@ -1300,35 +1111,17 @@ paths:
           content:
             application/json:
               schema: *ref_0
-              examples:
-                '1':
-                  summary: Token Not Found
-                  value:
-                    code: TOKEN_NOT_FOUND
-                    message: Authentication token was not found.
-                    status: 404
-                    owner: API_GATEWAY
-                '2':
-                  summary: Resource Not Found
-                  value:
-                    code: RESOURCE_NOT_FOUND
-                    message: This resource was not found.
-                    status: 404
-                    owner: GYCODING
           headers: {}
         '405':
           description: ''
           content:
             application/json:
               schema: *ref_0
-              examples:
-                '1':
-                  summary: Method Not Allowed
-                  value:
-                    code: METHOD_NOT_ALLOWED
-                    message: Method used to access this resource is not allowed.
-                    status: 405
-                    owner: GYCODING
+              example:
+                code: METHOD_NOT_ALLOWED
+                message: Method used to access this resource is not allowed.
+                status: 405
+                owner: GYCODING
           headers: {}
         '500':
           description: ''
@@ -1336,8 +1129,9 @@ paths:
             application/json:
               schema: *ref_0
               examples:
-                '1':
+                '4':
                   summary: Database Error
+                  description: null
                   value:
                     code: DB_ERROR
                     message: >-
@@ -1345,8 +1139,9 @@ paths:
                       inconvenience.
                     status: 500
                     owner: GYCODING
-                '2':
+                '5':
                   summary: Auth Error from Service
+                  description: null
                   value:
                     code: AUTH_ERROR
                     message: >-
@@ -1354,8 +1149,9 @@ paths:
                       sorry for the inconvenience.
                     status: 500
                     owner: GYCODING
-                '3':
+                '6':
                   summary: Auth Error from API Gateway
+                  description: null
                   value:
                     code: AUTH_ERROR
                     message: >-
@@ -1363,8 +1159,9 @@ paths:
                       sorry for the inconvenience.
                     status: 500
                     owner: API_GATEWAY
-                '4':
+                '7':
                   summary: Gateway Error
+                  description: null
                   value:
                     code: GATEWAY_ERROR
                     message: >-
@@ -1372,8 +1169,9 @@ paths:
                       inconvenience.
                     status: 500
                     owner: API_GATEWAY
-                '5':
+                '8':
                   summary: Server Error
+                  description: null
                   value:
                     code: SERVER_ERROR
                     message: >-
@@ -1424,60 +1222,30 @@ paths:
           content:
             application/json:
               schema: *ref_0
-              examples:
-                '1':
-                  summary: Resource Not Modified
-                  value:
-                    code: RESOURCE_NOT_MODIFIED
-                    message: >-
-                      The resource could not be modified due to some internal
-                      conflict or error.
-                    status: 304
-                    owner: GYCODING
+              example:
+                code: RESOURCE_NOT_MODIFIED
+                message: >-
+                  The resource could not be modified due to some internal
+                  conflict or error.
+                status: 304
+                owner: GYCODING
           headers: {}
         '400':
           description: ''
           content:
             application/json:
               schema: *ref_0
-              examples:
-                '1':
-                  summary: Bad Request
-                  value:
-                    code: BAD_REQUEST
-                    message: The endpoint is malformed.
-                    status: 400
-                    owner: API_GATEWAY
+              example:
+                code: BAD_REQUEST
+                message: The endpoint is malformed.
+                status: 400
+                owner: API_GATEWAY
           headers: {}
         '401':
           description: ''
           content:
             application/json:
               schema: *ref_0
-              examples:
-                '1':
-                  summary: Invalid Login
-                  value:
-                    code: INVALID_LOGIN
-                    message: >-
-                      Invalid login due to the non existance of the user or
-                      invalid password.
-                    status: 401
-                    owner: GYCODING
-                '2':
-                  summary: Unauthorized to Service
-                  value:
-                    code: UNAUTHORIZED
-                    message: The user is not authorized to access this resource.
-                    status: 401
-                    owner: GYCODING
-                '3':
-                  summary: Unauthorized to API Gateway
-                  value:
-                    code: UNAUTHORIZED
-                    message: The user is not authorized to access this resource.
-                    status: 401
-                    owner: API_GATEWAY
           headers: {}
         '403':
           description: ''
@@ -1485,15 +1253,17 @@ paths:
             application/json:
               schema: *ref_0
               examples:
-                '1':
+                '2':
                   summary: Forbidden to Service
+                  description: null
                   value:
                     code: FORBIDDEN
                     message: The user has no permission to access this resource.
                     status: 403
                     owner: GYCODING
-                '2':
+                '3':
                   summary: Forbidden to API Gateway
+                  description: null
                   value:
                     code: FORBIDDEN
                     message: The user has no permission to access this resource.
@@ -1505,14 +1275,11 @@ paths:
           content:
             application/json:
               schema: *ref_0
-              examples:
-                '1':
-                  summary: Method Not Allowed
-                  value:
-                    code: METHOD_NOT_ALLOWED
-                    message: Method used to access this resource is not allowed.
-                    status: 405
-                    owner: GYCODING
+              example:
+                code: METHOD_NOT_ALLOWED
+                message: Method used to access this resource is not allowed.
+                status: 405
+                owner: GYCODING
           headers: {}
         '500':
           description: ''
@@ -1520,8 +1287,9 @@ paths:
             application/json:
               schema: *ref_0
               examples:
-                '1':
+                '4':
                   summary: Database Error
+                  description: null
                   value:
                     code: DB_ERROR
                     message: >-
@@ -1529,8 +1297,9 @@ paths:
                       inconvenience.
                     status: 500
                     owner: GYCODING
-                '2':
+                '5':
                   summary: Auth Error from Service
+                  description: null
                   value:
                     code: AUTH_ERROR
                     message: >-
@@ -1538,8 +1307,9 @@ paths:
                       sorry for the inconvenience.
                     status: 500
                     owner: GYCODING
-                '3':
+                '6':
                   summary: Auth Error from API Gateway
+                  description: null
                   value:
                     code: AUTH_ERROR
                     message: >-
@@ -1547,8 +1317,9 @@ paths:
                       sorry for the inconvenience.
                     status: 500
                     owner: API_GATEWAY
-                '4':
+                '7':
                   summary: Gateway Error
+                  description: null
                   value:
                     code: GATEWAY_ERROR
                     message: >-
@@ -1556,8 +1327,9 @@ paths:
                       inconvenience.
                     status: 500
                     owner: API_GATEWAY
-                '5':
+                '8':
                   summary: Server Error
+                  description: null
                   value:
                     code: SERVER_ERROR
                     message: >-
@@ -1602,44 +1374,17 @@ paths:
           content:
             application/json:
               schema: *ref_0
-              examples:
-                '1':
-                  summary: Bad Request
-                  value:
-                    code: BAD_REQUEST
-                    message: The endpoint is malformed.
-                    status: 400
-                    owner: API_GATEWAY
+              example:
+                code: BAD_REQUEST
+                message: The endpoint is malformed.
+                status: 400
+                owner: API_GATEWAY
           headers: {}
         '401':
           description: ''
           content:
             application/json:
               schema: *ref_0
-              examples:
-                '1':
-                  summary: Invalid Login
-                  value:
-                    code: INVALID_LOGIN
-                    message: >-
-                      Invalid login due to the non existance of the user or
-                      invalid password.
-                    status: 401
-                    owner: GYCODING
-                '2':
-                  summary: Unauthorized to Service
-                  value:
-                    code: UNAUTHORIZED
-                    message: The user is not authorized to access this resource.
-                    status: 401
-                    owner: GYCODING
-                '3':
-                  summary: Unauthorized to API Gateway
-                  value:
-                    code: UNAUTHORIZED
-                    message: The user is not authorized to access this resource.
-                    status: 401
-                    owner: API_GATEWAY
           headers: {}
         '403':
           description: ''
@@ -1647,15 +1392,17 @@ paths:
             application/json:
               schema: *ref_0
               examples:
-                '1':
+                '2':
                   summary: Forbidden to Service
+                  description: null
                   value:
                     code: FORBIDDEN
                     message: The user has no permission to access this resource.
                     status: 403
                     owner: GYCODING
-                '2':
+                '3':
                   summary: Forbidden to API Gateway
+                  description: null
                   value:
                     code: FORBIDDEN
                     message: The user has no permission to access this resource.
@@ -1667,35 +1414,17 @@ paths:
           content:
             application/json:
               schema: *ref_0
-              examples:
-                '1':
-                  summary: Token Not Found
-                  value:
-                    code: TOKEN_NOT_FOUND
-                    message: Authentication token was not found.
-                    status: 404
-                    owner: API_GATEWAY
-                '2':
-                  summary: Resource Not Found
-                  value:
-                    code: RESOURCE_NOT_FOUND
-                    message: This resource was not found.
-                    status: 404
-                    owner: GYCODING
           headers: {}
         '405':
           description: ''
           content:
             application/json:
               schema: *ref_0
-              examples:
-                '1':
-                  summary: Method Not Allowed
-                  value:
-                    code: METHOD_NOT_ALLOWED
-                    message: Method used to access this resource is not allowed.
-                    status: 405
-                    owner: GYCODING
+              example:
+                code: METHOD_NOT_ALLOWED
+                message: Method used to access this resource is not allowed.
+                status: 405
+                owner: GYCODING
           headers: {}
         '500':
           description: ''
@@ -1703,8 +1432,9 @@ paths:
             application/json:
               schema: *ref_0
               examples:
-                '1':
+                '4':
                   summary: Database Error
+                  description: null
                   value:
                     code: DB_ERROR
                     message: >-
@@ -1712,8 +1442,9 @@ paths:
                       inconvenience.
                     status: 500
                     owner: GYCODING
-                '2':
+                '5':
                   summary: Auth Error from Service
+                  description: null
                   value:
                     code: AUTH_ERROR
                     message: >-
@@ -1721,8 +1452,9 @@ paths:
                       sorry for the inconvenience.
                     status: 500
                     owner: GYCODING
-                '3':
+                '6':
                   summary: Auth Error from API Gateway
+                  description: null
                   value:
                     code: AUTH_ERROR
                     message: >-
@@ -1730,8 +1462,9 @@ paths:
                       sorry for the inconvenience.
                     status: 500
                     owner: API_GATEWAY
-                '4':
+                '7':
                   summary: Gateway Error
+                  description: null
                   value:
                     code: GATEWAY_ERROR
                     message: >-
@@ -1739,8 +1472,9 @@ paths:
                       inconvenience.
                     status: 500
                     owner: API_GATEWAY
-                '5':
+                '8':
                   summary: Server Error
+                  description: null
                   value:
                     code: SERVER_ERROR
                     message: >-
@@ -1790,60 +1524,30 @@ paths:
           content:
             application/json:
               schema: *ref_0
-              examples:
-                '1':
-                  summary: Resource Not Modified
-                  value:
-                    code: RESOURCE_NOT_MODIFIED
-                    message: >-
-                      The resource could not be modified due to some internal
-                      conflict or error.
-                    status: 304
-                    owner: GYCODING
+              example:
+                code: RESOURCE_NOT_MODIFIED
+                message: >-
+                  The resource could not be modified due to some internal
+                  conflict or error.
+                status: 304
+                owner: GYCODING
           headers: {}
         '400':
           description: ''
           content:
             application/json:
               schema: *ref_0
-              examples:
-                '1':
-                  summary: Bad Request
-                  value:
-                    code: BAD_REQUEST
-                    message: The endpoint is malformed.
-                    status: 400
-                    owner: API_GATEWAY
+              example:
+                code: BAD_REQUEST
+                message: The endpoint is malformed.
+                status: 400
+                owner: API_GATEWAY
           headers: {}
         '401':
           description: ''
           content:
             application/json:
               schema: *ref_0
-              examples:
-                '1':
-                  summary: Invalid Login
-                  value:
-                    code: INVALID_LOGIN
-                    message: >-
-                      Invalid login due to the non existance of the user or
-                      invalid password.
-                    status: 401
-                    owner: GYCODING
-                '2':
-                  summary: Unauthorized to Service
-                  value:
-                    code: UNAUTHORIZED
-                    message: The user is not authorized to access this resource.
-                    status: 401
-                    owner: GYCODING
-                '3':
-                  summary: Unauthorized to API Gateway
-                  value:
-                    code: UNAUTHORIZED
-                    message: The user is not authorized to access this resource.
-                    status: 401
-                    owner: API_GATEWAY
           headers: {}
         '403':
           description: ''
@@ -1851,15 +1555,17 @@ paths:
             application/json:
               schema: *ref_0
               examples:
-                '1':
+                '2':
                   summary: Forbidden to Service
+                  description: null
                   value:
                     code: FORBIDDEN
                     message: The user has no permission to access this resource.
                     status: 403
                     owner: GYCODING
-                '2':
+                '3':
                   summary: Forbidden to API Gateway
+                  description: null
                   value:
                     code: FORBIDDEN
                     message: The user has no permission to access this resource.
@@ -1871,14 +1577,11 @@ paths:
           content:
             application/json:
               schema: *ref_0
-              examples:
-                '1':
-                  summary: Method Not Allowed
-                  value:
-                    code: METHOD_NOT_ALLOWED
-                    message: Method used to access this resource is not allowed.
-                    status: 405
-                    owner: GYCODING
+              example:
+                code: METHOD_NOT_ALLOWED
+                message: Method used to access this resource is not allowed.
+                status: 405
+                owner: GYCODING
           headers: {}
         '500':
           description: ''
@@ -1886,8 +1589,9 @@ paths:
             application/json:
               schema: *ref_0
               examples:
-                '1':
+                '4':
                   summary: Database Error
+                  description: null
                   value:
                     code: DB_ERROR
                     message: >-
@@ -1895,8 +1599,9 @@ paths:
                       inconvenience.
                     status: 500
                     owner: GYCODING
-                '2':
+                '5':
                   summary: Auth Error from Service
+                  description: null
                   value:
                     code: AUTH_ERROR
                     message: >-
@@ -1904,8 +1609,9 @@ paths:
                       sorry for the inconvenience.
                     status: 500
                     owner: GYCODING
-                '3':
+                '6':
                   summary: Auth Error from API Gateway
+                  description: null
                   value:
                     code: AUTH_ERROR
                     message: >-
@@ -1913,8 +1619,9 @@ paths:
                       sorry for the inconvenience.
                     status: 500
                     owner: API_GATEWAY
-                '4':
+                '7':
                   summary: Gateway Error
+                  description: null
                   value:
                     code: GATEWAY_ERROR
                     message: >-
@@ -1922,8 +1629,9 @@ paths:
                       inconvenience.
                     status: 500
                     owner: API_GATEWAY
-                '5':
+                '8':
                   summary: Server Error
+                  description: null
                   value:
                     code: SERVER_ERROR
                     message: >-
@@ -1972,44 +1680,17 @@ paths:
           content:
             application/json:
               schema: *ref_0
-              examples:
-                '1':
-                  summary: Bad Request
-                  value:
-                    code: BAD_REQUEST
-                    message: The endpoint is malformed.
-                    status: 400
-                    owner: API_GATEWAY
+              example:
+                code: BAD_REQUEST
+                message: The endpoint is malformed.
+                status: 400
+                owner: API_GATEWAY
           headers: {}
         '401':
           description: ''
           content:
             application/json:
               schema: *ref_0
-              examples:
-                '1':
-                  summary: Invalid Login
-                  value:
-                    code: INVALID_LOGIN
-                    message: >-
-                      Invalid login due to the non existance of the user or
-                      invalid password.
-                    status: 401
-                    owner: GYCODING
-                '2':
-                  summary: Unauthorized to Service
-                  value:
-                    code: UNAUTHORIZED
-                    message: The user is not authorized to access this resource.
-                    status: 401
-                    owner: GYCODING
-                '3':
-                  summary: Unauthorized to API Gateway
-                  value:
-                    code: UNAUTHORIZED
-                    message: The user is not authorized to access this resource.
-                    status: 401
-                    owner: API_GATEWAY
           headers: {}
         '403':
           description: ''
@@ -2017,15 +1698,17 @@ paths:
             application/json:
               schema: *ref_0
               examples:
-                '1':
+                '2':
                   summary: Forbidden to Service
+                  description: null
                   value:
                     code: FORBIDDEN
                     message: The user has no permission to access this resource.
                     status: 403
                     owner: GYCODING
-                '2':
+                '3':
                   summary: Forbidden to API Gateway
+                  description: null
                   value:
                     code: FORBIDDEN
                     message: The user has no permission to access this resource.
@@ -2037,35 +1720,17 @@ paths:
           content:
             application/json:
               schema: *ref_0
-              examples:
-                '1':
-                  summary: Token Not Found
-                  value:
-                    code: TOKEN_NOT_FOUND
-                    message: Authentication token was not found.
-                    status: 404
-                    owner: API_GATEWAY
-                '2':
-                  summary: Resource Not Found
-                  value:
-                    code: RESOURCE_NOT_FOUND
-                    message: This resource was not found.
-                    status: 404
-                    owner: GYCODING
           headers: {}
         '405':
           description: ''
           content:
             application/json:
               schema: *ref_0
-              examples:
-                '1':
-                  summary: Method Not Allowed
-                  value:
-                    code: METHOD_NOT_ALLOWED
-                    message: Method used to access this resource is not allowed.
-                    status: 405
-                    owner: GYCODING
+              example:
+                code: METHOD_NOT_ALLOWED
+                message: Method used to access this resource is not allowed.
+                status: 405
+                owner: GYCODING
           headers: {}
         '500':
           description: ''
@@ -2073,8 +1738,9 @@ paths:
             application/json:
               schema: *ref_0
               examples:
-                '1':
+                '4':
                   summary: Database Error
+                  description: null
                   value:
                     code: DB_ERROR
                     message: >-
@@ -2082,8 +1748,9 @@ paths:
                       inconvenience.
                     status: 500
                     owner: GYCODING
-                '2':
+                '5':
                   summary: Auth Error from Service
+                  description: null
                   value:
                     code: AUTH_ERROR
                     message: >-
@@ -2091,8 +1758,9 @@ paths:
                       sorry for the inconvenience.
                     status: 500
                     owner: GYCODING
-                '3':
+                '6':
                   summary: Auth Error from API Gateway
+                  description: null
                   value:
                     code: AUTH_ERROR
                     message: >-
@@ -2100,8 +1768,9 @@ paths:
                       sorry for the inconvenience.
                     status: 500
                     owner: API_GATEWAY
-                '4':
+                '7':
                   summary: Gateway Error
+                  description: null
                   value:
                     code: GATEWAY_ERROR
                     message: >-
@@ -2109,8 +1778,9 @@ paths:
                       inconvenience.
                     status: 500
                     owner: API_GATEWAY
-                '5':
+                '8':
                   summary: Server Error
+                  description: null
                   value:
                     code: SERVER_ERROR
                     message: >-
@@ -2163,60 +1833,30 @@ paths:
           content:
             application/json:
               schema: *ref_0
-              examples:
-                '1':
-                  summary: Resource Not Modified
-                  value:
-                    code: RESOURCE_NOT_MODIFIED
-                    message: >-
-                      The resource could not be modified due to some internal
-                      conflict or error.
-                    status: 304
-                    owner: GYCODING
+              example:
+                code: RESOURCE_NOT_MODIFIED
+                message: >-
+                  The resource could not be modified due to some internal
+                  conflict or error.
+                status: 304
+                owner: GYCODING
           headers: {}
         '400':
           description: ''
           content:
             application/json:
               schema: *ref_0
-              examples:
-                '1':
-                  summary: Bad Request
-                  value:
-                    code: BAD_REQUEST
-                    message: The endpoint is malformed.
-                    status: 400
-                    owner: API_GATEWAY
+              example:
+                code: BAD_REQUEST
+                message: The endpoint is malformed.
+                status: 400
+                owner: API_GATEWAY
           headers: {}
         '401':
           description: ''
           content:
             application/json:
               schema: *ref_0
-              examples:
-                '1':
-                  summary: Invalid Login
-                  value:
-                    code: INVALID_LOGIN
-                    message: >-
-                      Invalid login due to the non existance of the user or
-                      invalid password.
-                    status: 401
-                    owner: GYCODING
-                '2':
-                  summary: Unauthorized to Service
-                  value:
-                    code: UNAUTHORIZED
-                    message: The user is not authorized to access this resource.
-                    status: 401
-                    owner: GYCODING
-                '3':
-                  summary: Unauthorized to API Gateway
-                  value:
-                    code: UNAUTHORIZED
-                    message: The user is not authorized to access this resource.
-                    status: 401
-                    owner: API_GATEWAY
           headers: {}
         '403':
           description: ''
@@ -2224,15 +1864,17 @@ paths:
             application/json:
               schema: *ref_0
               examples:
-                '1':
+                '2':
                   summary: Forbidden to Service
+                  description: null
                   value:
                     code: FORBIDDEN
                     message: The user has no permission to access this resource.
                     status: 403
                     owner: GYCODING
-                '2':
+                '3':
                   summary: Forbidden to API Gateway
+                  description: null
                   value:
                     code: FORBIDDEN
                     message: The user has no permission to access this resource.
@@ -2244,14 +1886,11 @@ paths:
           content:
             application/json:
               schema: *ref_0
-              examples:
-                '1':
-                  summary: Method Not Allowed
-                  value:
-                    code: METHOD_NOT_ALLOWED
-                    message: Method used to access this resource is not allowed.
-                    status: 405
-                    owner: GYCODING
+              example:
+                code: METHOD_NOT_ALLOWED
+                message: Method used to access this resource is not allowed.
+                status: 405
+                owner: GYCODING
           headers: {}
         '500':
           description: ''
@@ -2259,8 +1898,9 @@ paths:
             application/json:
               schema: *ref_0
               examples:
-                '1':
+                '4':
                   summary: Database Error
+                  description: null
                   value:
                     code: DB_ERROR
                     message: >-
@@ -2268,8 +1908,9 @@ paths:
                       inconvenience.
                     status: 500
                     owner: GYCODING
-                '2':
+                '5':
                   summary: Auth Error from Service
+                  description: null
                   value:
                     code: AUTH_ERROR
                     message: >-
@@ -2277,8 +1918,9 @@ paths:
                       sorry for the inconvenience.
                     status: 500
                     owner: GYCODING
-                '3':
+                '6':
                   summary: Auth Error from API Gateway
+                  description: null
                   value:
                     code: AUTH_ERROR
                     message: >-
@@ -2286,8 +1928,9 @@ paths:
                       sorry for the inconvenience.
                     status: 500
                     owner: API_GATEWAY
-                '4':
+                '7':
                   summary: Gateway Error
+                  description: null
                   value:
                     code: GATEWAY_ERROR
                     message: >-
@@ -2295,8 +1938,9 @@ paths:
                       inconvenience.
                     status: 500
                     owner: API_GATEWAY
-                '5':
+                '8':
                   summary: Server Error
+                  description: null
                   value:
                     code: SERVER_ERROR
                     message: >-
@@ -2341,44 +1985,17 @@ paths:
           content:
             application/json:
               schema: *ref_0
-              examples:
-                '1':
-                  summary: Bad Request
-                  value:
-                    code: BAD_REQUEST
-                    message: The endpoint is malformed.
-                    status: 400
-                    owner: API_GATEWAY
+              example:
+                code: BAD_REQUEST
+                message: The endpoint is malformed.
+                status: 400
+                owner: API_GATEWAY
           headers: {}
         '401':
           description: ''
           content:
             application/json:
               schema: *ref_0
-              examples:
-                '1':
-                  summary: Invalid Login
-                  value:
-                    code: INVALID_LOGIN
-                    message: >-
-                      Invalid login due to the non existance of the user or
-                      invalid password.
-                    status: 401
-                    owner: GYCODING
-                '2':
-                  summary: Unauthorized to Service
-                  value:
-                    code: UNAUTHORIZED
-                    message: The user is not authorized to access this resource.
-                    status: 401
-                    owner: GYCODING
-                '3':
-                  summary: Unauthorized to API Gateway
-                  value:
-                    code: UNAUTHORIZED
-                    message: The user is not authorized to access this resource.
-                    status: 401
-                    owner: API_GATEWAY
           headers: {}
         '403':
           description: ''
@@ -2386,15 +2003,17 @@ paths:
             application/json:
               schema: *ref_0
               examples:
-                '1':
+                '2':
                   summary: Forbidden to Service
+                  description: null
                   value:
                     code: FORBIDDEN
                     message: The user has no permission to access this resource.
                     status: 403
                     owner: GYCODING
-                '2':
+                '3':
                   summary: Forbidden to API Gateway
+                  description: null
                   value:
                     code: FORBIDDEN
                     message: The user has no permission to access this resource.
@@ -2406,35 +2025,17 @@ paths:
           content:
             application/json:
               schema: *ref_0
-              examples:
-                '1':
-                  summary: Token Not Found
-                  value:
-                    code: TOKEN_NOT_FOUND
-                    message: Authentication token was not found.
-                    status: 404
-                    owner: API_GATEWAY
-                '2':
-                  summary: Resource Not Found
-                  value:
-                    code: RESOURCE_NOT_FOUND
-                    message: This resource was not found.
-                    status: 404
-                    owner: GYCODING
           headers: {}
         '405':
           description: ''
           content:
             application/json:
               schema: *ref_0
-              examples:
-                '1':
-                  summary: Method Not Allowed
-                  value:
-                    code: METHOD_NOT_ALLOWED
-                    message: Method used to access this resource is not allowed.
-                    status: 405
-                    owner: GYCODING
+              example:
+                code: METHOD_NOT_ALLOWED
+                message: Method used to access this resource is not allowed.
+                status: 405
+                owner: GYCODING
           headers: {}
         '500':
           description: ''
@@ -2442,8 +2043,9 @@ paths:
             application/json:
               schema: *ref_0
               examples:
-                '1':
+                '4':
                   summary: Database Error
+                  description: null
                   value:
                     code: DB_ERROR
                     message: >-
@@ -2451,8 +2053,9 @@ paths:
                       inconvenience.
                     status: 500
                     owner: GYCODING
-                '2':
+                '5':
                   summary: Auth Error from Service
+                  description: null
                   value:
                     code: AUTH_ERROR
                     message: >-
@@ -2460,8 +2063,9 @@ paths:
                       sorry for the inconvenience.
                     status: 500
                     owner: GYCODING
-                '3':
+                '6':
                   summary: Auth Error from API Gateway
+                  description: null
                   value:
                     code: AUTH_ERROR
                     message: >-
@@ -2469,8 +2073,9 @@ paths:
                       sorry for the inconvenience.
                     status: 500
                     owner: API_GATEWAY
-                '4':
+                '7':
                   summary: Gateway Error
+                  description: null
                   value:
                     code: GATEWAY_ERROR
                     message: >-
@@ -2478,8 +2083,9 @@ paths:
                       inconvenience.
                     status: 500
                     owner: API_GATEWAY
-                '5':
+                '8':
                   summary: Server Error
+                  description: null
                   value:
                     code: SERVER_ERROR
                     message: >-
@@ -2514,7 +2120,7 @@ paths:
           text/plain:
             schema:
               type: string
-            example: '123456789'
+            example: 123456789
       responses:
         '200':
           description: ''
@@ -2529,60 +2135,30 @@ paths:
           content:
             application/json:
               schema: *ref_0
-              examples:
-                '1':
-                  summary: Resource Not Modified
-                  value:
-                    code: RESOURCE_NOT_MODIFIED
-                    message: >-
-                      The resource could not be modified due to some internal
-                      conflict or error.
-                    status: 304
-                    owner: GYCODING
+              example:
+                code: RESOURCE_NOT_MODIFIED
+                message: >-
+                  The resource could not be modified due to some internal
+                  conflict or error.
+                status: 304
+                owner: GYCODING
           headers: {}
         '400':
           description: ''
           content:
             application/json:
               schema: *ref_0
-              examples:
-                '1':
-                  summary: Bad Request
-                  value:
-                    code: BAD_REQUEST
-                    message: The endpoint is malformed.
-                    status: 400
-                    owner: API_GATEWAY
+              example:
+                code: BAD_REQUEST
+                message: The endpoint is malformed.
+                status: 400
+                owner: API_GATEWAY
           headers: {}
         '401':
           description: ''
           content:
             application/json:
               schema: *ref_0
-              examples:
-                '1':
-                  summary: Invalid Login
-                  value:
-                    code: INVALID_LOGIN
-                    message: >-
-                      Invalid login due to the non existance of the user or
-                      invalid password.
-                    status: 401
-                    owner: GYCODING
-                '2':
-                  summary: Unauthorized to Service
-                  value:
-                    code: UNAUTHORIZED
-                    message: The user is not authorized to access this resource.
-                    status: 401
-                    owner: GYCODING
-                '3':
-                  summary: Unauthorized to API Gateway
-                  value:
-                    code: UNAUTHORIZED
-                    message: The user is not authorized to access this resource.
-                    status: 401
-                    owner: API_GATEWAY
           headers: {}
         '403':
           description: ''
@@ -2590,15 +2166,17 @@ paths:
             application/json:
               schema: *ref_0
               examples:
-                '1':
+                '2':
                   summary: Forbidden to Service
+                  description: null
                   value:
                     code: FORBIDDEN
                     message: The user has no permission to access this resource.
                     status: 403
                     owner: GYCODING
-                '2':
+                '3':
                   summary: Forbidden to API Gateway
+                  description: null
                   value:
                     code: FORBIDDEN
                     message: The user has no permission to access this resource.
@@ -2610,14 +2188,11 @@ paths:
           content:
             application/json:
               schema: *ref_0
-              examples:
-                '1':
-                  summary: Method Not Allowed
-                  value:
-                    code: METHOD_NOT_ALLOWED
-                    message: Method used to access this resource is not allowed.
-                    status: 405
-                    owner: GYCODING
+              example:
+                code: METHOD_NOT_ALLOWED
+                message: Method used to access this resource is not allowed.
+                status: 405
+                owner: GYCODING
           headers: {}
         '500':
           description: ''
@@ -2625,8 +2200,9 @@ paths:
             application/json:
               schema: *ref_0
               examples:
-                '1':
+                '4':
                   summary: Database Error
+                  description: null
                   value:
                     code: DB_ERROR
                     message: >-
@@ -2634,8 +2210,9 @@ paths:
                       inconvenience.
                     status: 500
                     owner: GYCODING
-                '2':
+                '5':
                   summary: Auth Error from Service
+                  description: null
                   value:
                     code: AUTH_ERROR
                     message: >-
@@ -2643,8 +2220,9 @@ paths:
                       sorry for the inconvenience.
                     status: 500
                     owner: GYCODING
-                '3':
+                '6':
                   summary: Auth Error from API Gateway
+                  description: null
                   value:
                     code: AUTH_ERROR
                     message: >-
@@ -2652,8 +2230,9 @@ paths:
                       sorry for the inconvenience.
                     status: 500
                     owner: API_GATEWAY
-                '4':
+                '7':
                   summary: Gateway Error
+                  description: null
                   value:
                     code: GATEWAY_ERROR
                     message: >-
@@ -2661,8 +2240,9 @@ paths:
                       inconvenience.
                     status: 500
                     owner: API_GATEWAY
-                '5':
+                '8':
                   summary: Server Error
+                  description: null
                   value:
                     code: SERVER_ERROR
                     message: >-
@@ -2713,60 +2293,30 @@ paths:
           content:
             application/json:
               schema: *ref_0
-              examples:
-                '1':
-                  summary: Resource Not Modified
-                  value:
-                    code: RESOURCE_NOT_MODIFIED
-                    message: >-
-                      The resource could not be modified due to some internal
-                      conflict or error.
-                    status: 304
-                    owner: GYCODING
+              example:
+                code: RESOURCE_NOT_MODIFIED
+                message: >-
+                  The resource could not be modified due to some internal
+                  conflict or error.
+                status: 304
+                owner: GYCODING
           headers: {}
         '400':
           description: ''
           content:
             application/json:
               schema: *ref_0
-              examples:
-                '1':
-                  summary: Bad Request
-                  value:
-                    code: BAD_REQUEST
-                    message: The endpoint is malformed.
-                    status: 400
-                    owner: API_GATEWAY
+              example:
+                code: BAD_REQUEST
+                message: The endpoint is malformed.
+                status: 400
+                owner: API_GATEWAY
           headers: {}
         '401':
           description: ''
           content:
             application/json:
               schema: *ref_0
-              examples:
-                '1':
-                  summary: Invalid Login
-                  value:
-                    code: INVALID_LOGIN
-                    message: >-
-                      Invalid login due to the non existance of the user or
-                      invalid password.
-                    status: 401
-                    owner: GYCODING
-                '2':
-                  summary: Unauthorized to Service
-                  value:
-                    code: UNAUTHORIZED
-                    message: The user is not authorized to access this resource.
-                    status: 401
-                    owner: GYCODING
-                '3':
-                  summary: Unauthorized to API Gateway
-                  value:
-                    code: UNAUTHORIZED
-                    message: The user is not authorized to access this resource.
-                    status: 401
-                    owner: API_GATEWAY
           headers: {}
         '403':
           description: ''
@@ -2774,15 +2324,17 @@ paths:
             application/json:
               schema: *ref_0
               examples:
-                '1':
+                '2':
                   summary: Forbidden to Service
+                  description: null
                   value:
                     code: FORBIDDEN
                     message: The user has no permission to access this resource.
                     status: 403
                     owner: GYCODING
-                '2':
+                '3':
                   summary: Forbidden to API Gateway
+                  description: null
                   value:
                     code: FORBIDDEN
                     message: The user has no permission to access this resource.
@@ -2794,14 +2346,11 @@ paths:
           content:
             application/json:
               schema: *ref_0
-              examples:
-                '1':
-                  summary: Method Not Allowed
-                  value:
-                    code: METHOD_NOT_ALLOWED
-                    message: Method used to access this resource is not allowed.
-                    status: 405
-                    owner: GYCODING
+              example:
+                code: METHOD_NOT_ALLOWED
+                message: Method used to access this resource is not allowed.
+                status: 405
+                owner: GYCODING
           headers: {}
         '500':
           description: ''
@@ -2809,8 +2358,9 @@ paths:
             application/json:
               schema: *ref_0
               examples:
-                '1':
+                '4':
                   summary: Database Error
+                  description: null
                   value:
                     code: DB_ERROR
                     message: >-
@@ -2818,8 +2368,9 @@ paths:
                       inconvenience.
                     status: 500
                     owner: GYCODING
-                '2':
+                '5':
                   summary: Auth Error from Service
+                  description: null
                   value:
                     code: AUTH_ERROR
                     message: >-
@@ -2827,8 +2378,9 @@ paths:
                       sorry for the inconvenience.
                     status: 500
                     owner: GYCODING
-                '3':
+                '6':
                   summary: Auth Error from API Gateway
+                  description: null
                   value:
                     code: AUTH_ERROR
                     message: >-
@@ -2836,8 +2388,9 @@ paths:
                       sorry for the inconvenience.
                     status: 500
                     owner: API_GATEWAY
-                '4':
+                '7':
                   summary: Gateway Error
+                  description: null
                   value:
                     code: GATEWAY_ERROR
                     message: >-
@@ -2845,8 +2398,9 @@ paths:
                       inconvenience.
                     status: 500
                     owner: API_GATEWAY
-                '5':
+                '8':
                   summary: Server Error
+                  description: null
                   value:
                     code: SERVER_ERROR
                     message: >-
@@ -2890,44 +2444,17 @@ paths:
           content:
             application/json:
               schema: *ref_0
-              examples:
-                '1':
-                  summary: Bad Request
-                  value:
-                    code: BAD_REQUEST
-                    message: The endpoint is malformed.
-                    status: 400
-                    owner: API_GATEWAY
+              example:
+                code: BAD_REQUEST
+                message: The endpoint is malformed.
+                status: 400
+                owner: API_GATEWAY
           headers: {}
         '401':
           description: ''
           content:
             application/json:
               schema: *ref_0
-              examples:
-                '1':
-                  summary: Invalid Login
-                  value:
-                    code: INVALID_LOGIN
-                    message: >-
-                      Invalid login due to the non existance of the user or
-                      invalid password.
-                    status: 401
-                    owner: GYCODING
-                '2':
-                  summary: Unauthorized to Service
-                  value:
-                    code: UNAUTHORIZED
-                    message: The user is not authorized to access this resource.
-                    status: 401
-                    owner: GYCODING
-                '3':
-                  summary: Unauthorized to API Gateway
-                  value:
-                    code: UNAUTHORIZED
-                    message: The user is not authorized to access this resource.
-                    status: 401
-                    owner: API_GATEWAY
           headers: {}
         '403':
           description: ''
@@ -2935,15 +2462,17 @@ paths:
             application/json:
               schema: *ref_0
               examples:
-                '1':
+                '2':
                   summary: Forbidden to Service
+                  description: null
                   value:
                     code: FORBIDDEN
                     message: The user has no permission to access this resource.
                     status: 403
                     owner: GYCODING
-                '2':
+                '3':
                   summary: Forbidden to API Gateway
+                  description: null
                   value:
                     code: FORBIDDEN
                     message: The user has no permission to access this resource.
@@ -2955,35 +2484,17 @@ paths:
           content:
             application/json:
               schema: *ref_0
-              examples:
-                '1':
-                  summary: Token Not Found
-                  value:
-                    code: TOKEN_NOT_FOUND
-                    message: Authentication token was not found.
-                    status: 404
-                    owner: API_GATEWAY
-                '2':
-                  summary: Resource Not Found
-                  value:
-                    code: RESOURCE_NOT_FOUND
-                    message: This resource was not found.
-                    status: 404
-                    owner: GYCODING
           headers: {}
         '405':
           description: ''
           content:
             application/json:
               schema: *ref_0
-              examples:
-                '1':
-                  summary: Method Not Allowed
-                  value:
-                    code: METHOD_NOT_ALLOWED
-                    message: Method used to access this resource is not allowed.
-                    status: 405
-                    owner: GYCODING
+              example:
+                code: METHOD_NOT_ALLOWED
+                message: Method used to access this resource is not allowed.
+                status: 405
+                owner: GYCODING
           headers: {}
         '500':
           description: ''
@@ -2991,8 +2502,9 @@ paths:
             application/json:
               schema: *ref_0
               examples:
-                '1':
+                '4':
                   summary: Database Error
+                  description: null
                   value:
                     code: DB_ERROR
                     message: >-
@@ -3000,8 +2512,9 @@ paths:
                       inconvenience.
                     status: 500
                     owner: GYCODING
-                '2':
+                '5':
                   summary: Auth Error from Service
+                  description: null
                   value:
                     code: AUTH_ERROR
                     message: >-
@@ -3009,8 +2522,9 @@ paths:
                       sorry for the inconvenience.
                     status: 500
                     owner: GYCODING
-                '3':
+                '6':
                   summary: Auth Error from API Gateway
+                  description: null
                   value:
                     code: AUTH_ERROR
                     message: >-
@@ -3018,8 +2532,9 @@ paths:
                       sorry for the inconvenience.
                     status: 500
                     owner: API_GATEWAY
-                '4':
+                '7':
                   summary: Gateway Error
+                  description: null
                   value:
                     code: GATEWAY_ERROR
                     message: >-
@@ -3027,8 +2542,9 @@ paths:
                       inconvenience.
                     status: 500
                     owner: API_GATEWAY
-                '5':
+                '8':
                   summary: Server Error
+                  description: null
                   value:
                     code: SERVER_ERROR
                     message: >-
@@ -3047,12 +2563,306 @@ paths:
       description: Modifies user's metadata.
       tags:
         - Users
+      parameters: []
+      responses:
+        '204':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+          headers: {}
+        '304':
+          description: ''
+          content:
+            application/json:
+              schema: *ref_0
+              example:
+                code: RESOURCE_NOT_MODIFIED
+                message: >-
+                  The resource could not be modified due to some internal
+                  conflict or error.
+                status: 304
+                owner: GYCODING
+          headers: {}
+        '400':
+          description: ''
+          content:
+            application/json:
+              schema: *ref_0
+              example:
+                code: BAD_REQUEST
+                message: The endpoint is malformed.
+                status: 400
+                owner: API_GATEWAY
+          headers: {}
+        '401':
+          description: ''
+          content:
+            application/json:
+              schema: *ref_0
+          headers: {}
+        '403':
+          description: ''
+          content:
+            application/json:
+              schema: *ref_0
+              examples:
+                '2':
+                  summary: Forbidden to Service
+                  description: null
+                  value:
+                    code: FORBIDDEN
+                    message: The user has no permission to access this resource.
+                    status: 403
+                    owner: GYCODING
+                '3':
+                  summary: Forbidden to API Gateway
+                  description: null
+                  value:
+                    code: FORBIDDEN
+                    message: The user has no permission to access this resource.
+                    status: 403
+                    owner: API_GATEWAY
+          headers: {}
+        '405':
+          description: ''
+          content:
+            application/json:
+              schema: *ref_0
+              example:
+                code: METHOD_NOT_ALLOWED
+                message: Method used to access this resource is not allowed.
+                status: 405
+                owner: GYCODING
+          headers: {}
+        '500':
+          description: ''
+          content:
+            application/json:
+              schema: *ref_0
+              examples:
+                '4':
+                  summary: Database Error
+                  description: null
+                  value:
+                    code: DB_ERROR
+                    message: >-
+                      An error with the database has occurred, sorry for the
+                      inconvenience.
+                    status: 500
+                    owner: GYCODING
+                '5':
+                  summary: Auth Error from Service
+                  description: null
+                  value:
+                    code: AUTH_ERROR
+                    message: >-
+                      An error with the authentication service has occurred,
+                      sorry for the inconvenience.
+                    status: 500
+                    owner: GYCODING
+                '6':
+                  summary: Auth Error from API Gateway
+                  description: null
+                  value:
+                    code: AUTH_ERROR
+                    message: >-
+                      An error with the authentication service has occurred,
+                      sorry for the inconvenience.
+                    status: 500
+                    owner: API_GATEWAY
+                '7':
+                  summary: Gateway Error
+                  description: null
+                  value:
+                    code: GATEWAY_ERROR
+                    message: >-
+                      An internal API Gateway error has occurred, sorry for the
+                      inconvenience.
+                    status: 500
+                    owner: API_GATEWAY
+                '8':
+                  summary: Server Error
+                  description: null
+                  value:
+                    code: SERVER_ERROR
+                    message: >-
+                      An internal server error has occurred, sorry for the
+                      inconvenience.
+                    status: 500
+                    owner: GYCODING
+          headers: {}
+      security: []
+      x-roles:
+        - COMMON
+        - ADMIN
+  /user/metadata/apikey:
+    patch:
+      summary: Refresh API Key
+      deprecated: false
+      description: Refreshes user's API Key.
+      tags:
+        - Users
       parameters:
-        - name: x-user-id
+        - name: Authorization
           in: header
-          description: User ID.
-          required: true
-          example: auth0|66905b3c9542112d5d2d5306
+          description: Authorization token.
+          required: false
+          example: >-
+            eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..cGATxjlGSXP08LPq.HAXheZlEA_ti_1My5ckNynUeRircb4RAfF9EAuR97z9Xnr5pr8S4fVLb94e4_jHdjWXNzUPi2M9-m_suqgh4MbPq0wulFQjEOiQ8f-aeVi8MGyM3CKnNTbMBuxQIXnhZICY0zlg6q97j65BdMLWYf3_6reFmbn2dDho8HAjTrLbndySJUvzRmxQrypKsQF1tUIxcYcLLRjT_MbXBDVLxvZ-9wJ4kJv_goXgpCIiiJZSxy53xJ0d_f5EwxeqdPiHW3P3DRmwq3pbTFR2b4tQulKLr7vEKONvfUoS_Sc5GWXTdiecfkU5eJRDLETr5kdi0Z4onmYOI5JD_4OTAqH-3wPgJaHJuhIa09A.aLtbCGpqXOZHHqKxKqC-uA
+          schema:
+            type: string
+            default: >-
+              eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..cGATxjlGSXP08LPq.HAXheZlEA_ti_1My5ckNynUeRircb4RAfF9EAuR97z9Xnr5pr8S4fVLb94e4_jHdjWXNzUPi2M9-m_suqgh4MbPq0wulFQjEOiQ8f-aeVi8MGyM3CKnNTbMBuxQIXnhZICY0zlg6q97j65BdMLWYf3_6reFmbn2dDho8HAjTrLbndySJUvzRmxQrypKsQF1tUIxcYcLLRjT_MbXBDVLxvZ-9wJ4kJv_goXgpCIiiJZSxy53xJ0d_f5EwxeqdPiHW3P3DRmwq3pbTFR2b4tQulKLr7vEKONvfUoS_Sc5GWXTdiecfkU5eJRDLETr5kdi0Z4onmYOI5JD_4OTAqH-3wPgJaHJuhIa09A.aLtbCGpqXOZHHqKxKqC-uA
+      responses:
+        '204':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+          headers: {}
+        '304':
+          description: ''
+          content:
+            application/json:
+              schema: *ref_0
+              example:
+                code: RESOURCE_NOT_MODIFIED
+                message: >-
+                  The resource could not be modified due to some internal
+                  conflict or error.
+                status: 304
+                owner: GYCODING
+          headers: {}
+        '400':
+          description: ''
+          content:
+            application/json:
+              schema: *ref_0
+              example:
+                code: BAD_REQUEST
+                message: The endpoint is malformed.
+                status: 400
+                owner: API_GATEWAY
+          headers: {}
+        '401':
+          description: ''
+          content:
+            application/json:
+              schema: *ref_0
+          headers: {}
+        '403':
+          description: ''
+          content:
+            application/json:
+              schema: *ref_0
+              examples:
+                '2':
+                  summary: Forbidden to Service
+                  description: null
+                  value:
+                    code: FORBIDDEN
+                    message: The user has no permission to access this resource.
+                    status: 403
+                    owner: GYCODING
+                '3':
+                  summary: Forbidden to API Gateway
+                  description: null
+                  value:
+                    code: FORBIDDEN
+                    message: The user has no permission to access this resource.
+                    status: 403
+                    owner: API_GATEWAY
+          headers: {}
+        '405':
+          description: ''
+          content:
+            application/json:
+              schema: *ref_0
+              example:
+                code: METHOD_NOT_ALLOWED
+                message: Method used to access this resource is not allowed.
+                status: 405
+                owner: GYCODING
+          headers: {}
+        '500':
+          description: ''
+          content:
+            application/json:
+              schema: *ref_0
+              examples:
+                '4':
+                  summary: Database Error
+                  description: null
+                  value:
+                    code: DB_ERROR
+                    message: >-
+                      An error with the database has occurred, sorry for the
+                      inconvenience.
+                    status: 500
+                    owner: GYCODING
+                '5':
+                  summary: Auth Error from Service
+                  description: null
+                  value:
+                    code: AUTH_ERROR
+                    message: >-
+                      An error with the authentication service has occurred,
+                      sorry for the inconvenience.
+                    status: 500
+                    owner: GYCODING
+                '6':
+                  summary: Auth Error from API Gateway
+                  description: null
+                  value:
+                    code: AUTH_ERROR
+                    message: >-
+                      An error with the authentication service has occurred,
+                      sorry for the inconvenience.
+                    status: 500
+                    owner: API_GATEWAY
+                '7':
+                  summary: Gateway Error
+                  description: null
+                  value:
+                    code: GATEWAY_ERROR
+                    message: >-
+                      An internal API Gateway error has occurred, sorry for the
+                      inconvenience.
+                    status: 500
+                    owner: API_GATEWAY
+                '8':
+                  summary: Server Error
+                  description: null
+                  value:
+                    code: SERVER_ERROR
+                    message: >-
+                      An internal server error has occurred, sorry for the
+                      inconvenience.
+                    status: 500
+                    owner: GYCODING
+          headers: {}
+      security: []
+      x-roles:
+        - COMMON
+        - ADMIN
+  /user/metadata/apikey/decode:
+    get:
+      summary: Decode API Key
+      deprecated: false
+      description: Decodes user's API Key returning its User ID.
+      tags:
+        - Users
+      parameters:
+        - name: key
+          in: query
+          description: User's API Key
+          required: false
+          example: djUCK7lmqqcGrUsBsOUJTZDNwAZHbG6SCiWz5EPJLnE
           schema:
             type: string
       responses:
@@ -3069,60 +2879,30 @@ paths:
           content:
             application/json:
               schema: *ref_0
-              examples:
-                '1':
-                  summary: Resource Not Modified
-                  value:
-                    code: RESOURCE_NOT_MODIFIED
-                    message: >-
-                      The resource could not be modified due to some internal
-                      conflict or error.
-                    status: 304
-                    owner: GYCODING
+              example:
+                code: RESOURCE_NOT_MODIFIED
+                message: >-
+                  The resource could not be modified due to some internal
+                  conflict or error.
+                status: 304
+                owner: GYCODING
           headers: {}
         '400':
           description: ''
           content:
             application/json:
               schema: *ref_0
-              examples:
-                '1':
-                  summary: Bad Request
-                  value:
-                    code: BAD_REQUEST
-                    message: The endpoint is malformed.
-                    status: 400
-                    owner: API_GATEWAY
+              example:
+                code: BAD_REQUEST
+                message: The endpoint is malformed.
+                status: 400
+                owner: API_GATEWAY
           headers: {}
         '401':
           description: ''
           content:
             application/json:
               schema: *ref_0
-              examples:
-                '1':
-                  summary: Invalid Login
-                  value:
-                    code: INVALID_LOGIN
-                    message: >-
-                      Invalid login due to the non existance of the user or
-                      invalid password.
-                    status: 401
-                    owner: GYCODING
-                '2':
-                  summary: Unauthorized to Service
-                  value:
-                    code: UNAUTHORIZED
-                    message: The user is not authorized to access this resource.
-                    status: 401
-                    owner: GYCODING
-                '3':
-                  summary: Unauthorized to API Gateway
-                  value:
-                    code: UNAUTHORIZED
-                    message: The user is not authorized to access this resource.
-                    status: 401
-                    owner: API_GATEWAY
           headers: {}
         '403':
           description: ''
@@ -3130,15 +2910,17 @@ paths:
             application/json:
               schema: *ref_0
               examples:
-                '1':
+                '2':
                   summary: Forbidden to Service
+                  description: null
                   value:
                     code: FORBIDDEN
                     message: The user has no permission to access this resource.
                     status: 403
                     owner: GYCODING
-                '2':
+                '3':
                   summary: Forbidden to API Gateway
+                  description: null
                   value:
                     code: FORBIDDEN
                     message: The user has no permission to access this resource.
@@ -3150,14 +2932,11 @@ paths:
           content:
             application/json:
               schema: *ref_0
-              examples:
-                '1':
-                  summary: Method Not Allowed
-                  value:
-                    code: METHOD_NOT_ALLOWED
-                    message: Method used to access this resource is not allowed.
-                    status: 405
-                    owner: GYCODING
+              example:
+                code: METHOD_NOT_ALLOWED
+                message: Method used to access this resource is not allowed.
+                status: 405
+                owner: GYCODING
           headers: {}
         '500':
           description: ''
@@ -3165,8 +2944,9 @@ paths:
             application/json:
               schema: *ref_0
               examples:
-                '1':
+                '4':
                   summary: Database Error
+                  description: null
                   value:
                     code: DB_ERROR
                     message: >-
@@ -3174,8 +2954,9 @@ paths:
                       inconvenience.
                     status: 500
                     owner: GYCODING
-                '2':
+                '5':
                   summary: Auth Error from Service
+                  description: null
                   value:
                     code: AUTH_ERROR
                     message: >-
@@ -3183,8 +2964,9 @@ paths:
                       sorry for the inconvenience.
                     status: 500
                     owner: GYCODING
-                '3':
+                '6':
                   summary: Auth Error from API Gateway
+                  description: null
                   value:
                     code: AUTH_ERROR
                     message: >-
@@ -3192,8 +2974,9 @@ paths:
                       sorry for the inconvenience.
                     status: 500
                     owner: API_GATEWAY
-                '4':
+                '7':
                   summary: Gateway Error
+                  description: null
                   value:
                     code: GATEWAY_ERROR
                     message: >-
@@ -3201,8 +2984,9 @@ paths:
                       inconvenience.
                     status: 500
                     owner: API_GATEWAY
-                '5':
+                '8':
                   summary: Server Error
+                  description: null
                   value:
                     code: SERVER_ERROR
                     message: >-
@@ -3212,9 +2996,7 @@ paths:
                     owner: GYCODING
           headers: {}
       security: []
-      x-roles:
-        - COMMON
-        - ADMIN
+      x-roles: []
 components:
   schemas:
     Login Response:
