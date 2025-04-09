@@ -3021,5 +3021,7 @@ components:
         - owner
       description: Error Response object.
   securitySchemes: {}
-servers: []
+servers:
+  - url: http://api.gycoding.com/accounts
+    description: Production
 security: []

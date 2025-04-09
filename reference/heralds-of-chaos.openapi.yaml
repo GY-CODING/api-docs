@@ -7156,5 +7156,7 @@ components:
         - owner
       description: Error Response object.
   securitySchemes: {}
-servers: []
+servers:
+  - url: https://api.gycoding.com/fallofthegods
+    description: Production
 security: []

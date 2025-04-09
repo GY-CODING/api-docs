@@ -959,5 +959,7 @@ components:
         - state
       description: Message object.
   securitySchemes: {}
-servers: []
+servers:
+  - url: https://api.gycoding.com/messages
+    description: Production
 security: []
