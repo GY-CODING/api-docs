@@ -3605,13 +3605,11 @@ paths:
       x-roles:
         - COMMON
         - ADMIN
-  /creatures/get:
+  /creatures/game/get:
     get:
-      summary: Get Creature
+      summary: Get Creature from Game
       deprecated: false
-      description: >-
-        Retrieves a specific character from the whole universe of Fall of the
-        Gods.
+      description: Retrieves a specific creature from the games of Fall of the Gods.
       tags:
         - Creatures
       parameters:
@@ -3761,12 +3759,166 @@ paths:
       x-roles:
         - COMMON
         - ADMIN
-  /creatures/list:
+  /creatures/story/get:
     get:
-      summary: List Creatures
+      summary: Get Creature from Story
       deprecated: false
       description: >-
-        Retrieves a non-paginated list of all the characters from the whole
+        Retrieves a specific creature from the whole universe of Fall of the
+        Gods.
+      tags:
+        - Creatures
+      parameters:
+        - name: id
+          in: query
+          description: Character's identifier.
+          required: true
+          example: audumbla
+          schema:
+            type: string
+        - name: lang
+          in: query
+          description: Language of the response.
+          required: true
+          example: es
+          schema:
+            type: string
+            enum:
+              - es
+              - en
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema: *ref_6
+          headers: {}
+        '400':
+          description: ''
+          content:
+            application/json:
+              schema: *ref_0
+              example:
+                code: BAD_REQUEST
+                message: The endpoint is malformed.
+                status: 400
+                owner: API_GATEWAY
+          headers: {}
+        '403':
+          description: ''
+          content:
+            application/json:
+              schema: *ref_0
+              examples:
+                '2':
+                  summary: Forbidden to Service
+                  value:
+                    code: FORBIDDEN
+                    message: The user has no permission to access this resource.
+                    status: 403
+                    owner: GYCODING
+                '3':
+                  summary: Forbidden to API Gateway
+                  value:
+                    code: FORBIDDEN
+                    message: The user has no permission to access this resource.
+                    status: 403
+                    owner: API_GATEWAY
+          headers: {}
+        '404':
+          description: ''
+          content:
+            application/json:
+              schema: *ref_0
+              examples:
+                '4':
+                  summary: Token Not Found
+                  value:
+                    code: TOKEN_NOT_FOUND
+                    message: Authentication token was not found.
+                    status: 404
+                    owner: API_GATEWAY
+                '5':
+                  summary: Resource Not Found
+                  value:
+                    code: RESOURCE_NOT_FOUND
+                    message: This resource was not found.
+                    status: 404
+                    owner: GYCODING
+          headers: {}
+        '405':
+          description: ''
+          content:
+            application/json:
+              schema: *ref_0
+              example:
+                code: METHOD_NOT_ALLOWED
+                message: Method used to access this resource is not allowed.
+                status: 405
+                owner: GYCODING
+          headers: {}
+        '500':
+          description: ''
+          content:
+            application/json:
+              schema: *ref_0
+              examples:
+                '7':
+                  summary: Database Error
+                  value:
+                    code: DB_ERROR
+                    message: >-
+                      An error with the database has occurred, sorry for the
+                      inconvenience.
+                    status: 500
+                    owner: GYCODING
+                '8':
+                  summary: Auth Error from Service
+                  value:
+                    code: AUTH_ERROR
+                    message: >-
+                      An error with the authentication service has occurred,
+                      sorry for the inconvenience.
+                    status: 500
+                    owner: GYCODING
+                '9':
+                  summary: Auth Error from API Gateway
+                  value:
+                    code: AUTH_ERROR
+                    message: >-
+                      An error with the authentication service has occurred,
+                      sorry for the inconvenience.
+                    status: 500
+                    owner: API_GATEWAY
+                '10':
+                  summary: Gateway Error
+                  value:
+                    code: GATEWAY_ERROR
+                    message: >-
+                      An internal API Gateway error has occurred, sorry for the
+                      inconvenience.
+                    status: 500
+                    owner: API_GATEWAY
+                '11':
+                  summary: Server Error
+                  value:
+                    code: SERVER_ERROR
+                    message: >-
+                      An internal server error has occurred, sorry for the
+                      inconvenience.
+                    status: 500
+                    owner: GYCODING
+          headers: {}
+      security: []
+      x-roles:
+        - COMMON
+        - ADMIN
+  /creatures/story/list:
+    get:
+      summary: List Creatures from Story
+      deprecated: false
+      description: >-
+        Retrieves a non-paginated list of all the creatures from the whole
         universe of Fall of the Gods.
       tags:
         - Creatures
@@ -3912,13 +4064,329 @@ paths:
       x-roles:
         - COMMON
         - ADMIN
-  /creatures/page:
+  /creatures/game/list:
     get:
-      summary: Page Characters
+      summary: List Creatures from Game
       deprecated: false
       description: >-
-        Retrieves a paginated list of all the characters from the whole universe
+        Retrieves a non-paginated list of all the creatures from the games of
+        Fall of the Gods.
+      tags:
+        - Creatures
+      parameters:
+        - name: lang
+          in: query
+          description: Language of the response.
+          required: true
+          example: es
+          schema:
+            type: string
+            enum:
+              - es
+              - en
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items: *ref_6
+                description: List of creatures.
+                uniqueItems: true
+          headers: {}
+        '400':
+          description: ''
+          content:
+            application/json:
+              schema: *ref_0
+              example:
+                code: BAD_REQUEST
+                message: The endpoint is malformed.
+                status: 400
+                owner: API_GATEWAY
+          headers: {}
+        '403':
+          description: ''
+          content:
+            application/json:
+              schema: *ref_0
+              examples:
+                '2':
+                  summary: Forbidden to Service
+                  value:
+                    code: FORBIDDEN
+                    message: The user has no permission to access this resource.
+                    status: 403
+                    owner: GYCODING
+                '3':
+                  summary: Forbidden to API Gateway
+                  value:
+                    code: FORBIDDEN
+                    message: The user has no permission to access this resource.
+                    status: 403
+                    owner: API_GATEWAY
+          headers: {}
+        '404':
+          description: ''
+          content:
+            application/json:
+              schema: *ref_0
+              examples:
+                '4':
+                  summary: Token Not Found
+                  value:
+                    code: TOKEN_NOT_FOUND
+                    message: Authentication token was not found.
+                    status: 404
+                    owner: API_GATEWAY
+                '5':
+                  summary: Resource Not Found
+                  value:
+                    code: RESOURCE_NOT_FOUND
+                    message: This resource was not found.
+                    status: 404
+                    owner: GYCODING
+          headers: {}
+        '405':
+          description: ''
+          content:
+            application/json:
+              schema: *ref_0
+              example:
+                code: METHOD_NOT_ALLOWED
+                message: Method used to access this resource is not allowed.
+                status: 405
+                owner: GYCODING
+          headers: {}
+        '500':
+          description: ''
+          content:
+            application/json:
+              schema: *ref_0
+              examples:
+                '7':
+                  summary: Database Error
+                  value:
+                    code: DB_ERROR
+                    message: >-
+                      An error with the database has occurred, sorry for the
+                      inconvenience.
+                    status: 500
+                    owner: GYCODING
+                '8':
+                  summary: Auth Error from Service
+                  value:
+                    code: AUTH_ERROR
+                    message: >-
+                      An error with the authentication service has occurred,
+                      sorry for the inconvenience.
+                    status: 500
+                    owner: GYCODING
+                '9':
+                  summary: Auth Error from API Gateway
+                  value:
+                    code: AUTH_ERROR
+                    message: >-
+                      An error with the authentication service has occurred,
+                      sorry for the inconvenience.
+                    status: 500
+                    owner: API_GATEWAY
+                '10':
+                  summary: Gateway Error
+                  value:
+                    code: GATEWAY_ERROR
+                    message: >-
+                      An internal API Gateway error has occurred, sorry for the
+                      inconvenience.
+                    status: 500
+                    owner: API_GATEWAY
+                '11':
+                  summary: Server Error
+                  value:
+                    code: SERVER_ERROR
+                    message: >-
+                      An internal server error has occurred, sorry for the
+                      inconvenience.
+                    status: 500
+                    owner: GYCODING
+          headers: {}
+      security: []
+      x-roles:
+        - COMMON
+        - ADMIN
+  /creatures/story/page:
+    get:
+      summary: Page Characters from Story
+      deprecated: false
+      description: >-
+        Retrieves a paginated list of all the creatures from the whole universe
         of Fall of the Gods.
+      tags:
+        - Creatures
+      parameters:
+        - name: page
+          in: query
+          description: Number of page.
+          required: true
+          example: 1
+          schema:
+            type: integer
+        - name: size
+          in: query
+          description: Amount of elements to show on one page.
+          required: true
+          example: 10
+          schema:
+            type: integer
+        - name: lang
+          in: query
+          description: Language of the response.
+          required: true
+          example: es
+          schema:
+            type: string
+            enum:
+              - es
+              - en
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items: *ref_6
+                description: List of creatures.
+                uniqueItems: true
+          headers: {}
+        '400':
+          description: ''
+          content:
+            application/json:
+              schema: *ref_0
+              example:
+                code: BAD_REQUEST
+                message: The endpoint is malformed.
+                status: 400
+                owner: API_GATEWAY
+          headers: {}
+        '403':
+          description: ''
+          content:
+            application/json:
+              schema: *ref_0
+              examples:
+                '2':
+                  summary: Forbidden to Service
+                  value:
+                    code: FORBIDDEN
+                    message: The user has no permission to access this resource.
+                    status: 403
+                    owner: GYCODING
+                '3':
+                  summary: Forbidden to API Gateway
+                  value:
+                    code: FORBIDDEN
+                    message: The user has no permission to access this resource.
+                    status: 403
+                    owner: API_GATEWAY
+          headers: {}
+        '404':
+          description: ''
+          content:
+            application/json:
+              schema: *ref_0
+              examples:
+                '4':
+                  summary: Token Not Found
+                  value:
+                    code: TOKEN_NOT_FOUND
+                    message: Authentication token was not found.
+                    status: 404
+                    owner: API_GATEWAY
+                '5':
+                  summary: Resource Not Found
+                  value:
+                    code: RESOURCE_NOT_FOUND
+                    message: This resource was not found.
+                    status: 404
+                    owner: GYCODING
+          headers: {}
+        '405':
+          description: ''
+          content:
+            application/json:
+              schema: *ref_0
+              example:
+                code: METHOD_NOT_ALLOWED
+                message: Method used to access this resource is not allowed.
+                status: 405
+                owner: GYCODING
+          headers: {}
+        '500':
+          description: ''
+          content:
+            application/json:
+              schema: *ref_0
+              examples:
+                '7':
+                  summary: Database Error
+                  value:
+                    code: DB_ERROR
+                    message: >-
+                      An error with the database has occurred, sorry for the
+                      inconvenience.
+                    status: 500
+                    owner: GYCODING
+                '8':
+                  summary: Auth Error from Service
+                  value:
+                    code: AUTH_ERROR
+                    message: >-
+                      An error with the authentication service has occurred,
+                      sorry for the inconvenience.
+                    status: 500
+                    owner: GYCODING
+                '9':
+                  summary: Auth Error from API Gateway
+                  value:
+                    code: AUTH_ERROR
+                    message: >-
+                      An error with the authentication service has occurred,
+                      sorry for the inconvenience.
+                    status: 500
+                    owner: API_GATEWAY
+                '10':
+                  summary: Gateway Error
+                  value:
+                    code: GATEWAY_ERROR
+                    message: >-
+                      An internal API Gateway error has occurred, sorry for the
+                      inconvenience.
+                    status: 500
+                    owner: API_GATEWAY
+                '11':
+                  summary: Server Error
+                  value:
+                    code: SERVER_ERROR
+                    message: >-
+                      An internal server error has occurred, sorry for the
+                      inconvenience.
+                    status: 500
+                    owner: GYCODING
+          headers: {}
+      security: []
+      x-roles:
+        - COMMON
+        - ADMIN
+  /creatures/game/page:
+    get:
+      summary: Page Characters from Game
+      deprecated: false
+      description: >-
+        Retrieves a paginated list of all the creatures from the games of Fall
+        of the Gods.
       tags:
         - Creatures
       parameters:
