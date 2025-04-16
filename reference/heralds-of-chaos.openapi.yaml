@@ -10,6 +10,7 @@ tags:
   - name: Achievements
   - name: Creatures
   - name: World
+  - name: Places
 paths:
   /characters/story/get:
     get:
@@ -984,7 +985,7 @@ paths:
             application/json:
               schema: &ref_2
                 $ref: '#/components/schemas/Item'
-                description: Fragment item.
+                description: Item object.
           headers: {}
         '400':
           description: ''
@@ -4566,15 +4567,14 @@ paths:
         content:
           application/json:
             schema: &ref_7
-              $ref: '#/components/schemas/Character4'
+              $ref: '#/components/schemas/Character2'
+            examples: {}
       responses:
         '204':
           description: ''
           content:
             application/json:
-              schema:
-                type: object
-                properties: {}
+              schema: *ref_1
           headers: {}
         '400':
           description: ''
@@ -4715,6 +4715,13 @@ paths:
       tags:
         - Characters
       parameters:
+        - name: id
+          in: query
+          description: Character ID.
+          required: true
+          example: name_test
+          schema:
+            type: string
         - name: Authorization
           in: header
           description: Authorization token.
@@ -4728,14 +4735,13 @@ paths:
         content:
           application/json:
             schema: *ref_7
+            examples: {}
       responses:
         '204':
           description: ''
           content:
             application/json:
-              schema:
-                type: object
-                properties: {}
+              schema: *ref_1
           headers: {}
         '304':
           description: ''
@@ -5042,15 +5048,14 @@ paths:
           application/json:
             schema: &ref_8
               description: World where the character belongs.
-              $ref: '#/components/schemas/World8'
+              $ref: '#/components/schemas/World3'
+            examples: {}
       responses:
         '204':
           description: ''
           content:
             application/json:
-              schema:
-                type: object
-                properties: {}
+              schema: *ref_3
           headers: {}
         '400':
           description: ''
@@ -5204,14 +5209,13 @@ paths:
         content:
           application/json:
             schema: *ref_8
+            examples: {}
       responses:
         '204':
           description: ''
           content:
             application/json:
-              schema:
-                type: object
-                properties: {}
+              schema: *ref_3
           headers: {}
         '304':
           description: ''
@@ -5496,6 +5500,482 @@ paths:
       security: []
       x-roles:
         - ADMIN
+  /worlds/places:
+    post:
+      summary: Insert Place
+      deprecated: false
+      description: Inserts a new Place.
+      tags:
+        - World
+        - Places
+      parameters:
+        - name: Authorization
+          in: header
+          description: Authorization token.
+          example: >-
+            eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..bYYIblHR87x9fMLo.jAOh5ohKhXp60QOuAinea9iTNMAii63aSsamcTbw-BOe7jz0S8HGzpN0Oe9NRxUvDwPjLSNWQmEMkD8Vwi3PZdcbw0RtO1Tui-1Qc29n1sBI2ISEVdjbR54VJJRiLtpBc49StlkKqvDdIuj6EXby8CO-bVnlHB4lBO_jNJ5pO8yz8kFDbDt_3Oeq0hY3ARp8H_FqcF4ZDl1-_R8_nB-qNx3vJrqISjtdPTqsY3x4qg5oh7cSRDGkGIx9iEyeU6aXwxVmAjNIGN0hjD4SByGarcVNKoMkzmZTNiFou4QKMsBlKXPeYIoCH2eYtwcb65AeyECzSREVV-nHO9tum4HcUloMeZTTPvvlgw.CVlNJ4oHO1y_BEptohBa_w
+          schema:
+            type: string
+            default: >-
+              eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..bYYIblHR87x9fMLo.jAOh5ohKhXp60QOuAinea9iTNMAii63aSsamcTbw-BOe7jz0S8HGzpN0Oe9NRxUvDwPjLSNWQmEMkD8Vwi3PZdcbw0RtO1Tui-1Qc29n1sBI2ISEVdjbR54VJJRiLtpBc49StlkKqvDdIuj6EXby8CO-bVnlHB4lBO_jNJ5pO8yz8kFDbDt_3Oeq0hY3ARp8H_FqcF4ZDl1-_R8_nB-qNx3vJrqISjtdPTqsY3x4qg5oh7cSRDGkGIx9iEyeU6aXwxVmAjNIGN0hjD4SByGarcVNKoMkzmZTNiFou4QKMsBlKXPeYIoCH2eYtwcb65AeyECzSREVV-nHO9tum4HcUloMeZTTPvvlgw.CVlNJ4oHO1y_BEptohBa_w
+      requestBody:
+        content:
+          application/json:
+            schema: &ref_9
+              $ref: '#/components/schemas/Place4'
+            examples: {}
+      responses:
+        '204':
+          description: ''
+          content:
+            application/json:
+              schema: *ref_4
+          headers: {}
+        '400':
+          description: ''
+          content:
+            application/json:
+              schema: *ref_0
+              example:
+                code: BAD_REQUEST
+                message: The endpoint is malformed.
+                status: 400
+                owner: API_GATEWAY
+          headers: {}
+        '403':
+          description: ''
+          content:
+            application/json:
+              schema: *ref_0
+              examples:
+                '2':
+                  summary: Forbidden to Service
+                  value:
+                    code: FORBIDDEN
+                    message: The user has no permission to access this resource.
+                    status: 403
+                    owner: GYCODING
+                '3':
+                  summary: Forbidden to API Gateway
+                  value:
+                    code: FORBIDDEN
+                    message: The user has no permission to access this resource.
+                    status: 403
+                    owner: API_GATEWAY
+          headers: {}
+        '404':
+          description: ''
+          content:
+            application/json:
+              schema: *ref_0
+              examples:
+                '4':
+                  summary: Token Not Found
+                  value:
+                    code: TOKEN_NOT_FOUND
+                    message: Authentication token was not found.
+                    status: 404
+                    owner: API_GATEWAY
+                '5':
+                  summary: Resource Not Found
+                  value:
+                    code: RESOURCE_NOT_FOUND
+                    message: This resource was not found.
+                    status: 404
+                    owner: GYCODING
+          headers: {}
+        '405':
+          description: ''
+          content:
+            application/json:
+              schema: *ref_0
+              example:
+                code: METHOD_NOT_ALLOWED
+                message: Method used to access this resource is not allowed.
+                status: 405
+                owner: GYCODING
+          headers: {}
+        '409':
+          description: ''
+          content:
+            application/json:
+              schema: *ref_0
+              example:
+                code: CONFLICT
+                message: >-
+                  An internal conflict between external data and the API has
+                  occured. Requested data may already exist.
+                status: 409
+                owner: GYCODING
+          headers: {}
+        '500':
+          description: ''
+          content:
+            application/json:
+              schema: *ref_0
+              examples:
+                '7':
+                  summary: Database Error
+                  value:
+                    code: DB_ERROR
+                    message: >-
+                      An error with the database has occurred, sorry for the
+                      inconvenience.
+                    status: 500
+                    owner: GYCODING
+                '8':
+                  summary: Auth Error from Service
+                  value:
+                    code: AUTH_ERROR
+                    message: >-
+                      An error with the authentication service has occurred,
+                      sorry for the inconvenience.
+                    status: 500
+                    owner: GYCODING
+                '9':
+                  summary: Auth Error from API Gateway
+                  value:
+                    code: AUTH_ERROR
+                    message: >-
+                      An error with the authentication service has occurred,
+                      sorry for the inconvenience.
+                    status: 500
+                    owner: API_GATEWAY
+                '10':
+                  summary: Gateway Error
+                  value:
+                    code: GATEWAY_ERROR
+                    message: >-
+                      An internal API Gateway error has occurred, sorry for the
+                      inconvenience.
+                    status: 500
+                    owner: API_GATEWAY
+                '11':
+                  summary: Server Error
+                  value:
+                    code: SERVER_ERROR
+                    message: >-
+                      An internal server error has occurred, sorry for the
+                      inconvenience.
+                    status: 500
+                    owner: GYCODING
+          headers: {}
+      security: []
+      x-roles:
+        - ADMIN
+    patch:
+      summary: Update Place
+      deprecated: false
+      description: Completely or partially updates an exisiting Place.
+      tags:
+        - Worlds
+        - Places
+      parameters:
+        - name: Authorization
+          in: header
+          description: Authorization token.
+          example: >-
+            eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..bYYIblHR87x9fMLo.jAOh5ohKhXp60QOuAinea9iTNMAii63aSsamcTbw-BOe7jz0S8HGzpN0Oe9NRxUvDwPjLSNWQmEMkD8Vwi3PZdcbw0RtO1Tui-1Qc29n1sBI2ISEVdjbR54VJJRiLtpBc49StlkKqvDdIuj6EXby8CO-bVnlHB4lBO_jNJ5pO8yz8kFDbDt_3Oeq0hY3ARp8H_FqcF4ZDl1-_R8_nB-qNx3vJrqISjtdPTqsY3x4qg5oh7cSRDGkGIx9iEyeU6aXwxVmAjNIGN0hjD4SByGarcVNKoMkzmZTNiFou4QKMsBlKXPeYIoCH2eYtwcb65AeyECzSREVV-nHO9tum4HcUloMeZTTPvvlgw.CVlNJ4oHO1y_BEptohBa_w
+          schema:
+            type: string
+            default: >-
+              eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..bYYIblHR87x9fMLo.jAOh5ohKhXp60QOuAinea9iTNMAii63aSsamcTbw-BOe7jz0S8HGzpN0Oe9NRxUvDwPjLSNWQmEMkD8Vwi3PZdcbw0RtO1Tui-1Qc29n1sBI2ISEVdjbR54VJJRiLtpBc49StlkKqvDdIuj6EXby8CO-bVnlHB4lBO_jNJ5pO8yz8kFDbDt_3Oeq0hY3ARp8H_FqcF4ZDl1-_R8_nB-qNx3vJrqISjtdPTqsY3x4qg5oh7cSRDGkGIx9iEyeU6aXwxVmAjNIGN0hjD4SByGarcVNKoMkzmZTNiFou4QKMsBlKXPeYIoCH2eYtwcb65AeyECzSREVV-nHO9tum4HcUloMeZTTPvvlgw.CVlNJ4oHO1y_BEptohBa_w
+      requestBody:
+        content:
+          application/json:
+            schema: *ref_9
+            examples: {}
+      responses:
+        '204':
+          description: ''
+          content:
+            application/json:
+              schema: *ref_4
+          headers: {}
+        '304':
+          description: ''
+          content:
+            application/json:
+              schema: *ref_0
+              example:
+                code: RESOURCE_NOT_MODIFIED
+                message: >-
+                  The resource could not be modified due to some internal
+                  conflict or error.
+                status: 304
+                owner: GYCODING
+          headers: {}
+        '400':
+          description: ''
+          content:
+            application/json:
+              schema: *ref_0
+              example:
+                code: BAD_REQUEST
+                message: The endpoint is malformed.
+                status: 400
+                owner: API_GATEWAY
+          headers: {}
+        '403':
+          description: ''
+          content:
+            application/json:
+              schema: *ref_0
+              examples:
+                '2':
+                  summary: Forbidden to Service
+                  value:
+                    code: FORBIDDEN
+                    message: The user has no permission to access this resource.
+                    status: 403
+                    owner: GYCODING
+                '3':
+                  summary: Forbidden to API Gateway
+                  value:
+                    code: FORBIDDEN
+                    message: The user has no permission to access this resource.
+                    status: 403
+                    owner: API_GATEWAY
+          headers: {}
+        '404':
+          description: ''
+          content:
+            application/json:
+              schema: *ref_0
+              examples:
+                '4':
+                  summary: Token Not Found
+                  value:
+                    code: TOKEN_NOT_FOUND
+                    message: Authentication token was not found.
+                    status: 404
+                    owner: API_GATEWAY
+                '5':
+                  summary: Resource Not Found
+                  value:
+                    code: RESOURCE_NOT_FOUND
+                    message: This resource was not found.
+                    status: 404
+                    owner: GYCODING
+          headers: {}
+        '405':
+          description: ''
+          content:
+            application/json:
+              schema: *ref_0
+              example:
+                code: METHOD_NOT_ALLOWED
+                message: Method used to access this resource is not allowed.
+                status: 405
+                owner: GYCODING
+          headers: {}
+        '500':
+          description: ''
+          content:
+            application/json:
+              schema: *ref_0
+              examples:
+                '7':
+                  summary: Database Error
+                  value:
+                    code: DB_ERROR
+                    message: >-
+                      An error with the database has occurred, sorry for the
+                      inconvenience.
+                    status: 500
+                    owner: GYCODING
+                '8':
+                  summary: Auth Error from Service
+                  value:
+                    code: AUTH_ERROR
+                    message: >-
+                      An error with the authentication service has occurred,
+                      sorry for the inconvenience.
+                    status: 500
+                    owner: GYCODING
+                '9':
+                  summary: Auth Error from API Gateway
+                  value:
+                    code: AUTH_ERROR
+                    message: >-
+                      An error with the authentication service has occurred,
+                      sorry for the inconvenience.
+                    status: 500
+                    owner: API_GATEWAY
+                '10':
+                  summary: Gateway Error
+                  value:
+                    code: GATEWAY_ERROR
+                    message: >-
+                      An internal API Gateway error has occurred, sorry for the
+                      inconvenience.
+                    status: 500
+                    owner: API_GATEWAY
+                '11':
+                  summary: Server Error
+                  value:
+                    code: SERVER_ERROR
+                    message: >-
+                      An internal server error has occurred, sorry for the
+                      inconvenience.
+                    status: 500
+                    owner: GYCODING
+          headers: {}
+      security: []
+      x-roles:
+        - ADMIN
+    delete:
+      summary: Remove Place
+      deprecated: false
+      description: Removes an exisiting Place.
+      tags:
+        - Worlds
+        - Places
+      parameters:
+        - name: id
+          in: query
+          description: Place ID.
+          required: false
+          example: place
+          schema:
+            type: string
+        - name: Authorization
+          in: header
+          description: Authorization token.
+          example: >-
+            eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..bYYIblHR87x9fMLo.jAOh5ohKhXp60QOuAinea9iTNMAii63aSsamcTbw-BOe7jz0S8HGzpN0Oe9NRxUvDwPjLSNWQmEMkD8Vwi3PZdcbw0RtO1Tui-1Qc29n1sBI2ISEVdjbR54VJJRiLtpBc49StlkKqvDdIuj6EXby8CO-bVnlHB4lBO_jNJ5pO8yz8kFDbDt_3Oeq0hY3ARp8H_FqcF4ZDl1-_R8_nB-qNx3vJrqISjtdPTqsY3x4qg5oh7cSRDGkGIx9iEyeU6aXwxVmAjNIGN0hjD4SByGarcVNKoMkzmZTNiFou4QKMsBlKXPeYIoCH2eYtwcb65AeyECzSREVV-nHO9tum4HcUloMeZTTPvvlgw.CVlNJ4oHO1y_BEptohBa_w
+          schema:
+            type: string
+            default: >-
+              eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..bYYIblHR87x9fMLo.jAOh5ohKhXp60QOuAinea9iTNMAii63aSsamcTbw-BOe7jz0S8HGzpN0Oe9NRxUvDwPjLSNWQmEMkD8Vwi3PZdcbw0RtO1Tui-1Qc29n1sBI2ISEVdjbR54VJJRiLtpBc49StlkKqvDdIuj6EXby8CO-bVnlHB4lBO_jNJ5pO8yz8kFDbDt_3Oeq0hY3ARp8H_FqcF4ZDl1-_R8_nB-qNx3vJrqISjtdPTqsY3x4qg5oh7cSRDGkGIx9iEyeU6aXwxVmAjNIGN0hjD4SByGarcVNKoMkzmZTNiFou4QKMsBlKXPeYIoCH2eYtwcb65AeyECzSREVV-nHO9tum4HcUloMeZTTPvvlgw.CVlNJ4oHO1y_BEptohBa_w
+      responses:
+        '204':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+          headers: {}
+        '400':
+          description: ''
+          content:
+            application/json:
+              schema: *ref_0
+              example:
+                code: BAD_REQUEST
+                message: The endpoint is malformed.
+                status: 400
+                owner: API_GATEWAY
+          headers: {}
+        '403':
+          description: ''
+          content:
+            application/json:
+              schema: *ref_0
+              examples:
+                '2':
+                  summary: Forbidden to Service
+                  value:
+                    code: FORBIDDEN
+                    message: The user has no permission to access this resource.
+                    status: 403
+                    owner: GYCODING
+                '3':
+                  summary: Forbidden to API Gateway
+                  value:
+                    code: FORBIDDEN
+                    message: The user has no permission to access this resource.
+                    status: 403
+                    owner: API_GATEWAY
+          headers: {}
+        '404':
+          description: ''
+          content:
+            application/json:
+              schema: *ref_0
+              examples:
+                '4':
+                  summary: Token Not Found
+                  value:
+                    code: TOKEN_NOT_FOUND
+                    message: Authentication token was not found.
+                    status: 404
+                    owner: API_GATEWAY
+                '5':
+                  summary: Resource Not Found
+                  value:
+                    code: RESOURCE_NOT_FOUND
+                    message: This resource was not found.
+                    status: 404
+                    owner: GYCODING
+          headers: {}
+        '405':
+          description: ''
+          content:
+            application/json:
+              schema: *ref_0
+              example:
+                code: METHOD_NOT_ALLOWED
+                message: Method used to access this resource is not allowed.
+                status: 405
+                owner: GYCODING
+          headers: {}
+        '500':
+          description: ''
+          content:
+            application/json:
+              schema: *ref_0
+              examples:
+                '7':
+                  summary: Database Error
+                  value:
+                    code: DB_ERROR
+                    message: >-
+                      An error with the database has occurred, sorry for the
+                      inconvenience.
+                    status: 500
+                    owner: GYCODING
+                '8':
+                  summary: Auth Error from Service
+                  value:
+                    code: AUTH_ERROR
+                    message: >-
+                      An error with the authentication service has occurred,
+                      sorry for the inconvenience.
+                    status: 500
+                    owner: GYCODING
+                '9':
+                  summary: Auth Error from API Gateway
+                  value:
+                    code: AUTH_ERROR
+                    message: >-
+                      An error with the authentication service has occurred,
+                      sorry for the inconvenience.
+                    status: 500
+                    owner: API_GATEWAY
+                '10':
+                  summary: Gateway Error
+                  value:
+                    code: GATEWAY_ERROR
+                    message: >-
+                      An internal API Gateway error has occurred, sorry for the
+                      inconvenience.
+                    status: 500
+                    owner: API_GATEWAY
+                '11':
+                  summary: Server Error
+                  value:
+                    code: SERVER_ERROR
+                    message: >-
+                      An internal server error has occurred, sorry for the
+                      inconvenience.
+                    status: 500
+                    owner: GYCODING
+          headers: {}
+      security: []
+      x-roles:
+        - ADMIN
   /items:
     post:
       summary: Insert Item
@@ -5516,17 +5996,15 @@ paths:
       requestBody:
         content:
           application/json:
-            schema: &ref_9
+            schema: &ref_10
               $ref: '#/components/schemas/Item1'
-              description: Fragment item.
+            examples: {}
       responses:
         '204':
           description: ''
           content:
             application/json:
-              schema:
-                type: object
-                properties: {}
+              schema: *ref_2
           headers: {}
         '400':
           description: ''
@@ -5679,15 +6157,14 @@ paths:
       requestBody:
         content:
           application/json:
-            schema: *ref_9
+            schema: *ref_10
+            examples: {}
       responses:
         '204':
           description: ''
           content:
             application/json:
-              schema:
-                type: object
-                properties: {}
+              schema: *ref_2
           headers: {}
         '304':
           description: ''
@@ -5993,46 +6470,14 @@ paths:
         content:
           application/json:
             schema: &ref_11
-              $ref: '#/components/schemas/Achievement11'
+              $ref: '#/components/schemas/Achievement6'
+            examples: {}
       responses:
         '200':
           description: ''
           content:
             application/json:
-              schema:
-                type: object
-                properties:
-                  name: &ref_10
-                    description: Item name.
-                    $ref: '#/components/schemas/Translated%20String'
-                  description: *ref_10
-                  image:
-                    type: string
-                    description: Achievement image.
-                    format: uri
-                  tier:
-                    type: string
-                    description: Achievement tier.
-                    enum:
-                      - BRONZE
-                      - SILVER
-                      - GOLD
-                      - PLATINUM
-                  origin:
-                    type: string
-                    description: Achievement origin.
-                    enum:
-                      - HERALDS_OF_CHAOS
-                  identifier:
-                    type: string
-                    description: Achivement identifier.
-                required:
-                  - identifier
-                  - name
-                  - description
-                  - image
-                  - tier
-                  - origin
+              schema: *ref_5
           headers: {}
         '400':
           description: ''
@@ -6173,6 +6618,13 @@ paths:
       tags:
         - Achievements
       parameters:
+        - name: id
+          in: query
+          description: Achievement ID.
+          required: true
+          example: achievement_test
+          schema:
+            type: string
         - name: Authorization
           in: header
           description: Authorization token.
@@ -6186,14 +6638,13 @@ paths:
         content:
           application/json:
             schema: *ref_11
+            examples: {}
       responses:
         '204':
           description: ''
           content:
             application/json:
-              schema:
-                type: object
-                properties: {}
+              schema: *ref_5
           headers: {}
         '304':
           description: ''
@@ -6499,15 +6950,14 @@ paths:
         content:
           application/json:
             schema: &ref_12
-              $ref: '#/components/schemas/Creature10'
+              $ref: '#/components/schemas/Creature5'
+            examples: {}
       responses:
         '204':
           description: ''
           content:
             application/json:
-              schema:
-                type: object
-                properties: {}
+              schema: *ref_6
           headers: {}
         '400':
           description: ''
@@ -6648,6 +7098,13 @@ paths:
       tags:
         - Creatures
       parameters:
+        - name: id
+          in: query
+          description: Creature ID.
+          required: true
+          example: creature_test
+          schema:
+            type: string
         - name: Authorization
           in: header
           description: Authorization token.
@@ -6661,14 +7118,13 @@ paths:
         content:
           application/json:
             schema: *ref_12
+            examples: {}
       responses:
         '204':
           description: ''
           content:
             application/json:
-              schema:
-                type: object
-                properties: {}
+              schema: *ref_6
           headers: {}
         '304':
           description: ''
@@ -6982,16 +7438,6 @@ components:
             - FRAGMENT
             - UNKNOWN
           description: Item type.
-        fragments:
-          type: array
-          items: *ref_2
-          maxItems: 2
-          description: >-
-            Item fragments, which are other items of type "FRAGMENT" that,
-            together, build this COMPLETE_ITEM.
-        stats:
-          description: Item stats.
-          $ref: '#/components/schemas/Item%20Stats'
       required:
         - identifier
         - name
@@ -6999,54 +7445,7 @@ components:
         - image
         - inGame
         - type
-        - fragments
-        - stats
       description: Item object.
-    Item Stats:
-      type: object
-      properties:
-        physicalDamage: &ref_13
-          description: Physical Damage stat.
-          $ref: '#/components/schemas/Item%20Stat'
-        magicalDamage: *ref_13
-        physicalArmor: *ref_13
-        magicalArmor: *ref_13
-        movementSpeed: *ref_13
-        attackSpeed: *ref_13
-        criticalStrike: *ref_13
-        criticalStrikeProbability: *ref_13
-        health: *ref_13
-        ether: *ref_13
-      required:
-        - physicalDamage
-        - magicalDamage
-        - physicalArmor
-        - magicalArmor
-        - movementSpeed
-        - attackSpeed
-        - criticalStrike
-        - criticalStrikeProbability
-        - health
-        - ether
-      description: Character Stats object.
-    Item Stat: &ref_15
-      type: object
-      properties:
-        type:
-          type: string
-          enum:
-            - fixed
-            - percentual
-          description: >-
-            The item stat type could be fixed or percentual, modifying the
-            behavior of the value property.
-        value:
-          type: number
-          description: Item stat value.
-      required:
-        - type
-        - value
-      description: Item Stat object.
     Character:
       type: object
       properties:
@@ -7087,22 +7486,6 @@ components:
           description: Whether the character is on the game or not.
           default: false
         world: *ref_3
-        stats:
-          description: Character stats.
-          $ref: '#/components/schemas/Character%20Stats'
-        abilities:
-          type: array
-          items:
-            $ref: '#/components/schemas/Ability'
-          uniqueItems: true
-          description: Character abilities.
-        attributes:
-          type: array
-          items:
-            $ref: '#/components/schemas/Attribute'
-          maxItems: 3
-          uniqueItems: true
-          description: Character attributes.
       required:
         - name
         - identifier
@@ -7111,104 +7494,8 @@ components:
         - image
         - inGame
         - world
-        - stats
-        - abilities
-        - attributes
         - race
       description: Character object.
-    Character Stats: &ref_16
-      type: object
-      properties:
-        physicalDamage:
-          type: number
-          description: Physical Damage stat.
-        magicalDamage:
-          type: number
-          description: Magical Damage stat.
-        physicalArmor:
-          type: number
-          description: Physical Damage reduction stat.
-        magicalArmor:
-          type: number
-          description: Magical Damage reduction stat.
-        movementSpeed:
-          type: number
-          description: Movement Speed stat.
-        attackSpeed:
-          type: number
-          description: Attack Speed stat.
-        criticalStrike:
-          type: number
-          description: Critical Strike damage stat.
-        criticalStrikeProbability:
-          type: number
-          description: Probability of getting a Critical Strike on an attack.
-        health:
-          type: number
-          description: Health stat.
-        ether:
-          type: number
-          description: Ether stat. Each ability cast cost a specific amount of this stat.
-      required:
-        - physicalDamage
-        - magicalDamage
-        - physicalArmor
-        - magicalArmor
-        - movementSpeed
-        - attackSpeed
-        - criticalStrike
-        - criticalStrikeProbability
-        - health
-        - ether
-      description: Character Stats object.
-    Ability:
-      type: object
-      properties:
-        identifier:
-          type: string
-          description: Ability identifier.
-        name:
-          type: string
-          description: Ability name.
-        description:
-          type: string
-          description: Ability description.
-        damage:
-          type: number
-          description: Ability damage to deal.
-        life:
-          type: number
-          description: Ability life to add.
-        cooldown:
-          type: number
-          description: Ability cooldown.
-        timeToHit:
-          type: number
-          description: Ability time to hit or delay.
-      required:
-        - identifier
-        - name
-        - description
-        - cooldown
-        - timeToHit
-      description: Ability object.
-    Attribute:
-      type: object
-      properties:
-        identifier:
-          type: string
-          description: Attribute identifier.
-        name:
-          type: string
-          description: Attribute name.
-        description:
-          type: string
-          description: Attribute description.
-      required:
-        - identifier
-        - name
-        - description
-      description: Attribute object.
     World:
       type: object
       properties:
@@ -7337,8 +7624,10 @@ components:
         identifier:
           type: string
           description: Item identifier.
-        name: *ref_10
-        description: *ref_10
+        name: &ref_13
+          description: Item name.
+          $ref: '#/components/schemas/Translated%20String'
+        description: *ref_13
         image:
           type: string
           format: uri
@@ -7354,16 +7643,6 @@ components:
             - FRAGMENT
             - UNKNOWN
           description: Item type.
-        fragments:
-          type: array
-          items: *ref_9
-          maxItems: 2
-          description: >-
-            Item fragments, which are other items of type "FRAGMENT" that,
-            together, build this COMPLETE_ITEM.
-        stats:
-          description: Item stats.
-          $ref: '#/components/schemas/Item%20Stats2'
       required:
         - identifier
         - name
@@ -7371,44 +7650,14 @@ components:
         - image
         - inGame
         - type
-        - fragments
-        - stats
       description: Item object.
-    Item Stats2:
+    Character2:
       type: object
       properties:
-        physicalDamage: &ref_14
-          description: Physical Damage stat.
-          $ref: '#/components/schemas/Item%20Stat3'
-        magicalDamage: *ref_14
-        physicalArmor: *ref_14
-        magicalArmor: *ref_14
-        movementSpeed: *ref_14
-        attackSpeed: *ref_14
-        criticalStrike: *ref_14
-        criticalStrikeProbability: *ref_14
-        health: *ref_14
-        ether: *ref_14
-      required:
-        - physicalDamage
-        - magicalDamage
-        - physicalArmor
-        - magicalArmor
-        - movementSpeed
-        - attackSpeed
-        - criticalStrike
-        - criticalStrikeProbability
-        - health
-        - ether
-      description: Character Stats object.
-    Item Stat3: *ref_15
-    Character4:
-      type: object
-      properties:
-        name: *ref_10
-        title: *ref_10
-        description: *ref_10
-        race: *ref_10
+        name: *ref_13
+        title: *ref_13
+        description: *ref_13
+        race: *ref_13
         image:
           type: string
           format: uri
@@ -7418,22 +7667,6 @@ components:
           description: Whether the character is on the game or not.
           default: false
         world: *ref_8
-        stats:
-          description: Character stats.
-          $ref: '#/components/schemas/Character%20Stats5'
-        abilities:
-          type: array
-          items:
-            $ref: '#/components/schemas/Ability6'
-          uniqueItems: true
-          description: Character abilities.
-        attributes:
-          type: array
-          items:
-            $ref: '#/components/schemas/Attribute7'
-          maxItems: 3
-          uniqueItems: true
-          description: Character attributes.
       required:
         - name
         - description
@@ -7441,53 +7674,16 @@ components:
         - image
         - inGame
         - world
-        - stats
-        - abilities
-        - attributes
         - race
       description: Character object.
-    Character Stats5: *ref_16
-    Ability6:
+    World3:
       type: object
       properties:
-        name: *ref_10
-        description: *ref_10
-        damage:
-          type: number
-          description: Ability damage to deal.
-        life:
-          type: number
-          description: Ability life to add.
-        cooldown:
-          type: number
-          description: Ability cooldown.
-        timeToHit:
-          type: number
-          description: Ability time to hit or delay.
-      required:
-        - name
-        - description
-        - cooldown
-        - timeToHit
-      description: Ability object.
-    Attribute7:
-      type: object
-      properties:
-        name: *ref_10
-        description: *ref_10
-      required:
-        - name
-        - description
-      description: Attribute object.
-    World8:
-      type: object
-      properties:
-        name: *ref_10
-        description: *ref_10
+        name: *ref_13
+        description: *ref_13
         places:
           type: array
-          items:
-            $ref: '#/components/schemas/Place9'
+          items: *ref_9
           description: World places.
         image:
           type: string
@@ -7504,11 +7700,11 @@ components:
         - image
         - detailedIcon
       description: World object.
-    Place9:
+    Place4:
       type: object
       properties:
-        name: *ref_10
-        description: *ref_10
+        name: *ref_13
+        description: *ref_13
         image:
           type: string
           format: uri
@@ -7523,11 +7719,11 @@ components:
         - image
         - inGame
       description: Place object.
-    Creature10:
+    Creature5:
       type: object
       properties:
-        name: *ref_10
-        description: *ref_10
+        name: *ref_13
+        description: *ref_13
         image:
           type: string
           format: uri
@@ -7541,11 +7737,11 @@ components:
         - image
         - inGame
       description: Creature object.
-    Achievement11:
+    Achievement6:
       type: object
       properties:
-        name: *ref_10
-        description: *ref_10
+        name: *ref_13
+        description: *ref_13
         image:
           type: string
           description: Achievement image.
