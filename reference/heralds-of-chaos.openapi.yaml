@@ -16,8 +16,8 @@ paths:
       summary: Get Character
       deprecated: false
       description: >-
-        Retrieves a specific character from the whole universe of Fall of the
-        Gods.
+        Retrieves a specific character from the whole universe of Heralds of
+        Chaos.
       tags:
         - Characters
       parameters:
@@ -174,7 +174,7 @@ paths:
       deprecated: false
       description: >-
         Retrieves a non-paginated list of all the characters from the whole
-        universe of Fall of the Gods.
+        universe of Heralds of Chaos.
       tags:
         - Characters
       parameters:
@@ -325,7 +325,7 @@ paths:
       deprecated: false
       description: >-
         Retrieves a paginated list of all the characters from the whole universe
-        of Fall of the Gods.
+        of Heralds of Chaos.
       tags:
         - Characters
       parameters:
@@ -488,7 +488,7 @@ paths:
     get:
       summary: Get Item
       deprecated: false
-      description: Retrieves a specific item from the whole universe of Fall of the Gods.
+      description: Retrieves a specific item from the whole universe of Heralds of Chaos.
       tags:
         - Items
       parameters:
@@ -644,7 +644,7 @@ paths:
       deprecated: false
       description: >-
         Retrieves a non-paginated list of all the items from the whole universe
-        of Fall of the Gods.
+        of Heralds of Chaos.
       tags:
         - Items
       parameters:
@@ -794,7 +794,7 @@ paths:
       deprecated: false
       description: >-
         Retrieves a paginated list of all the items from the whole universe of
-        Fall of the Gods.
+        Heralds of Chaos.
       tags:
         - Items
       parameters:
@@ -956,7 +956,7 @@ paths:
     get:
       summary: Get World
       deprecated: false
-      description: Retrieves a specific world from the whole universe of Fall of the Gods.
+      description: Retrieves a specific world from the whole universe of Heralds of Chaos.
       tags:
         - Worlds
       parameters:
@@ -1110,7 +1110,7 @@ paths:
     get:
       summary: Get Place
       deprecated: false
-      description: Retrieves a specific place from the whole universe of Fall of the Gods.
+      description: Retrieves a specific place from the whole universe of Heralds of Chaos.
       tags:
         - Worlds
       parameters:
@@ -1263,7 +1263,9 @@ paths:
     get:
       summary: List Worlds
       deprecated: false
-      description: Retrieves a non-paginated list of all the worlds.
+      description: >-
+        Retrieves a non-paginated list of all the worlds from the whole universe
+        of Heralds of Chaos.
       tags:
         - Worlds
       parameters:
@@ -1411,7 +1413,9 @@ paths:
     get:
       summary: List Places
       deprecated: false
-      description: Retrieves a non-paginated list of all the places.
+      description: >-
+        Retrieves a non-paginated list of all the places from the whole universe
+        of Heralds of Chaos.
       tags:
         - Worlds
       parameters:
@@ -1560,8 +1564,8 @@ paths:
       summary: List Places by World
       deprecated: false
       description: >-
-        Retrieves a non-paginated list of all the places inside a specific
-        world.
+        Retrieves a non-paginated list of all the places inside a specific world
+        from the whole universe of Heralds of Chaos.
       tags:
         - Worlds
       parameters:
@@ -1716,7 +1720,9 @@ paths:
     get:
       summary: Page Worlds
       deprecated: false
-      description: Retrieves a paginated list of all the worlds.
+      description: >-
+        Retrieves a paginated list of all the worlds from the whole universe of
+        Heralds of Chaos.
       tags:
         - Worlds
       parameters:
@@ -1878,7 +1884,9 @@ paths:
     get:
       summary: Page Places
       deprecated: false
-      description: Retrieves a paginated list of all the places.
+      description: >-
+        Retrieves a paginated list of all the places from the whole universe of
+        Heralds of Chaos.
       tags:
         - Worlds
       parameters:
@@ -2041,8 +2049,8 @@ paths:
       summary: Get Creature
       deprecated: false
       description: >-
-        Retrieves a specific creature from the whole universe of Fall of the
-        Gods.
+        Retrieves a specific creature from the whole universe of Heralds of
+        Chaos.
       tags:
         - Creatures
       parameters:
@@ -2198,7 +2206,7 @@ paths:
       deprecated: false
       description: >-
         Retrieves a non-paginated list of all the creatures from the whole
-        universe of Fall of the Gods.
+        universe of Heralds of Chaos.
       tags:
         - Creatures
       parameters:
@@ -2349,7 +2357,7 @@ paths:
       deprecated: false
       description: >-
         Retrieves a paginated list of all the creatures from the whole universe
-        of Fall of the Gods.
+        of Heralds of Chaos.
       tags:
         - Creatures
       parameters:
@@ -5237,6 +5245,6 @@ components:
       description: Error Response object.
   securitySchemes: {}
 servers:
-  - url: https://api.gycoding.com/fallofthegods
+  - url: https://api.gycoding.com/heraldsofchaos
     description: Production
 security: []
