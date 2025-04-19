@@ -4917,10 +4917,6 @@ components:
           type: string
           format: uri
           description: Item image.
-        inGame:
-          type: boolean
-          default: false
-          description: Whether the item is on the game or not.
         type:
           type: string
           enum:
@@ -4933,7 +4929,6 @@ components:
         - name
         - description
         - image
-        - inGame
         - type
       description: Item object.
     Character:
@@ -4971,10 +4966,6 @@ components:
           type: string
           format: uri
           description: Character image.
-        inGame:
-          type: boolean
-          description: Whether the character is on the game or not.
-          default: false
         world: *ref_3
       required:
         - name
@@ -4982,7 +4973,6 @@ components:
         - description
         - title
         - image
-        - inGame
         - world
         - race
       description: Character object.
@@ -5034,16 +5024,11 @@ components:
           type: string
           format: uri
           description: Place image.
-        inGame:
-          type: boolean
-          description: Whether the place is on the game or not.
-          default: false
       required:
         - identifier
         - name
         - description
         - image
-        - inGame
       description: Place object.
     Creature:
       type: object
@@ -5061,15 +5046,11 @@ components:
           type: string
           format: uri
           description: Creature image.
-        inGame:
-          type: boolean
-          description: Whether the creature is on the game or not.
       required:
         - identifier
         - name
         - description
         - image
-        - inGame
       description: Creature object.
     Item1:
       type: object
@@ -5085,10 +5066,6 @@ components:
           type: string
           format: uri
           description: Item image.
-        inGame:
-          type: boolean
-          default: false
-          description: Whether the item is on the game or not.
         type:
           type: string
           enum:
@@ -5101,7 +5078,6 @@ components:
         - name
         - description
         - image
-        - inGame
         - type
       description: Item object.
     Character2:
@@ -5115,17 +5091,12 @@ components:
           type: string
           format: uri
           description: Character image.
-        inGame:
-          type: boolean
-          description: Whether the character is on the game or not.
-          default: false
         world: *ref_7
       required:
         - name
         - description
         - title
         - image
-        - inGame
         - world
         - race
       description: Character object.
@@ -5162,15 +5133,10 @@ components:
           type: string
           format: uri
           description: Place image.
-        inGame:
-          type: boolean
-          description: Whether the place is on the game or not.
-          default: false
       required:
         - name
         - description
         - image
-        - inGame
       description: Place object.
     Creature5:
       type: object
@@ -5181,14 +5147,10 @@ components:
           type: string
           format: uri
           description: Creature image.
-        inGame:
-          type: boolean
-          description: Whether the creature is on the game or not.
       required:
         - name
         - description
         - image
-        - inGame
       description: Creature object.
     Translated String:
       type: object
