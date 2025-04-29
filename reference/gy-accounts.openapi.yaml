@@ -2911,6 +2911,7 @@ components:
           type: string
           description: User email.
           format: email
+          pattern: ^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$
         password:
           type: string
           description: User password.
@@ -2927,6 +2928,7 @@ components:
         phoneNumber:
           type: string
           description: User phone number.
+          pattern: ^\+\d{1,3}\s\d{4,14}$
         roles:
           type: array
           items:
