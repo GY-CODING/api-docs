@@ -11,7 +11,7 @@ tags:
   - name: World
   - name: Places
 paths:
-  /characters/get:
+  /characters/{id}:
     get:
       summary: Get Character
       deprecated: false
@@ -22,8 +22,8 @@ paths:
         - Characters
       parameters:
         - name: id
-          in: query
-          description: Character identifier.
+          in: path
+          description: Character's identifier.
           required: true
           example: odin
           schema:
@@ -484,7 +484,7 @@ paths:
       x-roles:
         - COMMON
         - ADMIN
-  /items/get:
+  /items/{id}:
     get:
       summary: Get Item
       deprecated: false
@@ -493,7 +493,7 @@ paths:
         - Items
       parameters:
         - name: id
-          in: query
+          in: path
           description: Item's identifier.
           required: true
           example: mjolnir
@@ -952,7 +952,7 @@ paths:
       x-roles:
         - COMMON
         - ADMIN
-  /worlds/get:
+  /worlds/{id}:
     get:
       summary: Get World
       deprecated: false
@@ -961,8 +961,8 @@ paths:
         - Worlds
       parameters:
         - name: id
-          in: query
-          description: World identifier.
+          in: path
+          description: World's identifier.
           required: true
           example: asgard
           schema:
@@ -1106,7 +1106,7 @@ paths:
       x-roles:
         - COMMON
         - ADMIN
-  /worlds/places/get:
+  /worlds/places/{id}:
     get:
       summary: Get Place
       deprecated: false
@@ -1115,8 +1115,8 @@ paths:
         - Worlds
       parameters:
         - name: id
-          in: query
-          description: Place identifier.
+          in: path
+          description: Place's identifier.
           required: true
           example: idavoll
           schema:
@@ -1409,7 +1409,7 @@ paths:
       x-roles:
         - COMMON
         - ADMIN
-  /worlds/places/listAll:
+  /worlds/places/list:
     get:
       summary: List Places
       deprecated: false
@@ -1559,7 +1559,7 @@ paths:
       x-roles:
         - COMMON
         - ADMIN
-  /worlds/places/list:
+  /worlds/places/{id}/list:
     get:
       summary: List Places by World
       deprecated: false
@@ -1570,10 +1570,10 @@ paths:
         - Worlds
       parameters:
         - name: id
-          in: query
-          description: World identifier.
+          in: path
+          description: World's identifier.
           required: true
-          example: vanaheim
+          example: asgard
           schema:
             type: string
         - name: lang
@@ -1880,7 +1880,7 @@ paths:
       x-roles:
         - COMMON
         - ADMIN
-  /worlds/places/pageAll:
+  /worlds/places/page:
     get:
       summary: Page Places
       deprecated: false
@@ -2044,7 +2044,7 @@ paths:
       x-roles:
         - COMMON
         - ADMIN
-  /creatures/get:
+  /creatures/{id}:
     get:
       summary: Get Creature
       deprecated: false
@@ -2055,8 +2055,8 @@ paths:
         - Creatures
       parameters:
         - name: id
-          in: query
-          description: Character's identifier.
+          in: path
+          description: Creature's identifier.
           required: true
           example: audumbla
           schema:
