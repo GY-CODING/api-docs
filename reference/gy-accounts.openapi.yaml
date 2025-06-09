@@ -3111,6 +3111,6 @@ components:
       description: Error Response object.
   securitySchemes: {}
 servers:
-  - url: http://api.gycoding.com/accounts
+  - url: https://api.gycoding.com/accounts
     description: Production
 security: []
