@@ -14,7 +14,8 @@ async function fetchAPIRoutes() {
     const apiDocsServicesPaths = [
         "https://raw.githubusercontent.com/GY-CODING/api-docs/refs/heads/master/reference/heralds-of-chaos.openapi.yaml",
         "https://raw.githubusercontent.com/GY-CODING/api-docs/refs/heads/master/reference/gy-accounts.openapi.yaml",
-        "https://raw.githubusercontent.com/GY-CODING/api-docs/refs/heads/master/reference/gy-messages.openapi.yaml"
+        "https://raw.githubusercontent.com/GY-CODING/api-docs/refs/heads/master/reference/gy-messages.openapi.yaml",
+        "https://raw.githubusercontent.com/GY-CODING/api-docs/refs/heads/master/reference/gy-books.openapi.yaml"
     ];
 
     const routes = new Array();
