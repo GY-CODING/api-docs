@@ -5,6 +5,7 @@ info:
   version: 1.0.0
 tags:
   - name: Ratings
+  - name: Books
 paths:
   /ratings/{id}:
     get:
@@ -19,7 +20,7 @@ paths:
           in: path
           description: Book ID.
           required: true
-          example: '427966'
+          example: '382700'
           schema:
             type: string
         - name: Authorization
@@ -56,7 +57,7 @@ paths:
           in: path
           description: Book ID.
           required: true
-          example: '427966'
+          example: '382700'
           schema:
             type: string
         - name: Authorization
@@ -96,7 +97,7 @@ paths:
           in: path
           description: ''
           required: true
-          example: '427966'
+          example: '382700'
           schema:
             type: string
         - name: Authorization
@@ -156,6 +157,91 @@ paths:
       x-roles:
         - COMMON
         - ADMIN
+  /{id}:
+    get:
+      summary: Get Book
+      deprecated: false
+      description: Retrieves a book.
+      tags:
+        - Books
+        - Books
+      parameters:
+        - name: id
+          in: path
+          description: Book ID.
+          required: true
+          example: '382700'
+          schema:
+            type: string
+        - name: Authorization
+          in: header
+          description: Authorization token.
+          example: >-
+            eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..cGATxjlGSXP08LPq.HAXheZlEA_ti_1My5ckNynUeRircb4RAfF9EAuR97z9Xnr5pr8S4fVLb94e4_jHdjWXNzUPi2M9-m_suqgh4MbPq0wulFQjEOiQ8f-aeVi8MGyM3CKnNTbMBuxQIXnhZICY0zlg6q97j65BdMLWYf3_6reFmbn2dDho8HAjTrLbndySJUvzRmxQrypKsQF1tUIxcYcLLRjT_MbXBDVLxvZ-9wJ4kJv_goXgpCIiiJZSxy53xJ0d_f5EwxeqdPiHW3P3DRmwq3pbTFR2b4tQulKLr7vEKONvfUoS_Sc5GWXTdiecfkU5eJRDLETr5kdi0Z4onmYOI5JD_4OTAqH-3wPgJaHJuhIa09A.aLtbCGpqXOZHHqKxKqC-uA
+          schema:
+            type: string
+            default: >-
+              eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..cGATxjlGSXP08LPq.HAXheZlEA_ti_1My5ckNynUeRircb4RAfF9EAuR97z9Xnr5pr8S4fVLb94e4_jHdjWXNzUPi2M9-m_suqgh4MbPq0wulFQjEOiQ8f-aeVi8MGyM3CKnNTbMBuxQIXnhZICY0zlg6q97j65BdMLWYf3_6reFmbn2dDho8HAjTrLbndySJUvzRmxQrypKsQF1tUIxcYcLLRjT_MbXBDVLxvZ-9wJ4kJv_goXgpCIiiJZSxy53xJ0d_f5EwxeqdPiHW3P3DRmwq3pbTFR2b4tQulKLr7vEKONvfUoS_Sc5GWXTdiecfkU5eJRDLETr5kdi0Z4onmYOI5JD_4OTAqH-3wPgJaHJuhIa09A.aLtbCGpqXOZHHqKxKqC-uA
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Book'
+          headers: {}
+      security: []
+      x-roles:
+        - COMMON
+        - ADMIN
+    patch:
+      summary: Update Book Status
+      deprecated: false
+      description: Updates Book read status.
+      tags:
+        - Books
+        - Books
+      parameters:
+        - name: id
+          in: path
+          description: Book ID.
+          required: true
+          example: '382700'
+          schema:
+            type: string
+        - name: status
+          in: query
+          description: Book read status.
+          required: true
+          example: READ
+          schema:
+            type: string
+            enum:
+              - WANT_TO_READ
+              - READING
+              - READ
+        - name: Authorization
+          in: header
+          description: Authorization token.
+          example: >-
+            eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..cGATxjlGSXP08LPq.HAXheZlEA_ti_1My5ckNynUeRircb4RAfF9EAuR97z9Xnr5pr8S4fVLb94e4_jHdjWXNzUPi2M9-m_suqgh4MbPq0wulFQjEOiQ8f-aeVi8MGyM3CKnNTbMBuxQIXnhZICY0zlg6q97j65BdMLWYf3_6reFmbn2dDho8HAjTrLbndySJUvzRmxQrypKsQF1tUIxcYcLLRjT_MbXBDVLxvZ-9wJ4kJv_goXgpCIiiJZSxy53xJ0d_f5EwxeqdPiHW3P3DRmwq3pbTFR2b4tQulKLr7vEKONvfUoS_Sc5GWXTdiecfkU5eJRDLETr5kdi0Z4onmYOI5JD_4OTAqH-3wPgJaHJuhIa09A.aLtbCGpqXOZHHqKxKqC-uA
+          schema:
+            type: string
+            default: >-
+              eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..cGATxjlGSXP08LPq.HAXheZlEA_ti_1My5ckNynUeRircb4RAfF9EAuR97z9Xnr5pr8S4fVLb94e4_jHdjWXNzUPi2M9-m_suqgh4MbPq0wulFQjEOiQ8f-aeVi8MGyM3CKnNTbMBuxQIXnhZICY0zlg6q97j65BdMLWYf3_6reFmbn2dDho8HAjTrLbndySJUvzRmxQrypKsQF1tUIxcYcLLRjT_MbXBDVLxvZ-9wJ4kJv_goXgpCIiiJZSxy53xJ0d_f5EwxeqdPiHW3P3DRmwq3pbTFR2b4tQulKLr7vEKONvfUoS_Sc5GWXTdiecfkU5eJRDLETr5kdi0Z4onmYOI5JD_4OTAqH-3wPgJaHJuhIa09A.aLtbCGpqXOZHHqKxKqC-uA
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+          headers: {}
+      security: []
+      x-roles:
+        - COMMON
+        - ADMIN
 components:
   schemas:
     Book:
@@ -164,73 +250,20 @@ components:
         id:
           type: string
           description: Book ID.
-        title:
-          type: string
-          description: Book Title.
-        cover:
-          type: string
-          description: Book Cover.
-          format: uri
-        author:
-          type: string
-          description: Book Author.
-        series:
-          description: Book Series.
-          $ref: '#/components/schemas/Series'
         averageRating:
           type: number
           description: Book Avergate Rating.
-        publishDate:
+        status:
           type: string
-          description: Book Publish Date.
-          format: date
-        pageCount:
-          type: number
-          description: Book Number of Pages.
+          enum:
+            - WANT_TO_READ
+            - READING
+            - READ
+          description: Book read status.
       required:
         - id
-        - title
-        - cover
-        - author
-        - publishDate
-        - pageCount
         - averageRating
-    Author:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Author ID.
-          format: uuid
-        name:
-          type: string
-          description: Author Name.
-        selfLink:
-          type: string
-          format: uri
-          description: Author Self Link
-      required:
-        - id
-        - name
-        - selfLink
-    Series:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Series ID.
-          format: uuid
-        name:
-          type: string
-          description: Series Name.
-        selfLink:
-          type: string
-          format: uri
-          description: Series Self URL.
-      required:
-        - id
-        - name
-        - selfLink
+        - status
     Rating:
       type: object
       properties:
