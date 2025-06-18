@@ -222,17 +222,7 @@ paths:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                status:
-                  type: string
-                  enum:
-                    - WANT_TO_READ
-                    - READING
-                    - READ
-                  description: Book read status.
-              required:
-                - status
+              $ref: '#/components/schemas/Book%20Status'
             examples: {}
       responses:
         '200':
@@ -297,6 +287,18 @@ components:
         - startDate
         - endDate
       description: Rating Object.
+    Book Status:
+      type: object
+      properties:
+        status:
+          type: string
+          description: Book read status.
+          enum:
+            - WANT_TO_READ
+            - READING
+            - READ
+      required:
+        - status
   securitySchemes: {}
 servers:
   - url: https://api.gycoding.com/books
