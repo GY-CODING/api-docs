@@ -209,17 +209,6 @@ paths:
           example: '382700'
           schema:
             type: string
-        - name: status
-          in: query
-          description: Book read status.
-          required: true
-          example: READ
-          schema:
-            type: string
-            enum:
-              - WANT_TO_READ
-              - READING
-              - READ
         - name: Authorization
           in: header
           description: Authorization token.
@@ -236,7 +225,16 @@ paths:
             application/json:
               schema:
                 type: object
-                properties: {}
+                properties:
+                  status:
+                    type: string
+                    description: Book read status.
+                    enum:
+                      - WANT_TO_READ
+                      - READING
+                      - READ
+                required:
+                  - status
           headers: {}
       security: []
       x-roles:
