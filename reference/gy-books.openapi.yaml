@@ -157,9 +157,9 @@ paths:
       x-roles:
         - COMMON
         - ADMIN
-  /{id}:
+  /{id}/public:
     get:
-      summary: Get Book
+      summary: Get Book Public
       deprecated: false
       description: Retrieves a book.
       tags:
@@ -178,8 +178,44 @@ paths:
           description: ''
           content:
             application/json:
-              schema:
+              schema: &ref_1
                 $ref: '#/components/schemas/Book'
+          headers: {}
+      security: []
+      x-roles:
+        - COMMON
+        - ADMIN
+  /{id}:
+    get:
+      summary: Get Book
+      deprecated: false
+      description: Retrieves a book.
+      tags:
+        - Books
+        - Books
+      parameters:
+        - name: id
+          in: path
+          description: Book ID.
+          required: true
+          example: '382700'
+          schema:
+            type: string
+        - name: Authorization
+          in: header
+          description: Authorization token.
+          example: >-
+            eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..cGATxjlGSXP08LPq.HAXheZlEA_ti_1My5ckNynUeRircb4RAfF9EAuR97z9Xnr5pr8S4fVLb94e4_jHdjWXNzUPi2M9-m_suqgh4MbPq0wulFQjEOiQ8f-aeVi8MGyM3CKnNTbMBuxQIXnhZICY0zlg6q97j65BdMLWYf3_6reFmbn2dDho8HAjTrLbndySJUvzRmxQrypKsQF1tUIxcYcLLRjT_MbXBDVLxvZ-9wJ4kJv_goXgpCIiiJZSxy53xJ0d_f5EwxeqdPiHW3P3DRmwq3pbTFR2b4tQulKLr7vEKONvfUoS_Sc5GWXTdiecfkU5eJRDLETr5kdi0Z4onmYOI5JD_4OTAqH-3wPgJaHJuhIa09A.aLtbCGpqXOZHHqKxKqC-uA
+          schema:
+            type: string
+            default: >-
+              eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..cGATxjlGSXP08LPq.HAXheZlEA_ti_1My5ckNynUeRircb4RAfF9EAuR97z9Xnr5pr8S4fVLb94e4_jHdjWXNzUPi2M9-m_suqgh4MbPq0wulFQjEOiQ8f-aeVi8MGyM3CKnNTbMBuxQIXnhZICY0zlg6q97j65BdMLWYf3_6reFmbn2dDho8HAjTrLbndySJUvzRmxQrypKsQF1tUIxcYcLLRjT_MbXBDVLxvZ-9wJ4kJv_goXgpCIiiJZSxy53xJ0d_f5EwxeqdPiHW3P3DRmwq3pbTFR2b4tQulKLr7vEKONvfUoS_Sc5GWXTdiecfkU5eJRDLETr5kdi0Z4onmYOI5JD_4OTAqH-3wPgJaHJuhIa09A.aLtbCGpqXOZHHqKxKqC-uA
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema: *ref_1
           headers: {}
       security: []
       x-roles:
