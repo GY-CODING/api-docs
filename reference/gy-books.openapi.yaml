@@ -10,7 +10,7 @@ paths:
   /ratings/{id}:
     get:
       summary: Get Rating
-      deprecated: false
+      deprecated: true
       description: Retrieves a book rating made by a  specific user.
       tags:
         - Ratings
@@ -39,7 +39,8 @@ paths:
             application/json:
               schema: &ref_0
                 description: Rating Object.
-                $ref: '#/components/schemas/Rating'
+                type: object
+                properties: {}
           headers: {}
       security: []
       x-roles:
@@ -47,7 +48,7 @@ paths:
         - ADMIN
     post:
       summary: Save Rating
-      deprecated: false
+      deprecated: true
       description: Saves a new book rating.
       tags:
         - Ratings
@@ -87,7 +88,7 @@ paths:
         - ADMIN
     patch:
       summary: Update Rating
-      deprecated: false
+      deprecated: true
       description: Updates an existing book rating.
       tags:
         - Ratings
@@ -128,7 +129,7 @@ paths:
   /ratings:
     get:
       summary: List Ratings
-      deprecated: false
+      deprecated: true
       description: Lists all book ratings made by an specific user.
       tags:
         - Ratings
@@ -222,9 +223,9 @@ paths:
         - COMMON
         - ADMIN
     patch:
-      summary: Update Book Status
+      summary: Update Book
       deprecated: false
-      description: Updates Book read status.
+      description: Updates an existing Book.
       tags:
         - Books
         - Books
@@ -249,7 +250,8 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Book%20Status'
+              type: object
+              properties: {}
             examples: {}
       responses:
         '200':
@@ -259,6 +261,35 @@ paths:
               schema:
                 type: object
                 properties: {}
+          headers: {}
+      security: []
+      x-roles:
+        - COMMON
+        - ADMIN
+  /:
+    get:
+      summary: List Books by User
+      deprecated: false
+      description: Lists all books marked by the user, aside from the state marked.
+      tags:
+        - Books
+        - Books
+      parameters:
+        - name: Authorization
+          in: header
+          description: Authorization token.
+          example: >-
+            eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..cGATxjlGSXP08LPq.HAXheZlEA_ti_1My5ckNynUeRircb4RAfF9EAuR97z9Xnr5pr8S4fVLb94e4_jHdjWXNzUPi2M9-m_suqgh4MbPq0wulFQjEOiQ8f-aeVi8MGyM3CKnNTbMBuxQIXnhZICY0zlg6q97j65BdMLWYf3_6reFmbn2dDho8HAjTrLbndySJUvzRmxQrypKsQF1tUIxcYcLLRjT_MbXBDVLxvZ-9wJ4kJv_goXgpCIiiJZSxy53xJ0d_f5EwxeqdPiHW3P3DRmwq3pbTFR2b4tQulKLr7vEKONvfUoS_Sc5GWXTdiecfkU5eJRDLETr5kdi0Z4onmYOI5JD_4OTAqH-3wPgJaHJuhIa09A.aLtbCGpqXOZHHqKxKqC-uA
+          schema:
+            type: string
+            default: >-
+              eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..cGATxjlGSXP08LPq.HAXheZlEA_ti_1My5ckNynUeRircb4RAfF9EAuR97z9Xnr5pr8S4fVLb94e4_jHdjWXNzUPi2M9-m_suqgh4MbPq0wulFQjEOiQ8f-aeVi8MGyM3CKnNTbMBuxQIXnhZICY0zlg6q97j65BdMLWYf3_6reFmbn2dDho8HAjTrLbndySJUvzRmxQrypKsQF1tUIxcYcLLRjT_MbXBDVLxvZ-9wJ4kJv_goXgpCIiiJZSxy53xJ0d_f5EwxeqdPiHW3P3DRmwq3pbTFR2b4tQulKLr7vEKONvfUoS_Sc5GWXTdiecfkU5eJRDLETr5kdi0Z4onmYOI5JD_4OTAqH-3wPgJaHJuhIa09A.aLtbCGpqXOZHHqKxKqC-uA
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema: *ref_1
           headers: {}
       security: []
       x-roles:
@@ -275,57 +306,39 @@ components:
         averageRating:
           type: number
           description: Book Avergate Rating.
-        status:
-          type: string
-          enum:
-            - WANT_TO_READ
-            - READING
-            - READ
+        userData:
           description: Book read status.
+          $ref: '#/components/schemas/Book%20User%20Data'
       required:
         - id
         - averageRating
-        - status
-    Rating:
+    Book User Data:
       type: object
       properties:
-        id:
+        userId:
           type: string
-          format: uuid
-          description: Rating ID.
-        bookId:
-          type: string
-          description: Book ID.
-        rating:
-          type: number
-          description: Book Rating ID.
-        startDate:
-          type: string
-          format: date
-          description: Book Rating Start Date.
-        endDate:
-          type: string
-          format: date
-          description: Book Rating End Date.
-      required:
-        - id
-        - bookId
-        - rating
-        - startDate
-        - endDate
-      description: Rating Object.
-    Book Status:
-      type: object
-      properties:
         status:
           type: string
-          description: Book read status.
           enum:
             - WANT_TO_READ
             - READING
             - READ
+        rating:
+          type: number
+          maximum: 5
+          minimum: 0
+        startDate:
+          type: string
+          format: date
+        endDate:
+          type: string
+          format: date
       required:
         - status
+        - rating
+        - startDate
+        - endDate
+        - userId
   securitySchemes: {}
 servers:
   - url: https://api.gycoding.com/books
