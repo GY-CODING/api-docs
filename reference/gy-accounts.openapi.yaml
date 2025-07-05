@@ -4,12 +4,12 @@ info:
   description: >-
     GY Accounts is the official authentication and user management system for
     GYCODING products.
-  version: 1.0.0
+  version: 3.2.1
 tags:
   - name: Authentication
   - name: Products/GY Messages
   - name: GY Messages
-  - name: Products/MTG App
+  - name: Products/GY Books
   - name: Users
 paths:
   /auth/login:
@@ -54,7 +54,7 @@ paths:
           description: ''
           content:
             application/json:
-              schema: &ref_0
+              schema:
                 $ref: '#/components/schemas/Error%20Response'
               example:
                 code: BAD_REQUEST
@@ -66,13 +66,15 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
           headers: {}
         '405':
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               example:
                 code: METHOD_NOT_ALLOWED
                 message: Method used to access this resource is not allowed.
@@ -83,7 +85,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '2':
                   summary: Database Error
@@ -167,7 +170,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               example:
                 code: BAD_REQUEST
                 message: The endpoint is malformed.
@@ -178,7 +182,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               example:
                 code: METHOD_NOT_ALLOWED
                 message: Method used to access this resource is not allowed.
@@ -189,7 +194,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '2':
                   summary: Conflict
@@ -214,7 +220,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '4':
                   summary: Database Error
@@ -287,7 +294,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               example:
                 code: BAD_REQUEST
                 message: The endpoint is malformed.
@@ -298,7 +306,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               example:
                 code: METHOD_NOT_ALLOWED
                 message: Method used to access this resource is not allowed.
@@ -309,7 +318,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '2':
                   summary: Database Error
@@ -373,17 +383,14 @@ paths:
           in: header
           description: Authorization token.
           required: false
-          example: >-
-            eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..cGATxjlGSXP08LPq.HAXheZlEA_ti_1My5ckNynUeRircb4RAfF9EAuR97z9Xnr5pr8S4fVLb94e4_jHdjWXNzUPi2M9-m_suqgh4MbPq0wulFQjEOiQ8f-aeVi8MGyM3CKnNTbMBuxQIXnhZICY0zlg6q97j65BdMLWYf3_6reFmbn2dDho8HAjTrLbndySJUvzRmxQrypKsQF1tUIxcYcLLRjT_MbXBDVLxvZ-9wJ4kJv_goXgpCIiiJZSxy53xJ0d_f5EwxeqdPiHW3P3DRmwq3pbTFR2b4tQulKLr7vEKONvfUoS_Sc5GWXTdiecfkU5eJRDLETr5kdi0Z4onmYOI5JD_4OTAqH-3wPgJaHJuhIa09A.aLtbCGpqXOZHHqKxKqC-uA
+          example: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
           schema:
             type: string
-            default: >-
-              eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..cGATxjlGSXP08LPq.HAXheZlEA_ti_1My5ckNynUeRircb4RAfF9EAuR97z9Xnr5pr8S4fVLb94e4_jHdjWXNzUPi2M9-m_suqgh4MbPq0wulFQjEOiQ8f-aeVi8MGyM3CKnNTbMBuxQIXnhZICY0zlg6q97j65BdMLWYf3_6reFmbn2dDho8HAjTrLbndySJUvzRmxQrypKsQF1tUIxcYcLLRjT_MbXBDVLxvZ-9wJ4kJv_goXgpCIiiJZSxy53xJ0d_f5EwxeqdPiHW3P3DRmwq3pbTFR2b4tQulKLr7vEKONvfUoS_Sc5GWXTdiecfkU5eJRDLETr5kdi0Z4onmYOI5JD_4OTAqH-3wPgJaHJuhIa09A.aLtbCGpqXOZHHqKxKqC-uA
+            default: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
       requestBody:
         content:
           application/json:
-            schema: &ref_1
-              description: Chat object.
+            schema:
               $ref: '#/components/schemas/GY%20Messages%20Chat%20Metadata'
             example: "{\r\n    \"chatId\": \"{{test-chat}}\",\r\n    \"admin\": {{test-chat-isadmin}}\r\n}"
       responses:
@@ -399,7 +406,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               example:
                 code: RESOURCE_NOT_MODIFIED
                 message: >-
@@ -412,7 +420,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               example:
                 code: BAD_REQUEST
                 message: The endpoint is malformed.
@@ -423,13 +432,15 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
           headers: {}
         '403':
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '2':
                   summary: Forbidden to Service
@@ -450,7 +461,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               example:
                 code: METHOD_NOT_ALLOWED
                 message: Method used to access this resource is not allowed.
@@ -461,7 +473,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '4':
                   summary: Conflict
@@ -486,7 +499,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '6':
                   summary: Database Error
@@ -550,16 +564,16 @@ paths:
           in: header
           description: Authorization token.
           required: false
-          example: >-
-            eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..cGATxjlGSXP08LPq.HAXheZlEA_ti_1My5ckNynUeRircb4RAfF9EAuR97z9Xnr5pr8S4fVLb94e4_jHdjWXNzUPi2M9-m_suqgh4MbPq0wulFQjEOiQ8f-aeVi8MGyM3CKnNTbMBuxQIXnhZICY0zlg6q97j65BdMLWYf3_6reFmbn2dDho8HAjTrLbndySJUvzRmxQrypKsQF1tUIxcYcLLRjT_MbXBDVLxvZ-9wJ4kJv_goXgpCIiiJZSxy53xJ0d_f5EwxeqdPiHW3P3DRmwq3pbTFR2b4tQulKLr7vEKONvfUoS_Sc5GWXTdiecfkU5eJRDLETr5kdi0Z4onmYOI5JD_4OTAqH-3wPgJaHJuhIa09A.aLtbCGpqXOZHHqKxKqC-uA
+          example: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
           schema:
             type: string
-            default: >-
-              eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..cGATxjlGSXP08LPq.HAXheZlEA_ti_1My5ckNynUeRircb4RAfF9EAuR97z9Xnr5pr8S4fVLb94e4_jHdjWXNzUPi2M9-m_suqgh4MbPq0wulFQjEOiQ8f-aeVi8MGyM3CKnNTbMBuxQIXnhZICY0zlg6q97j65BdMLWYf3_6reFmbn2dDho8HAjTrLbndySJUvzRmxQrypKsQF1tUIxcYcLLRjT_MbXBDVLxvZ-9wJ4kJv_goXgpCIiiJZSxy53xJ0d_f5EwxeqdPiHW3P3DRmwq3pbTFR2b4tQulKLr7vEKONvfUoS_Sc5GWXTdiecfkU5eJRDLETr5kdi0Z4onmYOI5JD_4OTAqH-3wPgJaHJuhIa09A.aLtbCGpqXOZHHqKxKqC-uA
+            default: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
       requestBody:
         content:
           application/json:
-            schema: *ref_1
+            schema:
+              $ref: '#/components/schemas/GY%20Messages%20Chat%20Metadata'
+              description: Chat Metadata object.
             example: "{\r\n    \"chatId\": \"{{test-chat}}\",\r\n    \"admin\": {{test-chat-isadmin}}\r\n}"
       responses:
         '204':
@@ -574,7 +588,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               example:
                 code: RESOURCE_NOT_MODIFIED
                 message: >-
@@ -587,7 +602,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               example:
                 code: BAD_REQUEST
                 message: The endpoint is malformed.
@@ -598,13 +614,15 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
           headers: {}
         '403':
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '2':
                   summary: Forbidden to Service
@@ -625,13 +643,15 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
           headers: {}
         '405':
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               example:
                 code: METHOD_NOT_ALLOWED
                 message: Method used to access this resource is not allowed.
@@ -642,7 +662,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '4':
                   summary: Database Error
@@ -714,12 +735,10 @@ paths:
           in: header
           description: Authorization token.
           required: false
-          example: >-
-            eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..cGATxjlGSXP08LPq.HAXheZlEA_ti_1My5ckNynUeRircb4RAfF9EAuR97z9Xnr5pr8S4fVLb94e4_jHdjWXNzUPi2M9-m_suqgh4MbPq0wulFQjEOiQ8f-aeVi8MGyM3CKnNTbMBuxQIXnhZICY0zlg6q97j65BdMLWYf3_6reFmbn2dDho8HAjTrLbndySJUvzRmxQrypKsQF1tUIxcYcLLRjT_MbXBDVLxvZ-9wJ4kJv_goXgpCIiiJZSxy53xJ0d_f5EwxeqdPiHW3P3DRmwq3pbTFR2b4tQulKLr7vEKONvfUoS_Sc5GWXTdiecfkU5eJRDLETr5kdi0Z4onmYOI5JD_4OTAqH-3wPgJaHJuhIa09A.aLtbCGpqXOZHHqKxKqC-uA
+          example: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
           schema:
             type: string
-            default: >-
-              eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..cGATxjlGSXP08LPq.HAXheZlEA_ti_1My5ckNynUeRircb4RAfF9EAuR97z9Xnr5pr8S4fVLb94e4_jHdjWXNzUPi2M9-m_suqgh4MbPq0wulFQjEOiQ8f-aeVi8MGyM3CKnNTbMBuxQIXnhZICY0zlg6q97j65BdMLWYf3_6reFmbn2dDho8HAjTrLbndySJUvzRmxQrypKsQF1tUIxcYcLLRjT_MbXBDVLxvZ-9wJ4kJv_goXgpCIiiJZSxy53xJ0d_f5EwxeqdPiHW3P3DRmwq3pbTFR2b4tQulKLr7vEKONvfUoS_Sc5GWXTdiecfkU5eJRDLETr5kdi0Z4onmYOI5JD_4OTAqH-3wPgJaHJuhIa09A.aLtbCGpqXOZHHqKxKqC-uA
+            default: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
       responses:
         '204':
           description: ''
@@ -733,7 +752,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               example:
                 code: RESOURCE_NOT_MODIFIED
                 message: >-
@@ -746,7 +766,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               example:
                 code: BAD_REQUEST
                 message: The endpoint is malformed.
@@ -757,13 +778,15 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
           headers: {}
         '403':
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '2':
                   summary: Forbidden to Service
@@ -784,13 +807,15 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
           headers: {}
         '405':
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               example:
                 code: METHOD_NOT_ALLOWED
                 message: Method used to access this resource is not allowed.
@@ -801,7 +826,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '4':
                   summary: Database Error
@@ -864,12 +890,10 @@ paths:
           in: header
           description: Authorization token.
           required: false
-          example: >-
-            eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..cGATxjlGSXP08LPq.HAXheZlEA_ti_1My5ckNynUeRircb4RAfF9EAuR97z9Xnr5pr8S4fVLb94e4_jHdjWXNzUPi2M9-m_suqgh4MbPq0wulFQjEOiQ8f-aeVi8MGyM3CKnNTbMBuxQIXnhZICY0zlg6q97j65BdMLWYf3_6reFmbn2dDho8HAjTrLbndySJUvzRmxQrypKsQF1tUIxcYcLLRjT_MbXBDVLxvZ-9wJ4kJv_goXgpCIiiJZSxy53xJ0d_f5EwxeqdPiHW3P3DRmwq3pbTFR2b4tQulKLr7vEKONvfUoS_Sc5GWXTdiecfkU5eJRDLETr5kdi0Z4onmYOI5JD_4OTAqH-3wPgJaHJuhIa09A.aLtbCGpqXOZHHqKxKqC-uA
+          example: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
           schema:
             type: string
-            default: >-
-              eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..cGATxjlGSXP08LPq.HAXheZlEA_ti_1My5ckNynUeRircb4RAfF9EAuR97z9Xnr5pr8S4fVLb94e4_jHdjWXNzUPi2M9-m_suqgh4MbPq0wulFQjEOiQ8f-aeVi8MGyM3CKnNTbMBuxQIXnhZICY0zlg6q97j65BdMLWYf3_6reFmbn2dDho8HAjTrLbndySJUvzRmxQrypKsQF1tUIxcYcLLRjT_MbXBDVLxvZ-9wJ4kJv_goXgpCIiiJZSxy53xJ0d_f5EwxeqdPiHW3P3DRmwq3pbTFR2b4tQulKLr7vEKONvfUoS_Sc5GWXTdiecfkU5eJRDLETr5kdi0Z4onmYOI5JD_4OTAqH-3wPgJaHJuhIa09A.aLtbCGpqXOZHHqKxKqC-uA
+            default: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
       responses:
         '200':
           description: ''
@@ -877,14 +901,17 @@ paths:
             application/json:
               schema:
                 type: array
-                items: *ref_1
+                items:
+                  $ref: '#/components/schemas/GY%20Messages%20Chat%20Metadata'
+                  description: Chat metadata object.
                 description: List of chats.
           headers: {}
         '400':
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               example:
                 code: BAD_REQUEST
                 message: The endpoint is malformed.
@@ -895,13 +922,15 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
           headers: {}
         '403':
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '2':
                   summary: Forbidden to Service
@@ -922,13 +951,15 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
           headers: {}
         '405':
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               example:
                 code: METHOD_NOT_ALLOWED
                 message: Method used to access this resource is not allowed.
@@ -939,7 +970,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '4':
                   summary: Database Error
@@ -991,24 +1023,29 @@ paths:
       x-roles:
         - COMMON
         - ADMIN
-  /mtg:
-    get:
-      summary: Get MTG Profile
+  /books/friends/request:
+    post:
+      summary: Send Friend Request
       deprecated: false
-      description: ''
+      description: Sends a Friend Request for someone to either accept it or deny it.
       tags:
-        - Products/MTG App
+        - Products/GY Books
       parameters:
         - name: Authorization
           in: header
           description: Authorization token.
           required: false
-          example: >-
-            eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..cGATxjlGSXP08LPq.HAXheZlEA_ti_1My5ckNynUeRircb4RAfF9EAuR97z9Xnr5pr8S4fVLb94e4_jHdjWXNzUPi2M9-m_suqgh4MbPq0wulFQjEOiQ8f-aeVi8MGyM3CKnNTbMBuxQIXnhZICY0zlg6q97j65BdMLWYf3_6reFmbn2dDho8HAjTrLbndySJUvzRmxQrypKsQF1tUIxcYcLLRjT_MbXBDVLxvZ-9wJ4kJv_goXgpCIiiJZSxy53xJ0d_f5EwxeqdPiHW3P3DRmwq3pbTFR2b4tQulKLr7vEKONvfUoS_Sc5GWXTdiecfkU5eJRDLETr5kdi0Z4onmYOI5JD_4OTAqH-3wPgJaHJuhIa09A.aLtbCGpqXOZHHqKxKqC-uA
+          example: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
           schema:
             type: string
-            default: >-
-              eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..cGATxjlGSXP08LPq.HAXheZlEA_ti_1My5ckNynUeRircb4RAfF9EAuR97z9Xnr5pr8S4fVLb94e4_jHdjWXNzUPi2M9-m_suqgh4MbPq0wulFQjEOiQ8f-aeVi8MGyM3CKnNTbMBuxQIXnhZICY0zlg6q97j65BdMLWYf3_6reFmbn2dDho8HAjTrLbndySJUvzRmxQrypKsQF1tUIxcYcLLRjT_MbXBDVLxvZ-9wJ4kJv_goXgpCIiiJZSxy53xJ0d_f5EwxeqdPiHW3P3DRmwq3pbTFR2b4tQulKLr7vEKONvfUoS_Sc5GWXTdiecfkU5eJRDLETr5kdi0Z4onmYOI5JD_4OTAqH-3wPgJaHJuhIa09A.aLtbCGpqXOZHHqKxKqC-uA
+            default: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties: {}
+            examples: {}
       responses:
         '200':
           description: ''
@@ -1022,7 +1059,193 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
+              examples:
+                '1':
+                  summary: Database Error
+                  value:
+                    code: DB_ERROR
+                    message: >-
+                      An error with the database has occurred, sorry for the
+                      inconvenience.
+                    status: 500
+                    owner: GYCODING
+                '2':
+                  summary: Auth Error from Service
+                  value:
+                    code: AUTH_ERROR
+                    message: >-
+                      An error with the authentication service has occurred,
+                      sorry for the inconvenience.
+                    status: 500
+                    owner: GYCODING
+                '3':
+                  summary: Auth Error from API Gateway
+                  value:
+                    code: AUTH_ERROR
+                    message: >-
+                      An error with the authentication service has occurred,
+                      sorry for the inconvenience.
+                    status: 500
+                    owner: API_GATEWAY
+                '4':
+                  summary: Gateway Error
+                  value:
+                    code: GATEWAY_ERROR
+                    message: >-
+                      An internal API Gateway error has occurred, sorry for the
+                      inconvenience.
+                    status: 500
+                    owner: API_GATEWAY
+                '5':
+                  summary: Server Error
+                  value:
+                    code: SERVER_ERROR
+                    message: >-
+                      An internal server error has occurred, sorry for the
+                      inconvenience.
+                    status: 500
+                    owner: GYCODING
+          headers: {}
+      security: []
+      x-roles:
+        - ADMIN
+        - COMMON
+  /books/friends/manage:
+    post:
+      summary: Manage Friend Request
+      deprecated: false
+      description: Sends a Friend Request for someone to either accept it or deny it.
+      tags:
+        - Products/GY Books
+      parameters:
+        - name: requestId
+          in: query
+          description: Friend Request ID to be managed.
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: Authorization
+          in: header
+          description: Authorization token.
+          required: false
+          example: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
+          schema:
+            type: string
+            default: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                command:
+                  type: string
+                  enum:
+                    - ACCEPT
+                    - DENY
+                  description: Command for the management of the friend request.
+              required:
+                - command
+            examples: {}
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+          headers: {}
+        '500':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
+              examples:
+                '1':
+                  summary: Database Error
+                  value:
+                    code: DB_ERROR
+                    message: >-
+                      An error with the database has occurred, sorry for the
+                      inconvenience.
+                    status: 500
+                    owner: GYCODING
+                '2':
+                  summary: Auth Error from Service
+                  value:
+                    code: AUTH_ERROR
+                    message: >-
+                      An error with the authentication service has occurred,
+                      sorry for the inconvenience.
+                    status: 500
+                    owner: GYCODING
+                '3':
+                  summary: Auth Error from API Gateway
+                  value:
+                    code: AUTH_ERROR
+                    message: >-
+                      An error with the authentication service has occurred,
+                      sorry for the inconvenience.
+                    status: 500
+                    owner: API_GATEWAY
+                '4':
+                  summary: Gateway Error
+                  value:
+                    code: GATEWAY_ERROR
+                    message: >-
+                      An internal API Gateway error has occurred, sorry for the
+                      inconvenience.
+                    status: 500
+                    owner: API_GATEWAY
+                '5':
+                  summary: Server Error
+                  value:
+                    code: SERVER_ERROR
+                    message: >-
+                      An internal server error has occurred, sorry for the
+                      inconvenience.
+                    status: 500
+                    owner: GYCODING
+          headers: {}
+      security: []
+      x-roles:
+        - ADMIN
+        - COMMON
+  /books/friends:
+    get:
+      summary: List Friends
+      deprecated: false
+      description: ''
+      tags:
+        - Products/GY Books
+      parameters:
+        - name: Authorization
+          in: header
+          description: Authorization token.
+          required: false
+          example: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
+          schema:
+            type: string
+            default: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User%20Profile'
+          headers: {}
+        '500':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '1':
                   summary: Database Error
@@ -1088,18 +1311,16 @@ paths:
           in: header
           description: Authorization token.
           required: false
-          example: >-
-            eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..cGATxjlGSXP08LPq.HAXheZlEA_ti_1My5ckNynUeRircb4RAfF9EAuR97z9Xnr5pr8S4fVLb94e4_jHdjWXNzUPi2M9-m_suqgh4MbPq0wulFQjEOiQ8f-aeVi8MGyM3CKnNTbMBuxQIXnhZICY0zlg6q97j65BdMLWYf3_6reFmbn2dDho8HAjTrLbndySJUvzRmxQrypKsQF1tUIxcYcLLRjT_MbXBDVLxvZ-9wJ4kJv_goXgpCIiiJZSxy53xJ0d_f5EwxeqdPiHW3P3DRmwq3pbTFR2b4tQulKLr7vEKONvfUoS_Sc5GWXTdiecfkU5eJRDLETr5kdi0Z4onmYOI5JD_4OTAqH-3wPgJaHJuhIa09A.aLtbCGpqXOZHHqKxKqC-uA
+          example: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
           schema:
             type: string
-            default: >-
-              eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..cGATxjlGSXP08LPq.HAXheZlEA_ti_1My5ckNynUeRircb4RAfF9EAuR97z9Xnr5pr8S4fVLb94e4_jHdjWXNzUPi2M9-m_suqgh4MbPq0wulFQjEOiQ8f-aeVi8MGyM3CKnNTbMBuxQIXnhZICY0zlg6q97j65BdMLWYf3_6reFmbn2dDho8HAjTrLbndySJUvzRmxQrypKsQF1tUIxcYcLLRjT_MbXBDVLxvZ-9wJ4kJv_goXgpCIiiJZSxy53xJ0d_f5EwxeqdPiHW3P3DRmwq3pbTFR2b4tQulKLr7vEKONvfUoS_Sc5GWXTdiecfkU5eJRDLETr5kdi0Z4onmYOI5JD_4OTAqH-3wPgJaHJuhIa09A.aLtbCGpqXOZHHqKxKqC-uA
+            default: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
       responses:
         '200':
           description: ''
           content:
             application/json:
-              schema: &ref_2
+              schema:
                 $ref: '#/components/schemas/User%20Profile'
                 description: User Profile object.
           headers: {}
@@ -1107,7 +1328,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               example:
                 code: BAD_REQUEST
                 message: The endpoint is malformed.
@@ -1118,13 +1340,15 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
           headers: {}
         '403':
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '2':
                   summary: Forbidden to Service
@@ -1145,13 +1369,15 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
           headers: {}
         '405':
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               example:
                 code: METHOD_NOT_ALLOWED
                 message: Method used to access this resource is not allowed.
@@ -1162,7 +1388,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '4':
                   summary: Database Error
@@ -1225,16 +1452,16 @@ paths:
           in: header
           description: Authorization token.
           required: false
-          example: >-
-            eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..cGATxjlGSXP08LPq.HAXheZlEA_ti_1My5ckNynUeRircb4RAfF9EAuR97z9Xnr5pr8S4fVLb94e4_jHdjWXNzUPi2M9-m_suqgh4MbPq0wulFQjEOiQ8f-aeVi8MGyM3CKnNTbMBuxQIXnhZICY0zlg6q97j65BdMLWYf3_6reFmbn2dDho8HAjTrLbndySJUvzRmxQrypKsQF1tUIxcYcLLRjT_MbXBDVLxvZ-9wJ4kJv_goXgpCIiiJZSxy53xJ0d_f5EwxeqdPiHW3P3DRmwq3pbTFR2b4tQulKLr7vEKONvfUoS_Sc5GWXTdiecfkU5eJRDLETr5kdi0Z4onmYOI5JD_4OTAqH-3wPgJaHJuhIa09A.aLtbCGpqXOZHHqKxKqC-uA
+          example: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
           schema:
             type: string
-            default: >-
-              eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..cGATxjlGSXP08LPq.HAXheZlEA_ti_1My5ckNynUeRircb4RAfF9EAuR97z9Xnr5pr8S4fVLb94e4_jHdjWXNzUPi2M9-m_suqgh4MbPq0wulFQjEOiQ8f-aeVi8MGyM3CKnNTbMBuxQIXnhZICY0zlg6q97j65BdMLWYf3_6reFmbn2dDho8HAjTrLbndySJUvzRmxQrypKsQF1tUIxcYcLLRjT_MbXBDVLxvZ-9wJ4kJv_goXgpCIiiJZSxy53xJ0d_f5EwxeqdPiHW3P3DRmwq3pbTFR2b4tQulKLr7vEKONvfUoS_Sc5GWXTdiecfkU5eJRDLETr5kdi0Z4onmYOI5JD_4OTAqH-3wPgJaHJuhIa09A.aLtbCGpqXOZHHqKxKqC-uA
+            default: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
       requestBody:
         content:
           application/json:
-            schema: *ref_2
+            schema:
+              $ref: '#/components/schemas/User%20Profile'
+              description: User Profile object.
             example:
               username: test
               email: '{{test-email}}'
@@ -1245,13 +1472,16 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_2
+              schema:
+                $ref: '#/components/schemas/User%20Profile'
+                description: User Profile object.
           headers: {}
         '304':
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               example:
                 code: RESOURCE_NOT_MODIFIED
                 message: >-
@@ -1264,7 +1494,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               example:
                 code: BAD_REQUEST
                 message: The endpoint is malformed.
@@ -1275,13 +1506,15 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
           headers: {}
         '403':
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '2':
                   summary: Forbidden to Service
@@ -1302,7 +1535,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               example:
                 code: METHOD_NOT_ALLOWED
                 message: Method used to access this resource is not allowed.
@@ -1313,7 +1547,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '4':
                   summary: Database Error
@@ -1377,12 +1612,10 @@ paths:
           in: header
           description: Authorization token.
           required: false
-          example: >-
-            eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..cGATxjlGSXP08LPq.HAXheZlEA_ti_1My5ckNynUeRircb4RAfF9EAuR97z9Xnr5pr8S4fVLb94e4_jHdjWXNzUPi2M9-m_suqgh4MbPq0wulFQjEOiQ8f-aeVi8MGyM3CKnNTbMBuxQIXnhZICY0zlg6q97j65BdMLWYf3_6reFmbn2dDho8HAjTrLbndySJUvzRmxQrypKsQF1tUIxcYcLLRjT_MbXBDVLxvZ-9wJ4kJv_goXgpCIiiJZSxy53xJ0d_f5EwxeqdPiHW3P3DRmwq3pbTFR2b4tQulKLr7vEKONvfUoS_Sc5GWXTdiecfkU5eJRDLETr5kdi0Z4onmYOI5JD_4OTAqH-3wPgJaHJuhIa09A.aLtbCGpqXOZHHqKxKqC-uA
+          example: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
           schema:
             type: string
-            default: >-
-              eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..cGATxjlGSXP08LPq.HAXheZlEA_ti_1My5ckNynUeRircb4RAfF9EAuR97z9Xnr5pr8S4fVLb94e4_jHdjWXNzUPi2M9-m_suqgh4MbPq0wulFQjEOiQ8f-aeVi8MGyM3CKnNTbMBuxQIXnhZICY0zlg6q97j65BdMLWYf3_6reFmbn2dDho8HAjTrLbndySJUvzRmxQrypKsQF1tUIxcYcLLRjT_MbXBDVLxvZ-9wJ4kJv_goXgpCIiiJZSxy53xJ0d_f5EwxeqdPiHW3P3DRmwq3pbTFR2b4tQulKLr7vEKONvfUoS_Sc5GWXTdiecfkU5eJRDLETr5kdi0Z4onmYOI5JD_4OTAqH-3wPgJaHJuhIa09A.aLtbCGpqXOZHHqKxKqC-uA
+            default: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
       responses:
         '200':
           description: ''
@@ -1396,7 +1629,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               example:
                 code: BAD_REQUEST
                 message: The endpoint is malformed.
@@ -1407,13 +1641,15 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
           headers: {}
         '403':
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '2':
                   summary: Forbidden to Service
@@ -1434,13 +1670,15 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
           headers: {}
         '405':
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               example:
                 code: METHOD_NOT_ALLOWED
                 message: Method used to access this resource is not allowed.
@@ -1451,7 +1689,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '4':
                   summary: Database Error
@@ -1514,12 +1753,10 @@ paths:
           in: header
           description: Authorization token.
           required: false
-          example: >-
-            eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..cGATxjlGSXP08LPq.HAXheZlEA_ti_1My5ckNynUeRircb4RAfF9EAuR97z9Xnr5pr8S4fVLb94e4_jHdjWXNzUPi2M9-m_suqgh4MbPq0wulFQjEOiQ8f-aeVi8MGyM3CKnNTbMBuxQIXnhZICY0zlg6q97j65BdMLWYf3_6reFmbn2dDho8HAjTrLbndySJUvzRmxQrypKsQF1tUIxcYcLLRjT_MbXBDVLxvZ-9wJ4kJv_goXgpCIiiJZSxy53xJ0d_f5EwxeqdPiHW3P3DRmwq3pbTFR2b4tQulKLr7vEKONvfUoS_Sc5GWXTdiecfkU5eJRDLETr5kdi0Z4onmYOI5JD_4OTAqH-3wPgJaHJuhIa09A.aLtbCGpqXOZHHqKxKqC-uA
+          example: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
           schema:
             type: string
-            default: >-
-              eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..cGATxjlGSXP08LPq.HAXheZlEA_ti_1My5ckNynUeRircb4RAfF9EAuR97z9Xnr5pr8S4fVLb94e4_jHdjWXNzUPi2M9-m_suqgh4MbPq0wulFQjEOiQ8f-aeVi8MGyM3CKnNTbMBuxQIXnhZICY0zlg6q97j65BdMLWYf3_6reFmbn2dDho8HAjTrLbndySJUvzRmxQrypKsQF1tUIxcYcLLRjT_MbXBDVLxvZ-9wJ4kJv_goXgpCIiiJZSxy53xJ0d_f5EwxeqdPiHW3P3DRmwq3pbTFR2b4tQulKLr7vEKONvfUoS_Sc5GWXTdiecfkU5eJRDLETr5kdi0Z4onmYOI5JD_4OTAqH-3wPgJaHJuhIa09A.aLtbCGpqXOZHHqKxKqC-uA
+            default: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
       requestBody:
         content:
           text/plain:
@@ -1539,7 +1776,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               example:
                 code: RESOURCE_NOT_MODIFIED
                 message: >-
@@ -1552,7 +1790,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               example:
                 code: BAD_REQUEST
                 message: The endpoint is malformed.
@@ -1563,13 +1802,15 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
           headers: {}
         '403':
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '2':
                   summary: Forbidden to Service
@@ -1590,7 +1831,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               example:
                 code: METHOD_NOT_ALLOWED
                 message: Method used to access this resource is not allowed.
@@ -1601,7 +1843,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '4':
                   summary: Database Error
@@ -1688,7 +1931,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               example:
                 code: BAD_REQUEST
                 message: The endpoint is malformed.
@@ -1699,13 +1943,15 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
           headers: {}
         '403':
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '2':
                   summary: Forbidden to Service
@@ -1726,13 +1972,15 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
           headers: {}
         '405':
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               example:
                 code: METHOD_NOT_ALLOWED
                 message: Method used to access this resource is not allowed.
@@ -1743,7 +1991,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '4':
                   summary: Database Error
@@ -1807,12 +2056,10 @@ paths:
           in: header
           description: Authorization token.
           required: false
-          example: >-
-            eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..cGATxjlGSXP08LPq.HAXheZlEA_ti_1My5ckNynUeRircb4RAfF9EAuR97z9Xnr5pr8S4fVLb94e4_jHdjWXNzUPi2M9-m_suqgh4MbPq0wulFQjEOiQ8f-aeVi8MGyM3CKnNTbMBuxQIXnhZICY0zlg6q97j65BdMLWYf3_6reFmbn2dDho8HAjTrLbndySJUvzRmxQrypKsQF1tUIxcYcLLRjT_MbXBDVLxvZ-9wJ4kJv_goXgpCIiiJZSxy53xJ0d_f5EwxeqdPiHW3P3DRmwq3pbTFR2b4tQulKLr7vEKONvfUoS_Sc5GWXTdiecfkU5eJRDLETr5kdi0Z4onmYOI5JD_4OTAqH-3wPgJaHJuhIa09A.aLtbCGpqXOZHHqKxKqC-uA
+          example: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
           schema:
             type: string
-            default: >-
-              eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..cGATxjlGSXP08LPq.HAXheZlEA_ti_1My5ckNynUeRircb4RAfF9EAuR97z9Xnr5pr8S4fVLb94e4_jHdjWXNzUPi2M9-m_suqgh4MbPq0wulFQjEOiQ8f-aeVi8MGyM3CKnNTbMBuxQIXnhZICY0zlg6q97j65BdMLWYf3_6reFmbn2dDho8HAjTrLbndySJUvzRmxQrypKsQF1tUIxcYcLLRjT_MbXBDVLxvZ-9wJ4kJv_goXgpCIiiJZSxy53xJ0d_f5EwxeqdPiHW3P3DRmwq3pbTFR2b4tQulKLr7vEKONvfUoS_Sc5GWXTdiecfkU5eJRDLETr5kdi0Z4onmYOI5JD_4OTAqH-3wPgJaHJuhIa09A.aLtbCGpqXOZHHqKxKqC-uA
+            default: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
       requestBody:
         content:
           text/plain:
@@ -1834,7 +2081,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               example:
                 code: RESOURCE_NOT_MODIFIED
                 message: >-
@@ -1847,7 +2095,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               example:
                 code: BAD_REQUEST
                 message: The endpoint is malformed.
@@ -1858,13 +2107,15 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
           headers: {}
         '403':
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '2':
                   summary: Forbidden to Service
@@ -1885,7 +2136,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               example:
                 code: METHOD_NOT_ALLOWED
                 message: Method used to access this resource is not allowed.
@@ -1896,7 +2148,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '4':
                   summary: Database Error
@@ -1960,12 +2213,10 @@ paths:
           in: header
           description: Authorization token.
           required: false
-          example: >-
-            eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..cGATxjlGSXP08LPq.HAXheZlEA_ti_1My5ckNynUeRircb4RAfF9EAuR97z9Xnr5pr8S4fVLb94e4_jHdjWXNzUPi2M9-m_suqgh4MbPq0wulFQjEOiQ8f-aeVi8MGyM3CKnNTbMBuxQIXnhZICY0zlg6q97j65BdMLWYf3_6reFmbn2dDho8HAjTrLbndySJUvzRmxQrypKsQF1tUIxcYcLLRjT_MbXBDVLxvZ-9wJ4kJv_goXgpCIiiJZSxy53xJ0d_f5EwxeqdPiHW3P3DRmwq3pbTFR2b4tQulKLr7vEKONvfUoS_Sc5GWXTdiecfkU5eJRDLETr5kdi0Z4onmYOI5JD_4OTAqH-3wPgJaHJuhIa09A.aLtbCGpqXOZHHqKxKqC-uA
+          example: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
           schema:
             type: string
-            default: >-
-              eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..cGATxjlGSXP08LPq.HAXheZlEA_ti_1My5ckNynUeRircb4RAfF9EAuR97z9Xnr5pr8S4fVLb94e4_jHdjWXNzUPi2M9-m_suqgh4MbPq0wulFQjEOiQ8f-aeVi8MGyM3CKnNTbMBuxQIXnhZICY0zlg6q97j65BdMLWYf3_6reFmbn2dDho8HAjTrLbndySJUvzRmxQrypKsQF1tUIxcYcLLRjT_MbXBDVLxvZ-9wJ4kJv_goXgpCIiiJZSxy53xJ0d_f5EwxeqdPiHW3P3DRmwq3pbTFR2b4tQulKLr7vEKONvfUoS_Sc5GWXTdiecfkU5eJRDLETr5kdi0Z4onmYOI5JD_4OTAqH-3wPgJaHJuhIa09A.aLtbCGpqXOZHHqKxKqC-uA
+            default: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
       responses:
         '200':
           description: ''
@@ -1979,7 +2230,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               example:
                 code: BAD_REQUEST
                 message: The endpoint is malformed.
@@ -1990,13 +2242,15 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
           headers: {}
         '403':
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '2':
                   summary: Forbidden to Service
@@ -2017,13 +2271,15 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
           headers: {}
         '405':
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               example:
                 code: METHOD_NOT_ALLOWED
                 message: Method used to access this resource is not allowed.
@@ -2034,7 +2290,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '4':
                   summary: Database Error
@@ -2097,12 +2354,10 @@ paths:
           in: header
           description: Authorization token.
           required: false
-          example: >-
-            eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..cGATxjlGSXP08LPq.HAXheZlEA_ti_1My5ckNynUeRircb4RAfF9EAuR97z9Xnr5pr8S4fVLb94e4_jHdjWXNzUPi2M9-m_suqgh4MbPq0wulFQjEOiQ8f-aeVi8MGyM3CKnNTbMBuxQIXnhZICY0zlg6q97j65BdMLWYf3_6reFmbn2dDho8HAjTrLbndySJUvzRmxQrypKsQF1tUIxcYcLLRjT_MbXBDVLxvZ-9wJ4kJv_goXgpCIiiJZSxy53xJ0d_f5EwxeqdPiHW3P3DRmwq3pbTFR2b4tQulKLr7vEKONvfUoS_Sc5GWXTdiecfkU5eJRDLETr5kdi0Z4onmYOI5JD_4OTAqH-3wPgJaHJuhIa09A.aLtbCGpqXOZHHqKxKqC-uA
+          example: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
           schema:
             type: string
-            default: >-
-              eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..cGATxjlGSXP08LPq.HAXheZlEA_ti_1My5ckNynUeRircb4RAfF9EAuR97z9Xnr5pr8S4fVLb94e4_jHdjWXNzUPi2M9-m_suqgh4MbPq0wulFQjEOiQ8f-aeVi8MGyM3CKnNTbMBuxQIXnhZICY0zlg6q97j65BdMLWYf3_6reFmbn2dDho8HAjTrLbndySJUvzRmxQrypKsQF1tUIxcYcLLRjT_MbXBDVLxvZ-9wJ4kJv_goXgpCIiiJZSxy53xJ0d_f5EwxeqdPiHW3P3DRmwq3pbTFR2b4tQulKLr7vEKONvfUoS_Sc5GWXTdiecfkU5eJRDLETr5kdi0Z4onmYOI5JD_4OTAqH-3wPgJaHJuhIa09A.aLtbCGpqXOZHHqKxKqC-uA
+            default: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
       requestBody:
         content:
           text/plain:
@@ -2122,7 +2377,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               example:
                 code: RESOURCE_NOT_MODIFIED
                 message: >-
@@ -2135,7 +2391,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               example:
                 code: BAD_REQUEST
                 message: The endpoint is malformed.
@@ -2146,13 +2403,15 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
           headers: {}
         '403':
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '2':
                   summary: Forbidden to Service
@@ -2173,7 +2432,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               example:
                 code: METHOD_NOT_ALLOWED
                 message: Method used to access this resource is not allowed.
@@ -2184,7 +2444,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '4':
                   summary: Database Error
@@ -2248,12 +2509,10 @@ paths:
           in: header
           description: Authorization token.
           required: false
-          example: >-
-            eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..cGATxjlGSXP08LPq.HAXheZlEA_ti_1My5ckNynUeRircb4RAfF9EAuR97z9Xnr5pr8S4fVLb94e4_jHdjWXNzUPi2M9-m_suqgh4MbPq0wulFQjEOiQ8f-aeVi8MGyM3CKnNTbMBuxQIXnhZICY0zlg6q97j65BdMLWYf3_6reFmbn2dDho8HAjTrLbndySJUvzRmxQrypKsQF1tUIxcYcLLRjT_MbXBDVLxvZ-9wJ4kJv_goXgpCIiiJZSxy53xJ0d_f5EwxeqdPiHW3P3DRmwq3pbTFR2b4tQulKLr7vEKONvfUoS_Sc5GWXTdiecfkU5eJRDLETr5kdi0Z4onmYOI5JD_4OTAqH-3wPgJaHJuhIa09A.aLtbCGpqXOZHHqKxKqC-uA
+          example: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
           schema:
             type: string
-            default: >-
-              eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..cGATxjlGSXP08LPq.HAXheZlEA_ti_1My5ckNynUeRircb4RAfF9EAuR97z9Xnr5pr8S4fVLb94e4_jHdjWXNzUPi2M9-m_suqgh4MbPq0wulFQjEOiQ8f-aeVi8MGyM3CKnNTbMBuxQIXnhZICY0zlg6q97j65BdMLWYf3_6reFmbn2dDho8HAjTrLbndySJUvzRmxQrypKsQF1tUIxcYcLLRjT_MbXBDVLxvZ-9wJ4kJv_goXgpCIiiJZSxy53xJ0d_f5EwxeqdPiHW3P3DRmwq3pbTFR2b4tQulKLr7vEKONvfUoS_Sc5GWXTdiecfkU5eJRDLETr5kdi0Z4onmYOI5JD_4OTAqH-3wPgJaHJuhIa09A.aLtbCGpqXOZHHqKxKqC-uA
+            default: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
       requestBody:
         content:
           text/plain:
@@ -2273,7 +2532,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               example:
                 code: RESOURCE_NOT_MODIFIED
                 message: >-
@@ -2286,7 +2546,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               example:
                 code: BAD_REQUEST
                 message: The endpoint is malformed.
@@ -2297,13 +2558,15 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
           headers: {}
         '403':
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '2':
                   summary: Forbidden to Service
@@ -2324,7 +2587,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               example:
                 code: METHOD_NOT_ALLOWED
                 message: Method used to access this resource is not allowed.
@@ -2335,7 +2599,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '4':
                   summary: Database Error
@@ -2399,12 +2664,10 @@ paths:
           in: header
           description: Authorization token.
           required: false
-          example: >-
-            eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..cGATxjlGSXP08LPq.HAXheZlEA_ti_1My5ckNynUeRircb4RAfF9EAuR97z9Xnr5pr8S4fVLb94e4_jHdjWXNzUPi2M9-m_suqgh4MbPq0wulFQjEOiQ8f-aeVi8MGyM3CKnNTbMBuxQIXnhZICY0zlg6q97j65BdMLWYf3_6reFmbn2dDho8HAjTrLbndySJUvzRmxQrypKsQF1tUIxcYcLLRjT_MbXBDVLxvZ-9wJ4kJv_goXgpCIiiJZSxy53xJ0d_f5EwxeqdPiHW3P3DRmwq3pbTFR2b4tQulKLr7vEKONvfUoS_Sc5GWXTdiecfkU5eJRDLETr5kdi0Z4onmYOI5JD_4OTAqH-3wPgJaHJuhIa09A.aLtbCGpqXOZHHqKxKqC-uA
+          example: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
           schema:
             type: string
-            default: >-
-              eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..cGATxjlGSXP08LPq.HAXheZlEA_ti_1My5ckNynUeRircb4RAfF9EAuR97z9Xnr5pr8S4fVLb94e4_jHdjWXNzUPi2M9-m_suqgh4MbPq0wulFQjEOiQ8f-aeVi8MGyM3CKnNTbMBuxQIXnhZICY0zlg6q97j65BdMLWYf3_6reFmbn2dDho8HAjTrLbndySJUvzRmxQrypKsQF1tUIxcYcLLRjT_MbXBDVLxvZ-9wJ4kJv_goXgpCIiiJZSxy53xJ0d_f5EwxeqdPiHW3P3DRmwq3pbTFR2b4tQulKLr7vEKONvfUoS_Sc5GWXTdiecfkU5eJRDLETr5kdi0Z4onmYOI5JD_4OTAqH-3wPgJaHJuhIa09A.aLtbCGpqXOZHHqKxKqC-uA
+            default: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
       responses:
         '200':
           description: ''
@@ -2417,7 +2680,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               example:
                 code: BAD_REQUEST
                 message: The endpoint is malformed.
@@ -2428,13 +2692,15 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
           headers: {}
         '403':
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '2':
                   summary: Forbidden to Service
@@ -2455,13 +2721,15 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
           headers: {}
         '405':
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               example:
                 code: METHOD_NOT_ALLOWED
                 message: Method used to access this resource is not allowed.
@@ -2472,7 +2740,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '4':
                   summary: Database Error
@@ -2544,7 +2813,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               example:
                 code: RESOURCE_NOT_MODIFIED
                 message: >-
@@ -2557,7 +2827,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               example:
                 code: BAD_REQUEST
                 message: The endpoint is malformed.
@@ -2568,13 +2839,15 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
           headers: {}
         '403':
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '2':
                   summary: Forbidden to Service
@@ -2595,7 +2868,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               example:
                 code: METHOD_NOT_ALLOWED
                 message: Method used to access this resource is not allowed.
@@ -2606,7 +2880,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '4':
                   summary: Database Error
@@ -2670,12 +2945,10 @@ paths:
           in: header
           description: Authorization token.
           required: false
-          example: >-
-            eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..cGATxjlGSXP08LPq.HAXheZlEA_ti_1My5ckNynUeRircb4RAfF9EAuR97z9Xnr5pr8S4fVLb94e4_jHdjWXNzUPi2M9-m_suqgh4MbPq0wulFQjEOiQ8f-aeVi8MGyM3CKnNTbMBuxQIXnhZICY0zlg6q97j65BdMLWYf3_6reFmbn2dDho8HAjTrLbndySJUvzRmxQrypKsQF1tUIxcYcLLRjT_MbXBDVLxvZ-9wJ4kJv_goXgpCIiiJZSxy53xJ0d_f5EwxeqdPiHW3P3DRmwq3pbTFR2b4tQulKLr7vEKONvfUoS_Sc5GWXTdiecfkU5eJRDLETr5kdi0Z4onmYOI5JD_4OTAqH-3wPgJaHJuhIa09A.aLtbCGpqXOZHHqKxKqC-uA
+          example: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
           schema:
             type: string
-            default: >-
-              eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..cGATxjlGSXP08LPq.HAXheZlEA_ti_1My5ckNynUeRircb4RAfF9EAuR97z9Xnr5pr8S4fVLb94e4_jHdjWXNzUPi2M9-m_suqgh4MbPq0wulFQjEOiQ8f-aeVi8MGyM3CKnNTbMBuxQIXnhZICY0zlg6q97j65BdMLWYf3_6reFmbn2dDho8HAjTrLbndySJUvzRmxQrypKsQF1tUIxcYcLLRjT_MbXBDVLxvZ-9wJ4kJv_goXgpCIiiJZSxy53xJ0d_f5EwxeqdPiHW3P3DRmwq3pbTFR2b4tQulKLr7vEKONvfUoS_Sc5GWXTdiecfkU5eJRDLETr5kdi0Z4onmYOI5JD_4OTAqH-3wPgJaHJuhIa09A.aLtbCGpqXOZHHqKxKqC-uA
+            default: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
       responses:
         '204':
           description: ''
@@ -2689,7 +2962,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               example:
                 code: RESOURCE_NOT_MODIFIED
                 message: >-
@@ -2702,7 +2976,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               example:
                 code: BAD_REQUEST
                 message: The endpoint is malformed.
@@ -2713,13 +2988,15 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
           headers: {}
         '403':
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '2':
                   summary: Forbidden to Service
@@ -2740,7 +3017,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               example:
                 code: METHOD_NOT_ALLOWED
                 message: Method used to access this resource is not allowed.
@@ -2751,7 +3029,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '4':
                   summary: Database Error
@@ -2831,7 +3110,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               example:
                 code: RESOURCE_NOT_MODIFIED
                 message: >-
@@ -2844,7 +3124,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               example:
                 code: BAD_REQUEST
                 message: The endpoint is malformed.
@@ -2855,13 +3136,15 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
           headers: {}
         '403':
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '2':
                   summary: Forbidden to Service
@@ -2882,7 +3165,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               example:
                 code: METHOD_NOT_ALLOWED
                 message: Method used to access this resource is not allowed.
@@ -2893,7 +3177,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '4':
                   summary: Database Error
@@ -3036,7 +3321,9 @@ components:
       properties:
         chats:
           type: array
-          items: *ref_1
+          items:
+            description: Chat object.
+            $ref: '#/components/schemas/GY%20Messages%20Chat%20Metadata'
           description: Chats where the user belong.
       required:
         - chats
@@ -3061,7 +3348,9 @@ components:
         gyMessages:
           $ref: '#/components/schemas/GY%20Messages%20Metadata'
           description: User GY Messages Metadata object.
-        profile: *ref_2
+        profile:
+          $ref: '#/components/schemas/User%20Profile'
+          description: User Profile object.
       required:
         - gyMessages
         - profile
@@ -3069,6 +3358,22 @@ components:
     MTG Profile Metadata:
       type: object
       properties: {}
+    Friend Request:
+      type: object
+      properties:
+        requestId:
+          type: string
+          format: uuid
+        from:
+          type: string
+          format: uuid
+        to:
+          type: string
+          format: uuid
+      required:
+        - requestId
+        - from
+        - to
     Error Response:
       type: object
       properties:
