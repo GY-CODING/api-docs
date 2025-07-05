@@ -38,14 +38,14 @@ paths:
           description: ''
           content:
             application/json:
-              schema: &ref_1
+              schema:
                 $ref: '#/components/schemas/Group%20Chat'
           headers: {}
         '500':
           description: ''
           content:
             application/json:
-              schema: &ref_0
+              schema:
                 $ref: '#/components/schemas/Error%20Response'
               examples:
                 '1':
@@ -135,7 +135,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '1':
                   summary: Database Error
@@ -211,13 +212,15 @@ paths:
             application/json:
               schema:
                 type: array
-                items: *ref_1
+                items:
+                  $ref: '#/components/schemas/Group%20Chat'
           headers: {}
         '500':
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '1':
                   summary: Database Error
@@ -310,7 +313,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '1':
                   summary: Database Error
@@ -412,7 +416,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '1':
                   summary: Database Error
@@ -502,7 +507,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '1':
                   summary: Database Error
@@ -592,7 +598,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '1':
                   summary: Database Error
@@ -681,7 +688,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '1':
                   summary: Database Error
@@ -771,7 +779,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '1':
                   summary: Database Error
@@ -851,7 +860,7 @@ components:
           description: Chat members.
         messages:
           type: array
-          items: &ref_2
+          items:
             description: Chat Message object.
             $ref: '#/components/schemas/Message'
           description: Chat messages.
@@ -885,7 +894,9 @@ components:
           description: Chat ID.
         messages:
           type: array
-          items: *ref_2
+          items:
+            description: Chat Message object.
+            $ref: '#/components/schemas/Message'
           description: Chat messages.
       required:
         - chatId

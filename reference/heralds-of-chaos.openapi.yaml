@@ -43,7 +43,7 @@ paths:
           description: ''
           content:
             application/json:
-              schema: &ref_1
+              schema:
                 $ref: '#/components/schemas/Character'
                 description: Character object.
           headers: {}
@@ -51,7 +51,7 @@ paths:
           description: ''
           content:
             application/json:
-              schema: &ref_0
+              schema:
                 $ref: '#/components/schemas/Error%20Response'
               example:
                 code: BAD_REQUEST
@@ -63,7 +63,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '2':
                   summary: Forbidden to Service
@@ -84,7 +85,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '4':
                   summary: Token Not Found
@@ -105,7 +107,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               example:
                 code: METHOD_NOT_ALLOWED
                 message: Method used to access this resource is not allowed.
@@ -116,7 +119,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '7':
                   summary: Database Error
@@ -195,7 +199,9 @@ paths:
             application/json:
               schema:
                 type: array
-                items: *ref_1
+                items:
+                  $ref: '#/components/schemas/Character'
+                  description: Character object.
                 description: List of characters.
                 uniqueItems: true
           headers: {}
@@ -203,7 +209,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               example:
                 code: BAD_REQUEST
                 message: The endpoint is malformed.
@@ -214,7 +221,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '2':
                   summary: Forbidden to Service
@@ -235,7 +243,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '4':
                   summary: Token Not Found
@@ -256,7 +265,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               example:
                 code: METHOD_NOT_ALLOWED
                 message: Method used to access this resource is not allowed.
@@ -267,7 +277,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '7':
                   summary: Database Error
@@ -360,7 +371,9 @@ paths:
             application/json:
               schema:
                 type: array
-                items: *ref_1
+                items:
+                  $ref: '#/components/schemas/Character'
+                  description: Character object.
                 description: List of characters.
                 uniqueItems: true
           headers: {}
@@ -368,7 +381,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               example:
                 code: BAD_REQUEST
                 message: The endpoint is malformed.
@@ -379,7 +393,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '2':
                   summary: Forbidden to Service
@@ -400,7 +415,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '4':
                   summary: Token Not Found
@@ -421,7 +437,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               example:
                 code: METHOD_NOT_ALLOWED
                 message: Method used to access this resource is not allowed.
@@ -432,7 +449,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '7':
                   summary: Database Error
@@ -514,7 +532,7 @@ paths:
           description: ''
           content:
             application/json:
-              schema: &ref_2
+              schema:
                 $ref: '#/components/schemas/Item'
                 description: Item object.
           headers: {}
@@ -522,7 +540,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               example:
                 code: BAD_REQUEST
                 message: The endpoint is malformed.
@@ -533,7 +552,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '2':
                   summary: Forbidden to Service
@@ -554,7 +574,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '4':
                   summary: Token Not Found
@@ -575,7 +596,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               example:
                 code: METHOD_NOT_ALLOWED
                 message: Method used to access this resource is not allowed.
@@ -586,7 +608,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '7':
                   summary: Database Error
@@ -665,14 +688,17 @@ paths:
             application/json:
               schema:
                 type: array
-                items: *ref_2
+                items:
+                  $ref: '#/components/schemas/Item'
+                  description: Item object.
                 description: List of items.
           headers: {}
         '400':
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               example:
                 code: BAD_REQUEST
                 message: The endpoint is malformed.
@@ -683,7 +709,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '2':
                   summary: Forbidden to Service
@@ -704,7 +731,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '4':
                   summary: Token Not Found
@@ -725,7 +753,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               example:
                 code: METHOD_NOT_ALLOWED
                 message: Method used to access this resource is not allowed.
@@ -736,7 +765,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '7':
                   summary: Database Error
@@ -829,14 +859,17 @@ paths:
             application/json:
               schema:
                 type: array
-                items: *ref_2
+                items:
+                  $ref: '#/components/schemas/Item'
+                  description: Item object.
                 description: List of items.
           headers: {}
         '400':
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               example:
                 code: BAD_REQUEST
                 message: The endpoint is malformed.
@@ -847,7 +880,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '2':
                   summary: Forbidden to Service
@@ -868,7 +902,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '4':
                   summary: Token Not Found
@@ -889,7 +924,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               example:
                 code: METHOD_NOT_ALLOWED
                 message: Method used to access this resource is not allowed.
@@ -900,7 +936,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '7':
                   summary: Database Error
@@ -982,15 +1019,16 @@ paths:
           description: ''
           content:
             application/json:
-              schema: &ref_3
-                description: World where the character belongs.
+              schema:
                 $ref: '#/components/schemas/World'
+                description: World object.
           headers: {}
         '400':
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               example:
                 code: BAD_REQUEST
                 message: The endpoint is malformed.
@@ -1001,7 +1039,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '2':
                   summary: Forbidden to Service
@@ -1022,7 +1061,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '4':
                   summary: Token Not Found
@@ -1043,7 +1083,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               example:
                 code: METHOD_NOT_ALLOWED
                 message: Method used to access this resource is not allowed.
@@ -1054,7 +1095,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '7':
                   summary: Database Error
@@ -1136,14 +1178,16 @@ paths:
           description: ''
           content:
             application/json:
-              schema: &ref_4
+              schema:
                 $ref: '#/components/schemas/Place'
+                description: Place object.
           headers: {}
         '400':
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               example:
                 code: BAD_REQUEST
                 message: The endpoint is malformed.
@@ -1154,7 +1198,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '2':
                   summary: Forbidden to Service
@@ -1175,7 +1220,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '4':
                   summary: Token Not Found
@@ -1196,7 +1242,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               example:
                 code: METHOD_NOT_ALLOWED
                 message: Method used to access this resource is not allowed.
@@ -1207,7 +1254,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '7':
                   summary: Database Error
@@ -1286,14 +1334,17 @@ paths:
             application/json:
               schema:
                 type: array
-                items: *ref_3
+                items:
+                  $ref: '#/components/schemas/World'
+                  description: World object.
                 description: List of worlds.
           headers: {}
         '400':
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               example:
                 code: BAD_REQUEST
                 message: The endpoint is malformed.
@@ -1304,7 +1355,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '2':
                   summary: Forbidden to Service
@@ -1325,7 +1377,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '4':
                   summary: Token Not Found
@@ -1346,7 +1399,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               example:
                 code: METHOD_NOT_ALLOWED
                 message: Method used to access this resource is not allowed.
@@ -1357,7 +1411,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '7':
                   summary: Database Error
@@ -1436,14 +1491,17 @@ paths:
             application/json:
               schema:
                 type: array
-                items: *ref_4
+                items:
+                  $ref: '#/components/schemas/Place'
+                  description: Place object.
                 description: List of places.
           headers: {}
         '400':
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               example:
                 code: BAD_REQUEST
                 message: The endpoint is malformed.
@@ -1454,7 +1512,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '2':
                   summary: Forbidden to Service
@@ -1475,7 +1534,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '4':
                   summary: Token Not Found
@@ -1496,7 +1556,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               example:
                 code: METHOD_NOT_ALLOWED
                 message: Method used to access this resource is not allowed.
@@ -1507,7 +1568,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '7':
                   summary: Database Error
@@ -1593,14 +1655,17 @@ paths:
             application/json:
               schema:
                 type: array
-                items: *ref_4
+                items:
+                  $ref: '#/components/schemas/Place'
+                  description: Place object.
                 description: List of places.
           headers: {}
         '400':
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               example:
                 code: BAD_REQUEST
                 message: The endpoint is malformed.
@@ -1611,7 +1676,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '2':
                   summary: Forbidden to Service
@@ -1632,7 +1698,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '4':
                   summary: Token Not Found
@@ -1653,7 +1720,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               example:
                 code: METHOD_NOT_ALLOWED
                 message: Method used to access this resource is not allowed.
@@ -1664,7 +1732,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '7':
                   summary: Database Error
@@ -1757,14 +1826,17 @@ paths:
             application/json:
               schema:
                 type: array
-                items: *ref_3
+                items:
+                  $ref: '#/components/schemas/World'
+                  description: World object.
                 description: List of worlds.
           headers: {}
         '400':
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               example:
                 code: BAD_REQUEST
                 message: The endpoint is malformed.
@@ -1775,7 +1847,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '2':
                   summary: Forbidden to Service
@@ -1796,7 +1869,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '4':
                   summary: Token Not Found
@@ -1817,7 +1891,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               example:
                 code: METHOD_NOT_ALLOWED
                 message: Method used to access this resource is not allowed.
@@ -1828,7 +1903,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '7':
                   summary: Database Error
@@ -1921,14 +1997,17 @@ paths:
             application/json:
               schema:
                 type: array
-                items: *ref_4
+                items:
+                  $ref: '#/components/schemas/Place'
+                  description: Place object.
                 description: List of places.
           headers: {}
         '400':
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               example:
                 code: BAD_REQUEST
                 message: The endpoint is malformed.
@@ -1939,7 +2018,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '2':
                   summary: Forbidden to Service
@@ -1960,7 +2040,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '4':
                   summary: Token Not Found
@@ -1981,7 +2062,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               example:
                 code: METHOD_NOT_ALLOWED
                 message: Method used to access this resource is not allowed.
@@ -1992,7 +2074,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '7':
                   summary: Database Error
@@ -2076,7 +2159,7 @@ paths:
           description: ''
           content:
             application/json:
-              schema: &ref_5
+              schema:
                 $ref: '#/components/schemas/Creature'
                 description: Creature object.
           headers: {}
@@ -2084,7 +2167,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               example:
                 code: BAD_REQUEST
                 message: The endpoint is malformed.
@@ -2095,7 +2179,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '2':
                   summary: Forbidden to Service
@@ -2116,7 +2201,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '4':
                   summary: Token Not Found
@@ -2137,7 +2223,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               example:
                 code: METHOD_NOT_ALLOWED
                 message: Method used to access this resource is not allowed.
@@ -2148,7 +2235,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '7':
                   summary: Database Error
@@ -2227,7 +2315,9 @@ paths:
             application/json:
               schema:
                 type: array
-                items: *ref_5
+                items:
+                  $ref: '#/components/schemas/Creature'
+                  description: Creature object.
                 description: List of creatures.
                 uniqueItems: true
           headers: {}
@@ -2235,7 +2325,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               example:
                 code: BAD_REQUEST
                 message: The endpoint is malformed.
@@ -2246,7 +2337,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '2':
                   summary: Forbidden to Service
@@ -2267,7 +2359,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '4':
                   summary: Token Not Found
@@ -2288,7 +2381,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               example:
                 code: METHOD_NOT_ALLOWED
                 message: Method used to access this resource is not allowed.
@@ -2299,7 +2393,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '7':
                   summary: Database Error
@@ -2392,7 +2487,9 @@ paths:
             application/json:
               schema:
                 type: array
-                items: *ref_5
+                items:
+                  $ref: '#/components/schemas/Creature'
+                  description: Creature object.
                 description: List of creatures.
                 uniqueItems: true
           headers: {}
@@ -2400,7 +2497,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               example:
                 code: BAD_REQUEST
                 message: The endpoint is malformed.
@@ -2411,7 +2509,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '2':
                   summary: Forbidden to Service
@@ -2432,7 +2531,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '4':
                   summary: Token Not Found
@@ -2453,7 +2553,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               example:
                 code: METHOD_NOT_ALLOWED
                 message: Method used to access this resource is not allowed.
@@ -2464,7 +2565,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '7':
                   summary: Database Error
@@ -2527,16 +2629,14 @@ paths:
         - name: Authorization
           in: header
           description: Authorization token.
-          example: >-
-            eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..bYYIblHR87x9fMLo.jAOh5ohKhXp60QOuAinea9iTNMAii63aSsamcTbw-BOe7jz0S8HGzpN0Oe9NRxUvDwPjLSNWQmEMkD8Vwi3PZdcbw0RtO1Tui-1Qc29n1sBI2ISEVdjbR54VJJRiLtpBc49StlkKqvDdIuj6EXby8CO-bVnlHB4lBO_jNJ5pO8yz8kFDbDt_3Oeq0hY3ARp8H_FqcF4ZDl1-_R8_nB-qNx3vJrqISjtdPTqsY3x4qg5oh7cSRDGkGIx9iEyeU6aXwxVmAjNIGN0hjD4SByGarcVNKoMkzmZTNiFou4QKMsBlKXPeYIoCH2eYtwcb65AeyECzSREVV-nHO9tum4HcUloMeZTTPvvlgw.CVlNJ4oHO1y_BEptohBa_w
+          example: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
           schema:
             type: string
-            default: >-
-              eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..bYYIblHR87x9fMLo.jAOh5ohKhXp60QOuAinea9iTNMAii63aSsamcTbw-BOe7jz0S8HGzpN0Oe9NRxUvDwPjLSNWQmEMkD8Vwi3PZdcbw0RtO1Tui-1Qc29n1sBI2ISEVdjbR54VJJRiLtpBc49StlkKqvDdIuj6EXby8CO-bVnlHB4lBO_jNJ5pO8yz8kFDbDt_3Oeq0hY3ARp8H_FqcF4ZDl1-_R8_nB-qNx3vJrqISjtdPTqsY3x4qg5oh7cSRDGkGIx9iEyeU6aXwxVmAjNIGN0hjD4SByGarcVNKoMkzmZTNiFou4QKMsBlKXPeYIoCH2eYtwcb65AeyECzSREVV-nHO9tum4HcUloMeZTTPvvlgw.CVlNJ4oHO1y_BEptohBa_w
+            default: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
       requestBody:
         content:
           application/json:
-            schema: &ref_6
+            schema:
               $ref: '#/components/schemas/Character2'
             examples: {}
       responses:
@@ -2544,13 +2644,15 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_1
+              schema:
+                $ref: '#/components/schemas/Character'
           headers: {}
         '400':
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               example:
                 code: BAD_REQUEST
                 message: The endpoint is malformed.
@@ -2561,7 +2663,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '2':
                   summary: Forbidden to Service
@@ -2582,7 +2685,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '4':
                   summary: Token Not Found
@@ -2603,7 +2707,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               example:
                 code: METHOD_NOT_ALLOWED
                 message: Method used to access this resource is not allowed.
@@ -2614,7 +2719,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               example:
                 code: CONFLICT
                 message: >-
@@ -2627,7 +2733,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '7':
                   summary: Database Error
@@ -2695,29 +2802,30 @@ paths:
         - name: Authorization
           in: header
           description: Authorization token.
-          example: >-
-            eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..bYYIblHR87x9fMLo.jAOh5ohKhXp60QOuAinea9iTNMAii63aSsamcTbw-BOe7jz0S8HGzpN0Oe9NRxUvDwPjLSNWQmEMkD8Vwi3PZdcbw0RtO1Tui-1Qc29n1sBI2ISEVdjbR54VJJRiLtpBc49StlkKqvDdIuj6EXby8CO-bVnlHB4lBO_jNJ5pO8yz8kFDbDt_3Oeq0hY3ARp8H_FqcF4ZDl1-_R8_nB-qNx3vJrqISjtdPTqsY3x4qg5oh7cSRDGkGIx9iEyeU6aXwxVmAjNIGN0hjD4SByGarcVNKoMkzmZTNiFou4QKMsBlKXPeYIoCH2eYtwcb65AeyECzSREVV-nHO9tum4HcUloMeZTTPvvlgw.CVlNJ4oHO1y_BEptohBa_w
+          example: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
           schema:
             type: string
-            default: >-
-              eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..bYYIblHR87x9fMLo.jAOh5ohKhXp60QOuAinea9iTNMAii63aSsamcTbw-BOe7jz0S8HGzpN0Oe9NRxUvDwPjLSNWQmEMkD8Vwi3PZdcbw0RtO1Tui-1Qc29n1sBI2ISEVdjbR54VJJRiLtpBc49StlkKqvDdIuj6EXby8CO-bVnlHB4lBO_jNJ5pO8yz8kFDbDt_3Oeq0hY3ARp8H_FqcF4ZDl1-_R8_nB-qNx3vJrqISjtdPTqsY3x4qg5oh7cSRDGkGIx9iEyeU6aXwxVmAjNIGN0hjD4SByGarcVNKoMkzmZTNiFou4QKMsBlKXPeYIoCH2eYtwcb65AeyECzSREVV-nHO9tum4HcUloMeZTTPvvlgw.CVlNJ4oHO1y_BEptohBa_w
+            default: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
       requestBody:
         content:
           application/json:
-            schema: *ref_6
+            schema:
+              $ref: '#/components/schemas/Character2'
             examples: {}
       responses:
         '204':
           description: ''
           content:
             application/json:
-              schema: *ref_1
+              schema:
+                $ref: '#/components/schemas/Character'
           headers: {}
         '304':
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               example:
                 code: RESOURCE_NOT_MODIFIED
                 message: >-
@@ -2730,7 +2838,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               example:
                 code: BAD_REQUEST
                 message: The endpoint is malformed.
@@ -2741,7 +2850,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '2':
                   summary: Forbidden to Service
@@ -2762,7 +2872,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '4':
                   summary: Token Not Found
@@ -2783,7 +2894,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               example:
                 code: METHOD_NOT_ALLOWED
                 message: Method used to access this resource is not allowed.
@@ -2794,7 +2906,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '7':
                   summary: Database Error
@@ -2862,12 +2975,10 @@ paths:
         - name: Authorization
           in: header
           description: Authorization token.
-          example: >-
-            eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..bYYIblHR87x9fMLo.jAOh5ohKhXp60QOuAinea9iTNMAii63aSsamcTbw-BOe7jz0S8HGzpN0Oe9NRxUvDwPjLSNWQmEMkD8Vwi3PZdcbw0RtO1Tui-1Qc29n1sBI2ISEVdjbR54VJJRiLtpBc49StlkKqvDdIuj6EXby8CO-bVnlHB4lBO_jNJ5pO8yz8kFDbDt_3Oeq0hY3ARp8H_FqcF4ZDl1-_R8_nB-qNx3vJrqISjtdPTqsY3x4qg5oh7cSRDGkGIx9iEyeU6aXwxVmAjNIGN0hjD4SByGarcVNKoMkzmZTNiFou4QKMsBlKXPeYIoCH2eYtwcb65AeyECzSREVV-nHO9tum4HcUloMeZTTPvvlgw.CVlNJ4oHO1y_BEptohBa_w
+          example: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
           schema:
             type: string
-            default: >-
-              eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..bYYIblHR87x9fMLo.jAOh5ohKhXp60QOuAinea9iTNMAii63aSsamcTbw-BOe7jz0S8HGzpN0Oe9NRxUvDwPjLSNWQmEMkD8Vwi3PZdcbw0RtO1Tui-1Qc29n1sBI2ISEVdjbR54VJJRiLtpBc49StlkKqvDdIuj6EXby8CO-bVnlHB4lBO_jNJ5pO8yz8kFDbDt_3Oeq0hY3ARp8H_FqcF4ZDl1-_R8_nB-qNx3vJrqISjtdPTqsY3x4qg5oh7cSRDGkGIx9iEyeU6aXwxVmAjNIGN0hjD4SByGarcVNKoMkzmZTNiFou4QKMsBlKXPeYIoCH2eYtwcb65AeyECzSREVV-nHO9tum4HcUloMeZTTPvvlgw.CVlNJ4oHO1y_BEptohBa_w
+            default: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
       responses:
         '204':
           description: ''
@@ -2881,7 +2992,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               example:
                 code: BAD_REQUEST
                 message: The endpoint is malformed.
@@ -2892,7 +3004,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '2':
                   summary: Forbidden to Service
@@ -2913,7 +3026,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '4':
                   summary: Token Not Found
@@ -2934,7 +3048,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               example:
                 code: METHOD_NOT_ALLOWED
                 message: Method used to access this resource is not allowed.
@@ -2945,7 +3060,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '7':
                   summary: Database Error
@@ -3007,17 +3123,14 @@ paths:
         - name: Authorization
           in: header
           description: Authorization token.
-          example: >-
-            eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..bYYIblHR87x9fMLo.jAOh5ohKhXp60QOuAinea9iTNMAii63aSsamcTbw-BOe7jz0S8HGzpN0Oe9NRxUvDwPjLSNWQmEMkD8Vwi3PZdcbw0RtO1Tui-1Qc29n1sBI2ISEVdjbR54VJJRiLtpBc49StlkKqvDdIuj6EXby8CO-bVnlHB4lBO_jNJ5pO8yz8kFDbDt_3Oeq0hY3ARp8H_FqcF4ZDl1-_R8_nB-qNx3vJrqISjtdPTqsY3x4qg5oh7cSRDGkGIx9iEyeU6aXwxVmAjNIGN0hjD4SByGarcVNKoMkzmZTNiFou4QKMsBlKXPeYIoCH2eYtwcb65AeyECzSREVV-nHO9tum4HcUloMeZTTPvvlgw.CVlNJ4oHO1y_BEptohBa_w
+          example: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
           schema:
             type: string
-            default: >-
-              eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..bYYIblHR87x9fMLo.jAOh5ohKhXp60QOuAinea9iTNMAii63aSsamcTbw-BOe7jz0S8HGzpN0Oe9NRxUvDwPjLSNWQmEMkD8Vwi3PZdcbw0RtO1Tui-1Qc29n1sBI2ISEVdjbR54VJJRiLtpBc49StlkKqvDdIuj6EXby8CO-bVnlHB4lBO_jNJ5pO8yz8kFDbDt_3Oeq0hY3ARp8H_FqcF4ZDl1-_R8_nB-qNx3vJrqISjtdPTqsY3x4qg5oh7cSRDGkGIx9iEyeU6aXwxVmAjNIGN0hjD4SByGarcVNKoMkzmZTNiFou4QKMsBlKXPeYIoCH2eYtwcb65AeyECzSREVV-nHO9tum4HcUloMeZTTPvvlgw.CVlNJ4oHO1y_BEptohBa_w
+            default: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
       requestBody:
         content:
           application/json:
-            schema: &ref_7
-              description: World where the character belongs.
+            schema:
               $ref: '#/components/schemas/World3'
             examples: {}
       responses:
@@ -3025,13 +3138,15 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_3
+              schema:
+                $ref: '#/components/schemas/World'
           headers: {}
         '400':
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               example:
                 code: BAD_REQUEST
                 message: The endpoint is malformed.
@@ -3042,7 +3157,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '2':
                   summary: Forbidden to Service
@@ -3063,7 +3179,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '4':
                   summary: Token Not Found
@@ -3084,7 +3201,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               example:
                 code: METHOD_NOT_ALLOWED
                 message: Method used to access this resource is not allowed.
@@ -3095,7 +3213,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               example:
                 code: CONFLICT
                 message: >-
@@ -3108,7 +3227,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '7':
                   summary: Database Error
@@ -3169,29 +3289,30 @@ paths:
         - name: Authorization
           in: header
           description: Authorization token.
-          example: >-
-            eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..bYYIblHR87x9fMLo.jAOh5ohKhXp60QOuAinea9iTNMAii63aSsamcTbw-BOe7jz0S8HGzpN0Oe9NRxUvDwPjLSNWQmEMkD8Vwi3PZdcbw0RtO1Tui-1Qc29n1sBI2ISEVdjbR54VJJRiLtpBc49StlkKqvDdIuj6EXby8CO-bVnlHB4lBO_jNJ5pO8yz8kFDbDt_3Oeq0hY3ARp8H_FqcF4ZDl1-_R8_nB-qNx3vJrqISjtdPTqsY3x4qg5oh7cSRDGkGIx9iEyeU6aXwxVmAjNIGN0hjD4SByGarcVNKoMkzmZTNiFou4QKMsBlKXPeYIoCH2eYtwcb65AeyECzSREVV-nHO9tum4HcUloMeZTTPvvlgw.CVlNJ4oHO1y_BEptohBa_w
+          example: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
           schema:
             type: string
-            default: >-
-              eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..bYYIblHR87x9fMLo.jAOh5ohKhXp60QOuAinea9iTNMAii63aSsamcTbw-BOe7jz0S8HGzpN0Oe9NRxUvDwPjLSNWQmEMkD8Vwi3PZdcbw0RtO1Tui-1Qc29n1sBI2ISEVdjbR54VJJRiLtpBc49StlkKqvDdIuj6EXby8CO-bVnlHB4lBO_jNJ5pO8yz8kFDbDt_3Oeq0hY3ARp8H_FqcF4ZDl1-_R8_nB-qNx3vJrqISjtdPTqsY3x4qg5oh7cSRDGkGIx9iEyeU6aXwxVmAjNIGN0hjD4SByGarcVNKoMkzmZTNiFou4QKMsBlKXPeYIoCH2eYtwcb65AeyECzSREVV-nHO9tum4HcUloMeZTTPvvlgw.CVlNJ4oHO1y_BEptohBa_w
+            default: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
       requestBody:
         content:
           application/json:
-            schema: *ref_7
+            schema:
+              $ref: '#/components/schemas/World3'
             examples: {}
       responses:
         '204':
           description: ''
           content:
             application/json:
-              schema: *ref_3
+              schema:
+                $ref: '#/components/schemas/World'
           headers: {}
         '304':
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               example:
                 code: RESOURCE_NOT_MODIFIED
                 message: >-
@@ -3204,7 +3325,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               example:
                 code: BAD_REQUEST
                 message: The endpoint is malformed.
@@ -3215,7 +3337,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '2':
                   summary: Forbidden to Service
@@ -3236,7 +3359,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '4':
                   summary: Token Not Found
@@ -3257,7 +3381,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               example:
                 code: METHOD_NOT_ALLOWED
                 message: Method used to access this resource is not allowed.
@@ -3268,7 +3393,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '7':
                   summary: Database Error
@@ -3336,12 +3462,10 @@ paths:
         - name: Authorization
           in: header
           description: Authorization token.
-          example: >-
-            eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..bYYIblHR87x9fMLo.jAOh5ohKhXp60QOuAinea9iTNMAii63aSsamcTbw-BOe7jz0S8HGzpN0Oe9NRxUvDwPjLSNWQmEMkD8Vwi3PZdcbw0RtO1Tui-1Qc29n1sBI2ISEVdjbR54VJJRiLtpBc49StlkKqvDdIuj6EXby8CO-bVnlHB4lBO_jNJ5pO8yz8kFDbDt_3Oeq0hY3ARp8H_FqcF4ZDl1-_R8_nB-qNx3vJrqISjtdPTqsY3x4qg5oh7cSRDGkGIx9iEyeU6aXwxVmAjNIGN0hjD4SByGarcVNKoMkzmZTNiFou4QKMsBlKXPeYIoCH2eYtwcb65AeyECzSREVV-nHO9tum4HcUloMeZTTPvvlgw.CVlNJ4oHO1y_BEptohBa_w
+          example: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
           schema:
             type: string
-            default: >-
-              eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..bYYIblHR87x9fMLo.jAOh5ohKhXp60QOuAinea9iTNMAii63aSsamcTbw-BOe7jz0S8HGzpN0Oe9NRxUvDwPjLSNWQmEMkD8Vwi3PZdcbw0RtO1Tui-1Qc29n1sBI2ISEVdjbR54VJJRiLtpBc49StlkKqvDdIuj6EXby8CO-bVnlHB4lBO_jNJ5pO8yz8kFDbDt_3Oeq0hY3ARp8H_FqcF4ZDl1-_R8_nB-qNx3vJrqISjtdPTqsY3x4qg5oh7cSRDGkGIx9iEyeU6aXwxVmAjNIGN0hjD4SByGarcVNKoMkzmZTNiFou4QKMsBlKXPeYIoCH2eYtwcb65AeyECzSREVV-nHO9tum4HcUloMeZTTPvvlgw.CVlNJ4oHO1y_BEptohBa_w
+            default: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
       responses:
         '204':
           description: ''
@@ -3355,7 +3479,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               example:
                 code: BAD_REQUEST
                 message: The endpoint is malformed.
@@ -3366,7 +3491,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '2':
                   summary: Forbidden to Service
@@ -3387,7 +3513,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '4':
                   summary: Token Not Found
@@ -3408,7 +3535,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               example:
                 code: METHOD_NOT_ALLOWED
                 message: Method used to access this resource is not allowed.
@@ -3419,7 +3547,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '7':
                   summary: Database Error
@@ -3482,16 +3611,14 @@ paths:
         - name: Authorization
           in: header
           description: Authorization token.
-          example: >-
-            eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..bYYIblHR87x9fMLo.jAOh5ohKhXp60QOuAinea9iTNMAii63aSsamcTbw-BOe7jz0S8HGzpN0Oe9NRxUvDwPjLSNWQmEMkD8Vwi3PZdcbw0RtO1Tui-1Qc29n1sBI2ISEVdjbR54VJJRiLtpBc49StlkKqvDdIuj6EXby8CO-bVnlHB4lBO_jNJ5pO8yz8kFDbDt_3Oeq0hY3ARp8H_FqcF4ZDl1-_R8_nB-qNx3vJrqISjtdPTqsY3x4qg5oh7cSRDGkGIx9iEyeU6aXwxVmAjNIGN0hjD4SByGarcVNKoMkzmZTNiFou4QKMsBlKXPeYIoCH2eYtwcb65AeyECzSREVV-nHO9tum4HcUloMeZTTPvvlgw.CVlNJ4oHO1y_BEptohBa_w
+          example: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
           schema:
             type: string
-            default: >-
-              eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..bYYIblHR87x9fMLo.jAOh5ohKhXp60QOuAinea9iTNMAii63aSsamcTbw-BOe7jz0S8HGzpN0Oe9NRxUvDwPjLSNWQmEMkD8Vwi3PZdcbw0RtO1Tui-1Qc29n1sBI2ISEVdjbR54VJJRiLtpBc49StlkKqvDdIuj6EXby8CO-bVnlHB4lBO_jNJ5pO8yz8kFDbDt_3Oeq0hY3ARp8H_FqcF4ZDl1-_R8_nB-qNx3vJrqISjtdPTqsY3x4qg5oh7cSRDGkGIx9iEyeU6aXwxVmAjNIGN0hjD4SByGarcVNKoMkzmZTNiFou4QKMsBlKXPeYIoCH2eYtwcb65AeyECzSREVV-nHO9tum4HcUloMeZTTPvvlgw.CVlNJ4oHO1y_BEptohBa_w
+            default: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
       requestBody:
         content:
           application/json:
-            schema: &ref_8
+            schema:
               $ref: '#/components/schemas/Place4'
             examples: {}
       responses:
@@ -3499,13 +3626,15 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_4
+              schema:
+                $ref: '#/components/schemas/Place'
           headers: {}
         '400':
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               example:
                 code: BAD_REQUEST
                 message: The endpoint is malformed.
@@ -3516,7 +3645,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '2':
                   summary: Forbidden to Service
@@ -3537,7 +3667,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '4':
                   summary: Token Not Found
@@ -3558,7 +3689,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               example:
                 code: METHOD_NOT_ALLOWED
                 message: Method used to access this resource is not allowed.
@@ -3569,7 +3701,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               example:
                 code: CONFLICT
                 message: >-
@@ -3582,7 +3715,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '7':
                   summary: Database Error
@@ -3644,29 +3778,30 @@ paths:
         - name: Authorization
           in: header
           description: Authorization token.
-          example: >-
-            eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..bYYIblHR87x9fMLo.jAOh5ohKhXp60QOuAinea9iTNMAii63aSsamcTbw-BOe7jz0S8HGzpN0Oe9NRxUvDwPjLSNWQmEMkD8Vwi3PZdcbw0RtO1Tui-1Qc29n1sBI2ISEVdjbR54VJJRiLtpBc49StlkKqvDdIuj6EXby8CO-bVnlHB4lBO_jNJ5pO8yz8kFDbDt_3Oeq0hY3ARp8H_FqcF4ZDl1-_R8_nB-qNx3vJrqISjtdPTqsY3x4qg5oh7cSRDGkGIx9iEyeU6aXwxVmAjNIGN0hjD4SByGarcVNKoMkzmZTNiFou4QKMsBlKXPeYIoCH2eYtwcb65AeyECzSREVV-nHO9tum4HcUloMeZTTPvvlgw.CVlNJ4oHO1y_BEptohBa_w
+          example: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
           schema:
             type: string
-            default: >-
-              eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..bYYIblHR87x9fMLo.jAOh5ohKhXp60QOuAinea9iTNMAii63aSsamcTbw-BOe7jz0S8HGzpN0Oe9NRxUvDwPjLSNWQmEMkD8Vwi3PZdcbw0RtO1Tui-1Qc29n1sBI2ISEVdjbR54VJJRiLtpBc49StlkKqvDdIuj6EXby8CO-bVnlHB4lBO_jNJ5pO8yz8kFDbDt_3Oeq0hY3ARp8H_FqcF4ZDl1-_R8_nB-qNx3vJrqISjtdPTqsY3x4qg5oh7cSRDGkGIx9iEyeU6aXwxVmAjNIGN0hjD4SByGarcVNKoMkzmZTNiFou4QKMsBlKXPeYIoCH2eYtwcb65AeyECzSREVV-nHO9tum4HcUloMeZTTPvvlgw.CVlNJ4oHO1y_BEptohBa_w
+            default: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
       requestBody:
         content:
           application/json:
-            schema: *ref_8
+            schema:
+              $ref: '#/components/schemas/Place4'
             examples: {}
       responses:
         '204':
           description: ''
           content:
             application/json:
-              schema: *ref_4
+              schema:
+                $ref: '#/components/schemas/Place'
           headers: {}
         '304':
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               example:
                 code: RESOURCE_NOT_MODIFIED
                 message: >-
@@ -3679,7 +3814,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               example:
                 code: BAD_REQUEST
                 message: The endpoint is malformed.
@@ -3690,7 +3826,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '2':
                   summary: Forbidden to Service
@@ -3711,7 +3848,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '4':
                   summary: Token Not Found
@@ -3732,7 +3870,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               example:
                 code: METHOD_NOT_ALLOWED
                 message: Method used to access this resource is not allowed.
@@ -3743,7 +3882,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '7':
                   summary: Database Error
@@ -3812,12 +3952,10 @@ paths:
         - name: Authorization
           in: header
           description: Authorization token.
-          example: >-
-            eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..bYYIblHR87x9fMLo.jAOh5ohKhXp60QOuAinea9iTNMAii63aSsamcTbw-BOe7jz0S8HGzpN0Oe9NRxUvDwPjLSNWQmEMkD8Vwi3PZdcbw0RtO1Tui-1Qc29n1sBI2ISEVdjbR54VJJRiLtpBc49StlkKqvDdIuj6EXby8CO-bVnlHB4lBO_jNJ5pO8yz8kFDbDt_3Oeq0hY3ARp8H_FqcF4ZDl1-_R8_nB-qNx3vJrqISjtdPTqsY3x4qg5oh7cSRDGkGIx9iEyeU6aXwxVmAjNIGN0hjD4SByGarcVNKoMkzmZTNiFou4QKMsBlKXPeYIoCH2eYtwcb65AeyECzSREVV-nHO9tum4HcUloMeZTTPvvlgw.CVlNJ4oHO1y_BEptohBa_w
+          example: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
           schema:
             type: string
-            default: >-
-              eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..bYYIblHR87x9fMLo.jAOh5ohKhXp60QOuAinea9iTNMAii63aSsamcTbw-BOe7jz0S8HGzpN0Oe9NRxUvDwPjLSNWQmEMkD8Vwi3PZdcbw0RtO1Tui-1Qc29n1sBI2ISEVdjbR54VJJRiLtpBc49StlkKqvDdIuj6EXby8CO-bVnlHB4lBO_jNJ5pO8yz8kFDbDt_3Oeq0hY3ARp8H_FqcF4ZDl1-_R8_nB-qNx3vJrqISjtdPTqsY3x4qg5oh7cSRDGkGIx9iEyeU6aXwxVmAjNIGN0hjD4SByGarcVNKoMkzmZTNiFou4QKMsBlKXPeYIoCH2eYtwcb65AeyECzSREVV-nHO9tum4HcUloMeZTTPvvlgw.CVlNJ4oHO1y_BEptohBa_w
+            default: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
       responses:
         '204':
           description: ''
@@ -3831,7 +3969,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               example:
                 code: BAD_REQUEST
                 message: The endpoint is malformed.
@@ -3842,7 +3981,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '2':
                   summary: Forbidden to Service
@@ -3863,7 +4003,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '4':
                   summary: Token Not Found
@@ -3884,7 +4025,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               example:
                 code: METHOD_NOT_ALLOWED
                 message: Method used to access this resource is not allowed.
@@ -3895,7 +4037,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '7':
                   summary: Database Error
@@ -3957,16 +4100,14 @@ paths:
         - name: Authorization
           in: header
           description: Authorization token.
-          example: >-
-            eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..bYYIblHR87x9fMLo.jAOh5ohKhXp60QOuAinea9iTNMAii63aSsamcTbw-BOe7jz0S8HGzpN0Oe9NRxUvDwPjLSNWQmEMkD8Vwi3PZdcbw0RtO1Tui-1Qc29n1sBI2ISEVdjbR54VJJRiLtpBc49StlkKqvDdIuj6EXby8CO-bVnlHB4lBO_jNJ5pO8yz8kFDbDt_3Oeq0hY3ARp8H_FqcF4ZDl1-_R8_nB-qNx3vJrqISjtdPTqsY3x4qg5oh7cSRDGkGIx9iEyeU6aXwxVmAjNIGN0hjD4SByGarcVNKoMkzmZTNiFou4QKMsBlKXPeYIoCH2eYtwcb65AeyECzSREVV-nHO9tum4HcUloMeZTTPvvlgw.CVlNJ4oHO1y_BEptohBa_w
+          example: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
           schema:
             type: string
-            default: >-
-              eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..bYYIblHR87x9fMLo.jAOh5ohKhXp60QOuAinea9iTNMAii63aSsamcTbw-BOe7jz0S8HGzpN0Oe9NRxUvDwPjLSNWQmEMkD8Vwi3PZdcbw0RtO1Tui-1Qc29n1sBI2ISEVdjbR54VJJRiLtpBc49StlkKqvDdIuj6EXby8CO-bVnlHB4lBO_jNJ5pO8yz8kFDbDt_3Oeq0hY3ARp8H_FqcF4ZDl1-_R8_nB-qNx3vJrqISjtdPTqsY3x4qg5oh7cSRDGkGIx9iEyeU6aXwxVmAjNIGN0hjD4SByGarcVNKoMkzmZTNiFou4QKMsBlKXPeYIoCH2eYtwcb65AeyECzSREVV-nHO9tum4HcUloMeZTTPvvlgw.CVlNJ4oHO1y_BEptohBa_w
+            default: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
       requestBody:
         content:
           application/json:
-            schema: &ref_9
+            schema:
               $ref: '#/components/schemas/Item1'
             examples: {}
       responses:
@@ -3974,13 +4115,15 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_2
+              schema:
+                $ref: '#/components/schemas/Item'
           headers: {}
         '400':
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               example:
                 code: BAD_REQUEST
                 message: The endpoint is malformed.
@@ -3991,7 +4134,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '2':
                   summary: Forbidden to Service
@@ -4012,7 +4156,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '4':
                   summary: Token Not Found
@@ -4033,7 +4178,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               example:
                 code: METHOD_NOT_ALLOWED
                 message: Method used to access this resource is not allowed.
@@ -4044,7 +4190,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               example:
                 code: CONFLICT
                 message: >-
@@ -4057,7 +4204,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '7':
                   summary: Database Error
@@ -4118,29 +4266,30 @@ paths:
         - name: Authorization
           in: header
           description: Authorization token.
-          example: >-
-            eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..bYYIblHR87x9fMLo.jAOh5ohKhXp60QOuAinea9iTNMAii63aSsamcTbw-BOe7jz0S8HGzpN0Oe9NRxUvDwPjLSNWQmEMkD8Vwi3PZdcbw0RtO1Tui-1Qc29n1sBI2ISEVdjbR54VJJRiLtpBc49StlkKqvDdIuj6EXby8CO-bVnlHB4lBO_jNJ5pO8yz8kFDbDt_3Oeq0hY3ARp8H_FqcF4ZDl1-_R8_nB-qNx3vJrqISjtdPTqsY3x4qg5oh7cSRDGkGIx9iEyeU6aXwxVmAjNIGN0hjD4SByGarcVNKoMkzmZTNiFou4QKMsBlKXPeYIoCH2eYtwcb65AeyECzSREVV-nHO9tum4HcUloMeZTTPvvlgw.CVlNJ4oHO1y_BEptohBa_w
+          example: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
           schema:
             type: string
-            default: >-
-              eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..bYYIblHR87x9fMLo.jAOh5ohKhXp60QOuAinea9iTNMAii63aSsamcTbw-BOe7jz0S8HGzpN0Oe9NRxUvDwPjLSNWQmEMkD8Vwi3PZdcbw0RtO1Tui-1Qc29n1sBI2ISEVdjbR54VJJRiLtpBc49StlkKqvDdIuj6EXby8CO-bVnlHB4lBO_jNJ5pO8yz8kFDbDt_3Oeq0hY3ARp8H_FqcF4ZDl1-_R8_nB-qNx3vJrqISjtdPTqsY3x4qg5oh7cSRDGkGIx9iEyeU6aXwxVmAjNIGN0hjD4SByGarcVNKoMkzmZTNiFou4QKMsBlKXPeYIoCH2eYtwcb65AeyECzSREVV-nHO9tum4HcUloMeZTTPvvlgw.CVlNJ4oHO1y_BEptohBa_w
+            default: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
       requestBody:
         content:
           application/json:
-            schema: *ref_9
+            schema:
+              $ref: '#/components/schemas/Item1'
             examples: {}
       responses:
         '204':
           description: ''
           content:
             application/json:
-              schema: *ref_2
+              schema:
+                $ref: '#/components/schemas/Item'
           headers: {}
         '304':
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               example:
                 code: RESOURCE_NOT_MODIFIED
                 message: >-
@@ -4153,7 +4302,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               example:
                 code: BAD_REQUEST
                 message: The endpoint is malformed.
@@ -4164,7 +4314,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '2':
                   summary: Forbidden to Service
@@ -4185,7 +4336,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '4':
                   summary: Token Not Found
@@ -4206,7 +4358,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               example:
                 code: METHOD_NOT_ALLOWED
                 message: Method used to access this resource is not allowed.
@@ -4217,7 +4370,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '7':
                   summary: Database Error
@@ -4285,12 +4439,10 @@ paths:
         - name: Authorization
           in: header
           description: Authorization token.
-          example: >-
-            eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..bYYIblHR87x9fMLo.jAOh5ohKhXp60QOuAinea9iTNMAii63aSsamcTbw-BOe7jz0S8HGzpN0Oe9NRxUvDwPjLSNWQmEMkD8Vwi3PZdcbw0RtO1Tui-1Qc29n1sBI2ISEVdjbR54VJJRiLtpBc49StlkKqvDdIuj6EXby8CO-bVnlHB4lBO_jNJ5pO8yz8kFDbDt_3Oeq0hY3ARp8H_FqcF4ZDl1-_R8_nB-qNx3vJrqISjtdPTqsY3x4qg5oh7cSRDGkGIx9iEyeU6aXwxVmAjNIGN0hjD4SByGarcVNKoMkzmZTNiFou4QKMsBlKXPeYIoCH2eYtwcb65AeyECzSREVV-nHO9tum4HcUloMeZTTPvvlgw.CVlNJ4oHO1y_BEptohBa_w
+          example: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
           schema:
             type: string
-            default: >-
-              eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..bYYIblHR87x9fMLo.jAOh5ohKhXp60QOuAinea9iTNMAii63aSsamcTbw-BOe7jz0S8HGzpN0Oe9NRxUvDwPjLSNWQmEMkD8Vwi3PZdcbw0RtO1Tui-1Qc29n1sBI2ISEVdjbR54VJJRiLtpBc49StlkKqvDdIuj6EXby8CO-bVnlHB4lBO_jNJ5pO8yz8kFDbDt_3Oeq0hY3ARp8H_FqcF4ZDl1-_R8_nB-qNx3vJrqISjtdPTqsY3x4qg5oh7cSRDGkGIx9iEyeU6aXwxVmAjNIGN0hjD4SByGarcVNKoMkzmZTNiFou4QKMsBlKXPeYIoCH2eYtwcb65AeyECzSREVV-nHO9tum4HcUloMeZTTPvvlgw.CVlNJ4oHO1y_BEptohBa_w
+            default: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
       responses:
         '204':
           description: ''
@@ -4304,7 +4456,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               example:
                 code: BAD_REQUEST
                 message: The endpoint is malformed.
@@ -4315,7 +4468,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '2':
                   summary: Forbidden to Service
@@ -4336,7 +4490,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '4':
                   summary: Token Not Found
@@ -4357,7 +4512,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               example:
                 code: METHOD_NOT_ALLOWED
                 message: Method used to access this resource is not allowed.
@@ -4368,7 +4524,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '7':
                   summary: Database Error
@@ -4437,16 +4594,14 @@ paths:
         - name: Authorization
           in: header
           description: Authorization token.
-          example: >-
-            eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..bYYIblHR87x9fMLo.jAOh5ohKhXp60QOuAinea9iTNMAii63aSsamcTbw-BOe7jz0S8HGzpN0Oe9NRxUvDwPjLSNWQmEMkD8Vwi3PZdcbw0RtO1Tui-1Qc29n1sBI2ISEVdjbR54VJJRiLtpBc49StlkKqvDdIuj6EXby8CO-bVnlHB4lBO_jNJ5pO8yz8kFDbDt_3Oeq0hY3ARp8H_FqcF4ZDl1-_R8_nB-qNx3vJrqISjtdPTqsY3x4qg5oh7cSRDGkGIx9iEyeU6aXwxVmAjNIGN0hjD4SByGarcVNKoMkzmZTNiFou4QKMsBlKXPeYIoCH2eYtwcb65AeyECzSREVV-nHO9tum4HcUloMeZTTPvvlgw.CVlNJ4oHO1y_BEptohBa_w
+          example: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
           schema:
             type: string
-            default: >-
-              eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..bYYIblHR87x9fMLo.jAOh5ohKhXp60QOuAinea9iTNMAii63aSsamcTbw-BOe7jz0S8HGzpN0Oe9NRxUvDwPjLSNWQmEMkD8Vwi3PZdcbw0RtO1Tui-1Qc29n1sBI2ISEVdjbR54VJJRiLtpBc49StlkKqvDdIuj6EXby8CO-bVnlHB4lBO_jNJ5pO8yz8kFDbDt_3Oeq0hY3ARp8H_FqcF4ZDl1-_R8_nB-qNx3vJrqISjtdPTqsY3x4qg5oh7cSRDGkGIx9iEyeU6aXwxVmAjNIGN0hjD4SByGarcVNKoMkzmZTNiFou4QKMsBlKXPeYIoCH2eYtwcb65AeyECzSREVV-nHO9tum4HcUloMeZTTPvvlgw.CVlNJ4oHO1y_BEptohBa_w
+            default: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
       requestBody:
         content:
           application/json:
-            schema: &ref_10
+            schema:
               $ref: '#/components/schemas/Creature5'
             examples: {}
       responses:
@@ -4454,13 +4609,15 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_5
+              schema:
+                $ref: '#/components/schemas/Creature'
           headers: {}
         '304':
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               example:
                 code: RESOURCE_NOT_MODIFIED
                 message: >-
@@ -4473,7 +4630,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               example:
                 code: BAD_REQUEST
                 message: The endpoint is malformed.
@@ -4484,7 +4642,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '2':
                   summary: Forbidden to Service
@@ -4505,7 +4664,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '4':
                   summary: Token Not Found
@@ -4526,7 +4686,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               example:
                 code: METHOD_NOT_ALLOWED
                 message: Method used to access this resource is not allowed.
@@ -4537,7 +4698,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '7':
                   summary: Database Error
@@ -4598,29 +4760,30 @@ paths:
         - name: Authorization
           in: header
           description: Authorization token.
-          example: >-
-            eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..bYYIblHR87x9fMLo.jAOh5ohKhXp60QOuAinea9iTNMAii63aSsamcTbw-BOe7jz0S8HGzpN0Oe9NRxUvDwPjLSNWQmEMkD8Vwi3PZdcbw0RtO1Tui-1Qc29n1sBI2ISEVdjbR54VJJRiLtpBc49StlkKqvDdIuj6EXby8CO-bVnlHB4lBO_jNJ5pO8yz8kFDbDt_3Oeq0hY3ARp8H_FqcF4ZDl1-_R8_nB-qNx3vJrqISjtdPTqsY3x4qg5oh7cSRDGkGIx9iEyeU6aXwxVmAjNIGN0hjD4SByGarcVNKoMkzmZTNiFou4QKMsBlKXPeYIoCH2eYtwcb65AeyECzSREVV-nHO9tum4HcUloMeZTTPvvlgw.CVlNJ4oHO1y_BEptohBa_w
+          example: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
           schema:
             type: string
-            default: >-
-              eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..bYYIblHR87x9fMLo.jAOh5ohKhXp60QOuAinea9iTNMAii63aSsamcTbw-BOe7jz0S8HGzpN0Oe9NRxUvDwPjLSNWQmEMkD8Vwi3PZdcbw0RtO1Tui-1Qc29n1sBI2ISEVdjbR54VJJRiLtpBc49StlkKqvDdIuj6EXby8CO-bVnlHB4lBO_jNJ5pO8yz8kFDbDt_3Oeq0hY3ARp8H_FqcF4ZDl1-_R8_nB-qNx3vJrqISjtdPTqsY3x4qg5oh7cSRDGkGIx9iEyeU6aXwxVmAjNIGN0hjD4SByGarcVNKoMkzmZTNiFou4QKMsBlKXPeYIoCH2eYtwcb65AeyECzSREVV-nHO9tum4HcUloMeZTTPvvlgw.CVlNJ4oHO1y_BEptohBa_w
+            default: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
       requestBody:
         content:
           application/json:
-            schema: *ref_10
+            schema:
+              $ref: '#/components/schemas/Creature5'
             examples: {}
       responses:
         '204':
           description: ''
           content:
             application/json:
-              schema: *ref_5
+              schema:
+                $ref: '#/components/schemas/Creature'
           headers: {}
         '400':
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               example:
                 code: BAD_REQUEST
                 message: The endpoint is malformed.
@@ -4631,7 +4794,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '2':
                   summary: Forbidden to Service
@@ -4652,7 +4816,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '4':
                   summary: Token Not Found
@@ -4673,7 +4838,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               example:
                 code: METHOD_NOT_ALLOWED
                 message: Method used to access this resource is not allowed.
@@ -4684,7 +4850,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               example:
                 code: CONFLICT
                 message: >-
@@ -4697,7 +4864,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '7':
                   summary: Database Error
@@ -4765,12 +4933,10 @@ paths:
         - name: Authorization
           in: header
           description: Authorization token.
-          example: >-
-            eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..bYYIblHR87x9fMLo.jAOh5ohKhXp60QOuAinea9iTNMAii63aSsamcTbw-BOe7jz0S8HGzpN0Oe9NRxUvDwPjLSNWQmEMkD8Vwi3PZdcbw0RtO1Tui-1Qc29n1sBI2ISEVdjbR54VJJRiLtpBc49StlkKqvDdIuj6EXby8CO-bVnlHB4lBO_jNJ5pO8yz8kFDbDt_3Oeq0hY3ARp8H_FqcF4ZDl1-_R8_nB-qNx3vJrqISjtdPTqsY3x4qg5oh7cSRDGkGIx9iEyeU6aXwxVmAjNIGN0hjD4SByGarcVNKoMkzmZTNiFou4QKMsBlKXPeYIoCH2eYtwcb65AeyECzSREVV-nHO9tum4HcUloMeZTTPvvlgw.CVlNJ4oHO1y_BEptohBa_w
+          example: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
           schema:
             type: string
-            default: >-
-              eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..bYYIblHR87x9fMLo.jAOh5ohKhXp60QOuAinea9iTNMAii63aSsamcTbw-BOe7jz0S8HGzpN0Oe9NRxUvDwPjLSNWQmEMkD8Vwi3PZdcbw0RtO1Tui-1Qc29n1sBI2ISEVdjbR54VJJRiLtpBc49StlkKqvDdIuj6EXby8CO-bVnlHB4lBO_jNJ5pO8yz8kFDbDt_3Oeq0hY3ARp8H_FqcF4ZDl1-_R8_nB-qNx3vJrqISjtdPTqsY3x4qg5oh7cSRDGkGIx9iEyeU6aXwxVmAjNIGN0hjD4SByGarcVNKoMkzmZTNiFou4QKMsBlKXPeYIoCH2eYtwcb65AeyECzSREVV-nHO9tum4HcUloMeZTTPvvlgw.CVlNJ4oHO1y_BEptohBa_w
+            default: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
       responses:
         '204':
           description: ''
@@ -4784,7 +4950,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               example:
                 code: BAD_REQUEST
                 message: The endpoint is malformed.
@@ -4795,7 +4962,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '2':
                   summary: Forbidden to Service
@@ -4816,7 +4984,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '4':
                   summary: Token Not Found
@@ -4837,7 +5006,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               example:
                 code: METHOD_NOT_ALLOWED
                 message: Method used to access this resource is not allowed.
@@ -4848,7 +5018,8 @@ paths:
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
               examples:
                 '7':
                   summary: Database Error
@@ -4966,7 +5137,9 @@ components:
           type: string
           format: uri
           description: Character image.
-        world: *ref_3
+        world:
+          description: World where the character belongs.
+          $ref: '#/components/schemas/World'
       required:
         - name
         - identifier
@@ -4990,7 +5163,8 @@ components:
           description: World description.
         places:
           type: array
-          items: *ref_4
+          items:
+            $ref: '#/components/schemas/Place'
           description: World places.
         image:
           type: string
@@ -5058,10 +5232,12 @@ components:
         identifier:
           type: string
           description: Item identifier.
-        name: &ref_11
+        name:
           description: Item name.
           $ref: '#/components/schemas/Translated%20String'
-        description: *ref_11
+        description:
+          description: Item description.
+          $ref: '#/components/schemas/Translated%20String'
         image:
           type: string
           format: uri
@@ -5083,15 +5259,25 @@ components:
     Character2:
       type: object
       properties:
-        name: *ref_11
-        title: *ref_11
-        description: *ref_11
-        race: *ref_11
+        name:
+          description: Character name.
+          $ref: '#/components/schemas/Translated%20String'
+        title:
+          description: Character title.
+          $ref: '#/components/schemas/Translated%20String'
+        description:
+          description: Character description.
+          $ref: '#/components/schemas/Translated%20String'
+        race:
+          description: Character race.
+          $ref: '#/components/schemas/Translated%20String'
         image:
           type: string
           format: uri
           description: Character image.
-        world: *ref_7
+        world:
+          description: World where the character belongs.
+          $ref: '#/components/schemas/World3'
       required:
         - name
         - description
@@ -5103,11 +5289,16 @@ components:
     World3:
       type: object
       properties:
-        name: *ref_11
-        description: *ref_11
+        name:
+          description: World name.
+          $ref: '#/components/schemas/Translated%20String'
+        description:
+          description: World description.
+          $ref: '#/components/schemas/Translated%20String'
         places:
           type: array
-          items: *ref_8
+          items:
+            $ref: '#/components/schemas/Place4'
           description: World places.
         image:
           type: string
@@ -5127,8 +5318,12 @@ components:
     Place4:
       type: object
       properties:
-        name: *ref_11
-        description: *ref_11
+        name:
+          description: Place name.
+          $ref: '#/components/schemas/Translated%20String'
+        description:
+          description: Place description.
+          $ref: '#/components/schemas/Translated%20String'
         image:
           type: string
           format: uri
@@ -5141,8 +5336,12 @@ components:
     Creature5:
       type: object
       properties:
-        name: *ref_11
-        description: *ref_11
+        name:
+          description: Creature name.
+          $ref: '#/components/schemas/Translated%20String'
+        description:
+          description: Creature description.
+          $ref: '#/components/schemas/Translated%20String'
         image:
           type: string
           format: uri
