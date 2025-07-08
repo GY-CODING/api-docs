@@ -4,7 +4,7 @@ info:
   description: >-
     GY Accounts is the official authentication and user management system for
     GYCODING products.
-  version: 1.0.0
+  version: 3.2.1
 tags:
   - name: Authentication
   - name: Products/GY Messages
@@ -383,10 +383,10 @@ paths:
           in: header
           description: Authorization token.
           required: false
-          example: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
+          example: DtIGTWjHlBT_SoDIFinxyaals_efQEBY8vQh0ItbDWg
           schema:
             type: string
-            default: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
+            default: DtIGTWjHlBT_SoDIFinxyaals_efQEBY8vQh0ItbDWg
       requestBody:
         content:
           application/json:
@@ -564,10 +564,10 @@ paths:
           in: header
           description: Authorization token.
           required: false
-          example: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
+          example: DtIGTWjHlBT_SoDIFinxyaals_efQEBY8vQh0ItbDWg
           schema:
             type: string
-            default: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
+            default: DtIGTWjHlBT_SoDIFinxyaals_efQEBY8vQh0ItbDWg
       requestBody:
         content:
           application/json:
@@ -735,10 +735,10 @@ paths:
           in: header
           description: Authorization token.
           required: false
-          example: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
+          example: DtIGTWjHlBT_SoDIFinxyaals_efQEBY8vQh0ItbDWg
           schema:
             type: string
-            default: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
+            default: DtIGTWjHlBT_SoDIFinxyaals_efQEBY8vQh0ItbDWg
       responses:
         '204':
           description: ''
@@ -890,10 +890,10 @@ paths:
           in: header
           description: Authorization token.
           required: false
-          example: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
+          example: DtIGTWjHlBT_SoDIFinxyaals_efQEBY8vQh0ItbDWg
           schema:
             type: string
-            default: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
+            default: DtIGTWjHlBT_SoDIFinxyaals_efQEBY8vQh0ItbDWg
       responses:
         '200':
           description: ''
@@ -1035,10 +1035,10 @@ paths:
           in: header
           description: Authorization token.
           required: false
-          example: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
+          example: DtIGTWjHlBT_SoDIFinxyaals_efQEBY8vQh0ItbDWg
           schema:
             type: string
-            default: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
+            default: DtIGTWjHlBT_SoDIFinxyaals_efQEBY8vQh0ItbDWg
       requestBody:
         content:
           application/json:
@@ -1131,10 +1131,10 @@ paths:
           in: header
           description: Authorization token.
           required: false
-          example: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
+          example: DtIGTWjHlBT_SoDIFinxyaals_efQEBY8vQh0ItbDWg
           schema:
             type: string
-            default: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
+            default: DtIGTWjHlBT_SoDIFinxyaals_efQEBY8vQh0ItbDWg
       requestBody:
         content:
           application/json:
@@ -1228,10 +1228,10 @@ paths:
           in: header
           description: Authorization token.
           required: false
-          example: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
+          example: DtIGTWjHlBT_SoDIFinxyaals_efQEBY8vQh0ItbDWg
           schema:
             type: string
-            default: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
+            default: DtIGTWjHlBT_SoDIFinxyaals_efQEBY8vQh0ItbDWg
       responses:
         '200':
           description: ''
@@ -1239,6 +1239,176 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/User%20Profile'
+          headers: {}
+        '500':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
+              examples:
+                '1':
+                  summary: Database Error
+                  value:
+                    code: DB_ERROR
+                    message: >-
+                      An error with the database has occurred, sorry for the
+                      inconvenience.
+                    status: 500
+                    owner: GYCODING
+                '2':
+                  summary: Auth Error from Service
+                  value:
+                    code: AUTH_ERROR
+                    message: >-
+                      An error with the authentication service has occurred,
+                      sorry for the inconvenience.
+                    status: 500
+                    owner: GYCODING
+                '3':
+                  summary: Auth Error from API Gateway
+                  value:
+                    code: AUTH_ERROR
+                    message: >-
+                      An error with the authentication service has occurred,
+                      sorry for the inconvenience.
+                    status: 500
+                    owner: API_GATEWAY
+                '4':
+                  summary: Gateway Error
+                  value:
+                    code: GATEWAY_ERROR
+                    message: >-
+                      An internal API Gateway error has occurred, sorry for the
+                      inconvenience.
+                    status: 500
+                    owner: API_GATEWAY
+                '5':
+                  summary: Server Error
+                  value:
+                    code: SERVER_ERROR
+                    message: >-
+                      An internal server error has occurred, sorry for the
+                      inconvenience.
+                    status: 500
+                    owner: GYCODING
+          headers: {}
+      security: []
+      x-roles:
+        - COMMON
+        - ADMIN
+  /books/users:
+    get:
+      summary: List Users
+      deprecated: false
+      description: ''
+      tags:
+        - Products/GY Books
+      parameters:
+        - name: query
+          in: query
+          description: ''
+          required: true
+          example: gfigueras
+          schema:
+            type: string
+        - name: Authorization
+          in: header
+          description: Authorization token.
+          required: false
+          example: DtIGTWjHlBT_SoDIFinxyaals_efQEBY8vQh0ItbDWg
+          schema:
+            type: string
+            default: DtIGTWjHlBT_SoDIFinxyaals_efQEBY8vQh0ItbDWg
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+          headers: {}
+        '500':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
+              examples:
+                '1':
+                  summary: Database Error
+                  value:
+                    code: DB_ERROR
+                    message: >-
+                      An error with the database has occurred, sorry for the
+                      inconvenience.
+                    status: 500
+                    owner: GYCODING
+                '2':
+                  summary: Auth Error from Service
+                  value:
+                    code: AUTH_ERROR
+                    message: >-
+                      An error with the authentication service has occurred,
+                      sorry for the inconvenience.
+                    status: 500
+                    owner: GYCODING
+                '3':
+                  summary: Auth Error from API Gateway
+                  value:
+                    code: AUTH_ERROR
+                    message: >-
+                      An error with the authentication service has occurred,
+                      sorry for the inconvenience.
+                    status: 500
+                    owner: API_GATEWAY
+                '4':
+                  summary: Gateway Error
+                  value:
+                    code: GATEWAY_ERROR
+                    message: >-
+                      An internal API Gateway error has occurred, sorry for the
+                      inconvenience.
+                    status: 500
+                    owner: API_GATEWAY
+                '5':
+                  summary: Server Error
+                  value:
+                    code: SERVER_ERROR
+                    message: >-
+                      An internal server error has occurred, sorry for the
+                      inconvenience.
+                    status: 500
+                    owner: GYCODING
+          headers: {}
+      security: []
+      x-roles:
+        - COMMON
+        - ADMIN
+  /books/users/public:
+    get:
+      summary: List Users (Public)
+      deprecated: false
+      description: ''
+      tags:
+        - Products/GY Books
+      parameters:
+        - name: query
+          in: query
+          description: ''
+          required: true
+          example: gfigueras
+          schema:
+            type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
           headers: {}
         '500':
           description: ''
@@ -1311,10 +1481,10 @@ paths:
           in: header
           description: Authorization token.
           required: false
-          example: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
+          example: DtIGTWjHlBT_SoDIFinxyaals_efQEBY8vQh0ItbDWg
           schema:
             type: string
-            default: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
+            default: DtIGTWjHlBT_SoDIFinxyaals_efQEBY8vQh0ItbDWg
       responses:
         '200':
           description: ''
@@ -1452,10 +1622,10 @@ paths:
           in: header
           description: Authorization token.
           required: false
-          example: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
+          example: DtIGTWjHlBT_SoDIFinxyaals_efQEBY8vQh0ItbDWg
           schema:
             type: string
-            default: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
+            default: DtIGTWjHlBT_SoDIFinxyaals_efQEBY8vQh0ItbDWg
       requestBody:
         content:
           application/json:
@@ -1612,10 +1782,10 @@ paths:
           in: header
           description: Authorization token.
           required: false
-          example: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
+          example: DtIGTWjHlBT_SoDIFinxyaals_efQEBY8vQh0ItbDWg
           schema:
             type: string
-            default: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
+            default: DtIGTWjHlBT_SoDIFinxyaals_efQEBY8vQh0ItbDWg
       responses:
         '200':
           description: ''
@@ -1753,10 +1923,10 @@ paths:
           in: header
           description: Authorization token.
           required: false
-          example: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
+          example: DtIGTWjHlBT_SoDIFinxyaals_efQEBY8vQh0ItbDWg
           schema:
             type: string
-            default: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
+            default: DtIGTWjHlBT_SoDIFinxyaals_efQEBY8vQh0ItbDWg
       requestBody:
         content:
           text/plain:
@@ -2056,10 +2226,10 @@ paths:
           in: header
           description: Authorization token.
           required: false
-          example: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
+          example: DtIGTWjHlBT_SoDIFinxyaals_efQEBY8vQh0ItbDWg
           schema:
             type: string
-            default: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
+            default: DtIGTWjHlBT_SoDIFinxyaals_efQEBY8vQh0ItbDWg
       requestBody:
         content:
           text/plain:
@@ -2213,10 +2383,10 @@ paths:
           in: header
           description: Authorization token.
           required: false
-          example: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
+          example: DtIGTWjHlBT_SoDIFinxyaals_efQEBY8vQh0ItbDWg
           schema:
             type: string
-            default: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
+            default: DtIGTWjHlBT_SoDIFinxyaals_efQEBY8vQh0ItbDWg
       responses:
         '200':
           description: ''
@@ -2354,10 +2524,10 @@ paths:
           in: header
           description: Authorization token.
           required: false
-          example: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
+          example: DtIGTWjHlBT_SoDIFinxyaals_efQEBY8vQh0ItbDWg
           schema:
             type: string
-            default: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
+            default: DtIGTWjHlBT_SoDIFinxyaals_efQEBY8vQh0ItbDWg
       requestBody:
         content:
           text/plain:
@@ -2509,10 +2679,10 @@ paths:
           in: header
           description: Authorization token.
           required: false
-          example: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
+          example: DtIGTWjHlBT_SoDIFinxyaals_efQEBY8vQh0ItbDWg
           schema:
             type: string
-            default: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
+            default: DtIGTWjHlBT_SoDIFinxyaals_efQEBY8vQh0ItbDWg
       requestBody:
         content:
           text/plain:
@@ -2664,10 +2834,10 @@ paths:
           in: header
           description: Authorization token.
           required: false
-          example: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
+          example: DtIGTWjHlBT_SoDIFinxyaals_efQEBY8vQh0ItbDWg
           schema:
             type: string
-            default: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
+            default: DtIGTWjHlBT_SoDIFinxyaals_efQEBY8vQh0ItbDWg
       responses:
         '200':
           description: ''
@@ -2945,10 +3115,10 @@ paths:
           in: header
           description: Authorization token.
           required: false
-          example: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
+          example: DtIGTWjHlBT_SoDIFinxyaals_efQEBY8vQh0ItbDWg
           schema:
             type: string
-            default: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
+            default: DtIGTWjHlBT_SoDIFinxyaals_efQEBY8vQh0ItbDWg
       responses:
         '204':
           description: ''
