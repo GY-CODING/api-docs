@@ -4,7 +4,7 @@ info:
   description: >-
     GY Accounts is the official authentication and user management system for
     GYCODING products.
-  version: 1.0.0
+  version: 3.2.1
 tags:
   - name: Authentication
   - name: Products/GY Messages
@@ -2969,7 +2969,14 @@ paths:
       description: Modifies user's metadata.
       tags:
         - Users
-      parameters: []
+      parameters:
+        - name: Authorization
+          in: header
+          description: ''
+          required: true
+          example: '{{Authorization}}'
+          schema:
+            type: string
       responses:
         '204':
           description: ''
