@@ -4,7 +4,7 @@ info:
   description: >-
     GY Accounts is the official authentication and user management system for
     GYCODING products.
-  version: 1.0.0
+  version: 3.2.1
 tags:
   - name: Authentication
   - name: Products/GY Messages
@@ -1320,259 +1320,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/User%20Profile'
-          headers: {}
-        '500':
-          description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              examples:
-                '1':
-                  summary: Database Error
-                  value:
-                    code: DB_ERROR
-                    message: >-
-                      An error with the database has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: GYCODING
-                '2':
-                  summary: Auth Error from Service
-                  value:
-                    code: AUTH_ERROR
-                    message: >-
-                      An error with the authentication service has occurred,
-                      sorry for the inconvenience.
-                    status: 500
-                    owner: GYCODING
-                '3':
-                  summary: Auth Error from API Gateway
-                  value:
-                    code: AUTH_ERROR
-                    message: >-
-                      An error with the authentication service has occurred,
-                      sorry for the inconvenience.
-                    status: 500
-                    owner: API_GATEWAY
-                '4':
-                  summary: Gateway Error
-                  value:
-                    code: GATEWAY_ERROR
-                    message: >-
-                      An internal API Gateway error has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: API_GATEWAY
-                '5':
-                  summary: Server Error
-                  value:
-                    code: SERVER_ERROR
-                    message: >-
-                      An internal server error has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: GYCODING
-          headers: {}
-      security: []
-      x-roles:
-        - COMMON
-        - ADMIN
-  /books/users:
-    get:
-      summary: List Users
-      deprecated: false
-      description: >-
-        Retrieves a list of users while being authenticated for extra info about
-        friendship with those users.
-      tags:
-        - Products/GY Books
-      parameters:
-        - name: query
-          in: query
-          description: ''
-          required: true
-          example: gfigueras
-          schema:
-            type: string
-        - name: Authorization
-          in: header
-          description: Authorization token.
-          required: false
-          example: DtIGTWjHlBT_SoDIFinxyaals_efQEBY8vQh0ItbDWg
-          schema:
-            type: string
-            default: DtIGTWjHlBT_SoDIFinxyaals_efQEBY8vQh0ItbDWg
-      responses:
-        '200':
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                properties: {}
-          headers: {}
-        '500':
-          description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              examples:
-                '1':
-                  summary: Database Error
-                  value:
-                    code: DB_ERROR
-                    message: >-
-                      An error with the database has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: GYCODING
-                '2':
-                  summary: Auth Error from Service
-                  value:
-                    code: AUTH_ERROR
-                    message: >-
-                      An error with the authentication service has occurred,
-                      sorry for the inconvenience.
-                    status: 500
-                    owner: GYCODING
-                '3':
-                  summary: Auth Error from API Gateway
-                  value:
-                    code: AUTH_ERROR
-                    message: >-
-                      An error with the authentication service has occurred,
-                      sorry for the inconvenience.
-                    status: 500
-                    owner: API_GATEWAY
-                '4':
-                  summary: Gateway Error
-                  value:
-                    code: GATEWAY_ERROR
-                    message: >-
-                      An internal API Gateway error has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: API_GATEWAY
-                '5':
-                  summary: Server Error
-                  value:
-                    code: SERVER_ERROR
-                    message: >-
-                      An internal server error has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: GYCODING
-          headers: {}
-      security: []
-      x-roles:
-        - COMMON
-        - ADMIN
-  /books/users/public:
-    get:
-      summary: List Users (Public)
-      deprecated: false
-      description: Retrieves a list of users without needing to be authenticated.
-      tags:
-        - Products/GY Books
-      parameters:
-        - name: query
-          in: query
-          description: ''
-          required: true
-          example: gfigueras
-          schema:
-            type: string
-      responses:
-        '200':
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                properties: {}
-          headers: {}
-        '500':
-          description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              examples:
-                '1':
-                  summary: Database Error
-                  value:
-                    code: DB_ERROR
-                    message: >-
-                      An error with the database has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: GYCODING
-                '2':
-                  summary: Auth Error from Service
-                  value:
-                    code: AUTH_ERROR
-                    message: >-
-                      An error with the authentication service has occurred,
-                      sorry for the inconvenience.
-                    status: 500
-                    owner: GYCODING
-                '3':
-                  summary: Auth Error from API Gateway
-                  value:
-                    code: AUTH_ERROR
-                    message: >-
-                      An error with the authentication service has occurred,
-                      sorry for the inconvenience.
-                    status: 500
-                    owner: API_GATEWAY
-                '4':
-                  summary: Gateway Error
-                  value:
-                    code: GATEWAY_ERROR
-                    message: >-
-                      An internal API Gateway error has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: API_GATEWAY
-                '5':
-                  summary: Server Error
-                  value:
-                    code: SERVER_ERROR
-                    message: >-
-                      An internal server error has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: GYCODING
-          headers: {}
-      security: []
-      x-roles:
-        - COMMON
-        - ADMIN
-  /books/users/{profileId}:
-    get:
-      summary: Get User
-      deprecated: false
-      description: Retrieves a user.
-      tags:
-        - Products/GY Books
-      parameters:
-        - name: profileId
-          in: path
-          description: ''
-          required: true
-          schema:
-            type: string
-            format: uuid
-      responses:
-        '200':
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                properties: {}
           headers: {}
         '500':
           description: ''
@@ -3570,6 +3317,509 @@ paths:
           headers: {}
       security: []
       x-roles: []
+  /user/{profileId}:
+    get:
+      summary: Get User
+      deprecated: false
+      description: Retrieves a user.
+      tags:
+        - Users
+      parameters:
+        - name: profileId
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: Authorization
+          in: header
+          description: Authorization token.
+          required: false
+          example: DtIGTWjHlBT_SoDIFinxyaals_efQEBY8vQh0ItbDWg
+          schema:
+            type: string
+            default: DtIGTWjHlBT_SoDIFinxyaals_efQEBY8vQh0ItbDWg
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+          headers: {}
+        '500':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
+              examples:
+                '1':
+                  summary: Database Error
+                  value:
+                    code: DB_ERROR
+                    message: >-
+                      An error with the database has occurred, sorry for the
+                      inconvenience.
+                    status: 500
+                    owner: GYCODING
+                '2':
+                  summary: Auth Error from Service
+                  value:
+                    code: AUTH_ERROR
+                    message: >-
+                      An error with the authentication service has occurred,
+                      sorry for the inconvenience.
+                    status: 500
+                    owner: GYCODING
+                '3':
+                  summary: Auth Error from API Gateway
+                  value:
+                    code: AUTH_ERROR
+                    message: >-
+                      An error with the authentication service has occurred,
+                      sorry for the inconvenience.
+                    status: 500
+                    owner: API_GATEWAY
+                '4':
+                  summary: Gateway Error
+                  value:
+                    code: GATEWAY_ERROR
+                    message: >-
+                      An internal API Gateway error has occurred, sorry for the
+                      inconvenience.
+                    status: 500
+                    owner: API_GATEWAY
+                '5':
+                  summary: Server Error
+                  value:
+                    code: SERVER_ERROR
+                    message: >-
+                      An internal server error has occurred, sorry for the
+                      inconvenience.
+                    status: 500
+                    owner: GYCODING
+          headers: {}
+      security: []
+      x-roles:
+        - COMMON
+        - ADMIN
+  /user/{profileId}/public:
+    get:
+      summary: Get User (Public)
+      deprecated: false
+      description: Retrieves a user.
+      tags:
+        - Users
+      parameters:
+        - name: profileId
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+          headers: {}
+        '500':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
+              examples:
+                '1':
+                  summary: Database Error
+                  value:
+                    code: DB_ERROR
+                    message: >-
+                      An error with the database has occurred, sorry for the
+                      inconvenience.
+                    status: 500
+                    owner: GYCODING
+                '2':
+                  summary: Auth Error from Service
+                  value:
+                    code: AUTH_ERROR
+                    message: >-
+                      An error with the authentication service has occurred,
+                      sorry for the inconvenience.
+                    status: 500
+                    owner: GYCODING
+                '3':
+                  summary: Auth Error from API Gateway
+                  value:
+                    code: AUTH_ERROR
+                    message: >-
+                      An error with the authentication service has occurred,
+                      sorry for the inconvenience.
+                    status: 500
+                    owner: API_GATEWAY
+                '4':
+                  summary: Gateway Error
+                  value:
+                    code: GATEWAY_ERROR
+                    message: >-
+                      An internal API Gateway error has occurred, sorry for the
+                      inconvenience.
+                    status: 500
+                    owner: API_GATEWAY
+                '5':
+                  summary: Server Error
+                  value:
+                    code: SERVER_ERROR
+                    message: >-
+                      An internal server error has occurred, sorry for the
+                      inconvenience.
+                    status: 500
+                    owner: GYCODING
+          headers: {}
+      security: []
+      x-roles:
+        - COMMON
+        - ADMIN
+  /user/list:
+    get:
+      summary: List Users
+      deprecated: false
+      description: >-
+        Retrieves a list of users while being authenticated for extra info about
+        friendship with those users.
+      tags:
+        - Users
+      parameters:
+        - name: query
+          in: query
+          description: ''
+          required: true
+          example: gfigueras
+          schema:
+            type: string
+        - name: Authorization
+          in: header
+          description: Authorization token.
+          required: false
+          example: DtIGTWjHlBT_SoDIFinxyaals_efQEBY8vQh0ItbDWg
+          schema:
+            type: string
+            default: DtIGTWjHlBT_SoDIFinxyaals_efQEBY8vQh0ItbDWg
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+          headers: {}
+        '500':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
+              examples:
+                '1':
+                  summary: Database Error
+                  value:
+                    code: DB_ERROR
+                    message: >-
+                      An error with the database has occurred, sorry for the
+                      inconvenience.
+                    status: 500
+                    owner: GYCODING
+                '2':
+                  summary: Auth Error from Service
+                  value:
+                    code: AUTH_ERROR
+                    message: >-
+                      An error with the authentication service has occurred,
+                      sorry for the inconvenience.
+                    status: 500
+                    owner: GYCODING
+                '3':
+                  summary: Auth Error from API Gateway
+                  value:
+                    code: AUTH_ERROR
+                    message: >-
+                      An error with the authentication service has occurred,
+                      sorry for the inconvenience.
+                    status: 500
+                    owner: API_GATEWAY
+                '4':
+                  summary: Gateway Error
+                  value:
+                    code: GATEWAY_ERROR
+                    message: >-
+                      An internal API Gateway error has occurred, sorry for the
+                      inconvenience.
+                    status: 500
+                    owner: API_GATEWAY
+                '5':
+                  summary: Server Error
+                  value:
+                    code: SERVER_ERROR
+                    message: >-
+                      An internal server error has occurred, sorry for the
+                      inconvenience.
+                    status: 500
+                    owner: GYCODING
+          headers: {}
+      security: []
+      x-roles:
+        - COMMON
+        - ADMIN
+  /user/list/public:
+    get:
+      summary: List Users (Public)
+      deprecated: false
+      description: Retrieves a list of users without needing to be authenticated.
+      tags:
+        - Users
+      parameters:
+        - name: query
+          in: query
+          description: ''
+          required: true
+          example: gfigueras
+          schema:
+            type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+          headers: {}
+        '500':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
+              examples:
+                '1':
+                  summary: Database Error
+                  value:
+                    code: DB_ERROR
+                    message: >-
+                      An error with the database has occurred, sorry for the
+                      inconvenience.
+                    status: 500
+                    owner: GYCODING
+                '2':
+                  summary: Auth Error from Service
+                  value:
+                    code: AUTH_ERROR
+                    message: >-
+                      An error with the authentication service has occurred,
+                      sorry for the inconvenience.
+                    status: 500
+                    owner: GYCODING
+                '3':
+                  summary: Auth Error from API Gateway
+                  value:
+                    code: AUTH_ERROR
+                    message: >-
+                      An error with the authentication service has occurred,
+                      sorry for the inconvenience.
+                    status: 500
+                    owner: API_GATEWAY
+                '4':
+                  summary: Gateway Error
+                  value:
+                    code: GATEWAY_ERROR
+                    message: >-
+                      An internal API Gateway error has occurred, sorry for the
+                      inconvenience.
+                    status: 500
+                    owner: API_GATEWAY
+                '5':
+                  summary: Server Error
+                  value:
+                    code: SERVER_ERROR
+                    message: >-
+                      An internal server error has occurred, sorry for the
+                      inconvenience.
+                    status: 500
+                    owner: GYCODING
+          headers: {}
+      security: []
+      x-roles:
+        - COMMON
+        - ADMIN
+  /user/transform/userId:
+    post:
+      summary: Transform ProfileID to UserID
+      deprecated: false
+      description: Transforms a ProfileID into a UserID.
+      tags:
+        - Users
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties: {}
+            examples: {}
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: string
+          headers: {}
+        '500':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
+              examples:
+                '1':
+                  summary: Database Error
+                  value:
+                    code: DB_ERROR
+                    message: >-
+                      An error with the database has occurred, sorry for the
+                      inconvenience.
+                    status: 500
+                    owner: GYCODING
+                '2':
+                  summary: Auth Error from Service
+                  value:
+                    code: AUTH_ERROR
+                    message: >-
+                      An error with the authentication service has occurred,
+                      sorry for the inconvenience.
+                    status: 500
+                    owner: GYCODING
+                '3':
+                  summary: Auth Error from API Gateway
+                  value:
+                    code: AUTH_ERROR
+                    message: >-
+                      An error with the authentication service has occurred,
+                      sorry for the inconvenience.
+                    status: 500
+                    owner: API_GATEWAY
+                '4':
+                  summary: Gateway Error
+                  value:
+                    code: GATEWAY_ERROR
+                    message: >-
+                      An internal API Gateway error has occurred, sorry for the
+                      inconvenience.
+                    status: 500
+                    owner: API_GATEWAY
+                '5':
+                  summary: Server Error
+                  value:
+                    code: SERVER_ERROR
+                    message: >-
+                      An internal server error has occurred, sorry for the
+                      inconvenience.
+                    status: 500
+                    owner: GYCODING
+          headers: {}
+      security: []
+      x-roles:
+        - COMMON
+        - ADMIN
+  /user/transform/profileId:
+    post:
+      summary: Transform UserID to ProfileID
+      deprecated: false
+      description: Transforms a UserID into a ProfileID.
+      tags:
+        - Users
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties: {}
+            examples: {}
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: string
+                format: uuid
+          headers: {}
+        '500':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
+              examples:
+                '1':
+                  summary: Database Error
+                  value:
+                    code: DB_ERROR
+                    message: >-
+                      An error with the database has occurred, sorry for the
+                      inconvenience.
+                    status: 500
+                    owner: GYCODING
+                '2':
+                  summary: Auth Error from Service
+                  value:
+                    code: AUTH_ERROR
+                    message: >-
+                      An error with the authentication service has occurred,
+                      sorry for the inconvenience.
+                    status: 500
+                    owner: GYCODING
+                '3':
+                  summary: Auth Error from API Gateway
+                  value:
+                    code: AUTH_ERROR
+                    message: >-
+                      An error with the authentication service has occurred,
+                      sorry for the inconvenience.
+                    status: 500
+                    owner: API_GATEWAY
+                '4':
+                  summary: Gateway Error
+                  value:
+                    code: GATEWAY_ERROR
+                    message: >-
+                      An internal API Gateway error has occurred, sorry for the
+                      inconvenience.
+                    status: 500
+                    owner: API_GATEWAY
+                '5':
+                  summary: Server Error
+                  value:
+                    code: SERVER_ERROR
+                    message: >-
+                      An internal server error has occurred, sorry for the
+                      inconvenience.
+                    status: 500
+                    owner: GYCODING
+          headers: {}
+      security: []
+      x-roles:
+        - COMMON
+        - ADMIN
 components:
   schemas:
     Login Response:
