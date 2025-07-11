@@ -2749,7 +2749,7 @@ paths:
       x-roles:
         - COMMON
         - ADMIN
-  /auth/update/password:
+  /user/password:
     patch:
       summary: Update Password
       deprecated: false
