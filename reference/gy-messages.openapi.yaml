@@ -832,6 +832,7 @@ paths:
       x-roles:
         - COMMON
         - ADMIN
+webhooks: {}
 components:
   schemas:
     Group Chat:

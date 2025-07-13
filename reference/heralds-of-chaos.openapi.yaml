@@ -5070,6 +5070,7 @@ paths:
       security: []
       x-roles:
         - ADMIN
+webhooks: {}
 components:
   schemas:
     Item:
