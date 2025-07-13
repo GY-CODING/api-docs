@@ -13,7 +13,6 @@ paths:
       description: Retrieves a book.
       tags:
         - Books
-        - Books
       parameters:
         - name: id
           in: path
@@ -27,7 +26,7 @@ paths:
           description: ''
           content:
             application/json:
-              schema: &ref_0
+              schema:
                 $ref: '#/components/schemas/Book'
           headers: {}
       security: []
@@ -41,7 +40,6 @@ paths:
       description: Retrieves a book.
       tags:
         - Books
-        - Books
       parameters:
         - name: id
           in: path
@@ -53,18 +51,17 @@ paths:
         - name: Authorization
           in: header
           description: Authorization token.
-          example: >-
-            eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..cGATxjlGSXP08LPq.HAXheZlEA_ti_1My5ckNynUeRircb4RAfF9EAuR97z9Xnr5pr8S4fVLb94e4_jHdjWXNzUPi2M9-m_suqgh4MbPq0wulFQjEOiQ8f-aeVi8MGyM3CKnNTbMBuxQIXnhZICY0zlg6q97j65BdMLWYf3_6reFmbn2dDho8HAjTrLbndySJUvzRmxQrypKsQF1tUIxcYcLLRjT_MbXBDVLxvZ-9wJ4kJv_goXgpCIiiJZSxy53xJ0d_f5EwxeqdPiHW3P3DRmwq3pbTFR2b4tQulKLr7vEKONvfUoS_Sc5GWXTdiecfkU5eJRDLETr5kdi0Z4onmYOI5JD_4OTAqH-3wPgJaHJuhIa09A.aLtbCGpqXOZHHqKxKqC-uA
+          example: B4gGzs6UFDEg5yihhjxM9yHDav93LEeqkeo7egJLcxE
           schema:
             type: string
-            default: >-
-              eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..cGATxjlGSXP08LPq.HAXheZlEA_ti_1My5ckNynUeRircb4RAfF9EAuR97z9Xnr5pr8S4fVLb94e4_jHdjWXNzUPi2M9-m_suqgh4MbPq0wulFQjEOiQ8f-aeVi8MGyM3CKnNTbMBuxQIXnhZICY0zlg6q97j65BdMLWYf3_6reFmbn2dDho8HAjTrLbndySJUvzRmxQrypKsQF1tUIxcYcLLRjT_MbXBDVLxvZ-9wJ4kJv_goXgpCIiiJZSxy53xJ0d_f5EwxeqdPiHW3P3DRmwq3pbTFR2b4tQulKLr7vEKONvfUoS_Sc5GWXTdiecfkU5eJRDLETr5kdi0Z4onmYOI5JD_4OTAqH-3wPgJaHJuhIa09A.aLtbCGpqXOZHHqKxKqC-uA
+            default: B4gGzs6UFDEg5yihhjxM9yHDav93LEeqkeo7egJLcxE
       responses:
         '200':
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Book'
           headers: {}
       security: []
       x-roles:
@@ -76,6 +73,44 @@ paths:
       description: Updates an existing Book.
       tags:
         - Books
+      parameters:
+        - name: id
+          in: path
+          description: Book ID.
+          required: true
+          example: '382700'
+          schema:
+            type: string
+        - name: Authorization
+          in: header
+          description: Authorization token.
+          example: B4gGzs6UFDEg5yihhjxM9yHDav93LEeqkeo7egJLcxE
+          schema:
+            type: string
+            default: B4gGzs6UFDEg5yihhjxM9yHDav93LEeqkeo7egJLcxE
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Book'
+            examples: {}
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Book'
+          headers: {}
+      security: []
+      x-roles:
+        - COMMON
+        - ADMIN
+    delete:
+      summary: Delete Book
+      deprecated: false
+      description: Removes an existing Book rating.
+      tags:
         - Books
       parameters:
         - name: id
@@ -88,29 +123,23 @@ paths:
         - name: Authorization
           in: header
           description: Authorization token.
-          example: >-
-            eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..cGATxjlGSXP08LPq.HAXheZlEA_ti_1My5ckNynUeRircb4RAfF9EAuR97z9Xnr5pr8S4fVLb94e4_jHdjWXNzUPi2M9-m_suqgh4MbPq0wulFQjEOiQ8f-aeVi8MGyM3CKnNTbMBuxQIXnhZICY0zlg6q97j65BdMLWYf3_6reFmbn2dDho8HAjTrLbndySJUvzRmxQrypKsQF1tUIxcYcLLRjT_MbXBDVLxvZ-9wJ4kJv_goXgpCIiiJZSxy53xJ0d_f5EwxeqdPiHW3P3DRmwq3pbTFR2b4tQulKLr7vEKONvfUoS_Sc5GWXTdiecfkU5eJRDLETr5kdi0Z4onmYOI5JD_4OTAqH-3wPgJaHJuhIa09A.aLtbCGpqXOZHHqKxKqC-uA
+          example: B4gGzs6UFDEg5yihhjxM9yHDav93LEeqkeo7egJLcxE
           schema:
             type: string
-            default: >-
-              eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..cGATxjlGSXP08LPq.HAXheZlEA_ti_1My5ckNynUeRircb4RAfF9EAuR97z9Xnr5pr8S4fVLb94e4_jHdjWXNzUPi2M9-m_suqgh4MbPq0wulFQjEOiQ8f-aeVi8MGyM3CKnNTbMBuxQIXnhZICY0zlg6q97j65BdMLWYf3_6reFmbn2dDho8HAjTrLbndySJUvzRmxQrypKsQF1tUIxcYcLLRjT_MbXBDVLxvZ-9wJ4kJv_goXgpCIiiJZSxy53xJ0d_f5EwxeqdPiHW3P3DRmwq3pbTFR2b4tQulKLr7vEKONvfUoS_Sc5GWXTdiecfkU5eJRDLETr5kdi0Z4onmYOI5JD_4OTAqH-3wPgJaHJuhIa09A.aLtbCGpqXOZHHqKxKqC-uA
-      requestBody:
-        content:
-          application/json:
-            schema: *ref_0
-            examples: {}
+            default: B4gGzs6UFDEg5yihhjxM9yHDav93LEeqkeo7egJLcxE
       responses:
         '200':
           description: ''
           content:
             application/json:
-              schema: *ref_0
+              schema:
+                $ref: '#/components/schemas/Book'
           headers: {}
       security: []
       x-roles:
         - COMMON
         - ADMIN
-  /:
+  /{profileId}/list:
     get:
       summary: List Books by User
       deprecated: false
@@ -119,8 +148,15 @@ paths:
         resource is paginated.
       tags:
         - Books
-        - Books
       parameters:
+        - name: profileId
+          in: path
+          description: Profile ID.
+          required: true
+          example: 93dcc507-c706-4ed9-841f-fe470bdbb7d6
+          schema:
+            type: string
+            format: uuid
         - name: page
           in: query
           description: Page of the list.
@@ -135,15 +171,6 @@ paths:
           example: 10
           schema:
             type: number
-        - name: Authorization
-          in: header
-          description: Authorization token.
-          example: >-
-            eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..cGATxjlGSXP08LPq.HAXheZlEA_ti_1My5ckNynUeRircb4RAfF9EAuR97z9Xnr5pr8S4fVLb94e4_jHdjWXNzUPi2M9-m_suqgh4MbPq0wulFQjEOiQ8f-aeVi8MGyM3CKnNTbMBuxQIXnhZICY0zlg6q97j65BdMLWYf3_6reFmbn2dDho8HAjTrLbndySJUvzRmxQrypKsQF1tUIxcYcLLRjT_MbXBDVLxvZ-9wJ4kJv_goXgpCIiiJZSxy53xJ0d_f5EwxeqdPiHW3P3DRmwq3pbTFR2b4tQulKLr7vEKONvfUoS_Sc5GWXTdiecfkU5eJRDLETr5kdi0Z4onmYOI5JD_4OTAqH-3wPgJaHJuhIa09A.aLtbCGpqXOZHHqKxKqC-uA
-          schema:
-            type: string
-            default: >-
-              eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9neWNvZGluZy5ldS5hdXRoMC5jb20vIn0..cGATxjlGSXP08LPq.HAXheZlEA_ti_1My5ckNynUeRircb4RAfF9EAuR97z9Xnr5pr8S4fVLb94e4_jHdjWXNzUPi2M9-m_suqgh4MbPq0wulFQjEOiQ8f-aeVi8MGyM3CKnNTbMBuxQIXnhZICY0zlg6q97j65BdMLWYf3_6reFmbn2dDho8HAjTrLbndySJUvzRmxQrypKsQF1tUIxcYcLLRjT_MbXBDVLxvZ-9wJ4kJv_goXgpCIiiJZSxy53xJ0d_f5EwxeqdPiHW3P3DRmwq3pbTFR2b4tQulKLr7vEKONvfUoS_Sc5GWXTdiecfkU5eJRDLETr5kdi0Z4onmYOI5JD_4OTAqH-3wPgJaHJuhIa09A.aLtbCGpqXOZHHqKxKqC-uA
       responses:
         '200':
           description: ''
@@ -151,12 +178,14 @@ paths:
             application/json:
               schema:
                 type: array
-                items: *ref_0
+                items:
+                  $ref: '#/components/schemas/Book'
           headers: {}
       security: []
       x-roles:
         - COMMON
         - ADMIN
+webhooks: {}
 components:
   schemas:
     Book:
