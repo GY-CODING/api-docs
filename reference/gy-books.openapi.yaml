@@ -29,6 +29,81 @@ paths:
               schema:
                 $ref: '#/components/schemas/Book'
           headers: {}
+        '400':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
+              example:
+                code: BAD_REQUEST
+                message: The endpoint is malformed.
+                status: 400
+                owner: API_GATEWAY
+          headers: {}
+        '403':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
+              examples:
+                '2':
+                  summary: Forbidden to Service
+                  value:
+                    code: FORBIDDEN
+                    message: The user has no permission to access this resource.
+                    status: 403
+                    owner: GYCODING
+                '3':
+                  summary: Forbidden to API Gateway
+                  value:
+                    code: FORBIDDEN
+                    message: The user has no permission to access this resource.
+                    status: 403
+                    owner: API_GATEWAY
+          headers: {}
+        '404':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
+              examples:
+                '4':
+                  summary: Token Not Found
+                  value:
+                    code: TOKEN_NOT_FOUND
+                    message: Authentication token was not found.
+                    status: 404
+                    owner: API_GATEWAY
+                '5':
+                  summary: Resource Not Found
+                  value:
+                    code: RESOURCE_NOT_FOUND
+                    message: This resource was not found.
+                    status: 404
+                    owner: GYCODING
+          headers: {}
+        '405':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
+              example:
+                code: METHOD_NOT_ALLOWED
+                message: Method used to access this resource is not allowed.
+                status: 405
+                owner: GYCODING
+          headers: {}
+        '500':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
+          headers: {}
       security: []
       x-roles:
         - COMMON
@@ -63,12 +138,127 @@ paths:
               schema:
                 $ref: '#/components/schemas/Book'
           headers: {}
+        '400':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
+              example:
+                code: BAD_REQUEST
+                message: The endpoint is malformed.
+                status: 400
+                owner: API_GATEWAY
+          headers: {}
+        '401':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
+              examples:
+                '2':
+                  summary: Invalid Login
+                  value:
+                    code: INVALID_LOGIN
+                    message: >-
+                      Invalid login due to the non existance of the user or
+                      invalid password.
+                    status: 401
+                    owner: GYCODING
+                '3':
+                  summary: Invalid API Key
+                  value:
+                    code: INVALID_API_KEY
+                    message: The API Key is malformed.
+                    status: 401
+                    owner: API_GATEWAY
+                '4':
+                  summary: Unauthorized to Service
+                  value:
+                    code: UNAUTHORIZED
+                    message: The user is not authorized to access this resource.
+                    status: 401
+                    owner: GYCODING
+                '5':
+                  summary: Invalid Token
+                  value:
+                    code: INVALID_TOKEN
+                    message: >-
+                      The provided token is invalid, expired or not even
+                      present.
+                    status: 401
+                    owner: API_GATEWAY
+          headers: {}
+        '403':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
+              examples:
+                '6':
+                  summary: Forbidden to Service
+                  value:
+                    code: FORBIDDEN
+                    message: The user has no permission to access this resource.
+                    status: 403
+                    owner: GYCODING
+                '7':
+                  summary: Forbidden to API Gateway
+                  value:
+                    code: FORBIDDEN
+                    message: The user has no permission to access this resource.
+                    status: 403
+                    owner: API_GATEWAY
+          headers: {}
+        '404':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
+              examples:
+                '8':
+                  summary: Token Not Found
+                  value:
+                    code: TOKEN_NOT_FOUND
+                    message: Authentication token was not found.
+                    status: 404
+                    owner: API_GATEWAY
+                '9':
+                  summary: Resource Not Found
+                  value:
+                    code: RESOURCE_NOT_FOUND
+                    message: This resource was not found.
+                    status: 404
+                    owner: GYCODING
+          headers: {}
+        '405':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
+              example:
+                code: METHOD_NOT_ALLOWED
+                message: Method used to access this resource is not allowed.
+                status: 405
+                owner: GYCODING
+          headers: {}
+        '500':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
+          headers: {}
       security: []
       x-roles:
         - COMMON
         - ADMIN
     patch:
-      summary: Save Book
+      summary: Update Book
       deprecated: false
       description: Updates an existing Book.
       tags:
@@ -102,6 +292,135 @@ paths:
               schema:
                 $ref: '#/components/schemas/Book'
           headers: {}
+        '304':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
+              example:
+                code: RESOURCE_NOT_MODIFIED
+                message: >-
+                  The resource could not be modified due to some internal
+                  conflict or error.
+                status: 304
+                owner: GYCODING
+          headers: {}
+        '400':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
+              example:
+                code: BAD_REQUEST
+                message: The endpoint is malformed.
+                status: 400
+                owner: API_GATEWAY
+          headers: {}
+        '401':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
+              examples:
+                '3':
+                  summary: Invalid Login
+                  value:
+                    code: INVALID_LOGIN
+                    message: >-
+                      Invalid login due to the non existance of the user or
+                      invalid password.
+                    status: 401
+                    owner: GYCODING
+                '4':
+                  summary: Invalid API Key
+                  value:
+                    code: INVALID_API_KEY
+                    message: The API Key is malformed.
+                    status: 401
+                    owner: API_GATEWAY
+                '5':
+                  summary: Unauthorized to Service
+                  value:
+                    code: UNAUTHORIZED
+                    message: The user is not authorized to access this resource.
+                    status: 401
+                    owner: GYCODING
+                '6':
+                  summary: Invalid Token
+                  value:
+                    code: INVALID_TOKEN
+                    message: >-
+                      The provided token is invalid, expired or not even
+                      present.
+                    status: 401
+                    owner: API_GATEWAY
+          headers: {}
+        '403':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
+              examples:
+                '7':
+                  summary: Forbidden to Service
+                  value:
+                    code: FORBIDDEN
+                    message: The user has no permission to access this resource.
+                    status: 403
+                    owner: GYCODING
+                '8':
+                  summary: Forbidden to API Gateway
+                  value:
+                    code: FORBIDDEN
+                    message: The user has no permission to access this resource.
+                    status: 403
+                    owner: API_GATEWAY
+          headers: {}
+        '404':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
+              examples:
+                '9':
+                  summary: Token Not Found
+                  value:
+                    code: TOKEN_NOT_FOUND
+                    message: Authentication token was not found.
+                    status: 404
+                    owner: API_GATEWAY
+                '10':
+                  summary: Resource Not Found
+                  value:
+                    code: RESOURCE_NOT_FOUND
+                    message: This resource was not found.
+                    status: 404
+                    owner: GYCODING
+          headers: {}
+        '405':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
+              example:
+                code: METHOD_NOT_ALLOWED
+                message: Method used to access this resource is not allowed.
+                status: 405
+                owner: GYCODING
+          headers: {}
+        '500':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
+          headers: {}
       security: []
       x-roles:
         - COMMON
@@ -134,6 +453,121 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Book'
+          headers: {}
+        '400':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
+              example:
+                code: BAD_REQUEST
+                message: The endpoint is malformed.
+                status: 400
+                owner: API_GATEWAY
+          headers: {}
+        '401':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
+              examples:
+                '2':
+                  summary: Invalid Login
+                  value:
+                    code: INVALID_LOGIN
+                    message: >-
+                      Invalid login due to the non existance of the user or
+                      invalid password.
+                    status: 401
+                    owner: GYCODING
+                '3':
+                  summary: Invalid API Key
+                  value:
+                    code: INVALID_API_KEY
+                    message: The API Key is malformed.
+                    status: 401
+                    owner: API_GATEWAY
+                '4':
+                  summary: Unauthorized to Service
+                  value:
+                    code: UNAUTHORIZED
+                    message: The user is not authorized to access this resource.
+                    status: 401
+                    owner: GYCODING
+                '5':
+                  summary: Invalid Token
+                  value:
+                    code: INVALID_TOKEN
+                    message: >-
+                      The provided token is invalid, expired or not even
+                      present.
+                    status: 401
+                    owner: API_GATEWAY
+          headers: {}
+        '403':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
+              examples:
+                '6':
+                  summary: Forbidden to Service
+                  value:
+                    code: FORBIDDEN
+                    message: The user has no permission to access this resource.
+                    status: 403
+                    owner: GYCODING
+                '7':
+                  summary: Forbidden to API Gateway
+                  value:
+                    code: FORBIDDEN
+                    message: The user has no permission to access this resource.
+                    status: 403
+                    owner: API_GATEWAY
+          headers: {}
+        '404':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
+              examples:
+                '8':
+                  summary: Token Not Found
+                  value:
+                    code: TOKEN_NOT_FOUND
+                    message: Authentication token was not found.
+                    status: 404
+                    owner: API_GATEWAY
+                '9':
+                  summary: Resource Not Found
+                  value:
+                    code: RESOURCE_NOT_FOUND
+                    message: This resource was not found.
+                    status: 404
+                    owner: GYCODING
+          headers: {}
+        '405':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
+              example:
+                code: METHOD_NOT_ALLOWED
+                message: Method used to access this resource is not allowed.
+                status: 405
+                owner: GYCODING
+          headers: {}
+        '500':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
           headers: {}
       security: []
       x-roles:
@@ -181,6 +615,81 @@ paths:
                 items:
                   $ref: '#/components/schemas/Book'
           headers: {}
+        '400':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
+              example:
+                code: BAD_REQUEST
+                message: The endpoint is malformed.
+                status: 400
+                owner: API_GATEWAY
+          headers: {}
+        '403':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
+              examples:
+                '2':
+                  summary: Forbidden to Service
+                  value:
+                    code: FORBIDDEN
+                    message: The user has no permission to access this resource.
+                    status: 403
+                    owner: GYCODING
+                '3':
+                  summary: Forbidden to API Gateway
+                  value:
+                    code: FORBIDDEN
+                    message: The user has no permission to access this resource.
+                    status: 403
+                    owner: API_GATEWAY
+          headers: {}
+        '404':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
+              examples:
+                '4':
+                  summary: Token Not Found
+                  value:
+                    code: TOKEN_NOT_FOUND
+                    message: Authentication token was not found.
+                    status: 404
+                    owner: API_GATEWAY
+                '5':
+                  summary: Resource Not Found
+                  value:
+                    code: RESOURCE_NOT_FOUND
+                    message: This resource was not found.
+                    status: 404
+                    owner: GYCODING
+          headers: {}
+        '405':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
+              example:
+                code: METHOD_NOT_ALLOWED
+                message: Method used to access this resource is not allowed.
+                status: 405
+                owner: GYCODING
+          headers: {}
+        '500':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
+          headers: {}
       security: []
       x-roles:
         - COMMON
@@ -206,30 +715,76 @@ components:
     Book User Data:
       type: object
       properties:
-        userId:
+        profileId:
           type: string
+          format: uuid
+          description: User Profile ID.
         status:
           type: string
           enum:
             - WANT_TO_READ
             - READING
             - READ
+          description: User status regarding this book.
         rating:
           type: number
           maximum: 5
           minimum: 0
+          description: User rating for this book.
         startDate:
           type: string
           format: date
+          description: When the user has started reading this book.
         endDate:
           type: string
           format: date
+          description: When the user has finished reading this book.
       required:
         - status
         - rating
         - startDate
         - endDate
-        - userId
+        - profileId
+    Error Response:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Error code.
+        message:
+          type: string
+          description: Error message.
+        status:
+          type: number
+          minimum: 100
+          maximum: 600
+          examples:
+            - 200
+            - 201
+            - 204
+            - 304
+            - 400
+            - 401
+            - 403
+            - 405
+            - 409
+            - 415
+            - 418
+            - 500
+            - 501
+          description: Error status.
+        owner:
+          type: string
+          description: Error owner.
+          enum:
+            - GYCODING
+            - API_GATEWAY
+      required:
+        - code
+        - message
+        - status
+        - owner
+      description: Error Response object.
   securitySchemes: {}
 servers:
   - url: https://api.gycoding.com/books
