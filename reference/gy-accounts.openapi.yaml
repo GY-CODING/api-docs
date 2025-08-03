@@ -1333,7 +1333,13 @@ paths:
     post:
       summary: Send Friend Request
       deprecated: false
-      description: Sends a Friend Request for someone to either accept it or deny it.
+      description: >-
+        Sends a Friend Request for someone to either accept it or deny it.
+
+
+        There is a Websocket connection available at
+        `ws://api.gycoding.com/accounts/books/friends/request` to receive friend
+        request in real time.
       tags:
         - Products/GY Books
       parameters:
@@ -2278,14 +2284,19 @@ paths:
           schema:
             type: string
             default: B4gGzs6UFDEg5yihhjxM9yHDav93LEeqkeo7egJLcxE
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Hall%20of%20Fame'
+            examples: {}
       responses:
         '200':
           description: ''
           content:
             application/json:
               schema:
-                type: object
-                properties: {}
+                $ref: '#/components/schemas/Hall%20of%20Fame'
           headers: {}
         '304':
           description: ''
@@ -2444,6 +2455,7 @@ paths:
       x-roles:
         - COMMON
         - ADMIN
+  /books/{profileId}/halloffame:
     get:
       summary: Get Hall of Fame
       deprecated: false
@@ -2451,22 +2463,21 @@ paths:
       tags:
         - Products/GY Books
       parameters:
-        - name: Authorization
-          in: header
-          description: Authorization token.
-          required: false
-          example: B4gGzs6UFDEg5yihhjxM9yHDav93LEeqkeo7egJLcxE
+        - name: profileId
+          in: path
+          description: Profile ID.
+          required: true
+          example: 93dcc507-c706-4ed9-841f-fe470bdbb7d6
           schema:
             type: string
-            default: B4gGzs6UFDEg5yihhjxM9yHDav93LEeqkeo7egJLcxE
+            format: uuid
       responses:
         '200':
           description: ''
           content:
             application/json:
               schema:
-                type: object
-                properties: {}
+                $ref: '#/components/schemas/Hall%20of%20Fame'
           headers: {}
         '500':
           description: ''
@@ -2512,6 +2523,172 @@ paths:
                     status: 500
                     owner: API_GATEWAY
                 '5':
+                  summary: Server Error
+                  value:
+                    code: SERVER_ERROR
+                    message: >-
+                      An internal server error has occurred, sorry for the
+                      inconvenience.
+                    status: 500
+                    owner: GYCODING
+          headers: {}
+      security: []
+      x-roles:
+        - COMMON
+        - ADMIN
+  /books/activity:
+    post:
+      summary: Save Activity
+      deprecated: false
+      description: Saves an activity made by a user.
+      tags:
+        - Products/GY Books
+      parameters:
+        - name: Authorization
+          in: header
+          description: Authorization token.
+          required: false
+          example: B4gGzs6UFDEg5yihhjxM9yHDav93LEeqkeo7egJLcxE
+          schema:
+            type: string
+            default: B4gGzs6UFDEg5yihhjxM9yHDav93LEeqkeo7egJLcxE
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Activity'
+            examples: {}
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Activity'
+          headers: {}
+        '400':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
+              example:
+                code: BAD_REQUEST
+                message: The endpoint is malformed.
+                status: 400
+                owner: API_GATEWAY
+          headers: {}
+        '401':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
+          headers: {}
+        '403':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
+              examples:
+                '2':
+                  summary: Forbidden to Service
+                  value:
+                    code: FORBIDDEN
+                    message: The user has no permission to access this resource.
+                    status: 403
+                    owner: GYCODING
+                '3':
+                  summary: Forbidden to API Gateway
+                  value:
+                    code: FORBIDDEN
+                    message: The user has no permission to access this resource.
+                    status: 403
+                    owner: API_GATEWAY
+          headers: {}
+        '405':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
+              example:
+                code: METHOD_NOT_ALLOWED
+                message: Method used to access this resource is not allowed.
+                status: 405
+                owner: GYCODING
+          headers: {}
+        '409':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
+              examples:
+                '4':
+                  summary: Conflict
+                  value:
+                    code: CONFLICT
+                    message: >-
+                      An internal conflict between external data and the API has
+                      occured. Requested data may already exist.
+                    status: 409
+                    owner: GYCODING
+                '5':
+                  summary: Invalid Sign Up
+                  value:
+                    code: INVALID_SIGN_UP
+                    message: >-
+                      Invalid sign up due to the already existance of the user
+                      or an authentication error.
+                    status: 409
+                    owner: GYCODING
+          headers: {}
+        '500':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
+              examples:
+                '6':
+                  summary: Database Error
+                  value:
+                    code: DB_ERROR
+                    message: >-
+                      An error with the database has occurred, sorry for the
+                      inconvenience.
+                    status: 500
+                    owner: GYCODING
+                '7':
+                  summary: Auth Error from Service
+                  value:
+                    code: AUTH_ERROR
+                    message: >-
+                      An error with the authentication service has occurred,
+                      sorry for the inconvenience.
+                    status: 500
+                    owner: GYCODING
+                '8':
+                  summary: Auth Error from API Gateway
+                  value:
+                    code: AUTH_ERROR
+                    message: >-
+                      An error with the authentication service has occurred,
+                      sorry for the inconvenience.
+                    status: 500
+                    owner: API_GATEWAY
+                '9':
+                  summary: Gateway Error
+                  value:
+                    code: GATEWAY_ERROR
+                    message: >-
+                      An internal API Gateway error has occurred, sorry for the
+                      inconvenience.
+                    status: 500
+                    owner: API_GATEWAY
+                '10':
                   summary: Server Error
                   value:
                     code: SERVER_ERROR
@@ -4449,7 +4626,7 @@ paths:
   /user/metadata/apikey/decode:
     get:
       summary: Decode API Key
-      deprecated: false
+      deprecated: true
       description: Decodes user's API Key returning its User ID.
       tags:
         - Users
@@ -5269,6 +5446,28 @@ components:
         - email
         - biography
       description: User Profile object.
+    Hall of Fame:
+      type: object
+      properties:
+        books:
+          type: array
+          items:
+            type: string
+          minItems: 0
+          maxItems: 5
+          uniqueItems: true
+          description: List of books on the Hall of Fame.
+        quote:
+          type: string
+          description: Quote for the Hall of Fame.
+      description: Hall of Fame object.
+      required:
+        - books
+        - quote
+    Activity:
+      type: object
+      properties: {}
+      description: Activity object.
     Messages Metadata:
       type: object
       properties:

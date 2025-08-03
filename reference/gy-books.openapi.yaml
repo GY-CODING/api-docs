@@ -731,6 +731,9 @@ components:
           maximum: 5
           minimum: 0
           description: User rating for this book.
+        progress:
+          type: number
+          description: User progress on the book.
         startDate:
           type: string
           format: date
@@ -745,6 +748,7 @@ components:
         - startDate
         - endDate
         - profileId
+        - progress
     Error Response:
       type: object
       properties:
