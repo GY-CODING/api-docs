@@ -1,7 +1,9 @@
 openapi: 3.1.0
 info:
   title: GY Books
-  description: GY Books is al book-rating and book social media app.
+  description: >-
+    GY Books is a book-rating and book social media app. This is the official
+    API for WingWords.
   version: 1.0.0
 tags:
   - name: Books
