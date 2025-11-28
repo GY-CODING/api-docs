@@ -8,7 +8,6 @@ tags:
   - name: Creatures
   - name: Items
   - name: Worlds
-  - name: World
   - name: Places
 paths:
   /characters/{id}:
@@ -4129,7 +4128,7 @@ paths:
       deprecated: false
       description: Inserts a new World.
       tags:
-        - World
+        - Worlds
       parameters:
         - name: Authorization
           in: header
@@ -4615,7 +4614,7 @@ paths:
       deprecated: false
       description: Inserts a new Place.
       tags:
-        - World
+        - Worlds
         - Places
       parameters:
         - name: Authorization

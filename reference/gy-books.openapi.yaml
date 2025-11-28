@@ -7,6 +7,7 @@ tags:
   - name: Books
   - name: Friends
   - name: Profile
+  - name: Metadata
 paths:
   /{id}/public:
     get:
@@ -4017,6 +4018,130 @@ paths:
         - COMMON
         - ADMIN
         - DEVELOPER
+  /metadata:
+    get:
+      summary: Initialize and Sync Metadata
+      deprecated: false
+      description: Initializes and syncs user's book metadata.
+      tags:
+        - Metadata
+      parameters:
+        - name: x-profile-id
+          in: header
+          description: Profile ID.
+          required: true
+          example: '{{profile-id}}'
+          schema:
+            type: string
+        - name: x-api-key
+          in: header
+          description: API Key for services.
+          required: true
+          example: '{{api-key}}'
+          schema:
+            type: string
+      responses:
+        '204':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: 'null'
+          headers: {}
+        '403':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
+                description: Forbidden
+              examples:
+                '1':
+                  summary: Forbidden to Service
+                  value:
+                    code: FORBIDDEN
+                    message: The user has no permission to access this resource.
+                    status: 403
+                    owner: GYCODING
+                '2':
+                  summary: Forbidden to API Gateway
+                  value:
+                    code: FORBIDDEN
+                    message: The user has no permission to access this resource.
+                    status: 403
+                    owner: API_GATEWAY
+          headers: {}
+        '404':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
+                description: Not Found
+              examples:
+                '3':
+                  summary: Token Not Found
+                  value:
+                    code: TOKEN_NOT_FOUND
+                    message: Authentication token was not found.
+                    status: 404
+                    owner: API_GATEWAY
+                '4':
+                  summary: Book Not Found
+                  value:
+                    code: BOOK_NOT_FOUND
+                    message: Book not found.
+                    status: 404
+                    owner: GYCODING
+          headers: {}
+        '500':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
+                description: Internal Error
+              examples:
+                '5':
+                  summary: Database Error
+                  value:
+                    code: DB_ERROR
+                    message: >-
+                      An error with the database has occurred, sorry for the
+                      inconvenience.
+                    status: 500
+                    owner: GYCODING
+                '6':
+                  summary: Auth Error from API Gateway
+                  value:
+                    code: AUTH_ERROR
+                    message: >-
+                      An error with the authentication service has occurred,
+                      sorry for the inconvenience.
+                    status: 500
+                    owner: API_GATEWAY
+                '7':
+                  summary: Gateway Error
+                  value:
+                    code: GATEWAY_ERROR
+                    message: >-
+                      An internal API Gateway error has occurred, sorry for the
+                      inconvenience.
+                    status: 500
+                    owner: API_GATEWAY
+                '8':
+                  summary: Server Error
+                  value:
+                    code: SERVER_ERROR
+                    message: >-
+                      An internal server error has occurred, sorry for the
+                      inconvenience.
+                    status: 500
+                    owner: GYCODING
+          headers: {}
+      security: []
+      x-roles:
+        - ADMIN
 webhooks: {}
 components:
   schemas:
