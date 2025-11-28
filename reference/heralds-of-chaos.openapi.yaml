@@ -1,13 +1,13 @@
 openapi: 3.1.0
 info:
-  title: Heralds of Chaos
-  description: Heralds of Chaos is a norse mythology-based universe.
+  title: Default module
+  description: ''
   version: 1.0.0
 tags:
   - name: Characters
+  - name: Creatures
   - name: Items
   - name: Worlds
-  - name: Creatures
   - name: World
   - name: Places
 paths:
@@ -375,6 +375,497 @@ paths:
                   $ref: '#/components/schemas/Character'
                   description: Character object.
                 description: List of characters.
+                uniqueItems: true
+          headers: {}
+        '400':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
+              example:
+                code: BAD_REQUEST
+                message: The endpoint is malformed.
+                status: 400
+                owner: API_GATEWAY
+          headers: {}
+        '403':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
+              examples:
+                '2':
+                  summary: Forbidden to Service
+                  value:
+                    code: FORBIDDEN
+                    message: The user has no permission to access this resource.
+                    status: 403
+                    owner: GYCODING
+                '3':
+                  summary: Forbidden to API Gateway
+                  value:
+                    code: FORBIDDEN
+                    message: The user has no permission to access this resource.
+                    status: 403
+                    owner: API_GATEWAY
+          headers: {}
+        '404':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
+              examples:
+                '4':
+                  summary: Token Not Found
+                  value:
+                    code: TOKEN_NOT_FOUND
+                    message: Authentication token was not found.
+                    status: 404
+                    owner: API_GATEWAY
+                '5':
+                  summary: Resource Not Found
+                  value:
+                    code: RESOURCE_NOT_FOUND
+                    message: This resource was not found.
+                    status: 404
+                    owner: GYCODING
+          headers: {}
+        '405':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
+              example:
+                code: METHOD_NOT_ALLOWED
+                message: Method used to access this resource is not allowed.
+                status: 405
+                owner: GYCODING
+          headers: {}
+        '500':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
+              examples:
+                '7':
+                  summary: Database Error
+                  value:
+                    code: DB_ERROR
+                    message: >-
+                      An error with the database has occurred, sorry for the
+                      inconvenience.
+                    status: 500
+                    owner: GYCODING
+                '8':
+                  summary: Auth Error from Service
+                  value:
+                    code: AUTH_ERROR
+                    message: >-
+                      An error with the authentication service has occurred,
+                      sorry for the inconvenience.
+                    status: 500
+                    owner: GYCODING
+                '9':
+                  summary: Auth Error from API Gateway
+                  value:
+                    code: AUTH_ERROR
+                    message: >-
+                      An error with the authentication service has occurred,
+                      sorry for the inconvenience.
+                    status: 500
+                    owner: API_GATEWAY
+                '10':
+                  summary: Gateway Error
+                  value:
+                    code: GATEWAY_ERROR
+                    message: >-
+                      An internal API Gateway error has occurred, sorry for the
+                      inconvenience.
+                    status: 500
+                    owner: API_GATEWAY
+                '11':
+                  summary: Server Error
+                  value:
+                    code: SERVER_ERROR
+                    message: >-
+                      An internal server error has occurred, sorry for the
+                      inconvenience.
+                    status: 500
+                    owner: GYCODING
+          headers: {}
+      security: []
+      x-roles:
+        - COMMON
+        - ADMIN
+  /creatures/{id}:
+    get:
+      summary: Get Creature
+      deprecated: false
+      description: >-
+        Retrieves a specific creature from the whole universe of Heralds of
+        Chaos.
+      tags:
+        - Creatures
+      parameters:
+        - name: id
+          in: path
+          description: Creature's identifier.
+          required: true
+          example: audumbla
+          schema:
+            type: string
+        - name: lang
+          in: query
+          description: Language of the response.
+          required: true
+          example: es
+          schema:
+            type: string
+            enum:
+              - es
+              - en
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Creature'
+                description: Creature object.
+          headers: {}
+        '400':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
+              example:
+                code: BAD_REQUEST
+                message: The endpoint is malformed.
+                status: 400
+                owner: API_GATEWAY
+          headers: {}
+        '403':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
+              examples:
+                '2':
+                  summary: Forbidden to Service
+                  value:
+                    code: FORBIDDEN
+                    message: The user has no permission to access this resource.
+                    status: 403
+                    owner: GYCODING
+                '3':
+                  summary: Forbidden to API Gateway
+                  value:
+                    code: FORBIDDEN
+                    message: The user has no permission to access this resource.
+                    status: 403
+                    owner: API_GATEWAY
+          headers: {}
+        '404':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
+              examples:
+                '4':
+                  summary: Token Not Found
+                  value:
+                    code: TOKEN_NOT_FOUND
+                    message: Authentication token was not found.
+                    status: 404
+                    owner: API_GATEWAY
+                '5':
+                  summary: Resource Not Found
+                  value:
+                    code: RESOURCE_NOT_FOUND
+                    message: This resource was not found.
+                    status: 404
+                    owner: GYCODING
+          headers: {}
+        '405':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
+              example:
+                code: METHOD_NOT_ALLOWED
+                message: Method used to access this resource is not allowed.
+                status: 405
+                owner: GYCODING
+          headers: {}
+        '500':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
+              examples:
+                '7':
+                  summary: Database Error
+                  value:
+                    code: DB_ERROR
+                    message: >-
+                      An error with the database has occurred, sorry for the
+                      inconvenience.
+                    status: 500
+                    owner: GYCODING
+                '8':
+                  summary: Auth Error from Service
+                  value:
+                    code: AUTH_ERROR
+                    message: >-
+                      An error with the authentication service has occurred,
+                      sorry for the inconvenience.
+                    status: 500
+                    owner: GYCODING
+                '9':
+                  summary: Auth Error from API Gateway
+                  value:
+                    code: AUTH_ERROR
+                    message: >-
+                      An error with the authentication service has occurred,
+                      sorry for the inconvenience.
+                    status: 500
+                    owner: API_GATEWAY
+                '10':
+                  summary: Gateway Error
+                  value:
+                    code: GATEWAY_ERROR
+                    message: >-
+                      An internal API Gateway error has occurred, sorry for the
+                      inconvenience.
+                    status: 500
+                    owner: API_GATEWAY
+                '11':
+                  summary: Server Error
+                  value:
+                    code: SERVER_ERROR
+                    message: >-
+                      An internal server error has occurred, sorry for the
+                      inconvenience.
+                    status: 500
+                    owner: GYCODING
+          headers: {}
+      security: []
+      x-roles:
+        - COMMON
+        - ADMIN
+  /creatures/list:
+    get:
+      summary: List Creatures
+      deprecated: false
+      description: >-
+        Retrieves a non-paginated list of all the creatures from the whole
+        universe of Heralds of Chaos.
+      tags:
+        - Creatures
+      parameters:
+        - name: lang
+          in: query
+          description: Language of the response.
+          required: true
+          example: es
+          schema:
+            type: string
+            enum:
+              - es
+              - en
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Creature'
+                  description: Creature object.
+                description: List of creatures.
+                uniqueItems: true
+          headers: {}
+        '400':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
+              example:
+                code: BAD_REQUEST
+                message: The endpoint is malformed.
+                status: 400
+                owner: API_GATEWAY
+          headers: {}
+        '403':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
+              examples:
+                '2':
+                  summary: Forbidden to Service
+                  value:
+                    code: FORBIDDEN
+                    message: The user has no permission to access this resource.
+                    status: 403
+                    owner: GYCODING
+                '3':
+                  summary: Forbidden to API Gateway
+                  value:
+                    code: FORBIDDEN
+                    message: The user has no permission to access this resource.
+                    status: 403
+                    owner: API_GATEWAY
+          headers: {}
+        '404':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
+              examples:
+                '4':
+                  summary: Token Not Found
+                  value:
+                    code: TOKEN_NOT_FOUND
+                    message: Authentication token was not found.
+                    status: 404
+                    owner: API_GATEWAY
+                '5':
+                  summary: Resource Not Found
+                  value:
+                    code: RESOURCE_NOT_FOUND
+                    message: This resource was not found.
+                    status: 404
+                    owner: GYCODING
+          headers: {}
+        '405':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
+              example:
+                code: METHOD_NOT_ALLOWED
+                message: Method used to access this resource is not allowed.
+                status: 405
+                owner: GYCODING
+          headers: {}
+        '500':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
+              examples:
+                '7':
+                  summary: Database Error
+                  value:
+                    code: DB_ERROR
+                    message: >-
+                      An error with the database has occurred, sorry for the
+                      inconvenience.
+                    status: 500
+                    owner: GYCODING
+                '8':
+                  summary: Auth Error from Service
+                  value:
+                    code: AUTH_ERROR
+                    message: >-
+                      An error with the authentication service has occurred,
+                      sorry for the inconvenience.
+                    status: 500
+                    owner: GYCODING
+                '9':
+                  summary: Auth Error from API Gateway
+                  value:
+                    code: AUTH_ERROR
+                    message: >-
+                      An error with the authentication service has occurred,
+                      sorry for the inconvenience.
+                    status: 500
+                    owner: API_GATEWAY
+                '10':
+                  summary: Gateway Error
+                  value:
+                    code: GATEWAY_ERROR
+                    message: >-
+                      An internal API Gateway error has occurred, sorry for the
+                      inconvenience.
+                    status: 500
+                    owner: API_GATEWAY
+                '11':
+                  summary: Server Error
+                  value:
+                    code: SERVER_ERROR
+                    message: >-
+                      An internal server error has occurred, sorry for the
+                      inconvenience.
+                    status: 500
+                    owner: GYCODING
+          headers: {}
+      security: []
+      x-roles:
+        - COMMON
+        - ADMIN
+  /creatures/page:
+    get:
+      summary: Page Characters
+      deprecated: false
+      description: >-
+        Retrieves a paginated list of all the creatures from the whole universe
+        of Heralds of Chaos.
+      tags:
+        - Creatures
+      parameters:
+        - name: page
+          in: query
+          description: Number of page.
+          required: true
+          example: 1
+          schema:
+            type: integer
+        - name: size
+          in: query
+          description: Amount of elements to show on one page.
+          required: true
+          example: 10
+          schema:
+            type: integer
+        - name: lang
+          in: query
+          description: Language of the response.
+          required: true
+          example: es
+          schema:
+            type: string
+            enum:
+              - es
+              - en
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Creature'
+                  description: Creature object.
+                description: List of creatures.
                 uniqueItems: true
           headers: {}
         '400':
@@ -2127,497 +2618,6 @@ paths:
       x-roles:
         - COMMON
         - ADMIN
-  /creatures/{id}:
-    get:
-      summary: Get Creature
-      deprecated: false
-      description: >-
-        Retrieves a specific creature from the whole universe of Heralds of
-        Chaos.
-      tags:
-        - Creatures
-      parameters:
-        - name: id
-          in: path
-          description: Creature's identifier.
-          required: true
-          example: audumbla
-          schema:
-            type: string
-        - name: lang
-          in: query
-          description: Language of the response.
-          required: true
-          example: es
-          schema:
-            type: string
-            enum:
-              - es
-              - en
-      responses:
-        '200':
-          description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Creature'
-                description: Creature object.
-          headers: {}
-        '400':
-          description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              example:
-                code: BAD_REQUEST
-                message: The endpoint is malformed.
-                status: 400
-                owner: API_GATEWAY
-          headers: {}
-        '403':
-          description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              examples:
-                '2':
-                  summary: Forbidden to Service
-                  value:
-                    code: FORBIDDEN
-                    message: The user has no permission to access this resource.
-                    status: 403
-                    owner: GYCODING
-                '3':
-                  summary: Forbidden to API Gateway
-                  value:
-                    code: FORBIDDEN
-                    message: The user has no permission to access this resource.
-                    status: 403
-                    owner: API_GATEWAY
-          headers: {}
-        '404':
-          description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              examples:
-                '4':
-                  summary: Token Not Found
-                  value:
-                    code: TOKEN_NOT_FOUND
-                    message: Authentication token was not found.
-                    status: 404
-                    owner: API_GATEWAY
-                '5':
-                  summary: Resource Not Found
-                  value:
-                    code: RESOURCE_NOT_FOUND
-                    message: This resource was not found.
-                    status: 404
-                    owner: GYCODING
-          headers: {}
-        '405':
-          description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              example:
-                code: METHOD_NOT_ALLOWED
-                message: Method used to access this resource is not allowed.
-                status: 405
-                owner: GYCODING
-          headers: {}
-        '500':
-          description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              examples:
-                '7':
-                  summary: Database Error
-                  value:
-                    code: DB_ERROR
-                    message: >-
-                      An error with the database has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: GYCODING
-                '8':
-                  summary: Auth Error from Service
-                  value:
-                    code: AUTH_ERROR
-                    message: >-
-                      An error with the authentication service has occurred,
-                      sorry for the inconvenience.
-                    status: 500
-                    owner: GYCODING
-                '9':
-                  summary: Auth Error from API Gateway
-                  value:
-                    code: AUTH_ERROR
-                    message: >-
-                      An error with the authentication service has occurred,
-                      sorry for the inconvenience.
-                    status: 500
-                    owner: API_GATEWAY
-                '10':
-                  summary: Gateway Error
-                  value:
-                    code: GATEWAY_ERROR
-                    message: >-
-                      An internal API Gateway error has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: API_GATEWAY
-                '11':
-                  summary: Server Error
-                  value:
-                    code: SERVER_ERROR
-                    message: >-
-                      An internal server error has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: GYCODING
-          headers: {}
-      security: []
-      x-roles:
-        - COMMON
-        - ADMIN
-  /creatures/list:
-    get:
-      summary: List Creatures
-      deprecated: false
-      description: >-
-        Retrieves a non-paginated list of all the creatures from the whole
-        universe of Heralds of Chaos.
-      tags:
-        - Creatures
-      parameters:
-        - name: lang
-          in: query
-          description: Language of the response.
-          required: true
-          example: es
-          schema:
-            type: string
-            enum:
-              - es
-              - en
-      responses:
-        '200':
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Creature'
-                  description: Creature object.
-                description: List of creatures.
-                uniqueItems: true
-          headers: {}
-        '400':
-          description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              example:
-                code: BAD_REQUEST
-                message: The endpoint is malformed.
-                status: 400
-                owner: API_GATEWAY
-          headers: {}
-        '403':
-          description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              examples:
-                '2':
-                  summary: Forbidden to Service
-                  value:
-                    code: FORBIDDEN
-                    message: The user has no permission to access this resource.
-                    status: 403
-                    owner: GYCODING
-                '3':
-                  summary: Forbidden to API Gateway
-                  value:
-                    code: FORBIDDEN
-                    message: The user has no permission to access this resource.
-                    status: 403
-                    owner: API_GATEWAY
-          headers: {}
-        '404':
-          description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              examples:
-                '4':
-                  summary: Token Not Found
-                  value:
-                    code: TOKEN_NOT_FOUND
-                    message: Authentication token was not found.
-                    status: 404
-                    owner: API_GATEWAY
-                '5':
-                  summary: Resource Not Found
-                  value:
-                    code: RESOURCE_NOT_FOUND
-                    message: This resource was not found.
-                    status: 404
-                    owner: GYCODING
-          headers: {}
-        '405':
-          description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              example:
-                code: METHOD_NOT_ALLOWED
-                message: Method used to access this resource is not allowed.
-                status: 405
-                owner: GYCODING
-          headers: {}
-        '500':
-          description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              examples:
-                '7':
-                  summary: Database Error
-                  value:
-                    code: DB_ERROR
-                    message: >-
-                      An error with the database has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: GYCODING
-                '8':
-                  summary: Auth Error from Service
-                  value:
-                    code: AUTH_ERROR
-                    message: >-
-                      An error with the authentication service has occurred,
-                      sorry for the inconvenience.
-                    status: 500
-                    owner: GYCODING
-                '9':
-                  summary: Auth Error from API Gateway
-                  value:
-                    code: AUTH_ERROR
-                    message: >-
-                      An error with the authentication service has occurred,
-                      sorry for the inconvenience.
-                    status: 500
-                    owner: API_GATEWAY
-                '10':
-                  summary: Gateway Error
-                  value:
-                    code: GATEWAY_ERROR
-                    message: >-
-                      An internal API Gateway error has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: API_GATEWAY
-                '11':
-                  summary: Server Error
-                  value:
-                    code: SERVER_ERROR
-                    message: >-
-                      An internal server error has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: GYCODING
-          headers: {}
-      security: []
-      x-roles:
-        - COMMON
-        - ADMIN
-  /creatures/page:
-    get:
-      summary: Page Characters
-      deprecated: false
-      description: >-
-        Retrieves a paginated list of all the creatures from the whole universe
-        of Heralds of Chaos.
-      tags:
-        - Creatures
-      parameters:
-        - name: page
-          in: query
-          description: Number of page.
-          required: true
-          example: 1
-          schema:
-            type: integer
-        - name: size
-          in: query
-          description: Amount of elements to show on one page.
-          required: true
-          example: 10
-          schema:
-            type: integer
-        - name: lang
-          in: query
-          description: Language of the response.
-          required: true
-          example: es
-          schema:
-            type: string
-            enum:
-              - es
-              - en
-      responses:
-        '200':
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Creature'
-                  description: Creature object.
-                description: List of creatures.
-                uniqueItems: true
-          headers: {}
-        '400':
-          description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              example:
-                code: BAD_REQUEST
-                message: The endpoint is malformed.
-                status: 400
-                owner: API_GATEWAY
-          headers: {}
-        '403':
-          description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              examples:
-                '2':
-                  summary: Forbidden to Service
-                  value:
-                    code: FORBIDDEN
-                    message: The user has no permission to access this resource.
-                    status: 403
-                    owner: GYCODING
-                '3':
-                  summary: Forbidden to API Gateway
-                  value:
-                    code: FORBIDDEN
-                    message: The user has no permission to access this resource.
-                    status: 403
-                    owner: API_GATEWAY
-          headers: {}
-        '404':
-          description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              examples:
-                '4':
-                  summary: Token Not Found
-                  value:
-                    code: TOKEN_NOT_FOUND
-                    message: Authentication token was not found.
-                    status: 404
-                    owner: API_GATEWAY
-                '5':
-                  summary: Resource Not Found
-                  value:
-                    code: RESOURCE_NOT_FOUND
-                    message: This resource was not found.
-                    status: 404
-                    owner: GYCODING
-          headers: {}
-        '405':
-          description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              example:
-                code: METHOD_NOT_ALLOWED
-                message: Method used to access this resource is not allowed.
-                status: 405
-                owner: GYCODING
-          headers: {}
-        '500':
-          description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              examples:
-                '7':
-                  summary: Database Error
-                  value:
-                    code: DB_ERROR
-                    message: >-
-                      An error with the database has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: GYCODING
-                '8':
-                  summary: Auth Error from Service
-                  value:
-                    code: AUTH_ERROR
-                    message: >-
-                      An error with the authentication service has occurred,
-                      sorry for the inconvenience.
-                    status: 500
-                    owner: GYCODING
-                '9':
-                  summary: Auth Error from API Gateway
-                  value:
-                    code: AUTH_ERROR
-                    message: >-
-                      An error with the authentication service has occurred,
-                      sorry for the inconvenience.
-                    status: 500
-                    owner: API_GATEWAY
-                '10':
-                  summary: Gateway Error
-                  value:
-                    code: GATEWAY_ERROR
-                    message: >-
-                      An internal API Gateway error has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: API_GATEWAY
-                '11':
-                  summary: Server Error
-                  value:
-                    code: SERVER_ERROR
-                    message: >-
-                      An internal server error has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: GYCODING
-          headers: {}
-      security: []
-      x-roles:
-        - COMMON
-        - ADMIN
   /characters:
     post:
       summary: Insert Character
@@ -2629,18 +2629,43 @@ paths:
         - name: Authorization
           in: header
           description: Authorization token.
-          example: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
+          example: 9BVTbqHiqloTZMmpRCBpC4-tEzyvoEiWap62nlxzkOM
           schema:
             type: string
-            default: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
+            default: 9BVTbqHiqloTZMmpRCBpC4-tEzyvoEiWap62nlxzkOM
       requestBody:
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/Character2'
-            examples: {}
+            example:
+              name:
+                es: Sífka
+                en: Sífka
+              description:
+                es: >-
+                  Hija de Humli y reina de Götaland. Heidrek se encaprichó de
+                  ella, tomándola como esposa a la fuerza, siendo esto un
+                  tormento para Sífka y para su padre. Motivos que harían que,
+                  tras la muerte de Heidrek y el cambio de herencia hacia
+                  Angantyr, Sífka apoyase la rebelión de su hijo Hlöd.
+                en: >-
+                  Daughter of Humli and queen of Götaland. Heidrek became
+                  infatuated with her and took her as his wife by force, a
+                  torment for both Sífka and her father. These circumstances led
+                  her, after Heidrek’s death and the shift of inheritance to
+                  Angantyr, to support her son Hlöd’s rebellion.
+              world: midgard
+              image: >-
+                https://raw.githubusercontent.com/GY-CODING/img-repo/main/fall-of-the-gods/characters/none.webp
+              title:
+                es: Reina de Götaland
+                en: Queen of Götaland
+              race:
+                es: Humano
+                en: Human
       responses:
-        '204':
+        '200':
           description: ''
           content:
             application/json:
@@ -2796,24 +2821,32 @@ paths:
           in: query
           description: Character ID.
           required: true
-          example: name_test
+          example: yrsa
           schema:
             type: string
         - name: Authorization
           in: header
           description: Authorization token.
-          example: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
+          example: 9BVTbqHiqloTZMmpRCBpC4-tEzyvoEiWap62nlxzkOM
           schema:
             type: string
-            default: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
+            default: 9BVTbqHiqloTZMmpRCBpC4-tEzyvoEiWap62nlxzkOM
       requestBody:
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/Character2'
-            examples: {}
+            example:
+              world: midgard
+              description:
+                es: >-
+                  En tiempos fue reina en Midgard del reino de Solor. Por
+                  razones desconocidas, Adils, su marido y rey, la desterró.
+                en: >-
+                  She was once queen of the kingdom of Solor in Midgard. For
+                  unknown reasons, Adils, her husband and king, exiled her.
       responses:
-        '204':
+        '200':
           description: ''
           content:
             application/json:
@@ -2969,24 +3002,1002 @@ paths:
           in: query
           description: Character ID.
           required: false
-          example: character
+          example: mogthrasir
           schema:
             type: string
         - name: Authorization
           in: header
           description: Authorization token.
-          example: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
+          example: 9BVTbqHiqloTZMmpRCBpC4-tEzyvoEiWap62nlxzkOM
           schema:
             type: string
-            default: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
+            default: 9BVTbqHiqloTZMmpRCBpC4-tEzyvoEiWap62nlxzkOM
       responses:
         '204':
           description: ''
           content:
             application/json:
               schema:
-                type: object
-                properties: {}
+                type: 'null'
+          headers: {}
+        '400':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
+              example:
+                code: BAD_REQUEST
+                message: The endpoint is malformed.
+                status: 400
+                owner: API_GATEWAY
+          headers: {}
+        '403':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
+              examples:
+                '2':
+                  summary: Forbidden to Service
+                  value:
+                    code: FORBIDDEN
+                    message: The user has no permission to access this resource.
+                    status: 403
+                    owner: GYCODING
+                '3':
+                  summary: Forbidden to API Gateway
+                  value:
+                    code: FORBIDDEN
+                    message: The user has no permission to access this resource.
+                    status: 403
+                    owner: API_GATEWAY
+          headers: {}
+        '404':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
+              examples:
+                '4':
+                  summary: Token Not Found
+                  value:
+                    code: TOKEN_NOT_FOUND
+                    message: Authentication token was not found.
+                    status: 404
+                    owner: API_GATEWAY
+                '5':
+                  summary: Resource Not Found
+                  value:
+                    code: RESOURCE_NOT_FOUND
+                    message: This resource was not found.
+                    status: 404
+                    owner: GYCODING
+          headers: {}
+        '405':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
+              example:
+                code: METHOD_NOT_ALLOWED
+                message: Method used to access this resource is not allowed.
+                status: 405
+                owner: GYCODING
+          headers: {}
+        '500':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
+              examples:
+                '7':
+                  summary: Database Error
+                  value:
+                    code: DB_ERROR
+                    message: >-
+                      An error with the database has occurred, sorry for the
+                      inconvenience.
+                    status: 500
+                    owner: GYCODING
+                '8':
+                  summary: Auth Error from Service
+                  value:
+                    code: AUTH_ERROR
+                    message: >-
+                      An error with the authentication service has occurred,
+                      sorry for the inconvenience.
+                    status: 500
+                    owner: GYCODING
+                '9':
+                  summary: Auth Error from API Gateway
+                  value:
+                    code: AUTH_ERROR
+                    message: >-
+                      An error with the authentication service has occurred,
+                      sorry for the inconvenience.
+                    status: 500
+                    owner: API_GATEWAY
+                '10':
+                  summary: Gateway Error
+                  value:
+                    code: GATEWAY_ERROR
+                    message: >-
+                      An internal API Gateway error has occurred, sorry for the
+                      inconvenience.
+                    status: 500
+                    owner: API_GATEWAY
+                '11':
+                  summary: Server Error
+                  value:
+                    code: SERVER_ERROR
+                    message: >-
+                      An internal server error has occurred, sorry for the
+                      inconvenience.
+                    status: 500
+                    owner: GYCODING
+          headers: {}
+      security: []
+      x-roles:
+        - ADMIN
+  /creatures:
+    post:
+      summary: Insert Creature
+      deprecated: false
+      description: Inserts a new Creature.
+      tags:
+        - Creatures
+      parameters:
+        - name: Authorization
+          in: header
+          description: Authorization token.
+          example: 9BVTbqHiqloTZMmpRCBpC4-tEzyvoEiWap62nlxzkOM
+          schema:
+            type: string
+            default: 9BVTbqHiqloTZMmpRCBpC4-tEzyvoEiWap62nlxzkOM
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Creature5'
+            examples: {}
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Creature'
+          headers: {}
+        '400':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
+              example:
+                code: BAD_REQUEST
+                message: The endpoint is malformed.
+                status: 400
+                owner: API_GATEWAY
+          headers: {}
+        '403':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
+              examples:
+                '2':
+                  summary: Forbidden to Service
+                  value:
+                    code: FORBIDDEN
+                    message: The user has no permission to access this resource.
+                    status: 403
+                    owner: GYCODING
+                '3':
+                  summary: Forbidden to API Gateway
+                  value:
+                    code: FORBIDDEN
+                    message: The user has no permission to access this resource.
+                    status: 403
+                    owner: API_GATEWAY
+          headers: {}
+        '404':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
+              examples:
+                '4':
+                  summary: Token Not Found
+                  value:
+                    code: TOKEN_NOT_FOUND
+                    message: Authentication token was not found.
+                    status: 404
+                    owner: API_GATEWAY
+                '5':
+                  summary: Resource Not Found
+                  value:
+                    code: RESOURCE_NOT_FOUND
+                    message: This resource was not found.
+                    status: 404
+                    owner: GYCODING
+          headers: {}
+        '405':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
+              example:
+                code: METHOD_NOT_ALLOWED
+                message: Method used to access this resource is not allowed.
+                status: 405
+                owner: GYCODING
+          headers: {}
+        '409':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
+              example:
+                code: CONFLICT
+                message: >-
+                  An internal conflict between external data and the API has
+                  occured. Requested data may already exist.
+                status: 409
+                owner: GYCODING
+          headers: {}
+        '500':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
+              examples:
+                '7':
+                  summary: Database Error
+                  value:
+                    code: DB_ERROR
+                    message: >-
+                      An error with the database has occurred, sorry for the
+                      inconvenience.
+                    status: 500
+                    owner: GYCODING
+                '8':
+                  summary: Auth Error from Service
+                  value:
+                    code: AUTH_ERROR
+                    message: >-
+                      An error with the authentication service has occurred,
+                      sorry for the inconvenience.
+                    status: 500
+                    owner: GYCODING
+                '9':
+                  summary: Auth Error from API Gateway
+                  value:
+                    code: AUTH_ERROR
+                    message: >-
+                      An error with the authentication service has occurred,
+                      sorry for the inconvenience.
+                    status: 500
+                    owner: API_GATEWAY
+                '10':
+                  summary: Gateway Error
+                  value:
+                    code: GATEWAY_ERROR
+                    message: >-
+                      An internal API Gateway error has occurred, sorry for the
+                      inconvenience.
+                    status: 500
+                    owner: API_GATEWAY
+                '11':
+                  summary: Server Error
+                  value:
+                    code: SERVER_ERROR
+                    message: >-
+                      An internal server error has occurred, sorry for the
+                      inconvenience.
+                    status: 500
+                    owner: GYCODING
+          headers: {}
+      security: []
+      x-roles:
+        - ADMIN
+    patch:
+      summary: Update Creature
+      deprecated: false
+      description: Completely or partially updates an exisiting Creature.
+      tags:
+        - Creatures
+      parameters:
+        - name: id
+          in: query
+          description: Creature ID.
+          required: true
+          example: creature_test
+          schema:
+            type: string
+        - name: Authorization
+          in: header
+          description: Authorization token.
+          example: 9BVTbqHiqloTZMmpRCBpC4-tEzyvoEiWap62nlxzkOM
+          schema:
+            type: string
+            default: 9BVTbqHiqloTZMmpRCBpC4-tEzyvoEiWap62nlxzkOM
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Creature5'
+            examples: {}
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Creature'
+          headers: {}
+        '304':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
+              example:
+                code: RESOURCE_NOT_MODIFIED
+                message: >-
+                  The resource could not be modified due to some internal
+                  conflict or error.
+                status: 304
+                owner: GYCODING
+          headers: {}
+        '400':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
+              example:
+                code: BAD_REQUEST
+                message: The endpoint is malformed.
+                status: 400
+                owner: API_GATEWAY
+          headers: {}
+        '403':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
+              examples:
+                '2':
+                  summary: Forbidden to Service
+                  value:
+                    code: FORBIDDEN
+                    message: The user has no permission to access this resource.
+                    status: 403
+                    owner: GYCODING
+                '3':
+                  summary: Forbidden to API Gateway
+                  value:
+                    code: FORBIDDEN
+                    message: The user has no permission to access this resource.
+                    status: 403
+                    owner: API_GATEWAY
+          headers: {}
+        '404':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
+              examples:
+                '4':
+                  summary: Token Not Found
+                  value:
+                    code: TOKEN_NOT_FOUND
+                    message: Authentication token was not found.
+                    status: 404
+                    owner: API_GATEWAY
+                '5':
+                  summary: Resource Not Found
+                  value:
+                    code: RESOURCE_NOT_FOUND
+                    message: This resource was not found.
+                    status: 404
+                    owner: GYCODING
+          headers: {}
+        '405':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
+              example:
+                code: METHOD_NOT_ALLOWED
+                message: Method used to access this resource is not allowed.
+                status: 405
+                owner: GYCODING
+          headers: {}
+        '500':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
+              examples:
+                '7':
+                  summary: Database Error
+                  value:
+                    code: DB_ERROR
+                    message: >-
+                      An error with the database has occurred, sorry for the
+                      inconvenience.
+                    status: 500
+                    owner: GYCODING
+                '8':
+                  summary: Auth Error from Service
+                  value:
+                    code: AUTH_ERROR
+                    message: >-
+                      An error with the authentication service has occurred,
+                      sorry for the inconvenience.
+                    status: 500
+                    owner: GYCODING
+                '9':
+                  summary: Auth Error from API Gateway
+                  value:
+                    code: AUTH_ERROR
+                    message: >-
+                      An error with the authentication service has occurred,
+                      sorry for the inconvenience.
+                    status: 500
+                    owner: API_GATEWAY
+                '10':
+                  summary: Gateway Error
+                  value:
+                    code: GATEWAY_ERROR
+                    message: >-
+                      An internal API Gateway error has occurred, sorry for the
+                      inconvenience.
+                    status: 500
+                    owner: API_GATEWAY
+                '11':
+                  summary: Server Error
+                  value:
+                    code: SERVER_ERROR
+                    message: >-
+                      An internal server error has occurred, sorry for the
+                      inconvenience.
+                    status: 500
+                    owner: GYCODING
+          headers: {}
+      security: []
+      x-roles:
+        - ADMIN
+    delete:
+      summary: Remove Creature
+      deprecated: false
+      description: Removes an exisiting Creature.
+      tags:
+        - Creatures
+      parameters:
+        - name: id
+          in: query
+          description: Creature ID.
+          required: false
+          example: creature
+          schema:
+            type: string
+        - name: Authorization
+          in: header
+          description: Authorization token.
+          example: 9BVTbqHiqloTZMmpRCBpC4-tEzyvoEiWap62nlxzkOM
+          schema:
+            type: string
+            default: 9BVTbqHiqloTZMmpRCBpC4-tEzyvoEiWap62nlxzkOM
+      responses:
+        '204':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: 'null'
+          headers: {}
+        '400':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
+              example:
+                code: BAD_REQUEST
+                message: The endpoint is malformed.
+                status: 400
+                owner: API_GATEWAY
+          headers: {}
+        '403':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
+              examples:
+                '2':
+                  summary: Forbidden to Service
+                  value:
+                    code: FORBIDDEN
+                    message: The user has no permission to access this resource.
+                    status: 403
+                    owner: GYCODING
+                '3':
+                  summary: Forbidden to API Gateway
+                  value:
+                    code: FORBIDDEN
+                    message: The user has no permission to access this resource.
+                    status: 403
+                    owner: API_GATEWAY
+          headers: {}
+        '404':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
+              examples:
+                '4':
+                  summary: Token Not Found
+                  value:
+                    code: TOKEN_NOT_FOUND
+                    message: Authentication token was not found.
+                    status: 404
+                    owner: API_GATEWAY
+                '5':
+                  summary: Resource Not Found
+                  value:
+                    code: RESOURCE_NOT_FOUND
+                    message: This resource was not found.
+                    status: 404
+                    owner: GYCODING
+          headers: {}
+        '405':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
+              example:
+                code: METHOD_NOT_ALLOWED
+                message: Method used to access this resource is not allowed.
+                status: 405
+                owner: GYCODING
+          headers: {}
+        '500':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
+              examples:
+                '7':
+                  summary: Database Error
+                  value:
+                    code: DB_ERROR
+                    message: >-
+                      An error with the database has occurred, sorry for the
+                      inconvenience.
+                    status: 500
+                    owner: GYCODING
+                '8':
+                  summary: Auth Error from Service
+                  value:
+                    code: AUTH_ERROR
+                    message: >-
+                      An error with the authentication service has occurred,
+                      sorry for the inconvenience.
+                    status: 500
+                    owner: GYCODING
+                '9':
+                  summary: Auth Error from API Gateway
+                  value:
+                    code: AUTH_ERROR
+                    message: >-
+                      An error with the authentication service has occurred,
+                      sorry for the inconvenience.
+                    status: 500
+                    owner: API_GATEWAY
+                '10':
+                  summary: Gateway Error
+                  value:
+                    code: GATEWAY_ERROR
+                    message: >-
+                      An internal API Gateway error has occurred, sorry for the
+                      inconvenience.
+                    status: 500
+                    owner: API_GATEWAY
+                '11':
+                  summary: Server Error
+                  value:
+                    code: SERVER_ERROR
+                    message: >-
+                      An internal server error has occurred, sorry for the
+                      inconvenience.
+                    status: 500
+                    owner: GYCODING
+          headers: {}
+      security: []
+      x-roles:
+        - ADMIN
+  /items:
+    post:
+      summary: Insert Item
+      deprecated: false
+      description: Inserts a new Item.
+      tags:
+        - Items
+      parameters:
+        - name: Authorization
+          in: header
+          description: Authorization token.
+          example: 9BVTbqHiqloTZMmpRCBpC4-tEzyvoEiWap62nlxzkOM
+          schema:
+            type: string
+            default: 9BVTbqHiqloTZMmpRCBpC4-tEzyvoEiWap62nlxzkOM
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Item1'
+            examples: {}
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Item'
+          headers: {}
+        '400':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
+              example:
+                code: BAD_REQUEST
+                message: The endpoint is malformed.
+                status: 400
+                owner: API_GATEWAY
+          headers: {}
+        '403':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
+              examples:
+                '2':
+                  summary: Forbidden to Service
+                  value:
+                    code: FORBIDDEN
+                    message: The user has no permission to access this resource.
+                    status: 403
+                    owner: GYCODING
+                '3':
+                  summary: Forbidden to API Gateway
+                  value:
+                    code: FORBIDDEN
+                    message: The user has no permission to access this resource.
+                    status: 403
+                    owner: API_GATEWAY
+          headers: {}
+        '404':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
+              examples:
+                '4':
+                  summary: Token Not Found
+                  value:
+                    code: TOKEN_NOT_FOUND
+                    message: Authentication token was not found.
+                    status: 404
+                    owner: API_GATEWAY
+                '5':
+                  summary: Resource Not Found
+                  value:
+                    code: RESOURCE_NOT_FOUND
+                    message: This resource was not found.
+                    status: 404
+                    owner: GYCODING
+          headers: {}
+        '405':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
+              example:
+                code: METHOD_NOT_ALLOWED
+                message: Method used to access this resource is not allowed.
+                status: 405
+                owner: GYCODING
+          headers: {}
+        '409':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
+              example:
+                code: CONFLICT
+                message: >-
+                  An internal conflict between external data and the API has
+                  occured. Requested data may already exist.
+                status: 409
+                owner: GYCODING
+          headers: {}
+        '500':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
+              examples:
+                '7':
+                  summary: Database Error
+                  value:
+                    code: DB_ERROR
+                    message: >-
+                      An error with the database has occurred, sorry for the
+                      inconvenience.
+                    status: 500
+                    owner: GYCODING
+                '8':
+                  summary: Auth Error from Service
+                  value:
+                    code: AUTH_ERROR
+                    message: >-
+                      An error with the authentication service has occurred,
+                      sorry for the inconvenience.
+                    status: 500
+                    owner: GYCODING
+                '9':
+                  summary: Auth Error from API Gateway
+                  value:
+                    code: AUTH_ERROR
+                    message: >-
+                      An error with the authentication service has occurred,
+                      sorry for the inconvenience.
+                    status: 500
+                    owner: API_GATEWAY
+                '10':
+                  summary: Gateway Error
+                  value:
+                    code: GATEWAY_ERROR
+                    message: >-
+                      An internal API Gateway error has occurred, sorry for the
+                      inconvenience.
+                    status: 500
+                    owner: API_GATEWAY
+                '11':
+                  summary: Server Error
+                  value:
+                    code: SERVER_ERROR
+                    message: >-
+                      An internal server error has occurred, sorry for the
+                      inconvenience.
+                    status: 500
+                    owner: GYCODING
+          headers: {}
+      security: []
+      x-roles:
+        - ADMIN
+    patch:
+      summary: Update Item
+      deprecated: false
+      description: Completely or partially updates an exisiting Item.
+      tags:
+        - Items
+      parameters:
+        - name: Authorization
+          in: header
+          description: Authorization token.
+          example: 9BVTbqHiqloTZMmpRCBpC4-tEzyvoEiWap62nlxzkOM
+          schema:
+            type: string
+            default: 9BVTbqHiqloTZMmpRCBpC4-tEzyvoEiWap62nlxzkOM
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Item1'
+            examples: {}
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Item'
+          headers: {}
+        '304':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
+              example:
+                code: RESOURCE_NOT_MODIFIED
+                message: >-
+                  The resource could not be modified due to some internal
+                  conflict or error.
+                status: 304
+                owner: GYCODING
+          headers: {}
+        '400':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
+              example:
+                code: BAD_REQUEST
+                message: The endpoint is malformed.
+                status: 400
+                owner: API_GATEWAY
+          headers: {}
+        '403':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
+              examples:
+                '2':
+                  summary: Forbidden to Service
+                  value:
+                    code: FORBIDDEN
+                    message: The user has no permission to access this resource.
+                    status: 403
+                    owner: GYCODING
+                '3':
+                  summary: Forbidden to API Gateway
+                  value:
+                    code: FORBIDDEN
+                    message: The user has no permission to access this resource.
+                    status: 403
+                    owner: API_GATEWAY
+          headers: {}
+        '404':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
+              examples:
+                '4':
+                  summary: Token Not Found
+                  value:
+                    code: TOKEN_NOT_FOUND
+                    message: Authentication token was not found.
+                    status: 404
+                    owner: API_GATEWAY
+                '5':
+                  summary: Resource Not Found
+                  value:
+                    code: RESOURCE_NOT_FOUND
+                    message: This resource was not found.
+                    status: 404
+                    owner: GYCODING
+          headers: {}
+        '405':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
+              example:
+                code: METHOD_NOT_ALLOWED
+                message: Method used to access this resource is not allowed.
+                status: 405
+                owner: GYCODING
+          headers: {}
+        '500':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error%20Response'
+              examples:
+                '7':
+                  summary: Database Error
+                  value:
+                    code: DB_ERROR
+                    message: >-
+                      An error with the database has occurred, sorry for the
+                      inconvenience.
+                    status: 500
+                    owner: GYCODING
+                '8':
+                  summary: Auth Error from Service
+                  value:
+                    code: AUTH_ERROR
+                    message: >-
+                      An error with the authentication service has occurred,
+                      sorry for the inconvenience.
+                    status: 500
+                    owner: GYCODING
+                '9':
+                  summary: Auth Error from API Gateway
+                  value:
+                    code: AUTH_ERROR
+                    message: >-
+                      An error with the authentication service has occurred,
+                      sorry for the inconvenience.
+                    status: 500
+                    owner: API_GATEWAY
+                '10':
+                  summary: Gateway Error
+                  value:
+                    code: GATEWAY_ERROR
+                    message: >-
+                      An internal API Gateway error has occurred, sorry for the
+                      inconvenience.
+                    status: 500
+                    owner: API_GATEWAY
+                '11':
+                  summary: Server Error
+                  value:
+                    code: SERVER_ERROR
+                    message: >-
+                      An internal server error has occurred, sorry for the
+                      inconvenience.
+                    status: 500
+                    owner: GYCODING
+          headers: {}
+      security: []
+      x-roles:
+        - ADMIN
+    delete:
+      summary: Remove Item
+      deprecated: false
+      description: Removes an exisiting Item.
+      tags:
+        - Items
+      parameters:
+        - name: id
+          in: query
+          description: Item ID.
+          required: false
+          example: item
+          schema:
+            type: string
+        - name: Authorization
+          in: header
+          description: Authorization token.
+          example: 9BVTbqHiqloTZMmpRCBpC4-tEzyvoEiWap62nlxzkOM
+          schema:
+            type: string
+            default: 9BVTbqHiqloTZMmpRCBpC4-tEzyvoEiWap62nlxzkOM
+      responses:
+        '204':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: 'null'
           headers: {}
         '400':
           description: ''
@@ -3123,10 +4134,10 @@ paths:
         - name: Authorization
           in: header
           description: Authorization token.
-          example: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
+          example: 9BVTbqHiqloTZMmpRCBpC4-tEzyvoEiWap62nlxzkOM
           schema:
             type: string
-            default: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
+            default: 9BVTbqHiqloTZMmpRCBpC4-tEzyvoEiWap62nlxzkOM
       requestBody:
         content:
           application/json:
@@ -3134,7 +4145,7 @@ paths:
               $ref: '#/components/schemas/World3'
             examples: {}
       responses:
-        '204':
+        '200':
           description: ''
           content:
             application/json:
@@ -3289,10 +4300,10 @@ paths:
         - name: Authorization
           in: header
           description: Authorization token.
-          example: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
+          example: 9BVTbqHiqloTZMmpRCBpC4-tEzyvoEiWap62nlxzkOM
           schema:
             type: string
-            default: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
+            default: 9BVTbqHiqloTZMmpRCBpC4-tEzyvoEiWap62nlxzkOM
       requestBody:
         content:
           application/json:
@@ -3300,7 +4311,7 @@ paths:
               $ref: '#/components/schemas/World3'
             examples: {}
       responses:
-        '204':
+        '200':
           description: ''
           content:
             application/json:
@@ -3462,18 +4473,17 @@ paths:
         - name: Authorization
           in: header
           description: Authorization token.
-          example: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
+          example: 9BVTbqHiqloTZMmpRCBpC4-tEzyvoEiWap62nlxzkOM
           schema:
             type: string
-            default: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
+            default: 9BVTbqHiqloTZMmpRCBpC4-tEzyvoEiWap62nlxzkOM
       responses:
         '204':
           description: ''
           content:
             application/json:
               schema:
-                type: object
-                properties: {}
+                type: 'null'
           headers: {}
         '400':
           description: ''
@@ -3611,10 +4621,10 @@ paths:
         - name: Authorization
           in: header
           description: Authorization token.
-          example: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
+          example: 9BVTbqHiqloTZMmpRCBpC4-tEzyvoEiWap62nlxzkOM
           schema:
             type: string
-            default: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
+            default: 9BVTbqHiqloTZMmpRCBpC4-tEzyvoEiWap62nlxzkOM
       requestBody:
         content:
           application/json:
@@ -3622,7 +4632,7 @@ paths:
               $ref: '#/components/schemas/Place4'
             examples: {}
       responses:
-        '204':
+        '200':
           description: ''
           content:
             application/json:
@@ -3778,10 +4788,10 @@ paths:
         - name: Authorization
           in: header
           description: Authorization token.
-          example: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
+          example: 9BVTbqHiqloTZMmpRCBpC4-tEzyvoEiWap62nlxzkOM
           schema:
             type: string
-            default: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
+            default: 9BVTbqHiqloTZMmpRCBpC4-tEzyvoEiWap62nlxzkOM
       requestBody:
         content:
           application/json:
@@ -3789,7 +4799,7 @@ paths:
               $ref: '#/components/schemas/Place4'
             examples: {}
       responses:
-        '204':
+        '200':
           description: ''
           content:
             application/json:
@@ -3952,999 +4962,17 @@ paths:
         - name: Authorization
           in: header
           description: Authorization token.
-          example: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
+          example: 9BVTbqHiqloTZMmpRCBpC4-tEzyvoEiWap62nlxzkOM
           schema:
             type: string
-            default: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
+            default: 9BVTbqHiqloTZMmpRCBpC4-tEzyvoEiWap62nlxzkOM
       responses:
         '204':
           description: ''
           content:
             application/json:
               schema:
-                type: object
-                properties: {}
-          headers: {}
-        '400':
-          description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              example:
-                code: BAD_REQUEST
-                message: The endpoint is malformed.
-                status: 400
-                owner: API_GATEWAY
-          headers: {}
-        '403':
-          description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              examples:
-                '2':
-                  summary: Forbidden to Service
-                  value:
-                    code: FORBIDDEN
-                    message: The user has no permission to access this resource.
-                    status: 403
-                    owner: GYCODING
-                '3':
-                  summary: Forbidden to API Gateway
-                  value:
-                    code: FORBIDDEN
-                    message: The user has no permission to access this resource.
-                    status: 403
-                    owner: API_GATEWAY
-          headers: {}
-        '404':
-          description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              examples:
-                '4':
-                  summary: Token Not Found
-                  value:
-                    code: TOKEN_NOT_FOUND
-                    message: Authentication token was not found.
-                    status: 404
-                    owner: API_GATEWAY
-                '5':
-                  summary: Resource Not Found
-                  value:
-                    code: RESOURCE_NOT_FOUND
-                    message: This resource was not found.
-                    status: 404
-                    owner: GYCODING
-          headers: {}
-        '405':
-          description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              example:
-                code: METHOD_NOT_ALLOWED
-                message: Method used to access this resource is not allowed.
-                status: 405
-                owner: GYCODING
-          headers: {}
-        '500':
-          description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              examples:
-                '7':
-                  summary: Database Error
-                  value:
-                    code: DB_ERROR
-                    message: >-
-                      An error with the database has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: GYCODING
-                '8':
-                  summary: Auth Error from Service
-                  value:
-                    code: AUTH_ERROR
-                    message: >-
-                      An error with the authentication service has occurred,
-                      sorry for the inconvenience.
-                    status: 500
-                    owner: GYCODING
-                '9':
-                  summary: Auth Error from API Gateway
-                  value:
-                    code: AUTH_ERROR
-                    message: >-
-                      An error with the authentication service has occurred,
-                      sorry for the inconvenience.
-                    status: 500
-                    owner: API_GATEWAY
-                '10':
-                  summary: Gateway Error
-                  value:
-                    code: GATEWAY_ERROR
-                    message: >-
-                      An internal API Gateway error has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: API_GATEWAY
-                '11':
-                  summary: Server Error
-                  value:
-                    code: SERVER_ERROR
-                    message: >-
-                      An internal server error has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: GYCODING
-          headers: {}
-      security: []
-      x-roles:
-        - ADMIN
-  /items:
-    post:
-      summary: Insert Item
-      deprecated: false
-      description: Inserts a new Item.
-      tags:
-        - Items
-      parameters:
-        - name: Authorization
-          in: header
-          description: Authorization token.
-          example: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
-          schema:
-            type: string
-            default: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Item1'
-            examples: {}
-      responses:
-        '204':
-          description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Item'
-          headers: {}
-        '400':
-          description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              example:
-                code: BAD_REQUEST
-                message: The endpoint is malformed.
-                status: 400
-                owner: API_GATEWAY
-          headers: {}
-        '403':
-          description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              examples:
-                '2':
-                  summary: Forbidden to Service
-                  value:
-                    code: FORBIDDEN
-                    message: The user has no permission to access this resource.
-                    status: 403
-                    owner: GYCODING
-                '3':
-                  summary: Forbidden to API Gateway
-                  value:
-                    code: FORBIDDEN
-                    message: The user has no permission to access this resource.
-                    status: 403
-                    owner: API_GATEWAY
-          headers: {}
-        '404':
-          description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              examples:
-                '4':
-                  summary: Token Not Found
-                  value:
-                    code: TOKEN_NOT_FOUND
-                    message: Authentication token was not found.
-                    status: 404
-                    owner: API_GATEWAY
-                '5':
-                  summary: Resource Not Found
-                  value:
-                    code: RESOURCE_NOT_FOUND
-                    message: This resource was not found.
-                    status: 404
-                    owner: GYCODING
-          headers: {}
-        '405':
-          description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              example:
-                code: METHOD_NOT_ALLOWED
-                message: Method used to access this resource is not allowed.
-                status: 405
-                owner: GYCODING
-          headers: {}
-        '409':
-          description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              example:
-                code: CONFLICT
-                message: >-
-                  An internal conflict between external data and the API has
-                  occured. Requested data may already exist.
-                status: 409
-                owner: GYCODING
-          headers: {}
-        '500':
-          description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              examples:
-                '7':
-                  summary: Database Error
-                  value:
-                    code: DB_ERROR
-                    message: >-
-                      An error with the database has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: GYCODING
-                '8':
-                  summary: Auth Error from Service
-                  value:
-                    code: AUTH_ERROR
-                    message: >-
-                      An error with the authentication service has occurred,
-                      sorry for the inconvenience.
-                    status: 500
-                    owner: GYCODING
-                '9':
-                  summary: Auth Error from API Gateway
-                  value:
-                    code: AUTH_ERROR
-                    message: >-
-                      An error with the authentication service has occurred,
-                      sorry for the inconvenience.
-                    status: 500
-                    owner: API_GATEWAY
-                '10':
-                  summary: Gateway Error
-                  value:
-                    code: GATEWAY_ERROR
-                    message: >-
-                      An internal API Gateway error has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: API_GATEWAY
-                '11':
-                  summary: Server Error
-                  value:
-                    code: SERVER_ERROR
-                    message: >-
-                      An internal server error has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: GYCODING
-          headers: {}
-      security: []
-      x-roles:
-        - ADMIN
-    patch:
-      summary: Update Item
-      deprecated: false
-      description: Completely or partially updates an exisiting Item.
-      tags:
-        - Items
-      parameters:
-        - name: Authorization
-          in: header
-          description: Authorization token.
-          example: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
-          schema:
-            type: string
-            default: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Item1'
-            examples: {}
-      responses:
-        '204':
-          description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Item'
-          headers: {}
-        '304':
-          description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              example:
-                code: RESOURCE_NOT_MODIFIED
-                message: >-
-                  The resource could not be modified due to some internal
-                  conflict or error.
-                status: 304
-                owner: GYCODING
-          headers: {}
-        '400':
-          description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              example:
-                code: BAD_REQUEST
-                message: The endpoint is malformed.
-                status: 400
-                owner: API_GATEWAY
-          headers: {}
-        '403':
-          description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              examples:
-                '2':
-                  summary: Forbidden to Service
-                  value:
-                    code: FORBIDDEN
-                    message: The user has no permission to access this resource.
-                    status: 403
-                    owner: GYCODING
-                '3':
-                  summary: Forbidden to API Gateway
-                  value:
-                    code: FORBIDDEN
-                    message: The user has no permission to access this resource.
-                    status: 403
-                    owner: API_GATEWAY
-          headers: {}
-        '404':
-          description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              examples:
-                '4':
-                  summary: Token Not Found
-                  value:
-                    code: TOKEN_NOT_FOUND
-                    message: Authentication token was not found.
-                    status: 404
-                    owner: API_GATEWAY
-                '5':
-                  summary: Resource Not Found
-                  value:
-                    code: RESOURCE_NOT_FOUND
-                    message: This resource was not found.
-                    status: 404
-                    owner: GYCODING
-          headers: {}
-        '405':
-          description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              example:
-                code: METHOD_NOT_ALLOWED
-                message: Method used to access this resource is not allowed.
-                status: 405
-                owner: GYCODING
-          headers: {}
-        '500':
-          description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              examples:
-                '7':
-                  summary: Database Error
-                  value:
-                    code: DB_ERROR
-                    message: >-
-                      An error with the database has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: GYCODING
-                '8':
-                  summary: Auth Error from Service
-                  value:
-                    code: AUTH_ERROR
-                    message: >-
-                      An error with the authentication service has occurred,
-                      sorry for the inconvenience.
-                    status: 500
-                    owner: GYCODING
-                '9':
-                  summary: Auth Error from API Gateway
-                  value:
-                    code: AUTH_ERROR
-                    message: >-
-                      An error with the authentication service has occurred,
-                      sorry for the inconvenience.
-                    status: 500
-                    owner: API_GATEWAY
-                '10':
-                  summary: Gateway Error
-                  value:
-                    code: GATEWAY_ERROR
-                    message: >-
-                      An internal API Gateway error has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: API_GATEWAY
-                '11':
-                  summary: Server Error
-                  value:
-                    code: SERVER_ERROR
-                    message: >-
-                      An internal server error has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: GYCODING
-          headers: {}
-      security: []
-      x-roles:
-        - ADMIN
-    delete:
-      summary: Remove Item
-      deprecated: false
-      description: Removes an exisiting Item.
-      tags:
-        - Items
-      parameters:
-        - name: id
-          in: query
-          description: Item ID.
-          required: false
-          example: item
-          schema:
-            type: string
-        - name: Authorization
-          in: header
-          description: Authorization token.
-          example: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
-          schema:
-            type: string
-            default: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
-      responses:
-        '204':
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                properties: {}
-          headers: {}
-        '400':
-          description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              example:
-                code: BAD_REQUEST
-                message: The endpoint is malformed.
-                status: 400
-                owner: API_GATEWAY
-          headers: {}
-        '403':
-          description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              examples:
-                '2':
-                  summary: Forbidden to Service
-                  value:
-                    code: FORBIDDEN
-                    message: The user has no permission to access this resource.
-                    status: 403
-                    owner: GYCODING
-                '3':
-                  summary: Forbidden to API Gateway
-                  value:
-                    code: FORBIDDEN
-                    message: The user has no permission to access this resource.
-                    status: 403
-                    owner: API_GATEWAY
-          headers: {}
-        '404':
-          description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              examples:
-                '4':
-                  summary: Token Not Found
-                  value:
-                    code: TOKEN_NOT_FOUND
-                    message: Authentication token was not found.
-                    status: 404
-                    owner: API_GATEWAY
-                '5':
-                  summary: Resource Not Found
-                  value:
-                    code: RESOURCE_NOT_FOUND
-                    message: This resource was not found.
-                    status: 404
-                    owner: GYCODING
-          headers: {}
-        '405':
-          description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              example:
-                code: METHOD_NOT_ALLOWED
-                message: Method used to access this resource is not allowed.
-                status: 405
-                owner: GYCODING
-          headers: {}
-        '500':
-          description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              examples:
-                '7':
-                  summary: Database Error
-                  value:
-                    code: DB_ERROR
-                    message: >-
-                      An error with the database has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: GYCODING
-                '8':
-                  summary: Auth Error from Service
-                  value:
-                    code: AUTH_ERROR
-                    message: >-
-                      An error with the authentication service has occurred,
-                      sorry for the inconvenience.
-                    status: 500
-                    owner: GYCODING
-                '9':
-                  summary: Auth Error from API Gateway
-                  value:
-                    code: AUTH_ERROR
-                    message: >-
-                      An error with the authentication service has occurred,
-                      sorry for the inconvenience.
-                    status: 500
-                    owner: API_GATEWAY
-                '10':
-                  summary: Gateway Error
-                  value:
-                    code: GATEWAY_ERROR
-                    message: >-
-                      An internal API Gateway error has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: API_GATEWAY
-                '11':
-                  summary: Server Error
-                  value:
-                    code: SERVER_ERROR
-                    message: >-
-                      An internal server error has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: GYCODING
-          headers: {}
-      security: []
-      x-roles:
-        - ADMIN
-  /creatures:
-    patch:
-      summary: Update Creature
-      deprecated: false
-      description: Completely or partially updates an exisiting Creature.
-      tags:
-        - Creatures
-      parameters:
-        - name: id
-          in: query
-          description: Creature ID.
-          required: true
-          example: creature_test
-          schema:
-            type: string
-        - name: Authorization
-          in: header
-          description: Authorization token.
-          example: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
-          schema:
-            type: string
-            default: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Creature5'
-            examples: {}
-      responses:
-        '204':
-          description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Creature'
-          headers: {}
-        '304':
-          description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              example:
-                code: RESOURCE_NOT_MODIFIED
-                message: >-
-                  The resource could not be modified due to some internal
-                  conflict or error.
-                status: 304
-                owner: GYCODING
-          headers: {}
-        '400':
-          description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              example:
-                code: BAD_REQUEST
-                message: The endpoint is malformed.
-                status: 400
-                owner: API_GATEWAY
-          headers: {}
-        '403':
-          description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              examples:
-                '2':
-                  summary: Forbidden to Service
-                  value:
-                    code: FORBIDDEN
-                    message: The user has no permission to access this resource.
-                    status: 403
-                    owner: GYCODING
-                '3':
-                  summary: Forbidden to API Gateway
-                  value:
-                    code: FORBIDDEN
-                    message: The user has no permission to access this resource.
-                    status: 403
-                    owner: API_GATEWAY
-          headers: {}
-        '404':
-          description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              examples:
-                '4':
-                  summary: Token Not Found
-                  value:
-                    code: TOKEN_NOT_FOUND
-                    message: Authentication token was not found.
-                    status: 404
-                    owner: API_GATEWAY
-                '5':
-                  summary: Resource Not Found
-                  value:
-                    code: RESOURCE_NOT_FOUND
-                    message: This resource was not found.
-                    status: 404
-                    owner: GYCODING
-          headers: {}
-        '405':
-          description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              example:
-                code: METHOD_NOT_ALLOWED
-                message: Method used to access this resource is not allowed.
-                status: 405
-                owner: GYCODING
-          headers: {}
-        '500':
-          description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              examples:
-                '7':
-                  summary: Database Error
-                  value:
-                    code: DB_ERROR
-                    message: >-
-                      An error with the database has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: GYCODING
-                '8':
-                  summary: Auth Error from Service
-                  value:
-                    code: AUTH_ERROR
-                    message: >-
-                      An error with the authentication service has occurred,
-                      sorry for the inconvenience.
-                    status: 500
-                    owner: GYCODING
-                '9':
-                  summary: Auth Error from API Gateway
-                  value:
-                    code: AUTH_ERROR
-                    message: >-
-                      An error with the authentication service has occurred,
-                      sorry for the inconvenience.
-                    status: 500
-                    owner: API_GATEWAY
-                '10':
-                  summary: Gateway Error
-                  value:
-                    code: GATEWAY_ERROR
-                    message: >-
-                      An internal API Gateway error has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: API_GATEWAY
-                '11':
-                  summary: Server Error
-                  value:
-                    code: SERVER_ERROR
-                    message: >-
-                      An internal server error has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: GYCODING
-          headers: {}
-      security: []
-      x-roles:
-        - ADMIN
-    post:
-      summary: Insert Creature
-      deprecated: false
-      description: Inserts a new Creature.
-      tags:
-        - Creatures
-      parameters:
-        - name: Authorization
-          in: header
-          description: Authorization token.
-          example: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
-          schema:
-            type: string
-            default: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Creature5'
-            examples: {}
-      responses:
-        '204':
-          description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Creature'
-          headers: {}
-        '400':
-          description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              example:
-                code: BAD_REQUEST
-                message: The endpoint is malformed.
-                status: 400
-                owner: API_GATEWAY
-          headers: {}
-        '403':
-          description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              examples:
-                '2':
-                  summary: Forbidden to Service
-                  value:
-                    code: FORBIDDEN
-                    message: The user has no permission to access this resource.
-                    status: 403
-                    owner: GYCODING
-                '3':
-                  summary: Forbidden to API Gateway
-                  value:
-                    code: FORBIDDEN
-                    message: The user has no permission to access this resource.
-                    status: 403
-                    owner: API_GATEWAY
-          headers: {}
-        '404':
-          description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              examples:
-                '4':
-                  summary: Token Not Found
-                  value:
-                    code: TOKEN_NOT_FOUND
-                    message: Authentication token was not found.
-                    status: 404
-                    owner: API_GATEWAY
-                '5':
-                  summary: Resource Not Found
-                  value:
-                    code: RESOURCE_NOT_FOUND
-                    message: This resource was not found.
-                    status: 404
-                    owner: GYCODING
-          headers: {}
-        '405':
-          description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              example:
-                code: METHOD_NOT_ALLOWED
-                message: Method used to access this resource is not allowed.
-                status: 405
-                owner: GYCODING
-          headers: {}
-        '409':
-          description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              example:
-                code: CONFLICT
-                message: >-
-                  An internal conflict between external data and the API has
-                  occured. Requested data may already exist.
-                status: 409
-                owner: GYCODING
-          headers: {}
-        '500':
-          description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              examples:
-                '7':
-                  summary: Database Error
-                  value:
-                    code: DB_ERROR
-                    message: >-
-                      An error with the database has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: GYCODING
-                '8':
-                  summary: Auth Error from Service
-                  value:
-                    code: AUTH_ERROR
-                    message: >-
-                      An error with the authentication service has occurred,
-                      sorry for the inconvenience.
-                    status: 500
-                    owner: GYCODING
-                '9':
-                  summary: Auth Error from API Gateway
-                  value:
-                    code: AUTH_ERROR
-                    message: >-
-                      An error with the authentication service has occurred,
-                      sorry for the inconvenience.
-                    status: 500
-                    owner: API_GATEWAY
-                '10':
-                  summary: Gateway Error
-                  value:
-                    code: GATEWAY_ERROR
-                    message: >-
-                      An internal API Gateway error has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: API_GATEWAY
-                '11':
-                  summary: Server Error
-                  value:
-                    code: SERVER_ERROR
-                    message: >-
-                      An internal server error has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: GYCODING
-          headers: {}
-      security: []
-      x-roles:
-        - ADMIN
-    delete:
-      summary: Remove Creature
-      deprecated: false
-      description: Removes an exisiting Creature.
-      tags:
-        - Creatures
-      parameters:
-        - name: id
-          in: query
-          description: Creature ID.
-          required: false
-          example: creature
-          schema:
-            type: string
-        - name: Authorization
-          in: header
-          description: Authorization token.
-          example: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
-          schema:
-            type: string
-            default: lTindDgTceTkZ4i6gTPQ7N5cZpho9vYlvsv7nlMefwg
-      responses:
-        '204':
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                properties: {}
+                type: 'null'
           headers: {}
         '400':
           description: ''
