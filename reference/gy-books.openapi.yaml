@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: GY Books
+  title: Default module
   description: ''
   version: 1.0.0
 tags:
@@ -8,6 +8,7 @@ tags:
   - name: Friends
   - name: Profile
   - name: Metadata
+  - name: Activity
 paths:
   /{id}/public:
     get:
@@ -34,141 +35,20 @@ paths:
                 description: Book Data.
           headers: {}
         '400':
+          $ref: '#/components/responses/Bad Request'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-                description: Bad Request
-              examples:
-                '1':
-                  summary: Bad Request
-                  value:
-                    code: BAD_REQUEST
-                    message: The endpoint is malformed.
-                    status: 400
-                    owner: API_GATEWAY
-                '2':
-                  summary: Hall of Fame Limit Reached
-                  value:
-                    code: HALL_OF_FAME_LIMIT_REACHED
-                    message: >-
-                      User has reached the maximum number of Hall of Fame
-                      entries (5).
-                    status: 400
-                    owner: GYCODING
-                '3':
-                  summary: Friend Request sent to self
-                  value:
-                    code: FRIEND_REQUEST_TO_SELF
-                    message: Cannot send a friend request to oneself.
-                    status: 400
-                    owner: GYCODING
-          headers: {}
         '403':
+          $ref: '#/components/responses/Forbidden'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-                description: Forbidden
-              examples:
-                '4':
-                  summary: Forbidden to Service
-                  value:
-                    code: FORBIDDEN
-                    message: The user has no permission to access this resource.
-                    status: 403
-                    owner: GYCODING
-                '5':
-                  summary: Forbidden to API Gateway
-                  value:
-                    code: FORBIDDEN
-                    message: The user has no permission to access this resource.
-                    status: 403
-                    owner: API_GATEWAY
-          headers: {}
         '404':
+          $ref: '#/components/responses/Not Found'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-                description: Not Found
-              examples:
-                '6':
-                  summary: Token Not Found
-                  value:
-                    code: TOKEN_NOT_FOUND
-                    message: Authentication token was not found.
-                    status: 404
-                    owner: API_GATEWAY
-                '7':
-                  summary: Book Not Found
-                  value:
-                    code: BOOK_NOT_FOUND
-                    message: Book not found.
-                    status: 404
-                    owner: GYCODING
-          headers: {}
         '405':
+          $ref: '#/components/responses/Method Not Allowed'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-                description: Method Not Allowed
-              example:
-                code: METHOD_NOT_ALLOWED
-                message: Method used to access this resource is not allowed.
-                status: 405
-                owner: GYCODING
-          headers: {}
         '500':
+          $ref: '#/components/responses/Internal Error'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-                description: Internal Error
-              examples:
-                '9':
-                  summary: Database Error
-                  value:
-                    code: DB_ERROR
-                    message: >-
-                      An error with the database has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: GYCODING
-                '10':
-                  summary: Auth Error from API Gateway
-                  value:
-                    code: AUTH_ERROR
-                    message: >-
-                      An error with the authentication service has occurred,
-                      sorry for the inconvenience.
-                    status: 500
-                    owner: API_GATEWAY
-                '11':
-                  summary: Gateway Error
-                  value:
-                    code: GATEWAY_ERROR
-                    message: >-
-                      An internal API Gateway error has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: API_GATEWAY
-                '12':
-                  summary: Server Error
-                  value:
-                    code: SERVER_ERROR
-                    message: >-
-                      An internal server error has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: GYCODING
-          headers: {}
       security: []
       x-roles:
         - COMMON
@@ -192,10 +72,10 @@ paths:
         - name: Authorization
           in: header
           description: Authorization token.
-          example: 6AcW8gmtVCejrTHw9JbPNONU_QxWiUagoHojezoefYI
+          example: vVteUFdSV93fNfnnV_gvnqo864MhoFld_KjbJwNDXio
           schema:
             type: string
-            default: 6AcW8gmtVCejrTHw9JbPNONU_QxWiUagoHojezoefYI
+            default: vVteUFdSV93fNfnnV_gvnqo864MhoFld_KjbJwNDXio
       responses:
         '200':
           description: ''
@@ -206,182 +86,23 @@ paths:
                 description: Book Data.
           headers: {}
         '400':
+          $ref: '#/components/responses/Bad Request'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-                description: Bad Request
-              examples:
-                '1':
-                  summary: Bad Request
-                  value:
-                    code: BAD_REQUEST
-                    message: The endpoint is malformed.
-                    status: 400
-                    owner: API_GATEWAY
-                '2':
-                  summary: Hall of Fame Limit Reached
-                  value:
-                    code: HALL_OF_FAME_LIMIT_REACHED
-                    message: >-
-                      User has reached the maximum number of Hall of Fame
-                      entries (5).
-                    status: 400
-                    owner: GYCODING
-                '3':
-                  summary: Friend Request sent to self
-                  value:
-                    code: FRIEND_REQUEST_TO_SELF
-                    message: Cannot send a friend request to oneself.
-                    status: 400
-                    owner: GYCODING
-          headers: {}
         '401':
+          $ref: '#/components/responses/Unauthorized'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-                description: Unauthorized
-              examples:
-                '4':
-                  summary: Invalid Login
-                  value:
-                    code: INVALID_LOGIN
-                    message: >-
-                      Invalid login due to the non existance of the user or
-                      invalid password.
-                    status: 401
-                    owner: GYCODING
-                '5':
-                  summary: Invalid API Key
-                  value:
-                    code: INVALID_API_KEY
-                    message: The API Key is malformed.
-                    status: 401
-                    owner: API_GATEWAY
-                '6':
-                  summary: Unauthorized to Service
-                  value:
-                    code: UNAUTHORIZED
-                    message: The user is not authorized to access this resource.
-                    status: 401
-                    owner: GYCODING
-                '7':
-                  summary: Invalid Token
-                  value:
-                    code: INVALID_TOKEN
-                    message: >-
-                      The provided token is invalid, expired or not even
-                      present.
-                    status: 401
-                    owner: API_GATEWAY
-          headers: {}
         '403':
+          $ref: '#/components/responses/Forbidden'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-                description: Forbidden
-              examples:
-                '8':
-                  summary: Forbidden to Service
-                  value:
-                    code: FORBIDDEN
-                    message: The user has no permission to access this resource.
-                    status: 403
-                    owner: GYCODING
-                '9':
-                  summary: Forbidden to API Gateway
-                  value:
-                    code: FORBIDDEN
-                    message: The user has no permission to access this resource.
-                    status: 403
-                    owner: API_GATEWAY
-          headers: {}
         '404':
+          $ref: '#/components/responses/Not Found'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-                description: Not Found
-              examples:
-                '10':
-                  summary: Token Not Found
-                  value:
-                    code: TOKEN_NOT_FOUND
-                    message: Authentication token was not found.
-                    status: 404
-                    owner: API_GATEWAY
-                '11':
-                  summary: Book Not Found
-                  value:
-                    code: BOOK_NOT_FOUND
-                    message: Book not found.
-                    status: 404
-                    owner: GYCODING
-          headers: {}
         '405':
+          $ref: '#/components/responses/Method Not Allowed'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-                description: Method Not Allowed
-              example:
-                code: METHOD_NOT_ALLOWED
-                message: Method used to access this resource is not allowed.
-                status: 405
-                owner: GYCODING
-          headers: {}
         '500':
+          $ref: '#/components/responses/Internal Error'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-                description: Internal Error
-              examples:
-                '13':
-                  summary: Database Error
-                  value:
-                    code: DB_ERROR
-                    message: >-
-                      An error with the database has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: GYCODING
-                '14':
-                  summary: Auth Error from API Gateway
-                  value:
-                    code: AUTH_ERROR
-                    message: >-
-                      An error with the authentication service has occurred,
-                      sorry for the inconvenience.
-                    status: 500
-                    owner: API_GATEWAY
-                '15':
-                  summary: Gateway Error
-                  value:
-                    code: GATEWAY_ERROR
-                    message: >-
-                      An internal API Gateway error has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: API_GATEWAY
-                '16':
-                  summary: Server Error
-                  value:
-                    code: SERVER_ERROR
-                    message: >-
-                      An internal server error has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: GYCODING
-          headers: {}
       security: []
       x-roles:
         - COMMON
@@ -404,10 +125,10 @@ paths:
         - name: Authorization
           in: header
           description: Authorization token.
-          example: 6AcW8gmtVCejrTHw9JbPNONU_QxWiUagoHojezoefYI
+          example: vVteUFdSV93fNfnnV_gvnqo864MhoFld_KjbJwNDXio
           schema:
             type: string
-            default: 6AcW8gmtVCejrTHw9JbPNONU_QxWiUagoHojezoefYI
+            default: vVteUFdSV93fNfnnV_gvnqo864MhoFld_KjbJwNDXio
       requestBody:
         content:
           application/json:
@@ -428,195 +149,26 @@ paths:
                 description: Book Data.
           headers: {}
         '304':
+          $ref: '#/components/responses/Not Modified'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-                description: Not Modified
-              example:
-                code: BOOK_NOT_MODIFIED
-                message: Book could not be modified.
-                status: 304
-                owner: GYCODING
-          headers: {}
         '400':
+          $ref: '#/components/responses/Bad Request'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-                description: Bad Request
-              examples:
-                '2':
-                  summary: Bad Request
-                  value:
-                    code: BAD_REQUEST
-                    message: The endpoint is malformed.
-                    status: 400
-                    owner: API_GATEWAY
-                '3':
-                  summary: Hall of Fame Limit Reached
-                  value:
-                    code: HALL_OF_FAME_LIMIT_REACHED
-                    message: >-
-                      User has reached the maximum number of Hall of Fame
-                      entries (5).
-                    status: 400
-                    owner: GYCODING
-                '4':
-                  summary: Friend Request sent to self
-                  value:
-                    code: FRIEND_REQUEST_TO_SELF
-                    message: Cannot send a friend request to oneself.
-                    status: 400
-                    owner: GYCODING
-          headers: {}
         '401':
+          $ref: '#/components/responses/Unauthorized'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-                description: Unauthorized
-              examples:
-                '5':
-                  summary: Invalid Login
-                  value:
-                    code: INVALID_LOGIN
-                    message: >-
-                      Invalid login due to the non existance of the user or
-                      invalid password.
-                    status: 401
-                    owner: GYCODING
-                '6':
-                  summary: Invalid API Key
-                  value:
-                    code: INVALID_API_KEY
-                    message: The API Key is malformed.
-                    status: 401
-                    owner: API_GATEWAY
-                '7':
-                  summary: Unauthorized to Service
-                  value:
-                    code: UNAUTHORIZED
-                    message: The user is not authorized to access this resource.
-                    status: 401
-                    owner: GYCODING
-                '8':
-                  summary: Invalid Token
-                  value:
-                    code: INVALID_TOKEN
-                    message: >-
-                      The provided token is invalid, expired or not even
-                      present.
-                    status: 401
-                    owner: API_GATEWAY
-          headers: {}
         '403':
+          $ref: '#/components/responses/Forbidden'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-                description: Forbidden
-              examples:
-                '9':
-                  summary: Forbidden to Service
-                  value:
-                    code: FORBIDDEN
-                    message: The user has no permission to access this resource.
-                    status: 403
-                    owner: GYCODING
-                '10':
-                  summary: Forbidden to API Gateway
-                  value:
-                    code: FORBIDDEN
-                    message: The user has no permission to access this resource.
-                    status: 403
-                    owner: API_GATEWAY
-          headers: {}
         '404':
+          $ref: '#/components/responses/Not Found'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-                description: Not Found
-              examples:
-                '11':
-                  summary: Token Not Found
-                  value:
-                    code: TOKEN_NOT_FOUND
-                    message: Authentication token was not found.
-                    status: 404
-                    owner: API_GATEWAY
-                '12':
-                  summary: Book Not Found
-                  value:
-                    code: BOOK_NOT_FOUND
-                    message: Book not found.
-                    status: 404
-                    owner: GYCODING
-          headers: {}
         '405':
+          $ref: '#/components/responses/Method Not Allowed'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-                description: Method Not Allowed
-              example:
-                code: METHOD_NOT_ALLOWED
-                message: Method used to access this resource is not allowed.
-                status: 405
-                owner: GYCODING
-          headers: {}
         '500':
+          $ref: '#/components/responses/Internal Error'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-                description: Internal Error
-              examples:
-                '14':
-                  summary: Database Error
-                  value:
-                    code: DB_ERROR
-                    message: >-
-                      An error with the database has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: GYCODING
-                '15':
-                  summary: Auth Error from API Gateway
-                  value:
-                    code: AUTH_ERROR
-                    message: >-
-                      An error with the authentication service has occurred,
-                      sorry for the inconvenience.
-                    status: 500
-                    owner: API_GATEWAY
-                '16':
-                  summary: Gateway Error
-                  value:
-                    code: GATEWAY_ERROR
-                    message: >-
-                      An internal API Gateway error has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: API_GATEWAY
-                '17':
-                  summary: Server Error
-                  value:
-                    code: SERVER_ERROR
-                    message: >-
-                      An internal server error has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: GYCODING
-          headers: {}
       security: []
       x-roles:
         - COMMON
@@ -639,10 +191,10 @@ paths:
         - name: Authorization
           in: header
           description: Authorization token.
-          example: 6AcW8gmtVCejrTHw9JbPNONU_QxWiUagoHojezoefYI
+          example: vVteUFdSV93fNfnnV_gvnqo864MhoFld_KjbJwNDXio
           schema:
             type: string
-            default: 6AcW8gmtVCejrTHw9JbPNONU_QxWiUagoHojezoefYI
+            default: vVteUFdSV93fNfnnV_gvnqo864MhoFld_KjbJwNDXio
       responses:
         '204':
           description: ''
@@ -652,182 +204,23 @@ paths:
                 type: 'null'
           headers: {}
         '400':
+          $ref: '#/components/responses/Bad Request'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-                description: Bad Request
-              examples:
-                '1':
-                  summary: Bad Request
-                  value:
-                    code: BAD_REQUEST
-                    message: The endpoint is malformed.
-                    status: 400
-                    owner: API_GATEWAY
-                '2':
-                  summary: Hall of Fame Limit Reached
-                  value:
-                    code: HALL_OF_FAME_LIMIT_REACHED
-                    message: >-
-                      User has reached the maximum number of Hall of Fame
-                      entries (5).
-                    status: 400
-                    owner: GYCODING
-                '3':
-                  summary: Friend Request sent to self
-                  value:
-                    code: FRIEND_REQUEST_TO_SELF
-                    message: Cannot send a friend request to oneself.
-                    status: 400
-                    owner: GYCODING
-          headers: {}
         '401':
+          $ref: '#/components/responses/Unauthorized'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-                description: Unauthorized
-              examples:
-                '4':
-                  summary: Invalid Login
-                  value:
-                    code: INVALID_LOGIN
-                    message: >-
-                      Invalid login due to the non existance of the user or
-                      invalid password.
-                    status: 401
-                    owner: GYCODING
-                '5':
-                  summary: Invalid API Key
-                  value:
-                    code: INVALID_API_KEY
-                    message: The API Key is malformed.
-                    status: 401
-                    owner: API_GATEWAY
-                '6':
-                  summary: Unauthorized to Service
-                  value:
-                    code: UNAUTHORIZED
-                    message: The user is not authorized to access this resource.
-                    status: 401
-                    owner: GYCODING
-                '7':
-                  summary: Invalid Token
-                  value:
-                    code: INVALID_TOKEN
-                    message: >-
-                      The provided token is invalid, expired or not even
-                      present.
-                    status: 401
-                    owner: API_GATEWAY
-          headers: {}
         '403':
+          $ref: '#/components/responses/Forbidden'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-                description: Forbidden
-              examples:
-                '8':
-                  summary: Forbidden to Service
-                  value:
-                    code: FORBIDDEN
-                    message: The user has no permission to access this resource.
-                    status: 403
-                    owner: GYCODING
-                '9':
-                  summary: Forbidden to API Gateway
-                  value:
-                    code: FORBIDDEN
-                    message: The user has no permission to access this resource.
-                    status: 403
-                    owner: API_GATEWAY
-          headers: {}
         '404':
+          $ref: '#/components/responses/Not Found'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-                description: Not Found
-              examples:
-                '10':
-                  summary: Token Not Found
-                  value:
-                    code: TOKEN_NOT_FOUND
-                    message: Authentication token was not found.
-                    status: 404
-                    owner: API_GATEWAY
-                '11':
-                  summary: Book Not Found
-                  value:
-                    code: BOOK_NOT_FOUND
-                    message: Book not found.
-                    status: 404
-                    owner: GYCODING
-          headers: {}
         '405':
+          $ref: '#/components/responses/Method Not Allowed'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-                description: Method Not Allowed
-              example:
-                code: METHOD_NOT_ALLOWED
-                message: Method used to access this resource is not allowed.
-                status: 405
-                owner: GYCODING
-          headers: {}
         '500':
+          $ref: '#/components/responses/Internal Error'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-                description: Internal Error
-              examples:
-                '13':
-                  summary: Database Error
-                  value:
-                    code: DB_ERROR
-                    message: >-
-                      An error with the database has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: GYCODING
-                '14':
-                  summary: Auth Error from API Gateway
-                  value:
-                    code: AUTH_ERROR
-                    message: >-
-                      An error with the authentication service has occurred,
-                      sorry for the inconvenience.
-                    status: 500
-                    owner: API_GATEWAY
-                '15':
-                  summary: Gateway Error
-                  value:
-                    code: GATEWAY_ERROR
-                    message: >-
-                      An internal API Gateway error has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: API_GATEWAY
-                '16':
-                  summary: Server Error
-                  value:
-                    code: SERVER_ERROR
-                    message: >-
-                      An internal server error has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: GYCODING
-          headers: {}
       security: []
       x-roles:
         - COMMON
@@ -878,141 +271,20 @@ paths:
                 description: List of books.
           headers: {}
         '400':
+          $ref: '#/components/responses/Bad Request'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-                description: Bad Request
-              examples:
-                '1':
-                  summary: Bad Request
-                  value:
-                    code: BAD_REQUEST
-                    message: The endpoint is malformed.
-                    status: 400
-                    owner: API_GATEWAY
-                '2':
-                  summary: Hall of Fame Limit Reached
-                  value:
-                    code: HALL_OF_FAME_LIMIT_REACHED
-                    message: >-
-                      User has reached the maximum number of Hall of Fame
-                      entries (5).
-                    status: 400
-                    owner: GYCODING
-                '3':
-                  summary: Friend Request sent to self
-                  value:
-                    code: FRIEND_REQUEST_TO_SELF
-                    message: Cannot send a friend request to oneself.
-                    status: 400
-                    owner: GYCODING
-          headers: {}
         '403':
+          $ref: '#/components/responses/Forbidden'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-                description: Forbidden
-              examples:
-                '4':
-                  summary: Forbidden to Service
-                  value:
-                    code: FORBIDDEN
-                    message: The user has no permission to access this resource.
-                    status: 403
-                    owner: GYCODING
-                '5':
-                  summary: Forbidden to API Gateway
-                  value:
-                    code: FORBIDDEN
-                    message: The user has no permission to access this resource.
-                    status: 403
-                    owner: API_GATEWAY
-          headers: {}
         '404':
+          $ref: '#/components/responses/Not Found'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-                description: Not Found
-              examples:
-                '6':
-                  summary: Token Not Found
-                  value:
-                    code: TOKEN_NOT_FOUND
-                    message: Authentication token was not found.
-                    status: 404
-                    owner: API_GATEWAY
-                '7':
-                  summary: Book Not Found
-                  value:
-                    code: BOOK_NOT_FOUND
-                    message: Book not found.
-                    status: 404
-                    owner: GYCODING
-          headers: {}
         '405':
+          $ref: '#/components/responses/Method Not Allowed'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-                description: Method Not Allowed
-              example:
-                code: METHOD_NOT_ALLOWED
-                message: Method used to access this resource is not allowed.
-                status: 405
-                owner: GYCODING
-          headers: {}
         '500':
+          $ref: '#/components/responses/Internal Error'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-                description: Internal Error
-              examples:
-                '9':
-                  summary: Database Error
-                  value:
-                    code: DB_ERROR
-                    message: >-
-                      An error with the database has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: GYCODING
-                '10':
-                  summary: Auth Error from API Gateway
-                  value:
-                    code: AUTH_ERROR
-                    message: >-
-                      An error with the authentication service has occurred,
-                      sorry for the inconvenience.
-                    status: 500
-                    owner: API_GATEWAY
-                '11':
-                  summary: Gateway Error
-                  value:
-                    code: GATEWAY_ERROR
-                    message: >-
-                      An internal API Gateway error has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: API_GATEWAY
-                '12':
-                  summary: Server Error
-                  value:
-                    code: SERVER_ERROR
-                    message: >-
-                      An internal server error has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: GYCODING
-          headers: {}
       security: []
       x-roles:
         - COMMON
@@ -1029,10 +301,10 @@ paths:
         - name: Authorization
           in: header
           description: Authorization token.
-          example: 6AcW8gmtVCejrTHw9JbPNONU_QxWiUagoHojezoefYI
+          example: vVteUFdSV93fNfnnV_gvnqo864MhoFld_KjbJwNDXio
           schema:
             type: string
-            default: 6AcW8gmtVCejrTHw9JbPNONU_QxWiUagoHojezoefYI
+            default: vVteUFdSV93fNfnnV_gvnqo864MhoFld_KjbJwNDXio
       responses:
         '200':
           description: ''
@@ -1046,150 +318,20 @@ paths:
                 description: List of friends' profiles.
           headers: {}
         '401':
+          $ref: '#/components/responses/Unauthorized'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-                description: Unauthorized
-              examples:
-                '1':
-                  summary: Invalid Login
-                  value:
-                    code: INVALID_LOGIN
-                    message: >-
-                      Invalid login due to the non existance of the user or
-                      invalid password.
-                    status: 401
-                    owner: GYCODING
-                '2':
-                  summary: Invalid API Key
-                  value:
-                    code: INVALID_API_KEY
-                    message: The API Key is malformed.
-                    status: 401
-                    owner: API_GATEWAY
-                '3':
-                  summary: Unauthorized to Service
-                  value:
-                    code: UNAUTHORIZED
-                    message: The user is not authorized to access this resource.
-                    status: 401
-                    owner: GYCODING
-                '4':
-                  summary: Invalid Token
-                  value:
-                    code: INVALID_TOKEN
-                    message: >-
-                      The provided token is invalid, expired or not even
-                      present.
-                    status: 401
-                    owner: API_GATEWAY
-          headers: {}
         '403':
+          $ref: '#/components/responses/Forbidden'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-                description: Forbidden
-              examples:
-                '5':
-                  summary: Forbidden to Service
-                  value:
-                    code: FORBIDDEN
-                    message: The user has no permission to access this resource.
-                    status: 403
-                    owner: GYCODING
-                '6':
-                  summary: Forbidden to API Gateway
-                  value:
-                    code: FORBIDDEN
-                    message: The user has no permission to access this resource.
-                    status: 403
-                    owner: API_GATEWAY
-          headers: {}
         '404':
+          $ref: '#/components/responses/Not Found'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-                description: Not Found
-              examples:
-                '7':
-                  summary: Token Not Found
-                  value:
-                    code: TOKEN_NOT_FOUND
-                    message: Authentication token was not found.
-                    status: 404
-                    owner: API_GATEWAY
-                '8':
-                  summary: Book Not Found
-                  value:
-                    code: BOOK_NOT_FOUND
-                    message: Book not found.
-                    status: 404
-                    owner: GYCODING
-          headers: {}
         '405':
+          $ref: '#/components/responses/Method Not Allowed'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-                description: Method Not Allowed
-              example:
-                code: METHOD_NOT_ALLOWED
-                message: Method used to access this resource is not allowed.
-                status: 405
-                owner: GYCODING
-          headers: {}
         '500':
+          $ref: '#/components/responses/Internal Error'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-                description: Internal Error
-              examples:
-                '10':
-                  summary: Database Error
-                  value:
-                    code: DB_ERROR
-                    message: >-
-                      An error with the database has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: GYCODING
-                '11':
-                  summary: Auth Error from API Gateway
-                  value:
-                    code: AUTH_ERROR
-                    message: >-
-                      An error with the authentication service has occurred,
-                      sorry for the inconvenience.
-                    status: 500
-                    owner: API_GATEWAY
-                '12':
-                  summary: Gateway Error
-                  value:
-                    code: GATEWAY_ERROR
-                    message: >-
-                      An internal API Gateway error has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: API_GATEWAY
-                '13':
-                  summary: Server Error
-                  value:
-                    code: SERVER_ERROR
-                    message: >-
-                      An internal server error has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: GYCODING
-          headers: {}
       security: []
       x-roles:
         - COMMON
@@ -1213,10 +355,10 @@ paths:
         - name: Authorization
           in: header
           description: Authorization token.
-          example: 6AcW8gmtVCejrTHw9JbPNONU_QxWiUagoHojezoefYI
+          example: vVteUFdSV93fNfnnV_gvnqo864MhoFld_KjbJwNDXio
           schema:
             type: string
-            default: 6AcW8gmtVCejrTHw9JbPNONU_QxWiUagoHojezoefYI
+            default: vVteUFdSV93fNfnnV_gvnqo864MhoFld_KjbJwNDXio
       responses:
         '204':
           description: ''
@@ -1226,150 +368,20 @@ paths:
                 type: 'null'
           headers: {}
         '401':
+          $ref: '#/components/responses/Unauthorized'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-                description: Unauthorized
-              examples:
-                '1':
-                  summary: Invalid Login
-                  value:
-                    code: INVALID_LOGIN
-                    message: >-
-                      Invalid login due to the non existance of the user or
-                      invalid password.
-                    status: 401
-                    owner: GYCODING
-                '2':
-                  summary: Invalid API Key
-                  value:
-                    code: INVALID_API_KEY
-                    message: The API Key is malformed.
-                    status: 401
-                    owner: API_GATEWAY
-                '3':
-                  summary: Unauthorized to Service
-                  value:
-                    code: UNAUTHORIZED
-                    message: The user is not authorized to access this resource.
-                    status: 401
-                    owner: GYCODING
-                '4':
-                  summary: Invalid Token
-                  value:
-                    code: INVALID_TOKEN
-                    message: >-
-                      The provided token is invalid, expired or not even
-                      present.
-                    status: 401
-                    owner: API_GATEWAY
-          headers: {}
         '403':
+          $ref: '#/components/responses/Forbidden'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-                description: Forbidden
-              examples:
-                '5':
-                  summary: Forbidden to Service
-                  value:
-                    code: FORBIDDEN
-                    message: The user has no permission to access this resource.
-                    status: 403
-                    owner: GYCODING
-                '6':
-                  summary: Forbidden to API Gateway
-                  value:
-                    code: FORBIDDEN
-                    message: The user has no permission to access this resource.
-                    status: 403
-                    owner: API_GATEWAY
-          headers: {}
         '404':
+          $ref: '#/components/responses/Not Found'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-                description: Not Found
-              examples:
-                '7':
-                  summary: Token Not Found
-                  value:
-                    code: TOKEN_NOT_FOUND
-                    message: Authentication token was not found.
-                    status: 404
-                    owner: API_GATEWAY
-                '8':
-                  summary: Book Not Found
-                  value:
-                    code: BOOK_NOT_FOUND
-                    message: Book not found.
-                    status: 404
-                    owner: GYCODING
-          headers: {}
         '405':
+          $ref: '#/components/responses/Method Not Allowed'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-                description: Method Not Allowed
-              example:
-                code: METHOD_NOT_ALLOWED
-                message: Method used to access this resource is not allowed.
-                status: 405
-                owner: GYCODING
-          headers: {}
         '500':
+          $ref: '#/components/responses/Internal Error'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-                description: Internal Error
-              examples:
-                '10':
-                  summary: Database Error
-                  value:
-                    code: DB_ERROR
-                    message: >-
-                      An error with the database has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: GYCODING
-                '11':
-                  summary: Auth Error from API Gateway
-                  value:
-                    code: AUTH_ERROR
-                    message: >-
-                      An error with the authentication service has occurred,
-                      sorry for the inconvenience.
-                    status: 500
-                    owner: API_GATEWAY
-                '12':
-                  summary: Gateway Error
-                  value:
-                    code: GATEWAY_ERROR
-                    message: >-
-                      An internal API Gateway error has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: API_GATEWAY
-                '13':
-                  summary: Server Error
-                  value:
-                    code: SERVER_ERROR
-                    message: >-
-                      An internal server error has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: GYCODING
-          headers: {}
       security: []
       x-roles:
         - COMMON
@@ -1386,10 +398,10 @@ paths:
         - name: Authorization
           in: header
           description: Authorization token.
-          example: 6AcW8gmtVCejrTHw9JbPNONU_QxWiUagoHojezoefYI
+          example: vVteUFdSV93fNfnnV_gvnqo864MhoFld_KjbJwNDXio
           schema:
             type: string
-            default: 6AcW8gmtVCejrTHw9JbPNONU_QxWiUagoHojezoefYI
+            default: vVteUFdSV93fNfnnV_gvnqo864MhoFld_KjbJwNDXio
       requestBody:
         content:
           application/json:
@@ -1416,212 +428,26 @@ paths:
                 description: User Profile.
           headers: {}
         '400':
+          $ref: '#/components/responses/Bad Request'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-                description: Bad Request
-              examples:
-                '1':
-                  summary: Bad Request
-                  value:
-                    code: BAD_REQUEST
-                    message: The endpoint is malformed.
-                    status: 400
-                    owner: API_GATEWAY
-                '2':
-                  summary: Hall of Fame Limit Reached
-                  value:
-                    code: HALL_OF_FAME_LIMIT_REACHED
-                    message: >-
-                      User has reached the maximum number of Hall of Fame
-                      entries (5).
-                    status: 400
-                    owner: GYCODING
-                '3':
-                  summary: Friend Request sent to self
-                  value:
-                    code: FRIEND_REQUEST_TO_SELF
-                    message: Cannot send a friend request to oneself.
-                    status: 400
-                    owner: GYCODING
-          headers: {}
         '401':
+          $ref: '#/components/responses/Unauthorized'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-                description: Unauthorized
-              examples:
-                '4':
-                  summary: Invalid Login
-                  value:
-                    code: INVALID_LOGIN
-                    message: >-
-                      Invalid login due to the non existance of the user or
-                      invalid password.
-                    status: 401
-                    owner: GYCODING
-                '5':
-                  summary: Invalid API Key
-                  value:
-                    code: INVALID_API_KEY
-                    message: The API Key is malformed.
-                    status: 401
-                    owner: API_GATEWAY
-                '6':
-                  summary: Unauthorized to Service
-                  value:
-                    code: UNAUTHORIZED
-                    message: The user is not authorized to access this resource.
-                    status: 401
-                    owner: GYCODING
-                '7':
-                  summary: Invalid Token
-                  value:
-                    code: INVALID_TOKEN
-                    message: >-
-                      The provided token is invalid, expired or not even
-                      present.
-                    status: 401
-                    owner: API_GATEWAY
-          headers: {}
         '403':
+          $ref: '#/components/responses/Forbidden'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-                description: Forbidden
-              examples:
-                '8':
-                  summary: Forbidden to Service
-                  value:
-                    code: FORBIDDEN
-                    message: The user has no permission to access this resource.
-                    status: 403
-                    owner: GYCODING
-                '9':
-                  summary: Forbidden to API Gateway
-                  value:
-                    code: FORBIDDEN
-                    message: The user has no permission to access this resource.
-                    status: 403
-                    owner: API_GATEWAY
-          headers: {}
         '404':
+          $ref: '#/components/responses/Not Found'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-                description: Not Found
-              examples:
-                '10':
-                  summary: Token Not Found
-                  value:
-                    code: TOKEN_NOT_FOUND
-                    message: Authentication token was not found.
-                    status: 404
-                    owner: API_GATEWAY
-                '11':
-                  summary: Book Not Found
-                  value:
-                    code: BOOK_NOT_FOUND
-                    message: Book not found.
-                    status: 404
-                    owner: GYCODING
-          headers: {}
         '405':
+          $ref: '#/components/responses/Method Not Allowed'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-                description: Method Not Allowed
-              example:
-                code: METHOD_NOT_ALLOWED
-                message: Method used to access this resource is not allowed.
-                status: 405
-                owner: GYCODING
-          headers: {}
         '409':
+          $ref: '#/components/responses/Conflict'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-                description: Conflict
-              examples:
-                '13':
-                  summary: Book already exists on Hall of Fame
-                  value:
-                    code: HALL_OF_FAME_BOOK_ALREADY_EXISTS
-                    message: Book already exists in the user's Hall of Fame.
-                    status: 409
-                    owner: GYCODING
-                '14':
-                  summary: Friend Request already exists
-                  value:
-                    code: FRIEND_REQUEST_ALREADY_EXISTS
-                    message: A friend request between these users already exists.
-                    status: 409
-                    owner: GYCODING
-                '15':
-                  summary: Users are already friends
-                  value:
-                    code: FRIEND_REQUEST_ALREADY_FRIENDS
-                    message: Users are already friends.
-                    status: 409
-                    owner: GYCODING
-          headers: {}
         '500':
+          $ref: '#/components/responses/Internal Error'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-                description: Internal Error
-              examples:
-                '16':
-                  summary: Database Error
-                  value:
-                    code: DB_ERROR
-                    message: >-
-                      An error with the database has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: GYCODING
-                '17':
-                  summary: Auth Error from API Gateway
-                  value:
-                    code: AUTH_ERROR
-                    message: >-
-                      An error with the authentication service has occurred,
-                      sorry for the inconvenience.
-                    status: 500
-                    owner: API_GATEWAY
-                '18':
-                  summary: Gateway Error
-                  value:
-                    code: GATEWAY_ERROR
-                    message: >-
-                      An internal API Gateway error has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: API_GATEWAY
-                '19':
-                  summary: Server Error
-                  value:
-                    code: SERVER_ERROR
-                    message: >-
-                      An internal server error has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: GYCODING
-          headers: {}
       security: []
       x-roles:
         - COMMON
@@ -1636,10 +462,10 @@ paths:
         - name: Authorization
           in: header
           description: Authorization token.
-          example: 6AcW8gmtVCejrTHw9JbPNONU_QxWiUagoHojezoefYI
+          example: vVteUFdSV93fNfnnV_gvnqo864MhoFld_KjbJwNDXio
           schema:
             type: string
-            default: 6AcW8gmtVCejrTHw9JbPNONU_QxWiUagoHojezoefYI
+            default: vVteUFdSV93fNfnnV_gvnqo864MhoFld_KjbJwNDXio
       responses:
         '200':
           description: ''
@@ -1653,150 +479,20 @@ paths:
                 description: List of Friend Requests.
           headers: {}
         '401':
+          $ref: '#/components/responses/Unauthorized'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-                description: Unauthorized
-              examples:
-                '1':
-                  summary: Invalid Login
-                  value:
-                    code: INVALID_LOGIN
-                    message: >-
-                      Invalid login due to the non existance of the user or
-                      invalid password.
-                    status: 401
-                    owner: GYCODING
-                '2':
-                  summary: Invalid API Key
-                  value:
-                    code: INVALID_API_KEY
-                    message: The API Key is malformed.
-                    status: 401
-                    owner: API_GATEWAY
-                '3':
-                  summary: Unauthorized to Service
-                  value:
-                    code: UNAUTHORIZED
-                    message: The user is not authorized to access this resource.
-                    status: 401
-                    owner: GYCODING
-                '4':
-                  summary: Invalid Token
-                  value:
-                    code: INVALID_TOKEN
-                    message: >-
-                      The provided token is invalid, expired or not even
-                      present.
-                    status: 401
-                    owner: API_GATEWAY
-          headers: {}
         '403':
+          $ref: '#/components/responses/Forbidden'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-                description: Forbidden
-              examples:
-                '5':
-                  summary: Forbidden to Service
-                  value:
-                    code: FORBIDDEN
-                    message: The user has no permission to access this resource.
-                    status: 403
-                    owner: GYCODING
-                '6':
-                  summary: Forbidden to API Gateway
-                  value:
-                    code: FORBIDDEN
-                    message: The user has no permission to access this resource.
-                    status: 403
-                    owner: API_GATEWAY
-          headers: {}
         '404':
+          $ref: '#/components/responses/Not Found'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-                description: Not Found
-              examples:
-                '7':
-                  summary: Token Not Found
-                  value:
-                    code: TOKEN_NOT_FOUND
-                    message: Authentication token was not found.
-                    status: 404
-                    owner: API_GATEWAY
-                '8':
-                  summary: Book Not Found
-                  value:
-                    code: BOOK_NOT_FOUND
-                    message: Book not found.
-                    status: 404
-                    owner: GYCODING
-          headers: {}
         '405':
+          $ref: '#/components/responses/Method Not Allowed'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-                description: Method Not Allowed
-              example:
-                code: METHOD_NOT_ALLOWED
-                message: Method used to access this resource is not allowed.
-                status: 405
-                owner: GYCODING
-          headers: {}
         '500':
+          $ref: '#/components/responses/Internal Error'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-                description: Internal Error
-              examples:
-                '10':
-                  summary: Database Error
-                  value:
-                    code: DB_ERROR
-                    message: >-
-                      An error with the database has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: GYCODING
-                '11':
-                  summary: Auth Error from API Gateway
-                  value:
-                    code: AUTH_ERROR
-                    message: >-
-                      An error with the authentication service has occurred,
-                      sorry for the inconvenience.
-                    status: 500
-                    owner: API_GATEWAY
-                '12':
-                  summary: Gateway Error
-                  value:
-                    code: GATEWAY_ERROR
-                    message: >-
-                      An internal API Gateway error has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: API_GATEWAY
-                '13':
-                  summary: Server Error
-                  value:
-                    code: SERVER_ERROR
-                    message: >-
-                      An internal server error has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: GYCODING
-          headers: {}
       security: []
       x-roles:
         - COMMON
@@ -1821,10 +517,10 @@ paths:
         - name: Authorization
           in: header
           description: Authorization token.
-          example: 6AcW8gmtVCejrTHw9JbPNONU_QxWiUagoHojezoefYI
+          example: vVteUFdSV93fNfnnV_gvnqo864MhoFld_KjbJwNDXio
           schema:
             type: string
-            default: 6AcW8gmtVCejrTHw9JbPNONU_QxWiUagoHojezoefYI
+            default: vVteUFdSV93fNfnnV_gvnqo864MhoFld_KjbJwNDXio
       requestBody:
         content:
           application/json:
@@ -1852,212 +548,26 @@ paths:
                 type: 'null'
           headers: {}
         '400':
+          $ref: '#/components/responses/Bad Request'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-                description: Bad Request
-              examples:
-                '1':
-                  summary: Bad Request
-                  value:
-                    code: BAD_REQUEST
-                    message: The endpoint is malformed.
-                    status: 400
-                    owner: API_GATEWAY
-                '2':
-                  summary: Hall of Fame Limit Reached
-                  value:
-                    code: HALL_OF_FAME_LIMIT_REACHED
-                    message: >-
-                      User has reached the maximum number of Hall of Fame
-                      entries (5).
-                    status: 400
-                    owner: GYCODING
-                '3':
-                  summary: Friend Request sent to self
-                  value:
-                    code: FRIEND_REQUEST_TO_SELF
-                    message: Cannot send a friend request to oneself.
-                    status: 400
-                    owner: GYCODING
-          headers: {}
         '401':
+          $ref: '#/components/responses/Unauthorized'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-                description: Unauthorized
-              examples:
-                '4':
-                  summary: Invalid Login
-                  value:
-                    code: INVALID_LOGIN
-                    message: >-
-                      Invalid login due to the non existance of the user or
-                      invalid password.
-                    status: 401
-                    owner: GYCODING
-                '5':
-                  summary: Invalid API Key
-                  value:
-                    code: INVALID_API_KEY
-                    message: The API Key is malformed.
-                    status: 401
-                    owner: API_GATEWAY
-                '6':
-                  summary: Unauthorized to Service
-                  value:
-                    code: UNAUTHORIZED
-                    message: The user is not authorized to access this resource.
-                    status: 401
-                    owner: GYCODING
-                '7':
-                  summary: Invalid Token
-                  value:
-                    code: INVALID_TOKEN
-                    message: >-
-                      The provided token is invalid, expired or not even
-                      present.
-                    status: 401
-                    owner: API_GATEWAY
-          headers: {}
         '403':
+          $ref: '#/components/responses/Forbidden'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-                description: Forbidden
-              examples:
-                '8':
-                  summary: Forbidden to Service
-                  value:
-                    code: FORBIDDEN
-                    message: The user has no permission to access this resource.
-                    status: 403
-                    owner: GYCODING
-                '9':
-                  summary: Forbidden to API Gateway
-                  value:
-                    code: FORBIDDEN
-                    message: The user has no permission to access this resource.
-                    status: 403
-                    owner: API_GATEWAY
-          headers: {}
         '404':
+          $ref: '#/components/responses/Not Found'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-                description: Not Found
-              examples:
-                '10':
-                  summary: Token Not Found
-                  value:
-                    code: TOKEN_NOT_FOUND
-                    message: Authentication token was not found.
-                    status: 404
-                    owner: API_GATEWAY
-                '11':
-                  summary: Book Not Found
-                  value:
-                    code: BOOK_NOT_FOUND
-                    message: Book not found.
-                    status: 404
-                    owner: GYCODING
-          headers: {}
         '405':
+          $ref: '#/components/responses/Method Not Allowed'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-                description: Method Not Allowed
-              example:
-                code: METHOD_NOT_ALLOWED
-                message: Method used to access this resource is not allowed.
-                status: 405
-                owner: GYCODING
-          headers: {}
         '409':
+          $ref: '#/components/responses/Conflict'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-                description: Conflict
-              examples:
-                '13':
-                  summary: Book already exists on Hall of Fame
-                  value:
-                    code: HALL_OF_FAME_BOOK_ALREADY_EXISTS
-                    message: Book already exists in the user's Hall of Fame.
-                    status: 409
-                    owner: GYCODING
-                '14':
-                  summary: Friend Request already exists
-                  value:
-                    code: FRIEND_REQUEST_ALREADY_EXISTS
-                    message: A friend request between these users already exists.
-                    status: 409
-                    owner: GYCODING
-                '15':
-                  summary: Users are already friends
-                  value:
-                    code: FRIEND_REQUEST_ALREADY_FRIENDS
-                    message: Users are already friends.
-                    status: 409
-                    owner: GYCODING
-          headers: {}
         '500':
+          $ref: '#/components/responses/Internal Error'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-                description: Internal Error
-              examples:
-                '16':
-                  summary: Database Error
-                  value:
-                    code: DB_ERROR
-                    message: >-
-                      An error with the database has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: GYCODING
-                '17':
-                  summary: Auth Error from API Gateway
-                  value:
-                    code: AUTH_ERROR
-                    message: >-
-                      An error with the authentication service has occurred,
-                      sorry for the inconvenience.
-                    status: 500
-                    owner: API_GATEWAY
-                '18':
-                  summary: Gateway Error
-                  value:
-                    code: GATEWAY_ERROR
-                    message: >-
-                      An internal API Gateway error has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: API_GATEWAY
-                '19':
-                  summary: Server Error
-                  value:
-                    code: SERVER_ERROR
-                    message: >-
-                      An internal server error has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: GYCODING
-          headers: {}
       security: []
       x-roles:
         - ADMIN
@@ -2083,10 +593,10 @@ paths:
         - name: Authorization
           in: header
           description: Authorization token.
-          example: 6AcW8gmtVCejrTHw9JbPNONU_QxWiUagoHojezoefYI
+          example: vVteUFdSV93fNfnnV_gvnqo864MhoFld_KjbJwNDXio
           schema:
             type: string
-            default: 6AcW8gmtVCejrTHw9JbPNONU_QxWiUagoHojezoefYI
+            default: vVteUFdSV93fNfnnV_gvnqo864MhoFld_KjbJwNDXio
       responses:
         '200':
           description: ''
@@ -2100,150 +610,20 @@ paths:
                 description: List of profiles.
           headers: {}
         '401':
+          $ref: '#/components/responses/Unauthorized'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-                description: Unauthorized
-              examples:
-                '1':
-                  summary: Invalid Login
-                  value:
-                    code: INVALID_LOGIN
-                    message: >-
-                      Invalid login due to the non existance of the user or
-                      invalid password.
-                    status: 401
-                    owner: GYCODING
-                '2':
-                  summary: Invalid API Key
-                  value:
-                    code: INVALID_API_KEY
-                    message: The API Key is malformed.
-                    status: 401
-                    owner: API_GATEWAY
-                '3':
-                  summary: Unauthorized to Service
-                  value:
-                    code: UNAUTHORIZED
-                    message: The user is not authorized to access this resource.
-                    status: 401
-                    owner: GYCODING
-                '4':
-                  summary: Invalid Token
-                  value:
-                    code: INVALID_TOKEN
-                    message: >-
-                      The provided token is invalid, expired or not even
-                      present.
-                    status: 401
-                    owner: API_GATEWAY
-          headers: {}
         '403':
+          $ref: '#/components/responses/Forbidden'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-                description: Forbidden
-              examples:
-                '5':
-                  summary: Forbidden to Service
-                  value:
-                    code: FORBIDDEN
-                    message: The user has no permission to access this resource.
-                    status: 403
-                    owner: GYCODING
-                '6':
-                  summary: Forbidden to API Gateway
-                  value:
-                    code: FORBIDDEN
-                    message: The user has no permission to access this resource.
-                    status: 403
-                    owner: API_GATEWAY
-          headers: {}
         '404':
+          $ref: '#/components/responses/Not Found'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-                description: Not Found
-              examples:
-                '7':
-                  summary: Token Not Found
-                  value:
-                    code: TOKEN_NOT_FOUND
-                    message: Authentication token was not found.
-                    status: 404
-                    owner: API_GATEWAY
-                '8':
-                  summary: Book Not Found
-                  value:
-                    code: BOOK_NOT_FOUND
-                    message: Book not found.
-                    status: 404
-                    owner: GYCODING
-          headers: {}
         '405':
+          $ref: '#/components/responses/Method Not Allowed'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-                description: Method Not Allowed
-              example:
-                code: METHOD_NOT_ALLOWED
-                message: Method used to access this resource is not allowed.
-                status: 405
-                owner: GYCODING
-          headers: {}
         '500':
+          $ref: '#/components/responses/Internal Error'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-                description: Internal Error
-              examples:
-                '10':
-                  summary: Database Error
-                  value:
-                    code: DB_ERROR
-                    message: >-
-                      An error with the database has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: GYCODING
-                '11':
-                  summary: Auth Error from API Gateway
-                  value:
-                    code: AUTH_ERROR
-                    message: >-
-                      An error with the authentication service has occurred,
-                      sorry for the inconvenience.
-                    status: 500
-                    owner: API_GATEWAY
-                '12':
-                  summary: Gateway Error
-                  value:
-                    code: GATEWAY_ERROR
-                    message: >-
-                      An internal API Gateway error has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: API_GATEWAY
-                '13':
-                  summary: Server Error
-                  value:
-                    code: SERVER_ERROR
-                    message: >-
-                      An internal server error has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: GYCODING
-          headers: {}
       security: []
       x-roles:
         - COMMON
@@ -2277,109 +657,17 @@ paths:
                 description: List of profiles.
           headers: {}
         '403':
+          $ref: '#/components/responses/Forbidden'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-                description: Forbidden
-              examples:
-                '1':
-                  summary: Forbidden to Service
-                  value:
-                    code: FORBIDDEN
-                    message: The user has no permission to access this resource.
-                    status: 403
-                    owner: GYCODING
-                '2':
-                  summary: Forbidden to API Gateway
-                  value:
-                    code: FORBIDDEN
-                    message: The user has no permission to access this resource.
-                    status: 403
-                    owner: API_GATEWAY
-          headers: {}
         '404':
+          $ref: '#/components/responses/Not Found'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-                description: Not Found
-              examples:
-                '3':
-                  summary: Token Not Found
-                  value:
-                    code: TOKEN_NOT_FOUND
-                    message: Authentication token was not found.
-                    status: 404
-                    owner: API_GATEWAY
-                '4':
-                  summary: Book Not Found
-                  value:
-                    code: BOOK_NOT_FOUND
-                    message: Book not found.
-                    status: 404
-                    owner: GYCODING
-          headers: {}
         '405':
+          $ref: '#/components/responses/Method Not Allowed'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-                description: Method Not Allowed
-              example:
-                code: METHOD_NOT_ALLOWED
-                message: Method used to access this resource is not allowed.
-                status: 405
-                owner: GYCODING
-          headers: {}
         '500':
+          $ref: '#/components/responses/Internal Error'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-                description: Internal Error
-              examples:
-                '6':
-                  summary: Database Error
-                  value:
-                    code: DB_ERROR
-                    message: >-
-                      An error with the database has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: GYCODING
-                '7':
-                  summary: Auth Error from API Gateway
-                  value:
-                    code: AUTH_ERROR
-                    message: >-
-                      An error with the authentication service has occurred,
-                      sorry for the inconvenience.
-                    status: 500
-                    owner: API_GATEWAY
-                '8':
-                  summary: Gateway Error
-                  value:
-                    code: GATEWAY_ERROR
-                    message: >-
-                      An internal API Gateway error has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: API_GATEWAY
-                '9':
-                  summary: Server Error
-                  value:
-                    code: SERVER_ERROR
-                    message: >-
-                      An internal server error has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: GYCODING
-          headers: {}
       security: []
       x-roles:
         - COMMON
@@ -2397,7 +685,7 @@ paths:
           in: path
           description: Profile ID.
           required: true
-          example: 93dcc507-c706-4ed9-841f-fe470bdbb7d6
+          example: e6b94363-d415-462d-9b0e-c5c4796fcbd9
           schema:
             type: string
             format: uuid
@@ -2411,141 +699,20 @@ paths:
                 description: Profile.
           headers: {}
         '400':
+          $ref: '#/components/responses/Bad Request'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-                description: Bad Request
-              examples:
-                '1':
-                  summary: Bad Request
-                  value:
-                    code: BAD_REQUEST
-                    message: The endpoint is malformed.
-                    status: 400
-                    owner: API_GATEWAY
-                '2':
-                  summary: Hall of Fame Limit Reached
-                  value:
-                    code: HALL_OF_FAME_LIMIT_REACHED
-                    message: >-
-                      User has reached the maximum number of Hall of Fame
-                      entries (5).
-                    status: 400
-                    owner: GYCODING
-                '3':
-                  summary: Friend Request sent to self
-                  value:
-                    code: FRIEND_REQUEST_TO_SELF
-                    message: Cannot send a friend request to oneself.
-                    status: 400
-                    owner: GYCODING
-          headers: {}
         '403':
+          $ref: '#/components/responses/Forbidden'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-                description: Forbidden
-              examples:
-                '4':
-                  summary: Forbidden to Service
-                  value:
-                    code: FORBIDDEN
-                    message: The user has no permission to access this resource.
-                    status: 403
-                    owner: GYCODING
-                '5':
-                  summary: Forbidden to API Gateway
-                  value:
-                    code: FORBIDDEN
-                    message: The user has no permission to access this resource.
-                    status: 403
-                    owner: API_GATEWAY
-          headers: {}
         '404':
+          $ref: '#/components/responses/Not Found'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-                description: Not Found
-              examples:
-                '6':
-                  summary: Token Not Found
-                  value:
-                    code: TOKEN_NOT_FOUND
-                    message: Authentication token was not found.
-                    status: 404
-                    owner: API_GATEWAY
-                '7':
-                  summary: Book Not Found
-                  value:
-                    code: BOOK_NOT_FOUND
-                    message: Book not found.
-                    status: 404
-                    owner: GYCODING
-          headers: {}
         '405':
+          $ref: '#/components/responses/Method Not Allowed'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-                description: Method Not Allowed
-              example:
-                code: METHOD_NOT_ALLOWED
-                message: Method used to access this resource is not allowed.
-                status: 405
-                owner: GYCODING
-          headers: {}
         '500':
+          $ref: '#/components/responses/Internal Error'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-                description: Internal Error
-              examples:
-                '9':
-                  summary: Database Error
-                  value:
-                    code: DB_ERROR
-                    message: >-
-                      An error with the database has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: GYCODING
-                '10':
-                  summary: Auth Error from API Gateway
-                  value:
-                    code: AUTH_ERROR
-                    message: >-
-                      An error with the authentication service has occurred,
-                      sorry for the inconvenience.
-                    status: 500
-                    owner: API_GATEWAY
-                '11':
-                  summary: Gateway Error
-                  value:
-                    code: GATEWAY_ERROR
-                    message: >-
-                      An internal API Gateway error has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: API_GATEWAY
-                '12':
-                  summary: Server Error
-                  value:
-                    code: SERVER_ERROR
-                    message: >-
-                      An internal server error has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: GYCODING
-          headers: {}
       security: []
       x-roles:
         - COMMON
@@ -2562,10 +729,10 @@ paths:
         - name: Authorization
           in: header
           description: Authorization token.
-          example: 6AcW8gmtVCejrTHw9JbPNONU_QxWiUagoHojezoefYI
+          example: vVteUFdSV93fNfnnV_gvnqo864MhoFld_KjbJwNDXio
           schema:
             type: string
-            default: 6AcW8gmtVCejrTHw9JbPNONU_QxWiUagoHojezoefYI
+            default: vVteUFdSV93fNfnnV_gvnqo864MhoFld_KjbJwNDXio
       requestBody:
         content:
           application/json:
@@ -2590,195 +757,26 @@ paths:
                 type: 'null'
           headers: {}
         '304':
+          $ref: '#/components/responses/Not Modified'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-                description: Not Modified
-              example:
-                code: BOOK_NOT_MODIFIED
-                message: Book could not be modified.
-                status: 304
-                owner: GYCODING
-          headers: {}
         '400':
+          $ref: '#/components/responses/Bad Request'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-                description: Bad Request
-              examples:
-                '2':
-                  summary: Bad Request
-                  value:
-                    code: BAD_REQUEST
-                    message: The endpoint is malformed.
-                    status: 400
-                    owner: API_GATEWAY
-                '3':
-                  summary: Hall of Fame Limit Reached
-                  value:
-                    code: HALL_OF_FAME_LIMIT_REACHED
-                    message: >-
-                      User has reached the maximum number of Hall of Fame
-                      entries (5).
-                    status: 400
-                    owner: GYCODING
-                '4':
-                  summary: Friend Request sent to self
-                  value:
-                    code: FRIEND_REQUEST_TO_SELF
-                    message: Cannot send a friend request to oneself.
-                    status: 400
-                    owner: GYCODING
-          headers: {}
         '401':
+          $ref: '#/components/responses/Unauthorized'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-                description: Unauthorized
-              examples:
-                '5':
-                  summary: Invalid Login
-                  value:
-                    code: INVALID_LOGIN
-                    message: >-
-                      Invalid login due to the non existance of the user or
-                      invalid password.
-                    status: 401
-                    owner: GYCODING
-                '6':
-                  summary: Invalid API Key
-                  value:
-                    code: INVALID_API_KEY
-                    message: The API Key is malformed.
-                    status: 401
-                    owner: API_GATEWAY
-                '7':
-                  summary: Unauthorized to Service
-                  value:
-                    code: UNAUTHORIZED
-                    message: The user is not authorized to access this resource.
-                    status: 401
-                    owner: GYCODING
-                '8':
-                  summary: Invalid Token
-                  value:
-                    code: INVALID_TOKEN
-                    message: >-
-                      The provided token is invalid, expired or not even
-                      present.
-                    status: 401
-                    owner: API_GATEWAY
-          headers: {}
         '403':
+          $ref: '#/components/responses/Forbidden'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-                description: Forbidden
-              examples:
-                '9':
-                  summary: Forbidden to Service
-                  value:
-                    code: FORBIDDEN
-                    message: The user has no permission to access this resource.
-                    status: 403
-                    owner: GYCODING
-                '10':
-                  summary: Forbidden to API Gateway
-                  value:
-                    code: FORBIDDEN
-                    message: The user has no permission to access this resource.
-                    status: 403
-                    owner: API_GATEWAY
-          headers: {}
         '404':
+          $ref: '#/components/responses/Not Found'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-                description: Not Found
-              examples:
-                '11':
-                  summary: Token Not Found
-                  value:
-                    code: TOKEN_NOT_FOUND
-                    message: Authentication token was not found.
-                    status: 404
-                    owner: API_GATEWAY
-                '12':
-                  summary: Book Not Found
-                  value:
-                    code: BOOK_NOT_FOUND
-                    message: Book not found.
-                    status: 404
-                    owner: GYCODING
-          headers: {}
         '405':
+          $ref: '#/components/responses/Method Not Allowed'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-                description: Method Not Allowed
-              example:
-                code: METHOD_NOT_ALLOWED
-                message: Method used to access this resource is not allowed.
-                status: 405
-                owner: GYCODING
-          headers: {}
         '500':
+          $ref: '#/components/responses/Internal Error'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-                description: Internal Error
-              examples:
-                '14':
-                  summary: Database Error
-                  value:
-                    code: DB_ERROR
-                    message: >-
-                      An error with the database has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: GYCODING
-                '15':
-                  summary: Auth Error from API Gateway
-                  value:
-                    code: AUTH_ERROR
-                    message: >-
-                      An error with the authentication service has occurred,
-                      sorry for the inconvenience.
-                    status: 500
-                    owner: API_GATEWAY
-                '16':
-                  summary: Gateway Error
-                  value:
-                    code: GATEWAY_ERROR
-                    message: >-
-                      An internal API Gateway error has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: API_GATEWAY
-                '17':
-                  summary: Server Error
-                  value:
-                    code: SERVER_ERROR
-                    message: >-
-                      An internal server error has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: GYCODING
-          headers: {}
       security: []
       x-roles:
         - COMMON
@@ -2810,141 +808,20 @@ paths:
                 description: Hall of Fame.
           headers: {}
         '400':
+          $ref: '#/components/responses/Bad Request'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-                description: Bad Request
-              examples:
-                '1':
-                  summary: Bad Request
-                  value:
-                    code: BAD_REQUEST
-                    message: The endpoint is malformed.
-                    status: 400
-                    owner: API_GATEWAY
-                '2':
-                  summary: Hall of Fame Limit Reached
-                  value:
-                    code: HALL_OF_FAME_LIMIT_REACHED
-                    message: >-
-                      User has reached the maximum number of Hall of Fame
-                      entries (5).
-                    status: 400
-                    owner: GYCODING
-                '3':
-                  summary: Friend Request sent to self
-                  value:
-                    code: FRIEND_REQUEST_TO_SELF
-                    message: Cannot send a friend request to oneself.
-                    status: 400
-                    owner: GYCODING
-          headers: {}
         '403':
+          $ref: '#/components/responses/Forbidden'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-                description: Forbidden
-              examples:
-                '4':
-                  summary: Forbidden to Service
-                  value:
-                    code: FORBIDDEN
-                    message: The user has no permission to access this resource.
-                    status: 403
-                    owner: GYCODING
-                '5':
-                  summary: Forbidden to API Gateway
-                  value:
-                    code: FORBIDDEN
-                    message: The user has no permission to access this resource.
-                    status: 403
-                    owner: API_GATEWAY
-          headers: {}
         '404':
+          $ref: '#/components/responses/Not Found'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-                description: Not Found
-              examples:
-                '6':
-                  summary: Token Not Found
-                  value:
-                    code: TOKEN_NOT_FOUND
-                    message: Authentication token was not found.
-                    status: 404
-                    owner: API_GATEWAY
-                '7':
-                  summary: Book Not Found
-                  value:
-                    code: BOOK_NOT_FOUND
-                    message: Book not found.
-                    status: 404
-                    owner: GYCODING
-          headers: {}
         '405':
+          $ref: '#/components/responses/Method Not Allowed'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-                description: Method Not Allowed
-              example:
-                code: METHOD_NOT_ALLOWED
-                message: Method used to access this resource is not allowed.
-                status: 405
-                owner: GYCODING
-          headers: {}
         '500':
+          $ref: '#/components/responses/Internal Error'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-                description: Internal Error
-              examples:
-                '9':
-                  summary: Database Error
-                  value:
-                    code: DB_ERROR
-                    message: >-
-                      An error with the database has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: GYCODING
-                '10':
-                  summary: Auth Error from API Gateway
-                  value:
-                    code: AUTH_ERROR
-                    message: >-
-                      An error with the authentication service has occurred,
-                      sorry for the inconvenience.
-                    status: 500
-                    owner: API_GATEWAY
-                '11':
-                  summary: Gateway Error
-                  value:
-                    code: GATEWAY_ERROR
-                    message: >-
-                      An internal API Gateway error has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: API_GATEWAY
-                '12':
-                  summary: Server Error
-                  value:
-                    code: SERVER_ERROR
-                    message: >-
-                      An internal server error has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: GYCODING
-          headers: {}
       security: []
       x-roles:
         - ADMIN
@@ -2961,10 +838,10 @@ paths:
         - name: Authorization
           in: header
           description: Authorization token.
-          example: 6AcW8gmtVCejrTHw9JbPNONU_QxWiUagoHojezoefYI
+          example: vVteUFdSV93fNfnnV_gvnqo864MhoFld_KjbJwNDXio
           schema:
             type: string
-            default: 6AcW8gmtVCejrTHw9JbPNONU_QxWiUagoHojezoefYI
+            default: vVteUFdSV93fNfnnV_gvnqo864MhoFld_KjbJwNDXio
       requestBody:
         content:
           application/json:
@@ -2989,225 +866,29 @@ paths:
                 type: 'null'
           headers: {}
         '304':
+          $ref: '#/components/responses/Not Modified'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-                description: Not Modified
-              example:
-                code: BOOK_NOT_MODIFIED
-                message: Book could not be modified.
-                status: 304
-                owner: GYCODING
-          headers: {}
         '400':
+          $ref: '#/components/responses/Bad Request'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-                description: Bad Request
-              examples:
-                '2':
-                  summary: Bad Request
-                  value:
-                    code: BAD_REQUEST
-                    message: The endpoint is malformed.
-                    status: 400
-                    owner: API_GATEWAY
-                '3':
-                  summary: Hall of Fame Limit Reached
-                  value:
-                    code: HALL_OF_FAME_LIMIT_REACHED
-                    message: >-
-                      User has reached the maximum number of Hall of Fame
-                      entries (5).
-                    status: 400
-                    owner: GYCODING
-                '4':
-                  summary: Friend Request sent to self
-                  value:
-                    code: FRIEND_REQUEST_TO_SELF
-                    message: Cannot send a friend request to oneself.
-                    status: 400
-                    owner: GYCODING
-          headers: {}
         '401':
+          $ref: '#/components/responses/Unauthorized'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-                description: Unauthorized
-              examples:
-                '5':
-                  summary: Invalid Login
-                  value:
-                    code: INVALID_LOGIN
-                    message: >-
-                      Invalid login due to the non existance of the user or
-                      invalid password.
-                    status: 401
-                    owner: GYCODING
-                '6':
-                  summary: Invalid API Key
-                  value:
-                    code: INVALID_API_KEY
-                    message: The API Key is malformed.
-                    status: 401
-                    owner: API_GATEWAY
-                '7':
-                  summary: Unauthorized to Service
-                  value:
-                    code: UNAUTHORIZED
-                    message: The user is not authorized to access this resource.
-                    status: 401
-                    owner: GYCODING
-                '8':
-                  summary: Invalid Token
-                  value:
-                    code: INVALID_TOKEN
-                    message: >-
-                      The provided token is invalid, expired or not even
-                      present.
-                    status: 401
-                    owner: API_GATEWAY
-          headers: {}
         '403':
+          $ref: '#/components/responses/Forbidden'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-                description: Forbidden
-              examples:
-                '9':
-                  summary: Forbidden to Service
-                  value:
-                    code: FORBIDDEN
-                    message: The user has no permission to access this resource.
-                    status: 403
-                    owner: GYCODING
-                '10':
-                  summary: Forbidden to API Gateway
-                  value:
-                    code: FORBIDDEN
-                    message: The user has no permission to access this resource.
-                    status: 403
-                    owner: API_GATEWAY
-          headers: {}
         '404':
+          $ref: '#/components/responses/Not Found'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-                description: Not Found
-              examples:
-                '11':
-                  summary: Token Not Found
-                  value:
-                    code: TOKEN_NOT_FOUND
-                    message: Authentication token was not found.
-                    status: 404
-                    owner: API_GATEWAY
-                '12':
-                  summary: Book Not Found
-                  value:
-                    code: BOOK_NOT_FOUND
-                    message: Book not found.
-                    status: 404
-                    owner: GYCODING
-          headers: {}
         '405':
+          $ref: '#/components/responses/Method Not Allowed'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-                description: Method Not Allowed
-              example:
-                code: METHOD_NOT_ALLOWED
-                message: Method used to access this resource is not allowed.
-                status: 405
-                owner: GYCODING
-          headers: {}
         '409':
+          $ref: '#/components/responses/Conflict'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-                description: Conflict
-              examples:
-                '14':
-                  summary: Book already exists on Hall of Fame
-                  value:
-                    code: HALL_OF_FAME_BOOK_ALREADY_EXISTS
-                    message: Book already exists in the user's Hall of Fame.
-                    status: 409
-                    owner: GYCODING
-                '15':
-                  summary: Friend Request already exists
-                  value:
-                    code: FRIEND_REQUEST_ALREADY_EXISTS
-                    message: A friend request between these users already exists.
-                    status: 409
-                    owner: GYCODING
-                '16':
-                  summary: Users are already friends
-                  value:
-                    code: FRIEND_REQUEST_ALREADY_FRIENDS
-                    message: Users are already friends.
-                    status: 409
-                    owner: GYCODING
-          headers: {}
         '500':
+          $ref: '#/components/responses/Internal Error'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-                description: Internal Error
-              examples:
-                '17':
-                  summary: Database Error
-                  value:
-                    code: DB_ERROR
-                    message: >-
-                      An error with the database has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: GYCODING
-                '18':
-                  summary: Auth Error from API Gateway
-                  value:
-                    code: AUTH_ERROR
-                    message: >-
-                      An error with the authentication service has occurred,
-                      sorry for the inconvenience.
-                    status: 500
-                    owner: API_GATEWAY
-                '19':
-                  summary: Gateway Error
-                  value:
-                    code: GATEWAY_ERROR
-                    message: >-
-                      An internal API Gateway error has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: API_GATEWAY
-                '20':
-                  summary: Server Error
-                  value:
-                    code: SERVER_ERROR
-                    message: >-
-                      An internal server error has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: GYCODING
-          headers: {}
       security: []
       x-roles:
         - COMMON
@@ -3231,10 +912,10 @@ paths:
         - name: Authorization
           in: header
           description: Authorization token.
-          example: 6AcW8gmtVCejrTHw9JbPNONU_QxWiUagoHojezoefYI
+          example: vVteUFdSV93fNfnnV_gvnqo864MhoFld_KjbJwNDXio
           schema:
             type: string
-            default: 6AcW8gmtVCejrTHw9JbPNONU_QxWiUagoHojezoefYI
+            default: vVteUFdSV93fNfnnV_gvnqo864MhoFld_KjbJwNDXio
       responses:
         '204':
           description: ''
@@ -3244,150 +925,20 @@ paths:
                 type: 'null'
           headers: {}
         '401':
+          $ref: '#/components/responses/Unauthorized'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-                description: Unauthorized
-              examples:
-                '1':
-                  summary: Invalid Login
-                  value:
-                    code: INVALID_LOGIN
-                    message: >-
-                      Invalid login due to the non existance of the user or
-                      invalid password.
-                    status: 401
-                    owner: GYCODING
-                '2':
-                  summary: Invalid API Key
-                  value:
-                    code: INVALID_API_KEY
-                    message: The API Key is malformed.
-                    status: 401
-                    owner: API_GATEWAY
-                '3':
-                  summary: Unauthorized to Service
-                  value:
-                    code: UNAUTHORIZED
-                    message: The user is not authorized to access this resource.
-                    status: 401
-                    owner: GYCODING
-                '4':
-                  summary: Invalid Token
-                  value:
-                    code: INVALID_TOKEN
-                    message: >-
-                      The provided token is invalid, expired or not even
-                      present.
-                    status: 401
-                    owner: API_GATEWAY
-          headers: {}
         '403':
+          $ref: '#/components/responses/Forbidden'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-                description: Forbidden
-              examples:
-                '5':
-                  summary: Forbidden to Service
-                  value:
-                    code: FORBIDDEN
-                    message: The user has no permission to access this resource.
-                    status: 403
-                    owner: GYCODING
-                '6':
-                  summary: Forbidden to API Gateway
-                  value:
-                    code: FORBIDDEN
-                    message: The user has no permission to access this resource.
-                    status: 403
-                    owner: API_GATEWAY
-          headers: {}
         '404':
+          $ref: '#/components/responses/Not Found'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-                description: Not Found
-              examples:
-                '7':
-                  summary: Token Not Found
-                  value:
-                    code: TOKEN_NOT_FOUND
-                    message: Authentication token was not found.
-                    status: 404
-                    owner: API_GATEWAY
-                '8':
-                  summary: Book Not Found
-                  value:
-                    code: BOOK_NOT_FOUND
-                    message: Book not found.
-                    status: 404
-                    owner: GYCODING
-          headers: {}
         '405':
+          $ref: '#/components/responses/Method Not Allowed'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-                description: Method Not Allowed
-              example:
-                code: METHOD_NOT_ALLOWED
-                message: Method used to access this resource is not allowed.
-                status: 405
-                owner: GYCODING
-          headers: {}
         '500':
+          $ref: '#/components/responses/Internal Error'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-                description: Internal Error
-              examples:
-                '10':
-                  summary: Database Error
-                  value:
-                    code: DB_ERROR
-                    message: >-
-                      An error with the database has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: GYCODING
-                '11':
-                  summary: Auth Error from API Gateway
-                  value:
-                    code: AUTH_ERROR
-                    message: >-
-                      An error with the authentication service has occurred,
-                      sorry for the inconvenience.
-                    status: 500
-                    owner: API_GATEWAY
-                '12':
-                  summary: Gateway Error
-                  value:
-                    code: GATEWAY_ERROR
-                    message: >-
-                      An internal API Gateway error has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: API_GATEWAY
-                '13':
-                  summary: Server Error
-                  value:
-                    code: SERVER_ERROR
-                    message: >-
-                      An internal server error has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: GYCODING
-          headers: {}
       security: []
       x-roles:
         - COMMON
@@ -3404,10 +955,10 @@ paths:
         - name: Authorization
           in: header
           description: Authorization token.
-          example: 6AcW8gmtVCejrTHw9JbPNONU_QxWiUagoHojezoefYI
+          example: vVteUFdSV93fNfnnV_gvnqo864MhoFld_KjbJwNDXio
           schema:
             type: string
-            default: 6AcW8gmtVCejrTHw9JbPNONU_QxWiUagoHojezoefYI
+            default: vVteUFdSV93fNfnnV_gvnqo864MhoFld_KjbJwNDXio
       requestBody:
         content:
           application/json:
@@ -3430,589 +981,26 @@ paths:
                 type: 'null'
           headers: {}
         '304':
+          $ref: '#/components/responses/Not Modified'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-                description: Not Modified
-              example:
-                code: BOOK_NOT_MODIFIED
-                message: Book could not be modified.
-                status: 304
-                owner: GYCODING
-          headers: {}
         '400':
+          $ref: '#/components/responses/Bad Request'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-                description: Bad Request
-              examples:
-                '2':
-                  summary: Bad Request
-                  value:
-                    code: BAD_REQUEST
-                    message: The endpoint is malformed.
-                    status: 400
-                    owner: API_GATEWAY
-                '3':
-                  summary: Hall of Fame Limit Reached
-                  value:
-                    code: HALL_OF_FAME_LIMIT_REACHED
-                    message: >-
-                      User has reached the maximum number of Hall of Fame
-                      entries (5).
-                    status: 400
-                    owner: GYCODING
-                '4':
-                  summary: Friend Request sent to self
-                  value:
-                    code: FRIEND_REQUEST_TO_SELF
-                    message: Cannot send a friend request to oneself.
-                    status: 400
-                    owner: GYCODING
-          headers: {}
         '401':
+          $ref: '#/components/responses/Unauthorized'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-                description: Unauthorized
-              examples:
-                '5':
-                  summary: Invalid Login
-                  value:
-                    code: INVALID_LOGIN
-                    message: >-
-                      Invalid login due to the non existance of the user or
-                      invalid password.
-                    status: 401
-                    owner: GYCODING
-                '6':
-                  summary: Invalid API Key
-                  value:
-                    code: INVALID_API_KEY
-                    message: The API Key is malformed.
-                    status: 401
-                    owner: API_GATEWAY
-                '7':
-                  summary: Unauthorized to Service
-                  value:
-                    code: UNAUTHORIZED
-                    message: The user is not authorized to access this resource.
-                    status: 401
-                    owner: GYCODING
-                '8':
-                  summary: Invalid Token
-                  value:
-                    code: INVALID_TOKEN
-                    message: >-
-                      The provided token is invalid, expired or not even
-                      present.
-                    status: 401
-                    owner: API_GATEWAY
-          headers: {}
         '403':
+          $ref: '#/components/responses/Forbidden'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-                description: Forbidden
-              examples:
-                '9':
-                  summary: Forbidden to Service
-                  value:
-                    code: FORBIDDEN
-                    message: The user has no permission to access this resource.
-                    status: 403
-                    owner: GYCODING
-                '10':
-                  summary: Forbidden to API Gateway
-                  value:
-                    code: FORBIDDEN
-                    message: The user has no permission to access this resource.
-                    status: 403
-                    owner: API_GATEWAY
-          headers: {}
         '404':
+          $ref: '#/components/responses/Not Found'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-                description: Not Found
-              examples:
-                '11':
-                  summary: Token Not Found
-                  value:
-                    code: TOKEN_NOT_FOUND
-                    message: Authentication token was not found.
-                    status: 404
-                    owner: API_GATEWAY
-                '12':
-                  summary: Book Not Found
-                  value:
-                    code: BOOK_NOT_FOUND
-                    message: Book not found.
-                    status: 404
-                    owner: GYCODING
-          headers: {}
         '405':
+          $ref: '#/components/responses/Method Not Allowed'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-                description: Method Not Allowed
-              example:
-                code: METHOD_NOT_ALLOWED
-                message: Method used to access this resource is not allowed.
-                status: 405
-                owner: GYCODING
-          headers: {}
         '500':
+          $ref: '#/components/responses/Internal Error'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-                description: Internal Error
-              examples:
-                '14':
-                  summary: Database Error
-                  value:
-                    code: DB_ERROR
-                    message: >-
-                      An error with the database has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: GYCODING
-                '15':
-                  summary: Auth Error from API Gateway
-                  value:
-                    code: AUTH_ERROR
-                    message: >-
-                      An error with the authentication service has occurred,
-                      sorry for the inconvenience.
-                    status: 500
-                    owner: API_GATEWAY
-                '16':
-                  summary: Gateway Error
-                  value:
-                    code: GATEWAY_ERROR
-                    message: >-
-                      An internal API Gateway error has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: API_GATEWAY
-                '17':
-                  summary: Server Error
-                  value:
-                    code: SERVER_ERROR
-                    message: >-
-                      An internal server error has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: GYCODING
-          headers: {}
-      security: []
-      x-roles:
-        - COMMON
-        - ADMIN
-        - DEVELOPER
-  /profiles/{profileId}/activity:
-    get:
-      summary: List Activities
-      deprecated: false
-      description: Retrieves all the activities made by a user.
-      tags:
-        - Profile
-      parameters:
-        - name: profileId
-          in: path
-          description: Profile ID.
-          required: true
-          example: b526448f-1c92-4163-afc1-fd00ebff34f1
-          schema:
-            type: string
-            format: uuid
-      responses:
-        '200':
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Activity'
-                  description: Activity.
-                description: List of activities.
-          headers: {}
-        '400':
-          description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-                description: Bad Request
-              examples:
-                '1':
-                  summary: Bad Request
-                  value:
-                    code: BAD_REQUEST
-                    message: The endpoint is malformed.
-                    status: 400
-                    owner: API_GATEWAY
-                '2':
-                  summary: Hall of Fame Limit Reached
-                  value:
-                    code: HALL_OF_FAME_LIMIT_REACHED
-                    message: >-
-                      User has reached the maximum number of Hall of Fame
-                      entries (5).
-                    status: 400
-                    owner: GYCODING
-                '3':
-                  summary: Friend Request sent to self
-                  value:
-                    code: FRIEND_REQUEST_TO_SELF
-                    message: Cannot send a friend request to oneself.
-                    status: 400
-                    owner: GYCODING
-          headers: {}
-        '403':
-          description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-                description: Forbidden
-              examples:
-                '4':
-                  summary: Forbidden to Service
-                  value:
-                    code: FORBIDDEN
-                    message: The user has no permission to access this resource.
-                    status: 403
-                    owner: GYCODING
-                '5':
-                  summary: Forbidden to API Gateway
-                  value:
-                    code: FORBIDDEN
-                    message: The user has no permission to access this resource.
-                    status: 403
-                    owner: API_GATEWAY
-          headers: {}
-        '404':
-          description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-                description: Not Found
-              examples:
-                '6':
-                  summary: Token Not Found
-                  value:
-                    code: TOKEN_NOT_FOUND
-                    message: Authentication token was not found.
-                    status: 404
-                    owner: API_GATEWAY
-                '7':
-                  summary: Book Not Found
-                  value:
-                    code: BOOK_NOT_FOUND
-                    message: Book not found.
-                    status: 404
-                    owner: GYCODING
-          headers: {}
-        '405':
-          description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-                description: Method Not Allowed
-              example:
-                code: METHOD_NOT_ALLOWED
-                message: Method used to access this resource is not allowed.
-                status: 405
-                owner: GYCODING
-          headers: {}
-        '500':
-          description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-                description: Internal Error
-              examples:
-                '9':
-                  summary: Database Error
-                  value:
-                    code: DB_ERROR
-                    message: >-
-                      An error with the database has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: GYCODING
-                '10':
-                  summary: Auth Error from API Gateway
-                  value:
-                    code: AUTH_ERROR
-                    message: >-
-                      An error with the authentication service has occurred,
-                      sorry for the inconvenience.
-                    status: 500
-                    owner: API_GATEWAY
-                '11':
-                  summary: Gateway Error
-                  value:
-                    code: GATEWAY_ERROR
-                    message: >-
-                      An internal API Gateway error has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: API_GATEWAY
-                '12':
-                  summary: Server Error
-                  value:
-                    code: SERVER_ERROR
-                    message: >-
-                      An internal server error has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: GYCODING
-          headers: {}
-      security: []
-      x-roles:
-        - COMMON
-        - ADMIN
-        - DEVELOPER
-  /profiles/activity:
-    post:
-      summary: Add Activity
-      deprecated: false
-      description: Saves an activity made by a user.
-      tags:
-        - Profile
-      parameters:
-        - name: Authorization
-          in: header
-          description: Authorization token.
-          example: 6AcW8gmtVCejrTHw9JbPNONU_QxWiUagoHojezoefYI
-          schema:
-            type: string
-            default: 6AcW8gmtVCejrTHw9JbPNONU_QxWiUagoHojezoefYI
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                id:
-                  type: string
-                  description: Activity ID.
-                message:
-                  type: string
-                  description: Activity Message.
-              required:
-                - id
-                - message
-              description: Activity Object.
-            example:
-              message: Test.
-        required: true
-      responses:
-        '200':
-          description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Activity'
-                description: Activity
-          headers: {}
-        '400':
-          description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-                description: Bad Request
-              examples:
-                '1':
-                  summary: Bad Request
-                  value:
-                    code: BAD_REQUEST
-                    message: The endpoint is malformed.
-                    status: 400
-                    owner: API_GATEWAY
-                '2':
-                  summary: Hall of Fame Limit Reached
-                  value:
-                    code: HALL_OF_FAME_LIMIT_REACHED
-                    message: >-
-                      User has reached the maximum number of Hall of Fame
-                      entries (5).
-                    status: 400
-                    owner: GYCODING
-                '3':
-                  summary: Friend Request sent to self
-                  value:
-                    code: FRIEND_REQUEST_TO_SELF
-                    message: Cannot send a friend request to oneself.
-                    status: 400
-                    owner: GYCODING
-          headers: {}
-        '401':
-          description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-                description: Unauthorized
-              examples:
-                '4':
-                  summary: Invalid Login
-                  value:
-                    code: INVALID_LOGIN
-                    message: >-
-                      Invalid login due to the non existance of the user or
-                      invalid password.
-                    status: 401
-                    owner: GYCODING
-                '5':
-                  summary: Invalid API Key
-                  value:
-                    code: INVALID_API_KEY
-                    message: The API Key is malformed.
-                    status: 401
-                    owner: API_GATEWAY
-                '6':
-                  summary: Unauthorized to Service
-                  value:
-                    code: UNAUTHORIZED
-                    message: The user is not authorized to access this resource.
-                    status: 401
-                    owner: GYCODING
-                '7':
-                  summary: Invalid Token
-                  value:
-                    code: INVALID_TOKEN
-                    message: >-
-                      The provided token is invalid, expired or not even
-                      present.
-                    status: 401
-                    owner: API_GATEWAY
-          headers: {}
-        '403':
-          description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-                description: Forbidden
-              examples:
-                '8':
-                  summary: Forbidden to Service
-                  value:
-                    code: FORBIDDEN
-                    message: The user has no permission to access this resource.
-                    status: 403
-                    owner: GYCODING
-                '9':
-                  summary: Forbidden to API Gateway
-                  value:
-                    code: FORBIDDEN
-                    message: The user has no permission to access this resource.
-                    status: 403
-                    owner: API_GATEWAY
-          headers: {}
-        '404':
-          description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-                description: Not Found
-              examples:
-                '10':
-                  summary: Token Not Found
-                  value:
-                    code: TOKEN_NOT_FOUND
-                    message: Authentication token was not found.
-                    status: 404
-                    owner: API_GATEWAY
-                '11':
-                  summary: Book Not Found
-                  value:
-                    code: BOOK_NOT_FOUND
-                    message: Book not found.
-                    status: 404
-                    owner: GYCODING
-          headers: {}
-        '405':
-          description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-                description: Method Not Allowed
-              example:
-                code: METHOD_NOT_ALLOWED
-                message: Method used to access this resource is not allowed.
-                status: 405
-                owner: GYCODING
-          headers: {}
-        '500':
-          description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-                description: Internal Error
-              examples:
-                '13':
-                  summary: Database Error
-                  value:
-                    code: DB_ERROR
-                    message: >-
-                      An error with the database has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: GYCODING
-                '14':
-                  summary: Auth Error from API Gateway
-                  value:
-                    code: AUTH_ERROR
-                    message: >-
-                      An error with the authentication service has occurred,
-                      sorry for the inconvenience.
-                    status: 500
-                    owner: API_GATEWAY
-                '15':
-                  summary: Gateway Error
-                  value:
-                    code: GATEWAY_ERROR
-                    message: >-
-                      An internal API Gateway error has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: API_GATEWAY
-                '16':
-                  summary: Server Error
-                  value:
-                    code: SERVER_ERROR
-                    message: >-
-                      An internal server error has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: GYCODING
-          headers: {}
       security: []
       x-roles:
         - COMMON
@@ -4049,99 +1037,223 @@ paths:
                 type: 'null'
           headers: {}
         '403':
+          $ref: '#/components/responses/Forbidden'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-                description: Forbidden
-              examples:
-                '1':
-                  summary: Forbidden to Service
-                  value:
-                    code: FORBIDDEN
-                    message: The user has no permission to access this resource.
-                    status: 403
-                    owner: GYCODING
-                '2':
-                  summary: Forbidden to API Gateway
-                  value:
-                    code: FORBIDDEN
-                    message: The user has no permission to access this resource.
-                    status: 403
-                    owner: API_GATEWAY
-          headers: {}
         '404':
+          $ref: '#/components/responses/Not Found'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-                description: Not Found
-              examples:
-                '3':
-                  summary: Token Not Found
-                  value:
-                    code: TOKEN_NOT_FOUND
-                    message: Authentication token was not found.
-                    status: 404
-                    owner: API_GATEWAY
-                '4':
-                  summary: Book Not Found
-                  value:
-                    code: BOOK_NOT_FOUND
-                    message: Book not found.
-                    status: 404
-                    owner: GYCODING
-          headers: {}
         '500':
+          $ref: '#/components/responses/Internal Error'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-                description: Internal Error
-              examples:
-                '5':
-                  summary: Database Error
-                  value:
-                    code: DB_ERROR
-                    message: >-
-                      An error with the database has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: GYCODING
-                '6':
-                  summary: Auth Error from API Gateway
-                  value:
-                    code: AUTH_ERROR
-                    message: >-
-                      An error with the authentication service has occurred,
-                      sorry for the inconvenience.
-                    status: 500
-                    owner: API_GATEWAY
-                '7':
-                  summary: Gateway Error
-                  value:
-                    code: GATEWAY_ERROR
-                    message: >-
-                      An internal API Gateway error has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: API_GATEWAY
-                '8':
-                  summary: Server Error
-                  value:
-                    code: SERVER_ERROR
-                    message: >-
-                      An internal server error has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: GYCODING
-          headers: {}
       security: []
       x-roles:
         - ADMIN
+  /activity:
+    get:
+      summary: List Friends Activities
+      deprecated: false
+      description: Retrieves all the activities made by user's friends.
+      tags:
+        - Activity
+      parameters:
+        - name: Authorization
+          in: header
+          description: Authorization token.
+          example: vVteUFdSV93fNfnnV_gvnqo864MhoFld_KjbJwNDXio
+          schema:
+            type: string
+            default: vVteUFdSV93fNfnnV_gvnqo864MhoFld_KjbJwNDXio
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Activity'
+                  description: Activity.
+                description: List of activities.
+          headers: {}
+        '400':
+          $ref: '#/components/responses/Bad Request'
+          description: ''
+        '403':
+          $ref: '#/components/responses/Forbidden'
+          description: ''
+        '404':
+          $ref: '#/components/responses/Not Found'
+          description: ''
+        '405':
+          $ref: '#/components/responses/Method Not Allowed'
+          description: ''
+        '500':
+          $ref: '#/components/responses/Internal Error'
+          description: ''
+      security: []
+      x-roles:
+        - COMMON
+        - ADMIN
+        - DEVELOPER
+    post:
+      summary: Add Activity
+      deprecated: false
+      description: Saves an activity made by a user.
+      tags:
+        - Activity
+      parameters:
+        - name: Authorization
+          in: header
+          description: Authorization token.
+          example: vVteUFdSV93fNfnnV_gvnqo864MhoFld_KjbJwNDXio
+          schema:
+            type: string
+            default: vVteUFdSV93fNfnnV_gvnqo864MhoFld_KjbJwNDXio
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: Activity Object.
+              $ref: '#/components/schemas/Activity'
+            example:
+              message: Test.
+        required: true
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Activity'
+                description: Activity
+          headers: {}
+        '400':
+          $ref: '#/components/responses/Bad Request'
+          description: ''
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+          description: ''
+        '403':
+          $ref: '#/components/responses/Forbidden'
+          description: ''
+        '404':
+          $ref: '#/components/responses/Not Found'
+          description: ''
+        '405':
+          $ref: '#/components/responses/Method Not Allowed'
+          description: ''
+        '500':
+          $ref: '#/components/responses/Internal Error'
+          description: ''
+      security: []
+      x-roles:
+        - COMMON
+        - ADMIN
+        - DEVELOPER
+    patch:
+      summary: React to an Activity
+      deprecated: false
+      description: Reacts to an activity made by a user.
+      tags:
+        - Activity
+      parameters:
+        - name: Authorization
+          in: header
+          description: Authorization token.
+          example: vVteUFdSV93fNfnnV_gvnqo864MhoFld_KjbJwNDXio
+          schema:
+            type: string
+            default: vVteUFdSV93fNfnnV_gvnqo864MhoFld_KjbJwNDXio
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: Activity Object.
+              $ref: '#/components/schemas/Activity'
+            example:
+              id: 10efe501-3c66-4472-b6c3-c23bc3128c98
+              profileId: dfa0987b-f1dd-41df-987e-409e5231c9ff
+        required: true
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Activity'
+                description: Activity
+          headers: {}
+        '400':
+          $ref: '#/components/responses/Bad Request'
+          description: ''
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+          description: ''
+        '403':
+          $ref: '#/components/responses/Forbidden'
+          description: ''
+        '404':
+          $ref: '#/components/responses/Not Found'
+          description: ''
+        '405':
+          $ref: '#/components/responses/Method Not Allowed'
+          description: ''
+        '500':
+          $ref: '#/components/responses/Internal Error'
+          description: ''
+      security: []
+      x-roles:
+        - COMMON
+        - ADMIN
+        - DEVELOPER
+  /activity/{profileId}:
+    get:
+      summary: List Activities
+      deprecated: false
+      description: Retrieves all the activities made by a user.
+      tags:
+        - Activity
+      parameters:
+        - name: profileId
+          in: path
+          description: Profile ID.
+          required: true
+          example: b526448f-1c92-4163-afc1-fd00ebff34f1
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Activity'
+                  description: Activity.
+                description: List of activities.
+          headers: {}
+        '400':
+          $ref: '#/components/responses/Bad Request'
+          description: ''
+        '403':
+          $ref: '#/components/responses/Forbidden'
+          description: ''
+        '404':
+          $ref: '#/components/responses/Not Found'
+          description: ''
+        '405':
+          $ref: '#/components/responses/Method Not Allowed'
+          description: ''
+        '500':
+          $ref: '#/components/responses/Internal Error'
+          description: ''
+      security: []
+      x-roles:
+        - COMMON
+        - ADMIN
+        - DEVELOPER
 webhooks: {}
 components:
   schemas:
@@ -4287,20 +1399,6 @@ components:
       required:
         - books
         - quote
-    Activity:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Activity ID.
-          format: uuid
-        message:
-          type: string
-          description: Activity Message.
-      description: Activity object.
-      required:
-        - id
-        - message
     Books Metadata:
       type: object
       properties:
@@ -4329,6 +1427,30 @@ components:
         - activity
         - biography
       description: Books Metadata Object.
+    Activity:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Activity ID.
+          format: uuid
+        message:
+          type: string
+          description: Activity Message.
+        profileId:
+          type: string
+          format: uuid
+          description: Activity Profile ID.
+        likes:
+          type: array
+          items:
+            type: string
+            description: Activity Like Profile ID.
+            format: uuid
+          description: Activity Likes.
+      description: Activity object.
+      required:
+        - id
     Error Response:
       type: object
       properties:
@@ -4369,6 +1491,238 @@ components:
         - status
         - owner
       description: Error Response object.
+  responses:
+    Not Modified:
+      description: ''
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error%20Response'
+            description: Not Modified
+          examples:
+            Book Not Modified:
+              summary: Book Not Modified
+              value:
+                code: BOOK_NOT_MODIFIED
+                message: Book could not be modified.
+                status: 304
+                owner: GYCODING
+    Bad Request:
+      description: ''
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error%20Response'
+            description: Bad Request
+          examples:
+            Bad Request:
+              summary: Bad Request
+              value:
+                code: BAD_REQUEST
+                message: The endpoint is malformed.
+                status: 400
+                owner: API_GATEWAY
+            Hall of Fame Limit Reached:
+              summary: Hall of Fame Limit Reached
+              value:
+                code: HALL_OF_FAME_LIMIT_REACHED
+                message: >-
+                  User has reached the maximum number of Hall of Fame entries
+                  (5).
+                status: 400
+                owner: GYCODING
+            Friend Request sent to self:
+              summary: Friend Request sent to self
+              value:
+                code: FRIEND_REQUEST_TO_SELF
+                message: Cannot send a friend request to oneself.
+                status: 400
+                owner: GYCODING
+    Unauthorized:
+      description: ''
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error%20Response'
+            description: Unauthorized
+          examples:
+            Invalid Login:
+              summary: Invalid Login
+              value:
+                code: INVALID_LOGIN
+                message: >-
+                  Invalid login due to the non existance of the user or invalid
+                  password.
+                status: 401
+                owner: GYCODING
+            Invalid API Key:
+              summary: Invalid API Key
+              value:
+                code: INVALID_API_KEY
+                message: The API Key is malformed.
+                status: 401
+                owner: API_GATEWAY
+            Unauthorized to Service:
+              summary: Unauthorized to Service
+              value:
+                code: UNAUTHORIZED
+                message: The user is not authorized to access this resource.
+                status: 401
+                owner: GYCODING
+            Invalid Token:
+              summary: Invalid Token
+              value:
+                code: INVALID_TOKEN
+                message: The provided token is invalid, expired or not even present.
+                status: 401
+                owner: API_GATEWAY
+    Forbidden:
+      description: ''
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error%20Response'
+            description: Forbidden
+          examples:
+            Forbidden to Service:
+              summary: Forbidden to Service
+              value:
+                code: FORBIDDEN
+                message: The user has no permission to access this resource.
+                status: 403
+                owner: GYCODING
+            Forbidden to API Gateway:
+              summary: Forbidden to API Gateway
+              value:
+                code: FORBIDDEN
+                message: The user has no permission to access this resource.
+                status: 403
+                owner: API_GATEWAY
+    Not Found:
+      description: ''
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error%20Response'
+            description: Not Found
+          examples:
+            Token Not Found:
+              summary: Token Not Found
+              value:
+                code: TOKEN_NOT_FOUND
+                message: Authentication token was not found.
+                status: 404
+                owner: API_GATEWAY
+            Book Not Found:
+              summary: Book Not Found
+              value:
+                code: BOOK_NOT_FOUND
+                message: Book not found.
+                status: 404
+                owner: GYCODING
+    Method Not Allowed:
+      description: ''
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error%20Response'
+            description: Method Not Allowed
+          examples:
+            Method Not Allowed:
+              summary: Method Not Allowed
+              value:
+                code: METHOD_NOT_ALLOWED
+                message: Method used to access this resource is not allowed.
+                status: 405
+                owner: GYCODING
+    Conflict:
+      description: ''
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error%20Response'
+            description: Conflict
+          examples:
+            Book already exists on Hall of Fame:
+              summary: Book already exists on Hall of Fame
+              value:
+                code: HALL_OF_FAME_BOOK_ALREADY_EXISTS
+                message: Book already exists in the user's Hall of Fame.
+                status: 409
+                owner: GYCODING
+            Friend Request already exists:
+              summary: Friend Request already exists
+              value:
+                code: FRIEND_REQUEST_ALREADY_EXISTS
+                message: A friend request between these users already exists.
+                status: 409
+                owner: GYCODING
+            Users are already friends:
+              summary: Users are already friends
+              value:
+                code: FRIEND_REQUEST_ALREADY_FRIENDS
+                message: Users are already friends.
+                status: 409
+                owner: GYCODING
+    Internal Error:
+      description: ''
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error%20Response'
+            description: Internal Error
+          examples:
+            Database Error:
+              summary: Database Error
+              value:
+                code: DB_ERROR
+                message: >-
+                  An error with the database has occurred, sorry for the
+                  inconvenience.
+                status: 500
+                owner: GYCODING
+            Auth Error from API Gateway:
+              summary: Auth Error from API Gateway
+              value:
+                code: AUTH_ERROR
+                message: >-
+                  An error with the authentication service has occurred, sorry
+                  for the inconvenience.
+                status: 500
+                owner: API_GATEWAY
+            Gateway Error:
+              summary: Gateway Error
+              value:
+                code: GATEWAY_ERROR
+                message: >-
+                  An internal API Gateway error has occurred, sorry for the
+                  inconvenience.
+                status: 500
+                owner: API_GATEWAY
+            Server Error:
+              summary: Server Error
+              value:
+                code: SERVER_ERROR
+                message: >-
+                  An internal server error has occurred, sorry for the
+                  inconvenience.
+                status: 500
+                owner: GYCODING
+    Not Implemented:
+      description: ''
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error%20Response'
+            description: Not Implemented
+          examples:
+            Not Implemented:
+              summary: Not Implemented
+              value:
+                code: NOT_IMPLEMENTED
+                message: The resource is not implemented yet.
+                status: 501
+                owner: API_GATEWAY
   securitySchemes: {}
 servers:
   - url: https://api.gycoding.com/books
