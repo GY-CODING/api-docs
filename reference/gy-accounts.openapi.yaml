@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: GY Accounts
+  title: Default module
   description: ''
   version: 1.0.0
 tags:
@@ -48,89 +48,17 @@ paths:
                 description: Logged User Credentials.
           headers: {}
         '400':
+          $ref: '#/components/responses/Bad Request'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              example:
-                code: BAD_REQUEST
-                message: The endpoint is malformed.
-                status: 400
-                owner: API_GATEWAY
-          headers: {}
         '401':
+          $ref: '#/components/responses/Unauthorized'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-          headers: {}
         '405':
+          $ref: '#/components/responses/Method Not Allowed'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              example:
-                code: METHOD_NOT_ALLOWED
-                message: Method used to access this resource is not allowed.
-                status: 405
-                owner: GYCODING
-          headers: {}
         '500':
+          $ref: '#/components/responses/Internal Error'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              examples:
-                '2':
-                  summary: Database Error
-                  value:
-                    code: DB_ERROR
-                    message: >-
-                      An error with the database has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: GYCODING
-                '3':
-                  summary: Auth Error from Service
-                  value:
-                    code: AUTH_ERROR
-                    message: >-
-                      An error with the authentication service has occurred,
-                      sorry for the inconvenience.
-                    status: 500
-                    owner: GYCODING
-                '4':
-                  summary: Auth Error from API Gateway
-                  value:
-                    code: AUTH_ERROR
-                    message: >-
-                      An error with the authentication service has occurred,
-                      sorry for the inconvenience.
-                    status: 500
-                    owner: API_GATEWAY
-                '5':
-                  summary: Gateway Error
-                  value:
-                    code: GATEWAY_ERROR
-                    message: >-
-                      An internal API Gateway error has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: API_GATEWAY
-                '6':
-                  summary: Server Error
-                  value:
-                    code: SERVER_ERROR
-                    message: >-
-                      An internal server error has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: GYCODING
-          headers: {}
       security: []
       x-roles:
         - COMMON
@@ -166,108 +94,17 @@ paths:
                 description: Signed Up User Data.
           headers: {}
         '400':
+          $ref: '#/components/responses/Bad Request'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              example:
-                code: BAD_REQUEST
-                message: The endpoint is malformed.
-                status: 400
-                owner: API_GATEWAY
-          headers: {}
         '405':
+          $ref: '#/components/responses/Method Not Allowed'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              example:
-                code: METHOD_NOT_ALLOWED
-                message: Method used to access this resource is not allowed.
-                status: 405
-                owner: GYCODING
-          headers: {}
         '409':
+          $ref: '#/components/responses/Conflict'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              examples:
-                '2':
-                  summary: Conflict
-                  value:
-                    code: CONFLICT
-                    message: >-
-                      An internal conflict between external data and the API has
-                      occured. Requested data may already exist.
-                    status: 409
-                    owner: GYCODING
-                '3':
-                  summary: Invalid Sign Up
-                  value:
-                    code: INVALID_SIGN_UP
-                    message: >-
-                      Invalid sign up due to the already existance of the user
-                      or an authentication error.
-                    status: 409
-                    owner: GYCODING
-          headers: {}
         '500':
+          $ref: '#/components/responses/Internal Error'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              examples:
-                '4':
-                  summary: Database Error
-                  value:
-                    code: DB_ERROR
-                    message: >-
-                      An error with the database has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: GYCODING
-                '5':
-                  summary: Auth Error from Service
-                  value:
-                    code: AUTH_ERROR
-                    message: >-
-                      An error with the authentication service has occurred,
-                      sorry for the inconvenience.
-                    status: 500
-                    owner: GYCODING
-                '6':
-                  summary: Auth Error from API Gateway
-                  value:
-                    code: AUTH_ERROR
-                    message: >-
-                      An error with the authentication service has occurred,
-                      sorry for the inconvenience.
-                    status: 500
-                    owner: API_GATEWAY
-                '7':
-                  summary: Gateway Error
-                  value:
-                    code: GATEWAY_ERROR
-                    message: >-
-                      An internal API Gateway error has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: API_GATEWAY
-                '8':
-                  summary: Server Error
-                  value:
-                    code: SERVER_ERROR
-                    message: >-
-                      An internal server error has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: GYCODING
-          headers: {}
       security: []
       x-roles:
         - COMMON
@@ -291,82 +128,14 @@ paths:
                 description: Google Authentication URL.
           headers: {}
         '400':
+          $ref: '#/components/responses/Bad Request'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              example:
-                code: BAD_REQUEST
-                message: The endpoint is malformed.
-                status: 400
-                owner: API_GATEWAY
-          headers: {}
         '405':
+          $ref: '#/components/responses/Method Not Allowed'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              example:
-                code: METHOD_NOT_ALLOWED
-                message: Method used to access this resource is not allowed.
-                status: 405
-                owner: GYCODING
-          headers: {}
         '500':
+          $ref: '#/components/responses/Internal Error'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              examples:
-                '2':
-                  summary: Database Error
-                  value:
-                    code: DB_ERROR
-                    message: >-
-                      An error with the database has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: GYCODING
-                '3':
-                  summary: Auth Error from Service
-                  value:
-                    code: AUTH_ERROR
-                    message: >-
-                      An error with the authentication service has occurred,
-                      sorry for the inconvenience.
-                    status: 500
-                    owner: GYCODING
-                '4':
-                  summary: Auth Error from API Gateway
-                  value:
-                    code: AUTH_ERROR
-                    message: >-
-                      An error with the authentication service has occurred,
-                      sorry for the inconvenience.
-                    status: 500
-                    owner: API_GATEWAY
-                '5':
-                  summary: Gateway Error
-                  value:
-                    code: GATEWAY_ERROR
-                    message: >-
-                      An internal API Gateway error has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: API_GATEWAY
-                '6':
-                  summary: Server Error
-                  value:
-                    code: SERVER_ERROR
-                    message: >-
-                      An internal server error has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: GYCODING
-          headers: {}
       security: []
       x-roles:
         - COMMON
@@ -400,118 +169,23 @@ paths:
                 description: List of profiles.
           headers: {}
         '400':
+          $ref: '#/components/responses/Bad Request'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              example:
-                code: BAD_REQUEST
-                message: The endpoint is malformed.
-                status: 400
-                owner: API_GATEWAY
-          headers: {}
         '401':
+          $ref: '#/components/responses/Unauthorized'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-          headers: {}
         '403':
+          $ref: '#/components/responses/Forbidden'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              examples:
-                '2':
-                  summary: Forbidden to Service
-                  value:
-                    code: FORBIDDEN
-                    message: The user has no permission to access this resource.
-                    status: 403
-                    owner: GYCODING
-                '3':
-                  summary: Forbidden to API Gateway
-                  value:
-                    code: FORBIDDEN
-                    message: The user has no permission to access this resource.
-                    status: 403
-                    owner: API_GATEWAY
-          headers: {}
         '404':
+          $ref: '#/components/responses/Not Found'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-          headers: {}
         '405':
+          $ref: '#/components/responses/Method Not Allowed'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              example:
-                code: METHOD_NOT_ALLOWED
-                message: Method used to access this resource is not allowed.
-                status: 405
-                owner: GYCODING
-          headers: {}
         '500':
+          $ref: '#/components/responses/Internal Error'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              examples:
-                '4':
-                  summary: Database Error
-                  value:
-                    code: DB_ERROR
-                    message: >-
-                      An error with the database has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: GYCODING
-                '5':
-                  summary: Auth Error from Service
-                  value:
-                    code: AUTH_ERROR
-                    message: >-
-                      An error with the authentication service has occurred,
-                      sorry for the inconvenience.
-                    status: 500
-                    owner: GYCODING
-                '6':
-                  summary: Auth Error from API Gateway
-                  value:
-                    code: AUTH_ERROR
-                    message: >-
-                      An error with the authentication service has occurred,
-                      sorry for the inconvenience.
-                    status: 500
-                    owner: API_GATEWAY
-                '7':
-                  summary: Gateway Error
-                  value:
-                    code: GATEWAY_ERROR
-                    message: >-
-                      An internal API Gateway error has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: API_GATEWAY
-                '8':
-                  summary: Server Error
-                  value:
-                    code: SERVER_ERROR
-                    message: >-
-                      An internal server error has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: GYCODING
-          headers: {}
       security: []
       x-roles:
         - COMMON
@@ -545,118 +219,23 @@ paths:
                 description: User Profile object.
           headers: {}
         '400':
+          $ref: '#/components/responses/Bad Request'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              example:
-                code: BAD_REQUEST
-                message: The endpoint is malformed.
-                status: 400
-                owner: API_GATEWAY
-          headers: {}
         '401':
+          $ref: '#/components/responses/Unauthorized'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-          headers: {}
         '403':
+          $ref: '#/components/responses/Forbidden'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              examples:
-                '2':
-                  summary: Forbidden to Service
-                  value:
-                    code: FORBIDDEN
-                    message: The user has no permission to access this resource.
-                    status: 403
-                    owner: GYCODING
-                '3':
-                  summary: Forbidden to API Gateway
-                  value:
-                    code: FORBIDDEN
-                    message: The user has no permission to access this resource.
-                    status: 403
-                    owner: API_GATEWAY
-          headers: {}
         '404':
+          $ref: '#/components/responses/Not Found'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-          headers: {}
         '405':
+          $ref: '#/components/responses/Method Not Allowed'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              example:
-                code: METHOD_NOT_ALLOWED
-                message: Method used to access this resource is not allowed.
-                status: 405
-                owner: GYCODING
-          headers: {}
         '500':
+          $ref: '#/components/responses/Internal Error'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              examples:
-                '4':
-                  summary: Database Error
-                  value:
-                    code: DB_ERROR
-                    message: >-
-                      An error with the database has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: GYCODING
-                '5':
-                  summary: Auth Error from Service
-                  value:
-                    code: AUTH_ERROR
-                    message: >-
-                      An error with the authentication service has occurred,
-                      sorry for the inconvenience.
-                    status: 500
-                    owner: GYCODING
-                '6':
-                  summary: Auth Error from API Gateway
-                  value:
-                    code: AUTH_ERROR
-                    message: >-
-                      An error with the authentication service has occurred,
-                      sorry for the inconvenience.
-                    status: 500
-                    owner: API_GATEWAY
-                '7':
-                  summary: Gateway Error
-                  value:
-                    code: GATEWAY_ERROR
-                    message: >-
-                      An internal API Gateway error has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: API_GATEWAY
-                '8':
-                  summary: Server Error
-                  value:
-                    code: SERVER_ERROR
-                    message: >-
-                      An internal server error has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: GYCODING
-          headers: {}
       security: []
       x-roles:
         - COMMON
@@ -698,125 +277,23 @@ paths:
                 description: User Profile object.
           headers: {}
         '304':
+          $ref: '#/components/responses/Not Modified'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              example:
-                code: RESOURCE_NOT_MODIFIED
-                message: >-
-                  The resource could not be modified due to some internal
-                  conflict or error.
-                status: 304
-                owner: GYCODING
-          headers: {}
         '400':
+          $ref: '#/components/responses/Bad Request'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              example:
-                code: BAD_REQUEST
-                message: The endpoint is malformed.
-                status: 400
-                owner: API_GATEWAY
-          headers: {}
         '401':
+          $ref: '#/components/responses/Unauthorized'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-          headers: {}
         '403':
+          $ref: '#/components/responses/Forbidden'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              examples:
-                '2':
-                  summary: Forbidden to Service
-                  value:
-                    code: FORBIDDEN
-                    message: The user has no permission to access this resource.
-                    status: 403
-                    owner: GYCODING
-                '3':
-                  summary: Forbidden to API Gateway
-                  value:
-                    code: FORBIDDEN
-                    message: The user has no permission to access this resource.
-                    status: 403
-                    owner: API_GATEWAY
-          headers: {}
         '405':
+          $ref: '#/components/responses/Method Not Allowed'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              example:
-                code: METHOD_NOT_ALLOWED
-                message: Method used to access this resource is not allowed.
-                status: 405
-                owner: GYCODING
-          headers: {}
         '500':
+          $ref: '#/components/responses/Internal Error'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              examples:
-                '4':
-                  summary: Database Error
-                  value:
-                    code: DB_ERROR
-                    message: >-
-                      An error with the database has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: GYCODING
-                '5':
-                  summary: Auth Error from Service
-                  value:
-                    code: AUTH_ERROR
-                    message: >-
-                      An error with the authentication service has occurred,
-                      sorry for the inconvenience.
-                    status: 500
-                    owner: GYCODING
-                '6':
-                  summary: Auth Error from API Gateway
-                  value:
-                    code: AUTH_ERROR
-                    message: >-
-                      An error with the authentication service has occurred,
-                      sorry for the inconvenience.
-                    status: 500
-                    owner: API_GATEWAY
-                '7':
-                  summary: Gateway Error
-                  value:
-                    code: GATEWAY_ERROR
-                    message: >-
-                      An internal API Gateway error has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: API_GATEWAY
-                '8':
-                  summary: Server Error
-                  value:
-                    code: SERVER_ERROR
-                    message: >-
-                      An internal server error has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: GYCODING
-          headers: {}
       security: []
       x-roles:
         - COMMON
@@ -848,118 +325,23 @@ paths:
                 description: User username.
           headers: {}
         '400':
+          $ref: '#/components/responses/Bad Request'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              example:
-                code: BAD_REQUEST
-                message: The endpoint is malformed.
-                status: 400
-                owner: API_GATEWAY
-          headers: {}
         '401':
+          $ref: '#/components/responses/Unauthorized'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-          headers: {}
         '403':
+          $ref: '#/components/responses/Forbidden'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              examples:
-                '2':
-                  summary: Forbidden to Service
-                  value:
-                    code: FORBIDDEN
-                    message: The user has no permission to access this resource.
-                    status: 403
-                    owner: GYCODING
-                '3':
-                  summary: Forbidden to API Gateway
-                  value:
-                    code: FORBIDDEN
-                    message: The user has no permission to access this resource.
-                    status: 403
-                    owner: API_GATEWAY
-          headers: {}
         '404':
+          $ref: '#/components/responses/Not Found'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-          headers: {}
         '405':
+          $ref: '#/components/responses/Method Not Allowed'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              example:
-                code: METHOD_NOT_ALLOWED
-                message: Method used to access this resource is not allowed.
-                status: 405
-                owner: GYCODING
-          headers: {}
         '500':
+          $ref: '#/components/responses/Internal Error'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              examples:
-                '4':
-                  summary: Database Error
-                  value:
-                    code: DB_ERROR
-                    message: >-
-                      An error with the database has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: GYCODING
-                '5':
-                  summary: Auth Error from Service
-                  value:
-                    code: AUTH_ERROR
-                    message: >-
-                      An error with the authentication service has occurred,
-                      sorry for the inconvenience.
-                    status: 500
-                    owner: GYCODING
-                '6':
-                  summary: Auth Error from API Gateway
-                  value:
-                    code: AUTH_ERROR
-                    message: >-
-                      An error with the authentication service has occurred,
-                      sorry for the inconvenience.
-                    status: 500
-                    owner: API_GATEWAY
-                '7':
-                  summary: Gateway Error
-                  value:
-                    code: GATEWAY_ERROR
-                    message: >-
-                      An internal API Gateway error has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: API_GATEWAY
-                '8':
-                  summary: Server Error
-                  value:
-                    code: SERVER_ERROR
-                    message: >-
-                      An internal server error has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: GYCODING
-          headers: {}
       security: []
       x-roles:
         - COMMON
@@ -995,125 +377,23 @@ paths:
                 description: User username.
           headers: {}
         '304':
+          $ref: '#/components/responses/Not Modified'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              example:
-                code: RESOURCE_NOT_MODIFIED
-                message: >-
-                  The resource could not be modified due to some internal
-                  conflict or error.
-                status: 304
-                owner: GYCODING
-          headers: {}
         '400':
+          $ref: '#/components/responses/Bad Request'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              example:
-                code: BAD_REQUEST
-                message: The endpoint is malformed.
-                status: 400
-                owner: API_GATEWAY
-          headers: {}
         '401':
+          $ref: '#/components/responses/Unauthorized'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-          headers: {}
         '403':
+          $ref: '#/components/responses/Forbidden'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              examples:
-                '2':
-                  summary: Forbidden to Service
-                  value:
-                    code: FORBIDDEN
-                    message: The user has no permission to access this resource.
-                    status: 403
-                    owner: GYCODING
-                '3':
-                  summary: Forbidden to API Gateway
-                  value:
-                    code: FORBIDDEN
-                    message: The user has no permission to access this resource.
-                    status: 403
-                    owner: API_GATEWAY
-          headers: {}
         '405':
+          $ref: '#/components/responses/Method Not Allowed'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              example:
-                code: METHOD_NOT_ALLOWED
-                message: Method used to access this resource is not allowed.
-                status: 405
-                owner: GYCODING
-          headers: {}
         '500':
+          $ref: '#/components/responses/Internal Error'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              examples:
-                '4':
-                  summary: Database Error
-                  value:
-                    code: DB_ERROR
-                    message: >-
-                      An error with the database has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: GYCODING
-                '5':
-                  summary: Auth Error from Service
-                  value:
-                    code: AUTH_ERROR
-                    message: >-
-                      An error with the authentication service has occurred,
-                      sorry for the inconvenience.
-                    status: 500
-                    owner: GYCODING
-                '6':
-                  summary: Auth Error from API Gateway
-                  value:
-                    code: AUTH_ERROR
-                    message: >-
-                      An error with the authentication service has occurred,
-                      sorry for the inconvenience.
-                    status: 500
-                    owner: API_GATEWAY
-                '7':
-                  summary: Gateway Error
-                  value:
-                    code: GATEWAY_ERROR
-                    message: >-
-                      An internal API Gateway error has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: API_GATEWAY
-                '8':
-                  summary: Server Error
-                  value:
-                    code: SERVER_ERROR
-                    message: >-
-                      An internal server error has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: GYCODING
-          headers: {}
       security: []
       x-roles:
         - COMMON
@@ -1145,106 +425,20 @@ paths:
                 description: User email.
           headers: {}
         '401':
+          $ref: '#/components/responses/Unauthorized'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-          headers: {}
         '403':
+          $ref: '#/components/responses/Forbidden'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              examples:
-                '1':
-                  summary: Forbidden to Service
-                  value:
-                    code: FORBIDDEN
-                    message: The user has no permission to access this resource.
-                    status: 403
-                    owner: GYCODING
-                '2':
-                  summary: Forbidden to API Gateway
-                  value:
-                    code: FORBIDDEN
-                    message: The user has no permission to access this resource.
-                    status: 403
-                    owner: API_GATEWAY
-          headers: {}
         '404':
+          $ref: '#/components/responses/Not Found'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-          headers: {}
         '405':
+          $ref: '#/components/responses/Method Not Allowed'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              example:
-                code: METHOD_NOT_ALLOWED
-                message: Method used to access this resource is not allowed.
-                status: 405
-                owner: GYCODING
-          headers: {}
         '500':
+          $ref: '#/components/responses/Internal Error'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              examples:
-                '3':
-                  summary: Database Error
-                  value:
-                    code: DB_ERROR
-                    message: >-
-                      An error with the database has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: GYCODING
-                '4':
-                  summary: Auth Error from Service
-                  value:
-                    code: AUTH_ERROR
-                    message: >-
-                      An error with the authentication service has occurred,
-                      sorry for the inconvenience.
-                    status: 500
-                    owner: GYCODING
-                '5':
-                  summary: Auth Error from API Gateway
-                  value:
-                    code: AUTH_ERROR
-                    message: >-
-                      An error with the authentication service has occurred,
-                      sorry for the inconvenience.
-                    status: 500
-                    owner: API_GATEWAY
-                '6':
-                  summary: Gateway Error
-                  value:
-                    code: GATEWAY_ERROR
-                    message: >-
-                      An internal API Gateway error has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: API_GATEWAY
-                '7':
-                  summary: Server Error
-                  value:
-                    code: SERVER_ERROR
-                    message: >-
-                      An internal server error has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: GYCODING
-          headers: {}
       security: []
       x-roles:
         - COMMON
@@ -1261,7 +455,7 @@ paths:
           in: path
           description: User ID.
           required: true
-          example: '118026854282768251823'
+          example: '101667041712464068613'
           schema:
             type: string
       responses:
@@ -1281,118 +475,23 @@ paths:
                 description: User profile picture.
           headers: {}
         '400':
+          $ref: '#/components/responses/Bad Request'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              example:
-                code: BAD_REQUEST
-                message: The endpoint is malformed.
-                status: 400
-                owner: API_GATEWAY
-          headers: {}
         '401':
+          $ref: '#/components/responses/Unauthorized'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-          headers: {}
         '403':
+          $ref: '#/components/responses/Forbidden'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              examples:
-                '2':
-                  summary: Forbidden to Service
-                  value:
-                    code: FORBIDDEN
-                    message: The user has no permission to access this resource.
-                    status: 403
-                    owner: GYCODING
-                '3':
-                  summary: Forbidden to API Gateway
-                  value:
-                    code: FORBIDDEN
-                    message: The user has no permission to access this resource.
-                    status: 403
-                    owner: API_GATEWAY
-          headers: {}
         '404':
+          $ref: '#/components/responses/Not Found'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-          headers: {}
         '405':
+          $ref: '#/components/responses/Method Not Allowed'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              example:
-                code: METHOD_NOT_ALLOWED
-                message: Method used to access this resource is not allowed.
-                status: 405
-                owner: GYCODING
-          headers: {}
         '500':
+          $ref: '#/components/responses/Internal Error'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              examples:
-                '4':
-                  summary: Database Error
-                  value:
-                    code: DB_ERROR
-                    message: >-
-                      An error with the database has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: GYCODING
-                '5':
-                  summary: Auth Error from Service
-                  value:
-                    code: AUTH_ERROR
-                    message: >-
-                      An error with the authentication service has occurred,
-                      sorry for the inconvenience.
-                    status: 500
-                    owner: GYCODING
-                '6':
-                  summary: Auth Error from API Gateway
-                  value:
-                    code: AUTH_ERROR
-                    message: >-
-                      An error with the authentication service has occurred,
-                      sorry for the inconvenience.
-                    status: 500
-                    owner: API_GATEWAY
-                '7':
-                  summary: Gateway Error
-                  value:
-                    code: GATEWAY_ERROR
-                    message: >-
-                      An internal API Gateway error has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: API_GATEWAY
-                '8':
-                  summary: Server Error
-                  value:
-                    code: SERVER_ERROR
-                    message: >-
-                      An internal server error has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: GYCODING
-          headers: {}
       security: []
       x-roles:
         - COMMON
@@ -1431,125 +530,23 @@ paths:
                 description: User profile picture.
           headers: {}
         '304':
+          $ref: '#/components/responses/Not Modified'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              example:
-                code: RESOURCE_NOT_MODIFIED
-                message: >-
-                  The resource could not be modified due to some internal
-                  conflict or error.
-                status: 304
-                owner: GYCODING
-          headers: {}
         '400':
+          $ref: '#/components/responses/Bad Request'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              example:
-                code: BAD_REQUEST
-                message: The endpoint is malformed.
-                status: 400
-                owner: API_GATEWAY
-          headers: {}
         '401':
+          $ref: '#/components/responses/Unauthorized'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-          headers: {}
         '403':
+          $ref: '#/components/responses/Forbidden'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              examples:
-                '2':
-                  summary: Forbidden to Service
-                  value:
-                    code: FORBIDDEN
-                    message: The user has no permission to access this resource.
-                    status: 403
-                    owner: GYCODING
-                '3':
-                  summary: Forbidden to API Gateway
-                  value:
-                    code: FORBIDDEN
-                    message: The user has no permission to access this resource.
-                    status: 403
-                    owner: API_GATEWAY
-          headers: {}
         '405':
+          $ref: '#/components/responses/Method Not Allowed'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              example:
-                code: METHOD_NOT_ALLOWED
-                message: Method used to access this resource is not allowed.
-                status: 405
-                owner: GYCODING
-          headers: {}
         '500':
+          $ref: '#/components/responses/Internal Error'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              examples:
-                '4':
-                  summary: Database Error
-                  value:
-                    code: DB_ERROR
-                    message: >-
-                      An error with the database has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: GYCODING
-                '5':
-                  summary: Auth Error from Service
-                  value:
-                    code: AUTH_ERROR
-                    message: >-
-                      An error with the authentication service has occurred,
-                      sorry for the inconvenience.
-                    status: 500
-                    owner: GYCODING
-                '6':
-                  summary: Auth Error from API Gateway
-                  value:
-                    code: AUTH_ERROR
-                    message: >-
-                      An error with the authentication service has occurred,
-                      sorry for the inconvenience.
-                    status: 500
-                    owner: API_GATEWAY
-                '7':
-                  summary: Gateway Error
-                  value:
-                    code: GATEWAY_ERROR
-                    message: >-
-                      An internal API Gateway error has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: API_GATEWAY
-                '8':
-                  summary: Server Error
-                  value:
-                    code: SERVER_ERROR
-                    message: >-
-                      An internal server error has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: GYCODING
-          headers: {}
       security: []
       x-roles:
         - COMMON
@@ -1580,118 +577,23 @@ paths:
                 description: User phone number.
           headers: {}
         '400':
+          $ref: '#/components/responses/Bad Request'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              example:
-                code: BAD_REQUEST
-                message: The endpoint is malformed.
-                status: 400
-                owner: API_GATEWAY
-          headers: {}
         '401':
+          $ref: '#/components/responses/Unauthorized'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-          headers: {}
         '403':
+          $ref: '#/components/responses/Forbidden'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              examples:
-                '2':
-                  summary: Forbidden to Service
-                  value:
-                    code: FORBIDDEN
-                    message: The user has no permission to access this resource.
-                    status: 403
-                    owner: GYCODING
-                '3':
-                  summary: Forbidden to API Gateway
-                  value:
-                    code: FORBIDDEN
-                    message: The user has no permission to access this resource.
-                    status: 403
-                    owner: API_GATEWAY
-          headers: {}
         '404':
+          $ref: '#/components/responses/Not Found'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-          headers: {}
         '405':
+          $ref: '#/components/responses/Method Not Allowed'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              example:
-                code: METHOD_NOT_ALLOWED
-                message: Method used to access this resource is not allowed.
-                status: 405
-                owner: GYCODING
-          headers: {}
         '500':
+          $ref: '#/components/responses/Internal Error'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              examples:
-                '4':
-                  summary: Database Error
-                  value:
-                    code: DB_ERROR
-                    message: >-
-                      An error with the database has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: GYCODING
-                '5':
-                  summary: Auth Error from Service
-                  value:
-                    code: AUTH_ERROR
-                    message: >-
-                      An error with the authentication service has occurred,
-                      sorry for the inconvenience.
-                    status: 500
-                    owner: GYCODING
-                '6':
-                  summary: Auth Error from API Gateway
-                  value:
-                    code: AUTH_ERROR
-                    message: >-
-                      An error with the authentication service has occurred,
-                      sorry for the inconvenience.
-                    status: 500
-                    owner: API_GATEWAY
-                '7':
-                  summary: Gateway Error
-                  value:
-                    code: GATEWAY_ERROR
-                    message: >-
-                      An internal API Gateway error has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: API_GATEWAY
-                '8':
-                  summary: Server Error
-                  value:
-                    code: SERVER_ERROR
-                    message: >-
-                      An internal server error has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: GYCODING
-          headers: {}
       security: []
       x-roles:
         - COMMON
@@ -1727,125 +629,23 @@ paths:
                 description: User phone number.
           headers: {}
         '304':
+          $ref: '#/components/responses/Not Modified'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              example:
-                code: RESOURCE_NOT_MODIFIED
-                message: >-
-                  The resource could not be modified due to some internal
-                  conflict or error.
-                status: 304
-                owner: GYCODING
-          headers: {}
         '400':
+          $ref: '#/components/responses/Bad Request'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              example:
-                code: BAD_REQUEST
-                message: The endpoint is malformed.
-                status: 400
-                owner: API_GATEWAY
-          headers: {}
         '401':
+          $ref: '#/components/responses/Unauthorized'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-          headers: {}
         '403':
+          $ref: '#/components/responses/Forbidden'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              examples:
-                '2':
-                  summary: Forbidden to Service
-                  value:
-                    code: FORBIDDEN
-                    message: The user has no permission to access this resource.
-                    status: 403
-                    owner: GYCODING
-                '3':
-                  summary: Forbidden to API Gateway
-                  value:
-                    code: FORBIDDEN
-                    message: The user has no permission to access this resource.
-                    status: 403
-                    owner: API_GATEWAY
-          headers: {}
         '405':
+          $ref: '#/components/responses/Method Not Allowed'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              example:
-                code: METHOD_NOT_ALLOWED
-                message: Method used to access this resource is not allowed.
-                status: 405
-                owner: GYCODING
-          headers: {}
         '500':
+          $ref: '#/components/responses/Internal Error'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              examples:
-                '4':
-                  summary: Database Error
-                  value:
-                    code: DB_ERROR
-                    message: >-
-                      An error with the database has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: GYCODING
-                '5':
-                  summary: Auth Error from Service
-                  value:
-                    code: AUTH_ERROR
-                    message: >-
-                      An error with the authentication service has occurred,
-                      sorry for the inconvenience.
-                    status: 500
-                    owner: GYCODING
-                '6':
-                  summary: Auth Error from API Gateway
-                  value:
-                    code: AUTH_ERROR
-                    message: >-
-                      An error with the authentication service has occurred,
-                      sorry for the inconvenience.
-                    status: 500
-                    owner: API_GATEWAY
-                '7':
-                  summary: Gateway Error
-                  value:
-                    code: GATEWAY_ERROR
-                    message: >-
-                      An internal API Gateway error has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: API_GATEWAY
-                '8':
-                  summary: Server Error
-                  value:
-                    code: SERVER_ERROR
-                    message: >-
-                      An internal server error has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: GYCODING
-          headers: {}
       security: []
       x-roles:
         - COMMON
@@ -1881,125 +681,23 @@ paths:
                 type: 'null'
           headers: {}
         '304':
+          $ref: '#/components/responses/Not Modified'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              example:
-                code: RESOURCE_NOT_MODIFIED
-                message: >-
-                  The resource could not be modified due to some internal
-                  conflict or error.
-                status: 304
-                owner: GYCODING
-          headers: {}
         '400':
+          $ref: '#/components/responses/Bad Request'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              example:
-                code: BAD_REQUEST
-                message: The endpoint is malformed.
-                status: 400
-                owner: API_GATEWAY
-          headers: {}
         '401':
+          $ref: '#/components/responses/Unauthorized'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-          headers: {}
         '403':
+          $ref: '#/components/responses/Forbidden'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              examples:
-                '2':
-                  summary: Forbidden to Service
-                  value:
-                    code: FORBIDDEN
-                    message: The user has no permission to access this resource.
-                    status: 403
-                    owner: GYCODING
-                '3':
-                  summary: Forbidden to API Gateway
-                  value:
-                    code: FORBIDDEN
-                    message: The user has no permission to access this resource.
-                    status: 403
-                    owner: API_GATEWAY
-          headers: {}
         '405':
+          $ref: '#/components/responses/Method Not Allowed'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              example:
-                code: METHOD_NOT_ALLOWED
-                message: Method used to access this resource is not allowed.
-                status: 405
-                owner: GYCODING
-          headers: {}
         '500':
+          $ref: '#/components/responses/Internal Error'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              examples:
-                '4':
-                  summary: Database Error
-                  value:
-                    code: DB_ERROR
-                    message: >-
-                      An error with the database has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: GYCODING
-                '5':
-                  summary: Auth Error from Service
-                  value:
-                    code: AUTH_ERROR
-                    message: >-
-                      An error with the authentication service has occurred,
-                      sorry for the inconvenience.
-                    status: 500
-                    owner: GYCODING
-                '6':
-                  summary: Auth Error from API Gateway
-                  value:
-                    code: AUTH_ERROR
-                    message: >-
-                      An error with the authentication service has occurred,
-                      sorry for the inconvenience.
-                    status: 500
-                    owner: API_GATEWAY
-                '7':
-                  summary: Gateway Error
-                  value:
-                    code: GATEWAY_ERROR
-                    message: >-
-                      An internal API Gateway error has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: API_GATEWAY
-                '8':
-                  summary: Server Error
-                  value:
-                    code: SERVER_ERROR
-                    message: >-
-                      An internal server error has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: GYCODING
-          headers: {}
       security: []
       x-roles:
         - COMMON
@@ -2029,118 +727,23 @@ paths:
                 $ref: '#/components/schemas/User%20Metadata'
           headers: {}
         '400':
+          $ref: '#/components/responses/Bad Request'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              example:
-                code: BAD_REQUEST
-                message: The endpoint is malformed.
-                status: 400
-                owner: API_GATEWAY
-          headers: {}
         '401':
+          $ref: '#/components/responses/Unauthorized'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-          headers: {}
         '403':
+          $ref: '#/components/responses/Forbidden'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              examples:
-                '2':
-                  summary: Forbidden to Service
-                  value:
-                    code: FORBIDDEN
-                    message: The user has no permission to access this resource.
-                    status: 403
-                    owner: GYCODING
-                '3':
-                  summary: Forbidden to API Gateway
-                  value:
-                    code: FORBIDDEN
-                    message: The user has no permission to access this resource.
-                    status: 403
-                    owner: API_GATEWAY
-          headers: {}
         '404':
+          $ref: '#/components/responses/Not Found'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-          headers: {}
         '405':
+          $ref: '#/components/responses/Method Not Allowed'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              example:
-                code: METHOD_NOT_ALLOWED
-                message: Method used to access this resource is not allowed.
-                status: 405
-                owner: GYCODING
-          headers: {}
         '500':
+          $ref: '#/components/responses/Internal Error'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              examples:
-                '4':
-                  summary: Database Error
-                  value:
-                    code: DB_ERROR
-                    message: >-
-                      An error with the database has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: GYCODING
-                '5':
-                  summary: Auth Error from Service
-                  value:
-                    code: AUTH_ERROR
-                    message: >-
-                      An error with the authentication service has occurred,
-                      sorry for the inconvenience.
-                    status: 500
-                    owner: GYCODING
-                '6':
-                  summary: Auth Error from API Gateway
-                  value:
-                    code: AUTH_ERROR
-                    message: >-
-                      An error with the authentication service has occurred,
-                      sorry for the inconvenience.
-                    status: 500
-                    owner: API_GATEWAY
-                '7':
-                  summary: Gateway Error
-                  value:
-                    code: GATEWAY_ERROR
-                    message: >-
-                      An internal API Gateway error has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: API_GATEWAY
-                '8':
-                  summary: Server Error
-                  value:
-                    code: SERVER_ERROR
-                    message: >-
-                      An internal server error has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: GYCODING
-          headers: {}
       security: []
       x-roles:
         - COMMON
@@ -2169,125 +772,23 @@ paths:
                 $ref: '#/components/schemas/User%20Metadata'
           headers: {}
         '304':
+          $ref: '#/components/responses/Not Modified'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              example:
-                code: RESOURCE_NOT_MODIFIED
-                message: >-
-                  The resource could not be modified due to some internal
-                  conflict or error.
-                status: 304
-                owner: GYCODING
-          headers: {}
         '400':
+          $ref: '#/components/responses/Bad Request'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              example:
-                code: BAD_REQUEST
-                message: The endpoint is malformed.
-                status: 400
-                owner: API_GATEWAY
-          headers: {}
         '401':
+          $ref: '#/components/responses/Unauthorized'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-          headers: {}
         '403':
+          $ref: '#/components/responses/Forbidden'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              examples:
-                '2':
-                  summary: Forbidden to Service
-                  value:
-                    code: FORBIDDEN
-                    message: The user has no permission to access this resource.
-                    status: 403
-                    owner: GYCODING
-                '3':
-                  summary: Forbidden to API Gateway
-                  value:
-                    code: FORBIDDEN
-                    message: The user has no permission to access this resource.
-                    status: 403
-                    owner: API_GATEWAY
-          headers: {}
         '405':
+          $ref: '#/components/responses/Method Not Allowed'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              example:
-                code: METHOD_NOT_ALLOWED
-                message: Method used to access this resource is not allowed.
-                status: 405
-                owner: GYCODING
-          headers: {}
         '500':
+          $ref: '#/components/responses/Internal Error'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              examples:
-                '4':
-                  summary: Database Error
-                  value:
-                    code: DB_ERROR
-                    message: >-
-                      An error with the database has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: GYCODING
-                '5':
-                  summary: Auth Error from Service
-                  value:
-                    code: AUTH_ERROR
-                    message: >-
-                      An error with the authentication service has occurred,
-                      sorry for the inconvenience.
-                    status: 500
-                    owner: GYCODING
-                '6':
-                  summary: Auth Error from API Gateway
-                  value:
-                    code: AUTH_ERROR
-                    message: >-
-                      An error with the authentication service has occurred,
-                      sorry for the inconvenience.
-                    status: 500
-                    owner: API_GATEWAY
-                '7':
-                  summary: Gateway Error
-                  value:
-                    code: GATEWAY_ERROR
-                    message: >-
-                      An internal API Gateway error has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: API_GATEWAY
-                '8':
-                  summary: Server Error
-                  value:
-                    code: SERVER_ERROR
-                    message: >-
-                      An internal server error has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: GYCODING
-          headers: {}
       security: []
       x-roles:
         - COMMON
@@ -2317,125 +818,23 @@ paths:
                 type: 'null'
           headers: {}
         '304':
+          $ref: '#/components/responses/Not Modified'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              example:
-                code: RESOURCE_NOT_MODIFIED
-                message: >-
-                  The resource could not be modified due to some internal
-                  conflict or error.
-                status: 304
-                owner: GYCODING
-          headers: {}
         '400':
+          $ref: '#/components/responses/Bad Request'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              example:
-                code: BAD_REQUEST
-                message: The endpoint is malformed.
-                status: 400
-                owner: API_GATEWAY
-          headers: {}
         '401':
+          $ref: '#/components/responses/Unauthorized'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-          headers: {}
         '403':
+          $ref: '#/components/responses/Forbidden'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              examples:
-                '2':
-                  summary: Forbidden to Service
-                  value:
-                    code: FORBIDDEN
-                    message: The user has no permission to access this resource.
-                    status: 403
-                    owner: GYCODING
-                '3':
-                  summary: Forbidden to API Gateway
-                  value:
-                    code: FORBIDDEN
-                    message: The user has no permission to access this resource.
-                    status: 403
-                    owner: API_GATEWAY
-          headers: {}
         '405':
+          $ref: '#/components/responses/Method Not Allowed'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              example:
-                code: METHOD_NOT_ALLOWED
-                message: Method used to access this resource is not allowed.
-                status: 405
-                owner: GYCODING
-          headers: {}
         '500':
+          $ref: '#/components/responses/Internal Error'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              examples:
-                '4':
-                  summary: Database Error
-                  value:
-                    code: DB_ERROR
-                    message: >-
-                      An error with the database has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: GYCODING
-                '5':
-                  summary: Auth Error from Service
-                  value:
-                    code: AUTH_ERROR
-                    message: >-
-                      An error with the authentication service has occurred,
-                      sorry for the inconvenience.
-                    status: 500
-                    owner: GYCODING
-                '6':
-                  summary: Auth Error from API Gateway
-                  value:
-                    code: AUTH_ERROR
-                    message: >-
-                      An error with the authentication service has occurred,
-                      sorry for the inconvenience.
-                    status: 500
-                    owner: API_GATEWAY
-                '7':
-                  summary: Gateway Error
-                  value:
-                    code: GATEWAY_ERROR
-                    message: >-
-                      An internal API Gateway error has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: API_GATEWAY
-                '8':
-                  summary: Server Error
-                  value:
-                    code: SERVER_ERROR
-                    message: >-
-                      An internal server error has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: GYCODING
-          headers: {}
       security: []
       x-roles:
         - COMMON
@@ -2472,111 +871,20 @@ paths:
                 description: User ID transformed from the given Profile ID.
           headers: {}
         '400':
+          $ref: '#/components/responses/Bad Request'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              example:
-                code: BAD_REQUEST
-                message: The endpoint is malformed.
-                status: 400
-                owner: API_GATEWAY
-          headers: {}
         '403':
+          $ref: '#/components/responses/Forbidden'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              examples:
-                '2':
-                  summary: Forbidden to Service
-                  value:
-                    code: FORBIDDEN
-                    message: The user has no permission to access this resource.
-                    status: 403
-                    owner: GYCODING
-                '3':
-                  summary: Forbidden to API Gateway
-                  value:
-                    code: FORBIDDEN
-                    message: The user has no permission to access this resource.
-                    status: 403
-                    owner: API_GATEWAY
-          headers: {}
         '404':
+          $ref: '#/components/responses/Not Found'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-          headers: {}
         '405':
+          $ref: '#/components/responses/Method Not Allowed'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              example:
-                code: METHOD_NOT_ALLOWED
-                message: Method used to access this resource is not allowed.
-                status: 405
-                owner: GYCODING
-          headers: {}
         '500':
+          $ref: '#/components/responses/Internal Error'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              examples:
-                '4':
-                  summary: Database Error
-                  value:
-                    code: DB_ERROR
-                    message: >-
-                      An error with the database has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: GYCODING
-                '5':
-                  summary: Auth Error from Service
-                  value:
-                    code: AUTH_ERROR
-                    message: >-
-                      An error with the authentication service has occurred,
-                      sorry for the inconvenience.
-                    status: 500
-                    owner: GYCODING
-                '6':
-                  summary: Auth Error from API Gateway
-                  value:
-                    code: AUTH_ERROR
-                    message: >-
-                      An error with the authentication service has occurred,
-                      sorry for the inconvenience.
-                    status: 500
-                    owner: API_GATEWAY
-                '7':
-                  summary: Gateway Error
-                  value:
-                    code: GATEWAY_ERROR
-                    message: >-
-                      An internal API Gateway error has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: API_GATEWAY
-                '8':
-                  summary: Server Error
-                  value:
-                    code: SERVER_ERROR
-                    message: >-
-                      An internal server error has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: GYCODING
-          headers: {}
       security: []
       x-roles:
         - COMMON
@@ -2613,111 +921,20 @@ paths:
                 description: Profile ID transformed from the given User ID.
           headers: {}
         '400':
+          $ref: '#/components/responses/Bad Request'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              example:
-                code: BAD_REQUEST
-                message: The endpoint is malformed.
-                status: 400
-                owner: API_GATEWAY
-          headers: {}
         '403':
+          $ref: '#/components/responses/Forbidden'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              examples:
-                '2':
-                  summary: Forbidden to Service
-                  value:
-                    code: FORBIDDEN
-                    message: The user has no permission to access this resource.
-                    status: 403
-                    owner: GYCODING
-                '3':
-                  summary: Forbidden to API Gateway
-                  value:
-                    code: FORBIDDEN
-                    message: The user has no permission to access this resource.
-                    status: 403
-                    owner: API_GATEWAY
-          headers: {}
         '404':
+          $ref: '#/components/responses/Not Found'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-          headers: {}
         '405':
+          $ref: '#/components/responses/Method Not Allowed'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              example:
-                code: METHOD_NOT_ALLOWED
-                message: Method used to access this resource is not allowed.
-                status: 405
-                owner: GYCODING
-          headers: {}
         '500':
+          $ref: '#/components/responses/Internal Error'
           description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error%20Response'
-              examples:
-                '4':
-                  summary: Database Error
-                  value:
-                    code: DB_ERROR
-                    message: >-
-                      An error with the database has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: GYCODING
-                '5':
-                  summary: Auth Error from Service
-                  value:
-                    code: AUTH_ERROR
-                    message: >-
-                      An error with the authentication service has occurred,
-                      sorry for the inconvenience.
-                    status: 500
-                    owner: GYCODING
-                '6':
-                  summary: Auth Error from API Gateway
-                  value:
-                    code: AUTH_ERROR
-                    message: >-
-                      An error with the authentication service has occurred,
-                      sorry for the inconvenience.
-                    status: 500
-                    owner: API_GATEWAY
-                '7':
-                  summary: Gateway Error
-                  value:
-                    code: GATEWAY_ERROR
-                    message: >-
-                      An internal API Gateway error has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: API_GATEWAY
-                '8':
-                  summary: Server Error
-                  value:
-                    code: SERVER_ERROR
-                    message: >-
-                      An internal server error has occurred, sorry for the
-                      inconvenience.
-                    status: 500
-                    owner: GYCODING
-          headers: {}
       security: []
       x-roles:
         - COMMON
@@ -2985,8 +1202,223 @@ components:
         - status
         - owner
       description: Error Response object.
+  responses:
+    Bad Request:
+      description: ''
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error%20Response'
+          examples:
+            Bad Request:
+              summary: Bad Request
+              value:
+                code: BAD_REQUEST
+                message: The endpoint is malformed.
+                status: 400
+                owner: API_GATEWAY
+    Forbidden:
+      description: ''
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error%20Response'
+          examples:
+            Forbidden to Service:
+              summary: Forbidden to Service
+              value:
+                code: FORBIDDEN
+                message: The user has no permission to access this resource.
+                status: 403
+                owner: GYCODING
+            Forbidden to API Gateway:
+              summary: Forbidden to API Gateway
+              value:
+                code: FORBIDDEN
+                message: The user has no permission to access this resource.
+                status: 403
+                owner: API_GATEWAY
+    Conflict:
+      description: ''
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error%20Response'
+          examples:
+            Conflict:
+              summary: Conflict
+              value:
+                code: CONFLICT
+                message: >-
+                  An internal conflict between external data and the API has
+                  occured. Requested data may already exist.
+                status: 409
+                owner: GYCODING
+            Invalid Sign Up:
+              summary: Invalid Sign Up
+              value:
+                code: INVALID_SIGN_UP
+                message: >-
+                  Invalid sign up due to the already existance of the user or an
+                  authentication error.
+                status: 409
+                owner: GYCODING
+    Internal Error:
+      description: ''
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error%20Response'
+          examples:
+            Database Error:
+              summary: Database Error
+              value:
+                code: DB_ERROR
+                message: >-
+                  An error with the database has occurred, sorry for the
+                  inconvenience.
+                status: 500
+                owner: GYCODING
+            Auth Error from Service:
+              summary: Auth Error from Service
+              value:
+                code: AUTH_ERROR
+                message: >-
+                  An error with the authentication service has occurred, sorry
+                  for the inconvenience.
+                status: 500
+                owner: GYCODING
+            Auth Error from API Gateway:
+              summary: Auth Error from API Gateway
+              value:
+                code: AUTH_ERROR
+                message: >-
+                  An error with the authentication service has occurred, sorry
+                  for the inconvenience.
+                status: 500
+                owner: API_GATEWAY
+            Gateway Error:
+              summary: Gateway Error
+              value:
+                code: GATEWAY_ERROR
+                message: >-
+                  An internal API Gateway error has occurred, sorry for the
+                  inconvenience.
+                status: 500
+                owner: API_GATEWAY
+            Server Error:
+              summary: Server Error
+              value:
+                code: SERVER_ERROR
+                message: >-
+                  An internal server error has occurred, sorry for the
+                  inconvenience.
+                status: 500
+                owner: GYCODING
+    Method Not Allowed:
+      description: ''
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error%20Response'
+          examples:
+            Method Not Allowed:
+              summary: Method Not Allowed
+              value:
+                code: METHOD_NOT_ALLOWED
+                message: Method used to access this resource is not allowed.
+                status: 405
+                owner: GYCODING
+    Not Modified:
+      description: ''
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error%20Response'
+          examples:
+            Resource Not Modified:
+              summary: Resource Not Modified
+              value:
+                code: RESOURCE_NOT_MODIFIED
+                message: >-
+                  The resource could not be modified due to some internal
+                  conflict or error.
+                status: 304
+                owner: GYCODING
+    Not Implemented:
+      description: ''
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error%20Response'
+          examples:
+            Not Implemented:
+              summary: Not Implemented
+              value:
+                code: NOT_IMPLEMENTED
+                message: The resource is not implemented yet.
+                status: 501
+                owner: API_GATEWAY
+    Unauthorized:
+      description: ''
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error%20Response'
+          examples:
+            Invalid Login:
+              summary: Invalid Login
+              value:
+                code: INVALID_LOGIN
+                message: >-
+                  Invalid login due to the non existance of the user or invalid
+                  password.
+                status: 401
+                owner: GYCODING
+            Unauthorized to Service:
+              summary: Unauthorized to Service
+              value:
+                code: UNAUTHORIZED
+                message: The user is not authorized to access this resource.
+                status: 401
+                owner: GYCODING
+            Invalid Token:
+              summary: Invalid Token
+              value:
+                code: INVALID_TOKEN
+                message: The provided token is invalid, expired or not even present.
+                status: 401
+                owner: API_GATEWAY
+            Invalid API Key:
+              summary: Invalid API Key
+              value:
+                code: INVALID_API_KEY
+                message: The API Key is malformed.
+                status: 401
+                owner: API_GATEWAY
+    Not Found:
+      description: ''
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error%20Response'
+          examples:
+            Token Not Found:
+              summary: Token Not Found
+              value:
+                code: TOKEN_NOT_FOUND
+                message: Authentication token was not found.
+                status: 404
+                owner: API_GATEWAY
+            Resource Not Found:
+              summary: Resource Not Found
+              value:
+                code: RESOURCE_NOT_FOUND
+                message: This resource was not found.
+                status: 404
+                owner: GYCODING
   securitySchemes: {}
 servers:
-  - url: https://api.gycoding.com/accounts
+  - url: http://194.163.133.153:8000/accounts
     description: Production
 security: []
