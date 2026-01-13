@@ -2,6 +2,8 @@ const yaml = require('js-yaml');
 const { MongoClient } = require("mongodb");
 const Route = require('./route.js');
 
+require('dotenv').config();
+
 function getParameter(ref, components) {
     const parameter = ref.replace(/^#\//, '').split('/').pop();
 
@@ -64,7 +66,7 @@ async function fetchAPIRoutes() {
 }
 
 async function insert() {
-    const dbUrl = "mongodb+srv://gycoding:iggycoding-05@fallofthegods.zsllqn9.mongodb.net"
+    const dbUrl = process.env.MONGO_URI
     const dbName = "APIGateway"
     const collectionName = "APIDocs"
     const client = new MongoClient(dbUrl);
