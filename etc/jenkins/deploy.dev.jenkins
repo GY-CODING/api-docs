@@ -8,12 +8,12 @@ pipeline {
         GIT_BRANCH = 'develop'
         GIT_CREDENTIALS_ID = credentials('GITHUB_TOKEN')
 
-        OUTPUT_DIR = 'reference'        
+        OUTPUT_DIR = 'reference'
         TEMP_DIR = 'tmp'
         HERALDS_OF_CHAOS_OUTPUT_FILE = 'heralds-of-chaos.openapi.yaml'
         GY_ACCOUNTS_OUTPUT_FILE = 'gy-accounts.openapi.yaml'
         GY_BOOKS_OUTPUT_FILE = 'gy-books.openapi.yaml'
-        MONGO_URI = credentials('MONGO_URI_PRO')
+        MONGO_URI = credentials('MONGO_URI_DEV')
     }
 
     stages {
