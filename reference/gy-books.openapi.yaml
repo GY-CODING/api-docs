@@ -7,8 +7,8 @@ tags:
   - name: Books
   - name: Friends
   - name: Profile
-  - name: Metadata
   - name: Activity
+  - name: Metadata
 paths:
   /{id}/public:
     get:
@@ -1006,48 +1006,6 @@ paths:
         - COMMON
         - ADMIN
         - DEVELOPER
-  /metadata:
-    get:
-      summary: Initialize and Sync Metadata
-      deprecated: false
-      description: Initializes and syncs user's book metadata.
-      tags:
-        - Metadata
-      parameters:
-        - name: x-profile-id
-          in: header
-          description: Profile ID.
-          required: true
-          example: '{{profile-id}}'
-          schema:
-            type: string
-        - name: x-api-key
-          in: header
-          description: API Key for services.
-          required: true
-          example: '{{api-key}}'
-          schema:
-            type: string
-      responses:
-        '204':
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: 'null'
-          headers: {}
-        '403':
-          $ref: '#/components/responses/Forbidden'
-          description: ''
-        '404':
-          $ref: '#/components/responses/Not Found'
-          description: ''
-        '500':
-          $ref: '#/components/responses/Internal Error'
-          description: ''
-      security: []
-      x-roles:
-        - ADMIN
   /activity:
     get:
       summary: List Friends Activities
@@ -1056,6 +1014,20 @@ paths:
       tags:
         - Activity
       parameters:
+        - name: page
+          in: query
+          description: ''
+          required: false
+          example: '0'
+          schema:
+            type: string
+        - name: size
+          in: query
+          description: ''
+          required: false
+          example: '10'
+          schema:
+            type: string
         - name: Authorization
           in: header
           description: Authorization token.
@@ -1074,7 +1046,15 @@ paths:
                   $ref: '#/components/schemas/Activity'
                   description: Activity.
                 description: List of activities.
-          headers: {}
+          headers:
+            X-HasNext:
+              example: true
+              required: false
+              description: >-
+                Whether the paginated list still has more elements to show on
+                further pages or not.
+              schema:
+                type: boolean
         '400':
           $ref: '#/components/responses/Bad Request'
           description: ''
@@ -1171,8 +1151,8 @@ paths:
               description: Activity Object.
               $ref: '#/components/schemas/Activity'
             example:
-              id: 10efe501-3c66-4472-b6c3-c23bc3128c98
-              profileId: dfa0987b-f1dd-41df-987e-409e5231c9ff
+              id: 77649218-b085-4dc6-a994-5257d8ac7d35
+              profileId: b526448f-1c92-4163-afc1-fd00ebff34f1
         required: true
       responses:
         '200':
@@ -1254,6 +1234,48 @@ paths:
         - COMMON
         - ADMIN
         - DEVELOPER
+  /metadata:
+    post:
+      summary: Initialize and Sync Metadata
+      deprecated: false
+      description: Initializes and syncs user's book metadata.
+      tags:
+        - Metadata
+      parameters:
+        - name: x-profile-id
+          in: header
+          description: Profile ID.
+          required: true
+          example: '{{profile-id}}'
+          schema:
+            type: string
+        - name: x-api-key
+          in: header
+          description: API Key for services.
+          required: true
+          example: '{{api-key}}'
+          schema:
+            type: string
+      responses:
+        '204':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: 'null'
+          headers: {}
+        '403':
+          $ref: '#/components/responses/Forbidden'
+          description: ''
+        '404':
+          $ref: '#/components/responses/Not Found'
+          description: ''
+        '500':
+          $ref: '#/components/responses/Internal Error'
+          description: ''
+      security: []
+      x-roles:
+        - ADMIN
 webhooks: {}
 components:
   schemas:
