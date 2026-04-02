@@ -8,6 +8,7 @@ tags:
   - name: Friends
   - name: Profile
   - name: Activity
+  - name: Lists
   - name: Metadata
 paths:
   /{id}/public:
@@ -22,7 +23,7 @@ paths:
           in: path
           description: Book ID.
           required: true
-          example: '382700'
+          example: '103241'
           schema:
             type: string
       responses:
@@ -72,10 +73,10 @@ paths:
         - name: Authorization
           in: header
           description: Authorization token.
-          example: vVteUFdSV93fNfnnV_gvnqo864MhoFld_KjbJwNDXio
+          example: ycLwSMRXPRfFl-tsBoi27AFRyX4yTnLDIlRGoPa8qIo
           schema:
             type: string
-            default: vVteUFdSV93fNfnnV_gvnqo864MhoFld_KjbJwNDXio
+            default: ycLwSMRXPRfFl-tsBoi27AFRyX4yTnLDIlRGoPa8qIo
       responses:
         '200':
           description: ''
@@ -125,10 +126,10 @@ paths:
         - name: Authorization
           in: header
           description: Authorization token.
-          example: vVteUFdSV93fNfnnV_gvnqo864MhoFld_KjbJwNDXio
+          example: ycLwSMRXPRfFl-tsBoi27AFRyX4yTnLDIlRGoPa8qIo
           schema:
             type: string
-            default: vVteUFdSV93fNfnnV_gvnqo864MhoFld_KjbJwNDXio
+            default: ycLwSMRXPRfFl-tsBoi27AFRyX4yTnLDIlRGoPa8qIo
       requestBody:
         content:
           application/json:
@@ -138,7 +139,7 @@ paths:
             example:
               userData:
                 status: READ
-                'rating:': 5
+                rating: 0
       responses:
         '200':
           description: ''
@@ -191,10 +192,10 @@ paths:
         - name: Authorization
           in: header
           description: Authorization token.
-          example: vVteUFdSV93fNfnnV_gvnqo864MhoFld_KjbJwNDXio
+          example: ycLwSMRXPRfFl-tsBoi27AFRyX4yTnLDIlRGoPa8qIo
           schema:
             type: string
-            default: vVteUFdSV93fNfnnV_gvnqo864MhoFld_KjbJwNDXio
+            default: ycLwSMRXPRfFl-tsBoi27AFRyX4yTnLDIlRGoPa8qIo
       responses:
         '204':
           description: ''
@@ -301,10 +302,10 @@ paths:
         - name: Authorization
           in: header
           description: Authorization token.
-          example: vVteUFdSV93fNfnnV_gvnqo864MhoFld_KjbJwNDXio
+          example: ycLwSMRXPRfFl-tsBoi27AFRyX4yTnLDIlRGoPa8qIo
           schema:
             type: string
-            default: vVteUFdSV93fNfnnV_gvnqo864MhoFld_KjbJwNDXio
+            default: ycLwSMRXPRfFl-tsBoi27AFRyX4yTnLDIlRGoPa8qIo
       responses:
         '200':
           description: ''
@@ -355,10 +356,10 @@ paths:
         - name: Authorization
           in: header
           description: Authorization token.
-          example: vVteUFdSV93fNfnnV_gvnqo864MhoFld_KjbJwNDXio
+          example: ycLwSMRXPRfFl-tsBoi27AFRyX4yTnLDIlRGoPa8qIo
           schema:
             type: string
-            default: vVteUFdSV93fNfnnV_gvnqo864MhoFld_KjbJwNDXio
+            default: ycLwSMRXPRfFl-tsBoi27AFRyX4yTnLDIlRGoPa8qIo
       responses:
         '204':
           description: ''
@@ -398,10 +399,10 @@ paths:
         - name: Authorization
           in: header
           description: Authorization token.
-          example: vVteUFdSV93fNfnnV_gvnqo864MhoFld_KjbJwNDXio
+          example: ycLwSMRXPRfFl-tsBoi27AFRyX4yTnLDIlRGoPa8qIo
           schema:
             type: string
-            default: vVteUFdSV93fNfnnV_gvnqo864MhoFld_KjbJwNDXio
+            default: ycLwSMRXPRfFl-tsBoi27AFRyX4yTnLDIlRGoPa8qIo
       requestBody:
         content:
           application/json:
@@ -462,10 +463,10 @@ paths:
         - name: Authorization
           in: header
           description: Authorization token.
-          example: vVteUFdSV93fNfnnV_gvnqo864MhoFld_KjbJwNDXio
+          example: ycLwSMRXPRfFl-tsBoi27AFRyX4yTnLDIlRGoPa8qIo
           schema:
             type: string
-            default: vVteUFdSV93fNfnnV_gvnqo864MhoFld_KjbJwNDXio
+            default: ycLwSMRXPRfFl-tsBoi27AFRyX4yTnLDIlRGoPa8qIo
       responses:
         '200':
           description: ''
@@ -517,10 +518,10 @@ paths:
         - name: Authorization
           in: header
           description: Authorization token.
-          example: vVteUFdSV93fNfnnV_gvnqo864MhoFld_KjbJwNDXio
+          example: ycLwSMRXPRfFl-tsBoi27AFRyX4yTnLDIlRGoPa8qIo
           schema:
             type: string
-            default: vVteUFdSV93fNfnnV_gvnqo864MhoFld_KjbJwNDXio
+            default: ycLwSMRXPRfFl-tsBoi27AFRyX4yTnLDIlRGoPa8qIo
       requestBody:
         content:
           application/json:
@@ -593,10 +594,10 @@ paths:
         - name: Authorization
           in: header
           description: Authorization token.
-          example: vVteUFdSV93fNfnnV_gvnqo864MhoFld_KjbJwNDXio
+          example: ycLwSMRXPRfFl-tsBoi27AFRyX4yTnLDIlRGoPa8qIo
           schema:
             type: string
-            default: vVteUFdSV93fNfnnV_gvnqo864MhoFld_KjbJwNDXio
+            default: ycLwSMRXPRfFl-tsBoi27AFRyX4yTnLDIlRGoPa8qIo
       responses:
         '200':
           description: ''
@@ -729,10 +730,10 @@ paths:
         - name: Authorization
           in: header
           description: Authorization token.
-          example: vVteUFdSV93fNfnnV_gvnqo864MhoFld_KjbJwNDXio
+          example: ycLwSMRXPRfFl-tsBoi27AFRyX4yTnLDIlRGoPa8qIo
           schema:
             type: string
-            default: vVteUFdSV93fNfnnV_gvnqo864MhoFld_KjbJwNDXio
+            default: ycLwSMRXPRfFl-tsBoi27AFRyX4yTnLDIlRGoPa8qIo
       requestBody:
         content:
           application/json:
@@ -838,10 +839,10 @@ paths:
         - name: Authorization
           in: header
           description: Authorization token.
-          example: vVteUFdSV93fNfnnV_gvnqo864MhoFld_KjbJwNDXio
+          example: ycLwSMRXPRfFl-tsBoi27AFRyX4yTnLDIlRGoPa8qIo
           schema:
             type: string
-            default: vVteUFdSV93fNfnnV_gvnqo864MhoFld_KjbJwNDXio
+            default: ycLwSMRXPRfFl-tsBoi27AFRyX4yTnLDIlRGoPa8qIo
       requestBody:
         content:
           application/json:
@@ -912,10 +913,10 @@ paths:
         - name: Authorization
           in: header
           description: Authorization token.
-          example: vVteUFdSV93fNfnnV_gvnqo864MhoFld_KjbJwNDXio
+          example: ycLwSMRXPRfFl-tsBoi27AFRyX4yTnLDIlRGoPa8qIo
           schema:
             type: string
-            default: vVteUFdSV93fNfnnV_gvnqo864MhoFld_KjbJwNDXio
+            default: ycLwSMRXPRfFl-tsBoi27AFRyX4yTnLDIlRGoPa8qIo
       responses:
         '204':
           description: ''
@@ -955,10 +956,10 @@ paths:
         - name: Authorization
           in: header
           description: Authorization token.
-          example: vVteUFdSV93fNfnnV_gvnqo864MhoFld_KjbJwNDXio
+          example: ycLwSMRXPRfFl-tsBoi27AFRyX4yTnLDIlRGoPa8qIo
           schema:
             type: string
-            default: vVteUFdSV93fNfnnV_gvnqo864MhoFld_KjbJwNDXio
+            default: ycLwSMRXPRfFl-tsBoi27AFRyX4yTnLDIlRGoPa8qIo
       requestBody:
         content:
           application/json:
@@ -1031,10 +1032,10 @@ paths:
         - name: Authorization
           in: header
           description: Authorization token.
-          example: vVteUFdSV93fNfnnV_gvnqo864MhoFld_KjbJwNDXio
+          example: ycLwSMRXPRfFl-tsBoi27AFRyX4yTnLDIlRGoPa8qIo
           schema:
             type: string
-            default: vVteUFdSV93fNfnnV_gvnqo864MhoFld_KjbJwNDXio
+            default: ycLwSMRXPRfFl-tsBoi27AFRyX4yTnLDIlRGoPa8qIo
       responses:
         '200':
           description: ''
@@ -1085,10 +1086,10 @@ paths:
         - name: Authorization
           in: header
           description: Authorization token.
-          example: vVteUFdSV93fNfnnV_gvnqo864MhoFld_KjbJwNDXio
+          example: ycLwSMRXPRfFl-tsBoi27AFRyX4yTnLDIlRGoPa8qIo
           schema:
             type: string
-            default: vVteUFdSV93fNfnnV_gvnqo864MhoFld_KjbJwNDXio
+            default: ycLwSMRXPRfFl-tsBoi27AFRyX4yTnLDIlRGoPa8qIo
       requestBody:
         content:
           application/json:
@@ -1140,10 +1141,10 @@ paths:
         - name: Authorization
           in: header
           description: Authorization token.
-          example: vVteUFdSV93fNfnnV_gvnqo864MhoFld_KjbJwNDXio
+          example: ycLwSMRXPRfFl-tsBoi27AFRyX4yTnLDIlRGoPa8qIo
           schema:
             type: string
-            default: vVteUFdSV93fNfnnV_gvnqo864MhoFld_KjbJwNDXio
+            default: ycLwSMRXPRfFl-tsBoi27AFRyX4yTnLDIlRGoPa8qIo
       requestBody:
         content:
           application/json:
@@ -1151,8 +1152,8 @@ paths:
               description: Activity Object.
               $ref: '#/components/schemas/Activity'
             example:
-              id: 77649218-b085-4dc6-a994-5257d8ac7d35
-              profileId: b526448f-1c92-4163-afc1-fd00ebff34f1
+              id: a0b51068-d6c4-408a-9141-a4be3f300367
+              profileId: dfa0987b-f1dd-41df-987e-409e5231c9ff
         required: true
       responses:
         '200':
@@ -1234,6 +1235,393 @@ paths:
         - COMMON
         - ADMIN
         - DEVELOPER
+  /lists:
+    get:
+      summary: List lists
+      deprecated: false
+      description: Retrieves all of the user's lists.
+      tags:
+        - Lists
+      parameters:
+        - name: Authorization
+          in: header
+          description: Authorization token.
+          example: ycLwSMRXPRfFl-tsBoi27AFRyX4yTnLDIlRGoPa8qIo
+          schema:
+            type: string
+            default: ycLwSMRXPRfFl-tsBoi27AFRyX4yTnLDIlRGoPa8qIo
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+          headers: {}
+        '403':
+          $ref: '#/components/responses/Forbidden'
+          description: ''
+        '404':
+          $ref: '#/components/responses/Not Found'
+          description: ''
+        '405':
+          $ref: '#/components/responses/Method Not Allowed'
+          description: ''
+        '500':
+          $ref: '#/components/responses/Internal Error'
+          description: ''
+      security: []
+      x-roles:
+        - COMMON
+        - DEVELOPER
+        - ADMIN
+    post:
+      summary: Create List
+      deprecated: false
+      description: Creates a list.
+      tags:
+        - Lists
+      parameters:
+        - name: Authorization
+          in: header
+          description: Authorization token.
+          example: ycLwSMRXPRfFl-tsBoi27AFRyX4yTnLDIlRGoPa8qIo
+          schema:
+            type: string
+            default: ycLwSMRXPRfFl-tsBoi27AFRyX4yTnLDIlRGoPa8qIo
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties: {}
+            example:
+              name: 'Prueba #1'
+              description: Esta lista es una prueba.
+              books: []
+        required: true
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+          headers: {}
+        '403':
+          $ref: '#/components/responses/Forbidden'
+          description: ''
+        '405':
+          $ref: '#/components/responses/Method Not Allowed'
+          description: ''
+        '500':
+          $ref: '#/components/responses/Internal Error'
+          description: ''
+      security: []
+      x-roles:
+        - COMMON
+        - DEVELOPER
+        - ADMIN
+    patch:
+      summary: Update List
+      deprecated: false
+      description: Updates a list.
+      tags:
+        - Lists
+      parameters:
+        - name: Authorization
+          in: header
+          description: Authorization token.
+          example: ycLwSMRXPRfFl-tsBoi27AFRyX4yTnLDIlRGoPa8qIo
+          schema:
+            type: string
+            default: ycLwSMRXPRfFl-tsBoi27AFRyX4yTnLDIlRGoPa8qIo
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties: {}
+            example:
+              id: 4cbea90f-f005-46e7-bfd6-af52f4dd6b5b
+              name: 'Prueba #1 Update'
+              description: string
+              books: []
+        required: true
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+          headers: {}
+        '403':
+          $ref: '#/components/responses/Forbidden'
+          description: ''
+        '405':
+          $ref: '#/components/responses/Method Not Allowed'
+          description: ''
+        '500':
+          $ref: '#/components/responses/Internal Error'
+          description: ''
+      security: []
+      x-roles:
+        - COMMON
+        - DEVELOPER
+        - ADMIN
+  /lists/{id}:
+    get:
+      summary: Get list
+      deprecated: false
+      description: Retrieves a list.
+      tags:
+        - Lists
+      parameters:
+        - name: id
+          in: path
+          description: List ID.
+          required: true
+          example: cbcd64fe-d1ad-474e-a0d8-4f117420a119
+          schema:
+            type: string
+        - name: Authorization
+          in: header
+          description: Authorization token.
+          example: ycLwSMRXPRfFl-tsBoi27AFRyX4yTnLDIlRGoPa8qIo
+          schema:
+            type: string
+            default: ycLwSMRXPRfFl-tsBoi27AFRyX4yTnLDIlRGoPa8qIo
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+          headers: {}
+        '403':
+          $ref: '#/components/responses/Forbidden'
+          description: ''
+        '405':
+          $ref: '#/components/responses/Method Not Allowed'
+          description: ''
+        '500':
+          $ref: '#/components/responses/Internal Error'
+          description: ''
+      security: []
+      x-roles:
+        - COMMON
+        - DEVELOPER
+        - ADMIN
+    delete:
+      summary: Remove List
+      deprecated: false
+      description: Removes a list.
+      tags:
+        - Lists
+      parameters:
+        - name: id
+          in: path
+          description: List ID.
+          required: true
+          example: 3590776a-7c4e-4709-a9af-06f312c6e212
+          schema:
+            type: string
+        - name: Authorization
+          in: header
+          description: Authorization token.
+          example: ycLwSMRXPRfFl-tsBoi27AFRyX4yTnLDIlRGoPa8qIo
+          schema:
+            type: string
+            default: ycLwSMRXPRfFl-tsBoi27AFRyX4yTnLDIlRGoPa8qIo
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+          headers: {}
+        '403':
+          $ref: '#/components/responses/Forbidden'
+          description: ''
+        '405':
+          $ref: '#/components/responses/Method Not Allowed'
+          description: ''
+        '500':
+          $ref: '#/components/responses/Internal Error'
+          description: ''
+      security: []
+      x-roles:
+        - COMMON
+        - DEVELOPER
+        - ADMIN
+  /lists/{id}/books:
+    post:
+      summary: Save a Book
+      deprecated: false
+      description: Saves a book to an specific list.
+      tags:
+        - Lists
+      parameters:
+        - name: id
+          in: path
+          description: List ID.
+          required: true
+          example: cbcd64fe-d1ad-474e-a0d8-4f117420a119
+          schema:
+            type: string
+        - name: Authorization
+          in: header
+          description: Authorization token.
+          example: ycLwSMRXPRfFl-tsBoi27AFRyX4yTnLDIlRGoPa8qIo
+          schema:
+            type: string
+            default: ycLwSMRXPRfFl-tsBoi27AFRyX4yTnLDIlRGoPa8qIo
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties: {}
+            example:
+              bookId: '386446'
+        required: true
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+          headers: {}
+        '403':
+          $ref: '#/components/responses/Forbidden'
+          description: ''
+        '405':
+          $ref: '#/components/responses/Method Not Allowed'
+          description: ''
+        '500':
+          $ref: '#/components/responses/Internal Error'
+          description: ''
+      security: []
+      x-roles:
+        - COMMON
+        - DEVELOPER
+        - ADMIN
+    patch:
+      summary: Update a Book
+      deprecated: false
+      description: Updates a book from a specific list.
+      tags:
+        - Lists
+      parameters:
+        - name: id
+          in: path
+          description: List ID.
+          required: true
+          example: 60b2f12a-3a07-4a1e-bf19-a445b0762289
+          schema:
+            type: string
+        - name: Authorization
+          in: header
+          description: Authorization token.
+          example: ycLwSMRXPRfFl-tsBoi27AFRyX4yTnLDIlRGoPa8qIo
+          schema:
+            type: string
+            default: ycLwSMRXPRfFl-tsBoi27AFRyX4yTnLDIlRGoPa8qIo
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties: {}
+            example:
+              bookId: '427522'
+              order: 2
+        required: true
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+          headers: {}
+        '403':
+          $ref: '#/components/responses/Forbidden'
+          description: ''
+        '405':
+          $ref: '#/components/responses/Method Not Allowed'
+          description: ''
+        '500':
+          $ref: '#/components/responses/Internal Error'
+          description: ''
+      security: []
+      x-roles:
+        - COMMON
+        - DEVELOPER
+        - ADMIN
+  /lists/{id}/books/{bookId}:
+    delete:
+      summary: Remove a Book
+      deprecated: false
+      description: Removes a book from a specific list.
+      tags:
+        - Lists
+      parameters:
+        - name: id
+          in: path
+          description: List ID.
+          required: true
+          example: cbcd64fe-d1ad-474e-a0d8-4f117420a119
+          schema:
+            type: string
+        - name: bookId
+          in: path
+          description: Book ID.
+          required: true
+          example: '427522'
+          schema:
+            type: string
+        - name: Authorization
+          in: header
+          description: Authorization token.
+          example: ycLwSMRXPRfFl-tsBoi27AFRyX4yTnLDIlRGoPa8qIo
+          schema:
+            type: string
+            default: ycLwSMRXPRfFl-tsBoi27AFRyX4yTnLDIlRGoPa8qIo
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+          headers: {}
+        '403':
+          $ref: '#/components/responses/Forbidden'
+          description: ''
+        '405':
+          $ref: '#/components/responses/Method Not Allowed'
+          description: ''
+        '500':
+          $ref: '#/components/responses/Internal Error'
+          description: ''
+      security: []
+      x-roles:
+        - COMMON
+        - DEVELOPER
+        - ADMIN
   /metadata:
     post:
       summary: Initialize and Sync Metadata
