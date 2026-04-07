@@ -153,7 +153,7 @@ paths:
           in: query
           description: Query to find users.
           required: true
-          example: username
+          example: toxyc
           schema:
             type: string
       responses:
@@ -1419,6 +1419,6 @@ components:
                 owner: GYCODING
   securitySchemes: {}
 servers:
-  - url: http://194.163.133.153:8000/accounts
+  - url: https://api.gycoding.com/accounts
     description: Production
 security: []

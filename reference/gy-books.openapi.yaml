@@ -588,7 +588,7 @@ paths:
           in: query
           description: Query to find profiles.
           required: true
-          example: username
+          example: toxyc
           schema:
             type: string
         - name: Authorization
@@ -642,7 +642,7 @@ paths:
           in: query
           description: Query to find profiles.
           required: true
-          example: toxyc
+          example: gfigu
           schema:
             type: string
       responses:
@@ -677,6 +677,58 @@ paths:
   /profiles/{profileId}:
     get:
       summary: Get Profile
+      deprecated: false
+      description: Retrieves a user profile for GY Books.
+      tags:
+        - Profile
+      parameters:
+        - name: profileId
+          in: path
+          description: Profile ID.
+          required: true
+          example: e6b94363-d415-462d-9b0e-c5c4796fcbd9
+          schema:
+            type: string
+            format: uuid
+        - name: Authorization
+          in: header
+          description: Authorization token.
+          example: ycLwSMRXPRfFl-tsBoi27AFRyX4yTnLDIlRGoPa8qIo
+          schema:
+            type: string
+            default: ycLwSMRXPRfFl-tsBoi27AFRyX4yTnLDIlRGoPa8qIo
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User%20Profile'
+                description: Profile.
+          headers: {}
+        '400':
+          $ref: '#/components/responses/Bad Request'
+          description: ''
+        '403':
+          $ref: '#/components/responses/Forbidden'
+          description: ''
+        '404':
+          $ref: '#/components/responses/Not Found'
+          description: ''
+        '405':
+          $ref: '#/components/responses/Method Not Allowed'
+          description: ''
+        '500':
+          $ref: '#/components/responses/Internal Error'
+          description: ''
+      security: []
+      x-roles:
+        - COMMON
+        - ADMIN
+        - DEVELOPER
+  /profiles/{profileId}/public:
+    get:
+      summary: Get Profile (Public)
       deprecated: false
       description: Retrieves a user profile for GY Books.
       tags:
@@ -1345,10 +1397,10 @@ paths:
               type: object
               properties: {}
             example:
-              id: 4cbea90f-f005-46e7-bfd6-af52f4dd6b5b
-              name: 'Prueba #1 Update'
-              description: string
-              books: []
+              id: 8c11b875-0a35-406d-9aed-0c4259be080b
+              books:
+                - bookId: '386446'
+                  order: 5
         required: true
       responses:
         '200':
@@ -1474,7 +1526,7 @@ paths:
           in: path
           description: List ID.
           required: true
-          example: cbcd64fe-d1ad-474e-a0d8-4f117420a119
+          example: efabeeb9-4aed-4d35-aaff-91eb37183183
           schema:
             type: string
         - name: Authorization
@@ -1527,7 +1579,7 @@ paths:
           in: path
           description: List ID.
           required: true
-          example: 60b2f12a-3a07-4a1e-bf19-a445b0762289
+          example: 8c11b875-0a35-406d-9aed-0c4259be080b
           schema:
             type: string
         - name: Authorization
@@ -1544,7 +1596,7 @@ paths:
               type: object
               properties: {}
             example:
-              bookId: '427522'
+              bookId: '386446'
               order: 2
         required: true
       responses:
