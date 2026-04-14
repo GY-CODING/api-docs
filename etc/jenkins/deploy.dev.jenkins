@@ -1,135 +1,23 @@
 pipeline {
-    agent any
+  agent any
 
-    environment {
-        NVM_DIR = "${WORKSPACE}/.nvm"
-        
-        GIT_REPO = 'https://github.com/GY-CODING/api-docs.git'
-        GIT_BRANCH = 'develop'
-        GIT_CREDENTIALS_ID = credentials('GITHUB_TOKEN')
+  stages {
+    stage('Load Pipeline') {
+      steps {
+        script {
+          git(
+            url: 'https://github.com/GY-CODING/devops.git',
+            branch: 'main',
+            credentialsId: 'GYCODING_GITHUB'
+          )
 
-        OUTPUT_DIR = 'reference'        
-        TEMP_DIR = 'tmp'
-        HERALDS_OF_CHAOS_OUTPUT_FILE = 'heralds-of-chaos.openapi.yaml'
-        GY_ACCOUNTS_OUTPUT_FILE = 'gy-accounts.openapi.yaml'
-        GY_BOOKS_OUTPUT_FILE = 'gy-books.openapi.yaml'
-        MONGO_URI = credentials('MONGO_URI_PRO')
+          def pipelineScript = load 'cicd/pipelines/infra/api-docs/deploy.dev.jenkinsfile'
+
+          pipelineScript.run([
+            appName: env.JOB_NAME
+          ])
+        }
+      }
     }
-
-    stages {
-        stage('Install Node') {
-            steps {
-                sh '''
-                    mkdir -p "$NVM_DIR"
-                    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
-                    export NVM_DIR="$NVM_DIR"
-                    [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
-                    nvm install 18
-
-                    echo '#!/bin/bash' > with-node.sh
-                    echo 'export NVM_DIR="$WORKSPACE/.nvm"' >> with-node.sh
-                    echo '[ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"' >> with-node.sh
-                    echo 'nvm use 18' >> with-node.sh
-                    echo '"$@"' >> with-node.sh
-                    chmod +x with-node.sh
-                '''
-            }
-        }
-        
-        stage('Download OAS from Apidog') {
-            steps {
-                sh '''
-                    rm -rf $TEMP_DIR
-                    mkdir -p $TEMP_DIR
-                    
-                    curl --location --request POST 'https://api.apidog.com/v1/projects/790995/export-openapi?locale=en-US' \
-                        --header 'X-Apidog-Api-Version: 2024-03-28' \
-                        --header 'Authorization: Bearer APS-5DtOA8VqcwdN8QZhkkHrpq8YSG0U3Dvu' \
-                        --header 'Content-Type: application/json' \
-                        --data-raw '{
-                          "scope": {
-                            "type": "ALL",
-                            "excludedByTags": []
-                          },
-                          "oasVersion": "3.1",
-                          "exportFormat": "YAML",
-                          "environmentIds": [3002054]
-                        }' \
-                    -o $TEMP_DIR/$HERALDS_OF_CHAOS_OUTPUT_FILE
-                    
-                    curl --location --request POST 'https://api.apidog.com/v1/projects/790958/export-openapi?locale=en-US' \
-                        --header 'X-Apidog-Api-Version: 2024-03-28' \
-                        --header 'Authorization: Bearer APS-5DtOA8VqcwdN8QZhkkHrpq8YSG0U3Dvu' \
-                        --header 'Content-Type: application/json' \
-                        --data-raw '{
-                          "scope": {
-                            "type": "ALL",
-                            "excludedByTags": []
-                          },
-                          "oasVersion": "3.1",
-                          "exportFormat": "YAML",
-                          "environmentIds": [2949843]
-                        }' \
-                    -o $TEMP_DIR/$GY_ACCOUNTS_OUTPUT_FILE
-
-                    curl --location --request POST 'https://api.apidog.com/v1/projects/937545/export-openapi?locale=en-US' \
-                        --header 'X-Apidog-Api-Version: 2024-03-28' \
-                        --header 'Authorization: Bearer APS-5DtOA8VqcwdN8QZhkkHrpq8YSG0U3Dvu' \
-                        --header 'Content-Type: application/json' \
-                        --data-raw '{
-                          "scope": {
-                            "type": "ALL",
-                            "excludedByTags": []
-                          },
-                          "oasVersion": "3.1",
-                          "exportFormat": "YAML",
-                          "environmentIds": [3954961]
-                        }' \
-                    -o $TEMP_DIR/$GY_BOOKS_OUTPUT_FILE
-                '''
-            }
-        }
-
-        stage('Clone from GitHub') {
-            steps {
-                git branch: "${GIT_BRANCH}",
-                    credentialsId: "${GIT_CREDENTIALS_ID}",
-                    url: "${GIT_REPO}"
-            }
-        }
-
-        stage('Move OAS to cloned repository') {
-            steps {
-                sh '''
-                    cp -f $TEMP_DIR/$HERALDS_OF_CHAOS_OUTPUT_FILE reference/
-                    cp -f $TEMP_DIR/$GY_ACCOUNTS_OUTPUT_FILE reference/
-                    cp -f $TEMP_DIR/$GY_BOOKS_OUTPUT_FILE reference/
-                '''
-            }
-        }
-
-        stage('Push to GitHub') {
-            steps {
-                sh '''
-                    git config user.name "jenkins-bot"
-                    git config user.email "jenkins@example.com"
-                    git add reference/
-                    git commit -m "chore: automatic update from apidog changes" || echo "chore: no changes"
-                    git push https://$GIT_CREDENTIALS_ID@github.com/GY-CODING/api-docs.git $GIT_BRANCH
-                '''
-            }
-        }
-
-        stage('Install dependencies') {
-            steps {
-                sh './with-node.sh npm install'
-            }
-        }
-
-        stage('Deliver to MongoDB') {
-            steps {
-                sh './with-node.sh node ./delivery/deliver.js'
-            }
-        }
-    }
+  }
 }
