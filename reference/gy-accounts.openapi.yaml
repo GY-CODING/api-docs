@@ -191,6 +191,46 @@ paths:
         - COMMON
         - ADMIN
         - DEVELOPER
+  /user:
+    delete:
+      summary: Remove User
+      deprecated: false
+      description: Removes a User.
+      tags:
+        - Users
+      parameters:
+        - name: Authorization
+          in: header
+          description: Authorization token.
+          required: false
+          example: 9BVTbqHiqloTZMmpRCBpC4-tEzyvoEiWap62nlxzkOM
+          schema:
+            type: string
+            default: 9BVTbqHiqloTZMmpRCBpC4-tEzyvoEiWap62nlxzkOM
+      responses:
+        '204':
+          description: ''
+          headers: {}
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+          description: ''
+        '403':
+          $ref: '#/components/responses/Forbidden'
+          description: ''
+        '404':
+          $ref: '#/components/responses/Not Found'
+          description: ''
+        '405':
+          $ref: '#/components/responses/Method Not Allowed'
+          description: ''
+        '500':
+          $ref: '#/components/responses/Internal Error'
+          description: ''
+      security: []
+      x-roles:
+        - ADMIN
+        - DEVELOPER
+        - COMMON
   /user/profile:
     get:
       summary: Get User Profile
@@ -455,7 +495,7 @@ paths:
           in: path
           description: User ID.
           required: true
-          example: '101667041712464068613'
+          example: e6b94363-d415-462d-9b0e-c5c4796fcbd9
           schema:
             type: string
       responses:
