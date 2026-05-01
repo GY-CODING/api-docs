@@ -8,6 +8,7 @@ tags:
   - name: Creatures
   - name: Items
   - name: Worlds
+  - name: Places
 paths:
   /characters/{id}:
     get:
@@ -936,6 +937,775 @@ paths:
         - COMMON
         - ADMIN
         - DEVELOPER
+  /characters:
+    post:
+      summary: Insert Character
+      deprecated: false
+      description: Inserts a new Character.
+      tags:
+        - Characters
+      parameters:
+        - name: Authorization
+          in: header
+          description: Authorization token or API key.
+          required: true
+          example: ''
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Character2'
+              description: Character.
+            examples: {}
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Character'
+                description: Character.
+          headers: {}
+        '400':
+          $ref: '#/components/responses/Bad Request'
+          description: ''
+        '403':
+          $ref: '#/components/responses/Forbidden'
+          description: ''
+        '404':
+          $ref: '#/components/responses/Not Found'
+          description: ''
+        '405':
+          $ref: '#/components/responses/Method Not Allowed'
+          description: ''
+        '409':
+          $ref: '#/components/responses/Conflict'
+          description: ''
+        '500':
+          $ref: '#/components/responses/Internal Error'
+          description: ''
+      security: []
+      x-roles:
+        - ADMIN
+    patch:
+      summary: Update Character
+      deprecated: false
+      description: Completely or partially updates an exisiting Character.
+      tags:
+        - Characters
+      parameters:
+        - name: id
+          in: query
+          description: Character ID.
+          required: true
+          example: ''
+          schema:
+            type: string
+        - name: Authorization
+          in: header
+          description: Authorization token or API key.
+          required: true
+          example: ''
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Character2'
+              description: Character.
+            examples: {}
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Character'
+                description: Character.
+          headers: {}
+        '304':
+          $ref: '#/components/responses/Not Modified'
+          description: ''
+        '400':
+          $ref: '#/components/responses/Bad Request'
+          description: ''
+        '403':
+          $ref: '#/components/responses/Forbidden'
+          description: ''
+        '404':
+          $ref: '#/components/responses/Not Found'
+          description: ''
+        '405':
+          $ref: '#/components/responses/Method Not Allowed'
+          description: ''
+        '500':
+          $ref: '#/components/responses/Internal Error'
+          description: ''
+      security: []
+      x-roles:
+        - ADMIN
+    delete:
+      summary: Remove Character
+      deprecated: false
+      description: Removes an exisiting Character.
+      tags:
+        - Characters
+      parameters:
+        - name: id
+          in: query
+          description: Character ID.
+          required: true
+          example: ''
+          schema:
+            type: string
+        - name: Authorization
+          in: header
+          description: Authorization token or API key.
+          required: true
+          example: ''
+          schema:
+            type: string
+      responses:
+        '204':
+          description: ''
+          headers: {}
+        '400':
+          $ref: '#/components/responses/Bad Request'
+          description: ''
+        '403':
+          $ref: '#/components/responses/Forbidden'
+          description: ''
+        '404':
+          $ref: '#/components/responses/Not Found'
+          description: ''
+        '405':
+          $ref: '#/components/responses/Method Not Allowed'
+          description: ''
+        '500':
+          $ref: '#/components/responses/Internal Error'
+          description: ''
+      security: []
+      x-roles:
+        - ADMIN
+  /creatures:
+    post:
+      summary: Insert Creature
+      deprecated: false
+      description: Inserts a new Creature.
+      tags:
+        - Creatures
+      parameters:
+        - name: Authorization
+          in: header
+          description: Authorization token or API key.
+          required: true
+          example: ''
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Creature5'
+              description: Creature.
+            examples: {}
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Creature'
+                description: Creature.
+          headers: {}
+        '400':
+          $ref: '#/components/responses/Bad Request'
+          description: ''
+        '403':
+          $ref: '#/components/responses/Forbidden'
+          description: ''
+        '404':
+          $ref: '#/components/responses/Not Found'
+          description: ''
+        '405':
+          $ref: '#/components/responses/Method Not Allowed'
+          description: ''
+        '409':
+          $ref: '#/components/responses/Conflict'
+          description: ''
+        '500':
+          $ref: '#/components/responses/Internal Error'
+          description: ''
+      security: []
+      x-roles:
+        - ADMIN
+    patch:
+      summary: Update Creature
+      deprecated: false
+      description: Completely or partially updates an exisiting Creature.
+      tags:
+        - Creatures
+      parameters:
+        - name: id
+          in: query
+          description: Creature ID.
+          required: true
+          example: ''
+          schema:
+            type: string
+        - name: Authorization
+          in: header
+          description: Authorization token or API key.
+          required: true
+          example: ''
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Creature5'
+              description: Creature.
+            examples: {}
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Creature'
+                description: Creature.
+          headers: {}
+        '304':
+          $ref: '#/components/responses/Not Modified'
+          description: ''
+        '400':
+          $ref: '#/components/responses/Bad Request'
+          description: ''
+        '403':
+          $ref: '#/components/responses/Forbidden'
+          description: ''
+        '404':
+          $ref: '#/components/responses/Not Found'
+          description: ''
+        '405':
+          $ref: '#/components/responses/Method Not Allowed'
+          description: ''
+        '500':
+          $ref: '#/components/responses/Internal Error'
+          description: ''
+      security: []
+      x-roles:
+        - ADMIN
+    delete:
+      summary: Remove Creature
+      deprecated: false
+      description: Removes an exisiting Creature.
+      tags:
+        - Creatures
+      parameters:
+        - name: id
+          in: query
+          description: Creature ID.
+          required: true
+          example: ''
+          schema:
+            type: string
+        - name: Authorization
+          in: header
+          description: Authorization token or API key.
+          required: true
+          example: ''
+          schema:
+            type: string
+      responses:
+        '204':
+          description: ''
+          headers: {}
+        '400':
+          $ref: '#/components/responses/Bad Request'
+          description: ''
+        '403':
+          $ref: '#/components/responses/Forbidden'
+          description: ''
+        '404':
+          $ref: '#/components/responses/Not Found'
+          description: ''
+        '405':
+          $ref: '#/components/responses/Method Not Allowed'
+          description: ''
+        '500':
+          $ref: '#/components/responses/Internal Error'
+          description: ''
+      security: []
+      x-roles:
+        - ADMIN
+  /items:
+    post:
+      summary: Insert Item
+      deprecated: false
+      description: Inserts a new Item.
+      tags:
+        - Items
+      parameters:
+        - name: Authorization
+          in: header
+          description: Authorization token or API key.
+          required: true
+          example: ''
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Item1'
+              description: Item.
+            examples: {}
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Item'
+                description: Item.
+          headers: {}
+        '400':
+          $ref: '#/components/responses/Bad Request'
+          description: ''
+        '403':
+          $ref: '#/components/responses/Forbidden'
+          description: ''
+        '404':
+          $ref: '#/components/responses/Not Found'
+          description: ''
+        '405':
+          $ref: '#/components/responses/Method Not Allowed'
+          description: ''
+        '409':
+          $ref: '#/components/responses/Conflict'
+          description: ''
+        '500':
+          $ref: '#/components/responses/Internal Error'
+          description: ''
+      security: []
+      x-roles:
+        - ADMIN
+    patch:
+      summary: Update Item
+      deprecated: false
+      description: Completely or partially updates an exisiting Item.
+      tags:
+        - Items
+      parameters:
+        - name: id
+          in: query
+          description: Item ID.
+          required: true
+          schema:
+            type: string
+        - name: Authorization
+          in: header
+          description: Authorization token or API key.
+          required: true
+          example: ''
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Item1'
+              description: Item.
+            examples: {}
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Item'
+                description: Item.
+          headers: {}
+        '304':
+          $ref: '#/components/responses/Not Modified'
+          description: ''
+        '400':
+          $ref: '#/components/responses/Bad Request'
+          description: ''
+        '403':
+          $ref: '#/components/responses/Forbidden'
+          description: ''
+        '404':
+          $ref: '#/components/responses/Not Found'
+          description: ''
+        '405':
+          $ref: '#/components/responses/Method Not Allowed'
+          description: ''
+        '500':
+          $ref: '#/components/responses/Internal Error'
+          description: ''
+      security: []
+      x-roles:
+        - ADMIN
+    delete:
+      summary: Remove Item
+      deprecated: false
+      description: Removes an exisiting Item.
+      tags:
+        - Items
+      parameters:
+        - name: id
+          in: query
+          description: Item ID.
+          required: true
+          example: ''
+          schema:
+            type: string
+        - name: Authorization
+          in: header
+          description: Authorization token or API key.
+          required: true
+          example: ''
+          schema:
+            type: string
+      responses:
+        '204':
+          description: ''
+          headers: {}
+        '400':
+          $ref: '#/components/responses/Bad Request'
+          description: ''
+        '403':
+          $ref: '#/components/responses/Forbidden'
+          description: ''
+        '404':
+          $ref: '#/components/responses/Not Found'
+          description: ''
+        '405':
+          $ref: '#/components/responses/Method Not Allowed'
+          description: ''
+        '500':
+          $ref: '#/components/responses/Internal Error'
+          description: ''
+      security: []
+      x-roles:
+        - ADMIN
+  /worlds:
+    post:
+      summary: Insert World
+      deprecated: false
+      description: Inserts a new World.
+      tags:
+        - Worlds
+      parameters:
+        - name: Authorization
+          in: header
+          description: Authorization token or API key.
+          required: true
+          example: ''
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/World3'
+              description: World.
+            examples: {}
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/World'
+                description: World.
+          headers: {}
+        '400':
+          $ref: '#/components/responses/Bad Request'
+          description: ''
+        '403':
+          $ref: '#/components/responses/Forbidden'
+          description: ''
+        '404':
+          $ref: '#/components/responses/Not Found'
+          description: ''
+        '405':
+          $ref: '#/components/responses/Method Not Allowed'
+          description: ''
+        '409':
+          $ref: '#/components/responses/Conflict'
+          description: ''
+        '500':
+          $ref: '#/components/responses/Internal Error'
+          description: ''
+      security: []
+      x-roles:
+        - ADMIN
+    patch:
+      summary: Update World
+      deprecated: false
+      description: Completely or partially updates an exisiting World.
+      tags:
+        - Worlds
+      parameters:
+        - name: id
+          in: query
+          description: World ID.
+          required: true
+          schema:
+            type: string
+        - name: Authorization
+          in: header
+          description: Authorization token or API key.
+          required: true
+          example: ''
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/World3'
+              description: World
+            examples: {}
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/World'
+                description: World.
+          headers: {}
+        '304':
+          $ref: '#/components/responses/Not Modified'
+          description: ''
+        '400':
+          $ref: '#/components/responses/Bad Request'
+          description: ''
+        '403':
+          $ref: '#/components/responses/Forbidden'
+          description: ''
+        '404':
+          $ref: '#/components/responses/Not Found'
+          description: ''
+        '405':
+          $ref: '#/components/responses/Method Not Allowed'
+          description: ''
+        '500':
+          $ref: '#/components/responses/Internal Error'
+          description: ''
+      security: []
+      x-roles:
+        - ADMIN
+    delete:
+      summary: Remove World
+      deprecated: false
+      description: Removes an exisiting World.
+      tags:
+        - Worlds
+      parameters:
+        - name: id
+          in: query
+          description: World ID.
+          required: true
+          example: ''
+          schema:
+            type: string
+        - name: Authorization
+          in: header
+          description: Authorization token or API key.
+          required: true
+          example: ''
+          schema:
+            type: string
+      responses:
+        '204':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: 'null'
+          headers: {}
+        '400':
+          $ref: '#/components/responses/Bad Request'
+          description: ''
+        '403':
+          $ref: '#/components/responses/Forbidden'
+          description: ''
+        '404':
+          $ref: '#/components/responses/Not Found'
+          description: ''
+        '405':
+          $ref: '#/components/responses/Method Not Allowed'
+          description: ''
+        '500':
+          $ref: '#/components/responses/Internal Error'
+          description: ''
+      security: []
+      x-roles:
+        - ADMIN
+  /worlds/places:
+    post:
+      summary: Insert Place
+      deprecated: false
+      description: Inserts a new Place.
+      tags:
+        - Worlds
+        - Places
+      parameters:
+        - name: Authorization
+          in: header
+          description: Authorization token or API key.
+          required: true
+          example: ''
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Place4'
+              description: Place.
+            examples: {}
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Place'
+                description: Place.
+          headers: {}
+        '400':
+          $ref: '#/components/responses/Bad Request'
+          description: ''
+        '403':
+          $ref: '#/components/responses/Forbidden'
+          description: ''
+        '404':
+          $ref: '#/components/responses/Not Found'
+          description: ''
+        '405':
+          $ref: '#/components/responses/Method Not Allowed'
+          description: ''
+        '409':
+          $ref: '#/components/responses/Conflict'
+          description: ''
+        '500':
+          $ref: '#/components/responses/Internal Error'
+          description: ''
+      security: []
+      x-roles:
+        - ADMIN
+    patch:
+      summary: Update Place
+      deprecated: false
+      description: Completely or partially updates an exisiting Place.
+      tags:
+        - Worlds
+        - Places
+      parameters:
+        - name: id
+          in: query
+          description: Place ID.
+          required: true
+          schema:
+            type: string
+        - name: Authorization
+          in: header
+          description: Authorization token or API key.
+          required: true
+          example: ''
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Place4'
+              description: Place.
+            examples: {}
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Place'
+                description: Place.
+          headers: {}
+        '304':
+          $ref: '#/components/responses/Not Modified'
+          description: ''
+        '400':
+          $ref: '#/components/responses/Bad Request'
+          description: ''
+        '403':
+          $ref: '#/components/responses/Forbidden'
+          description: ''
+        '404':
+          $ref: '#/components/responses/Not Found'
+          description: ''
+        '405':
+          $ref: '#/components/responses/Method Not Allowed'
+          description: ''
+        '500':
+          $ref: '#/components/responses/Internal Error'
+          description: ''
+      security: []
+      x-roles:
+        - ADMIN
+    delete:
+      summary: Remove Place
+      deprecated: false
+      description: Removes an exisiting Place.
+      tags:
+        - Worlds
+        - Places
+      parameters:
+        - name: id
+          in: query
+          description: Place ID.
+          required: true
+          example: ''
+          schema:
+            type: string
+        - name: Authorization
+          in: header
+          description: Authorization token or API key.
+          required: true
+          example: ''
+          schema:
+            type: string
+      responses:
+        '204':
+          description: ''
+          headers: {}
+        '400':
+          $ref: '#/components/responses/Bad Request'
+          description: ''
+        '403':
+          $ref: '#/components/responses/Forbidden'
+          description: ''
+        '404':
+          $ref: '#/components/responses/Not Found'
+          description: ''
+        '405':
+          $ref: '#/components/responses/Method Not Allowed'
+          description: ''
+        '500':
+          $ref: '#/components/responses/Internal Error'
+          description: ''
+      security: []
+      x-roles:
+        - ADMIN
 webhooks: {}
 components:
   schemas:
@@ -1093,6 +1863,144 @@ components:
         - description
         - image
       description: Creature object.
+    Item1:
+      type: object
+      properties:
+        identifier:
+          type: string
+          description: Item identifier.
+        name:
+          description: Item name.
+          $ref: '#/components/schemas/Translated%20String'
+        description:
+          description: Item description.
+          $ref: '#/components/schemas/Translated%20String'
+        image:
+          type: string
+          format: uri
+          description: Item image.
+        type:
+          type: string
+          enum:
+            - COMPLETE_ITEM
+            - FRAGMENT
+            - UNKNOWN
+          description: Item type.
+      required:
+        - identifier
+        - name
+        - description
+        - image
+        - type
+      description: Item object.
+    Character2:
+      type: object
+      properties:
+        name:
+          description: Character name.
+          $ref: '#/components/schemas/Translated%20String'
+        title:
+          description: Character title.
+          $ref: '#/components/schemas/Translated%20String'
+        description:
+          description: Character description.
+          $ref: '#/components/schemas/Translated%20String'
+        race:
+          description: Character race.
+          $ref: '#/components/schemas/Translated%20String'
+        image:
+          type: string
+          format: uri
+          description: Character image.
+        world:
+          description: World where the character belongs.
+          $ref: '#/components/schemas/World3'
+      required:
+        - name
+        - description
+        - title
+        - image
+        - world
+        - race
+      description: Character object.
+    World3:
+      type: object
+      properties:
+        name:
+          description: World name.
+          $ref: '#/components/schemas/Translated%20String'
+        description:
+          description: World description.
+          $ref: '#/components/schemas/Translated%20String'
+        places:
+          type: array
+          items:
+            $ref: '#/components/schemas/Place4'
+          description: World places.
+        image:
+          type: string
+          format: uri
+          description: World image.
+        detailedIcon:
+          type: string
+          format: uri
+          description: World icon.
+      required:
+        - name
+        - description
+        - places
+        - image
+        - detailedIcon
+      description: World object.
+    Place4:
+      type: object
+      properties:
+        name:
+          description: Place name.
+          $ref: '#/components/schemas/Translated%20String'
+        description:
+          description: Place description.
+          $ref: '#/components/schemas/Translated%20String'
+        image:
+          type: string
+          format: uri
+          description: Place image.
+      required:
+        - name
+        - description
+        - image
+      description: Place object.
+    Creature5:
+      type: object
+      properties:
+        name:
+          description: Creature name.
+          $ref: '#/components/schemas/Translated%20String'
+        description:
+          description: Creature description.
+          $ref: '#/components/schemas/Translated%20String'
+        image:
+          type: string
+          format: uri
+          description: Creature image.
+      required:
+        - name
+        - description
+        - image
+      description: Creature object.
+    Translated String:
+      type: object
+      properties:
+        es:
+          type: string
+          description: Spanish version of the string.
+        en:
+          type: string
+          description: English version of the string.
+      required:
+        - es
+        - en
+      description: Translated String object.
     Error Response:
       type: object
       properties:
@@ -1255,6 +2163,52 @@ components:
                   An internal server error has occurred, sorry for the
                   inconvenience.
                 status: 500
+                owner: GYCODING
+    Not Implemented:
+      description: ''
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error%20Response'
+          examples:
+            Not Implemented:
+              summary: Not Implemented
+              value:
+                code: NOT_IMPLEMENTED
+                message: The resource is not implemented yet.
+                status: 501
+                owner: API_GATEWAY
+    Not Modified:
+      description: ''
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error%20Response'
+          examples:
+            Resource Not Modified:
+              summary: Resource Not Modified
+              value:
+                code: RESOURCE_NOT_MODIFIED
+                message: >-
+                  The resource could not be modified due to some internal
+                  conflict or error.
+                status: 304
+                owner: GYCODING
+    Conflict:
+      description: ''
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error%20Response'
+          examples:
+            Conflict:
+              summary: Conflict
+              value:
+                code: CONFLICT
+                message: >-
+                  An internal conflict between external data and the API has
+                  occured. Requested data may already exist.
+                status: 409
                 owner: GYCODING
   securitySchemes: {}
 servers:
