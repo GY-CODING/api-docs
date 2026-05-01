@@ -4,26 +4,167 @@ info:
   description: ''
   version: 1.0.0
 tags:
+  - name: Authentication
   - name: Users
 paths:
-  /user/metadata:
+  /auth/login:
     post:
-      summary: Initialize and Sync Metadata
+      summary: Login
       deprecated: false
-      description: Initializes and syncs user's metadata.
+      description: >-
+        Checks the existance and the authentication of an user account basic
+        Email/Username and Password authentication and returns their
+        credentials.
+      tags:
+        - Authentication
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: User credentials object.
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: User email.
+                  format: email
+                  pattern: ^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$
+                password:
+                  type: string
+                  description: User password.
+                  format: password
+                  minLength: 8
+              required:
+                - password
+                - email
+            example:
+              email: test@gycoding.com
+              password: testpasswd-0
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Login%20Response'
+                description: Logged User Credentials.
+          headers: {}
+        '400':
+          $ref: '#/components/responses/Bad Request'
+          description: ''
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+          description: ''
+        '405':
+          $ref: '#/components/responses/Method Not Allowed'
+          description: ''
+        '500':
+          $ref: '#/components/responses/Internal Error'
+          description: ''
+      security: []
+      x-roles:
+        - COMMON
+        - ADMIN
+        - DEVELOPER
+  /auth/signup:
+    post:
+      summary: Sign Up
+      deprecated: false
+      description: >-
+        Registers a new user account using basic Email/Username and Password
+        authentication.
+      tags:
+        - Authentication
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: User credentials object.
+              $ref: '#/components/schemas/User%20Credentials'
+            example:
+              username: test-user
+              email: test@gycoding.com
+              password: testpasswd-0
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Sign%20Up%20Response'
+                description: Signed Up User Data.
+          headers: {}
+        '400':
+          $ref: '#/components/responses/Bad Request'
+          description: ''
+        '405':
+          $ref: '#/components/responses/Method Not Allowed'
+          description: ''
+        '409':
+          $ref: '#/components/responses/Conflict'
+          description: ''
+        '500':
+          $ref: '#/components/responses/Internal Error'
+          description: ''
+      security: []
+      x-roles:
+        - COMMON
+        - ADMIN
+        - DEVELOPER
+  /auth/google:
+    get:
+      summary: Google Authentication
+      deprecated: false
+      description: Returns a custom GYCODING authentication URL for Google Authentication.
+      tags:
+        - Authentication
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: string
+                description: Google Authentication URL.
+                format: uri
+          headers: {}
+        '400':
+          $ref: '#/components/responses/Bad Request'
+          description: ''
+        '405':
+          $ref: '#/components/responses/Method Not Allowed'
+          description: ''
+        '500':
+          $ref: '#/components/responses/Internal Error'
+          description: ''
+      security: []
+      x-roles:
+        - COMMON
+        - ADMIN
+        - DEVELOPER
+  /user/list:
+    get:
+      summary: List Users
+      deprecated: false
+      description: >-
+        Retrieves a list of users while being authenticated for private
+        information.
       tags:
         - Users
       parameters:
-        - name: x-user-id
-          in: header
-          description: User UserID.
+        - name: query
+          in: query
+          description: Query to find users.
           required: true
           example: ''
           schema:
             type: string
-        - name: x-api-key
+        - name: Authorization
           in: header
-          description: Service API Key.
+          description: Authorization token or API key.
           required: true
           example: ''
           schema:
@@ -34,8 +175,206 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/User%20Metadata'
-                description: User metadata.
+                type: array
+                items:
+                  $ref: '#/components/schemas/User%20Profile'
+                  description: User profile.
+                description: List of profiles.
+          headers: {}
+        '400':
+          $ref: '#/components/responses/Bad Request'
+          description: ''
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+          description: ''
+        '403':
+          $ref: '#/components/responses/Forbidden'
+          description: ''
+        '404':
+          $ref: '#/components/responses/Not Found'
+          description: ''
+        '405':
+          $ref: '#/components/responses/Method Not Allowed'
+          description: ''
+        '500':
+          $ref: '#/components/responses/Internal Error'
+          description: ''
+      security: []
+      x-roles:
+        - COMMON
+        - ADMIN
+        - DEVELOPER
+  /user/list/public:
+    get:
+      summary: List Users (Public)
+      deprecated: false
+      description: Retrieves a list of users.
+      tags:
+        - Users
+      parameters:
+        - name: query
+          in: query
+          description: Query to find users.
+          required: true
+          example: ''
+          schema:
+            type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User%20Profile'
+                  description: User profile.
+                description: List of profiles.
+          headers: {}
+        '400':
+          $ref: '#/components/responses/Bad Request'
+          description: ''
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+          description: ''
+        '403':
+          $ref: '#/components/responses/Forbidden'
+          description: ''
+        '404':
+          $ref: '#/components/responses/Not Found'
+          description: ''
+        '405':
+          $ref: '#/components/responses/Method Not Allowed'
+          description: ''
+        '500':
+          $ref: '#/components/responses/Internal Error'
+          description: ''
+      security: []
+      x-roles:
+        - COMMON
+        - ADMIN
+        - DEVELOPER
+  /user:
+    delete:
+      summary: Remove User
+      deprecated: false
+      description: Removes a User.
+      tags:
+        - Users
+      parameters:
+        - name: Authorization
+          in: header
+          description: Authorization token or API key.
+          required: true
+          example: ''
+          schema:
+            type: string
+      responses:
+        '204':
+          description: ''
+          headers: {}
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+          description: ''
+        '403':
+          $ref: '#/components/responses/Forbidden'
+          description: ''
+        '404':
+          $ref: '#/components/responses/Not Found'
+          description: ''
+        '405':
+          $ref: '#/components/responses/Method Not Allowed'
+          description: ''
+        '500':
+          $ref: '#/components/responses/Internal Error'
+          description: ''
+      security: []
+      x-roles:
+        - ADMIN
+        - DEVELOPER
+        - COMMON
+  /user/profile:
+    get:
+      summary: Get User Profile
+      deprecated: false
+      description: >-
+        Retrieves user whole profile, detailing the main aspects of the user's
+        account.
+      tags:
+        - Users
+      parameters:
+        - name: Authorization
+          in: header
+          description: Authorization token or API key.
+          required: true
+          example: ''
+          schema:
+            type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User%20Profile'
+                description: User Profile object.
+          headers: {}
+        '400':
+          $ref: '#/components/responses/Bad Request'
+          description: ''
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+          description: ''
+        '403':
+          $ref: '#/components/responses/Forbidden'
+          description: ''
+        '404':
+          $ref: '#/components/responses/Not Found'
+          description: ''
+        '405':
+          $ref: '#/components/responses/Method Not Allowed'
+          description: ''
+        '500':
+          $ref: '#/components/responses/Internal Error'
+          description: ''
+      security: []
+      x-roles:
+        - COMMON
+        - ADMIN
+        - DEVELOPER
+    put:
+      summary: Set Profile
+      deprecated: false
+      description: Updates user's profile entirely.
+      tags:
+        - Users
+      parameters:
+        - name: Authorization
+          in: header
+          description: Authorization token or API key.
+          required: true
+          example: ''
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User%20Profile'
+              description: User profile.
+            example:
+              username: test
+              email: test-email
+              picture: some-link
+              phoneNumber: +34 123456789
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User%20Profile'
+                description: User Profile object.
           headers: {}
         '304':
           $ref: '#/components/responses/Not Modified'
@@ -60,35 +399,21 @@ paths:
         - COMMON
         - ADMIN
         - DEVELOPER
-  /user/transform/userId:
-    post:
-      summary: Transform ProfileID to UserID
+  /user/username:
+    get:
+      summary: Get Username
       deprecated: false
-      description: Transforms a ProfileID into a UserID.
+      description: Retrieves current user username.
       tags:
         - Users
       parameters:
-        - name: x-api-key
+        - name: Authorization
           in: header
-          description: Service API Key.
+          description: Authorization token or API key.
           required: true
           example: ''
           schema:
             type: string
-      requestBody:
-        content:
-          application/json:
-            schema:
-              title: ''
-              type: object
-              properties:
-                profileId:
-                  type: string
-                  format: uuid
-                  description: ProfileID to be transformed.
-              required:
-                - profileId
-            examples: {}
       responses:
         '200':
           description: ''
@@ -96,67 +421,13 @@ paths:
             application/json:
               schema:
                 type: string
-                description: UserID transformed from the given ProfileID.
+                description: User username.
           headers: {}
         '400':
           $ref: '#/components/responses/Bad Request'
           description: ''
-        '403':
-          $ref: '#/components/responses/Forbidden'
-          description: ''
-        '404':
-          $ref: '#/components/responses/Not Found'
-          description: ''
-        '405':
-          $ref: '#/components/responses/Method Not Allowed'
-          description: ''
-        '500':
-          $ref: '#/components/responses/Internal Error'
-          description: ''
-      security: []
-      x-roles:
-        - COMMON
-        - ADMIN
-  /user/transform/profileId:
-    post:
-      summary: Transform UserID to ProfileID
-      deprecated: false
-      description: Transforms a UserID into a ProfileID.
-      tags:
-        - Users
-      parameters:
-        - name: x-api-key
-          in: header
-          description: Service API Key.
-          required: true
-          example: ''
-          schema:
-            type: string
-      requestBody:
-        content:
-          application/json:
-            schema:
-              title: ''
-              type: object
-              properties:
-                userId:
-                  type: string
-                  description: UserID to be transformed.
-              required:
-                - userId
-            examples: {}
-      responses:
-        '200':
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: string
-                format: uuid
-                description: Profile ID transformed from the given User ID.
-          headers: {}
-        '400':
-          $ref: '#/components/responses/Bad Request'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
           description: ''
         '403':
           $ref: '#/components/responses/Forbidden'
@@ -175,9 +446,521 @@ paths:
         - COMMON
         - ADMIN
         - DEVELOPER
+    patch:
+      summary: Update Username
+      deprecated: false
+      description: Modifies user's username.
+      tags:
+        - Users
+      parameters:
+        - name: Authorization
+          in: header
+          description: Authorization token or API key.
+          required: true
+          example: ''
+          schema:
+            type: string
+      requestBody:
+        content:
+          text/plain:
+            schema:
+              type: string
+            examples: {}
+        required: true
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: string
+                description: User username.
+          headers: {}
+        '304':
+          $ref: '#/components/responses/Not Modified'
+          description: ''
+        '400':
+          $ref: '#/components/responses/Bad Request'
+          description: ''
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+          description: ''
+        '403':
+          $ref: '#/components/responses/Forbidden'
+          description: ''
+        '405':
+          $ref: '#/components/responses/Method Not Allowed'
+          description: ''
+        '500':
+          $ref: '#/components/responses/Internal Error'
+          description: ''
+      security: []
+      x-roles:
+        - COMMON
+        - ADMIN
+        - DEVELOPER
+  /user/email:
+    get:
+      summary: Get Email
+      deprecated: false
+      description: Retrieves current user email.
+      tags:
+        - Users
+      parameters:
+        - name: Authorization
+          in: header
+          description: Authorization token or API key.
+          required: true
+          example: ''
+          schema:
+            type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: string
+                description: User email.
+                format: email
+                pattern: ^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$
+          headers: {}
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+          description: ''
+        '403':
+          $ref: '#/components/responses/Forbidden'
+          description: ''
+        '404':
+          $ref: '#/components/responses/Not Found'
+          description: ''
+        '405':
+          $ref: '#/components/responses/Method Not Allowed'
+          description: ''
+        '500':
+          $ref: '#/components/responses/Internal Error'
+          description: ''
+      security: []
+      x-roles:
+        - COMMON
+        - ADMIN
+  /user/picture/{profileId}:
+    get:
+      summary: Get Picture
+      deprecated: false
+      description: Retrieves current user profile picture.
+      tags:
+        - Users
+      parameters:
+        - name: profileId
+          in: path
+          description: User ProfileID.
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type:
+                  - string
+                  - integer
+                  - boolean
+                  - array
+                  - object
+                  - number
+                  - 'null'
+                description: User profile picture.
+          headers: {}
+        '400':
+          $ref: '#/components/responses/Bad Request'
+          description: ''
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+          description: ''
+        '403':
+          $ref: '#/components/responses/Forbidden'
+          description: ''
+        '404':
+          $ref: '#/components/responses/Not Found'
+          description: ''
+        '405':
+          $ref: '#/components/responses/Method Not Allowed'
+          description: ''
+        '500':
+          $ref: '#/components/responses/Internal Error'
+          description: ''
+      security: []
+      x-roles:
+        - COMMON
+        - ADMIN
+  /user/picture:
+    patch:
+      summary: Update Picture
+      deprecated: false
+      description: Modifies user's profile picture.
+      tags:
+        - Users
+      parameters:
+        - name: Authorization
+          in: header
+          description: Authorization token or API key.
+          required: true
+          example: ''
+          schema:
+            type: string
+      requestBody:
+        content:
+          text/plain:
+            schema:
+              type: string
+            examples: {}
+        required: true
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type:
+                  - string
+                  - integer
+                  - boolean
+                  - array
+                  - object
+                  - number
+                  - 'null'
+                description: User profile picture.
+          headers: {}
+        '304':
+          $ref: '#/components/responses/Not Modified'
+          description: ''
+        '400':
+          $ref: '#/components/responses/Bad Request'
+          description: ''
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+          description: ''
+        '403':
+          $ref: '#/components/responses/Forbidden'
+          description: ''
+        '405':
+          $ref: '#/components/responses/Method Not Allowed'
+          description: ''
+        '500':
+          $ref: '#/components/responses/Internal Error'
+          description: ''
+      security: []
+      x-roles:
+        - COMMON
+        - ADMIN
+        - DEVELOPER
+  /user/phonenumber:
+    get:
+      summary: Get Phone Number
+      deprecated: false
+      description: Retrieves current user phone number.
+      tags:
+        - Users
+      parameters:
+        - name: Authorization
+          in: header
+          description: Authorization token or API key.
+          required: true
+          example: ''
+          schema:
+            type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: string
+                description: User phone number.
+                pattern: ^\+\d{1,3}\s\d{4,14}$
+          headers: {}
+        '400':
+          $ref: '#/components/responses/Bad Request'
+          description: ''
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+          description: ''
+        '403':
+          $ref: '#/components/responses/Forbidden'
+          description: ''
+        '404':
+          $ref: '#/components/responses/Not Found'
+          description: ''
+        '405':
+          $ref: '#/components/responses/Method Not Allowed'
+          description: ''
+        '500':
+          $ref: '#/components/responses/Internal Error'
+          description: ''
+      security: []
+      x-roles:
+        - COMMON
+        - ADMIN
+        - DEVELOPER
+    patch:
+      summary: Update Phone Number
+      deprecated: false
+      description: Modifies user's phone number.
+      tags:
+        - Users
+      parameters:
+        - name: Authorization
+          in: header
+          description: Authorization token or API key.
+          required: true
+          example: ''
+          schema:
+            type: string
+      requestBody:
+        content:
+          text/plain:
+            schema:
+              type: string
+            examples: {}
+        required: true
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: string
+                description: User phone number.
+                pattern: ^\+\d{1,3}\s\d{4,14}$
+          headers: {}
+        '304':
+          $ref: '#/components/responses/Not Modified'
+          description: ''
+        '400':
+          $ref: '#/components/responses/Bad Request'
+          description: ''
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+          description: ''
+        '403':
+          $ref: '#/components/responses/Forbidden'
+          description: ''
+        '405':
+          $ref: '#/components/responses/Method Not Allowed'
+          description: ''
+        '500':
+          $ref: '#/components/responses/Internal Error'
+          description: ''
+      security: []
+      x-roles:
+        - COMMON
+        - ADMIN
+        - DEVELOPER
+  /user/password:
+    patch:
+      summary: Update Password
+      deprecated: false
+      description: Modifies user's password.
+      tags:
+        - Users
+      parameters:
+        - name: Authorization
+          in: header
+          description: Authorization token or API key.
+          required: true
+          example: ''
+          schema:
+            type: string
+      requestBody:
+        content:
+          text/plain:
+            schema:
+              type: string
+            examples: {}
+        required: true
+      responses:
+        '204':
+          description: ''
+          headers: {}
+        '304':
+          $ref: '#/components/responses/Not Modified'
+          description: ''
+        '400':
+          $ref: '#/components/responses/Bad Request'
+          description: ''
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+          description: ''
+        '403':
+          $ref: '#/components/responses/Forbidden'
+          description: ''
+        '405':
+          $ref: '#/components/responses/Method Not Allowed'
+          description: ''
+        '500':
+          $ref: '#/components/responses/Internal Error'
+          description: ''
+      security: []
+      x-roles:
+        - COMMON
+        - ADMIN
+  /user/metadata:
+    get:
+      summary: Get Metadata
+      deprecated: false
+      description: Retrieves current user metadata.
+      tags:
+        - Users
+      parameters:
+        - name: Authorization
+          in: header
+          description: Authorization token or API key.
+          required: true
+          example: ''
+          schema:
+            type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User%20Metadata'
+                description: User metadata.
+          headers: {}
+        '400':
+          $ref: '#/components/responses/Bad Request'
+          description: ''
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+          description: ''
+        '403':
+          $ref: '#/components/responses/Forbidden'
+          description: ''
+        '404':
+          $ref: '#/components/responses/Not Found'
+          description: ''
+        '405':
+          $ref: '#/components/responses/Method Not Allowed'
+          description: ''
+        '500':
+          $ref: '#/components/responses/Internal Error'
+          description: ''
+      security: []
+      x-roles:
+        - COMMON
+        - ADMIN
+        - DEVELOPER
+  /user/metadata/apikey:
+    patch:
+      summary: Refresh API Key
+      deprecated: false
+      description: Refreshes user's API Key.
+      tags:
+        - Users
+      parameters:
+        - name: Authorization
+          in: header
+          description: Authorization token or API key.
+          required: true
+          example: ''
+          schema:
+            type: string
+      responses:
+        '204':
+          description: ''
+          headers: {}
+        '304':
+          $ref: '#/components/responses/Not Modified'
+          description: ''
+        '400':
+          $ref: '#/components/responses/Bad Request'
+          description: ''
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+          description: ''
+        '403':
+          $ref: '#/components/responses/Forbidden'
+          description: ''
+        '405':
+          $ref: '#/components/responses/Method Not Allowed'
+          description: ''
+        '500':
+          $ref: '#/components/responses/Internal Error'
+          description: ''
+      security: []
+      x-roles:
+        - COMMON
+        - ADMIN
+        - DEVELOPER
 webhooks: {}
 components:
   schemas:
+    Login Response:
+      type: object
+      properties:
+        access_token:
+          type: string
+          description: Access Token.
+        id_token:
+          type: string
+          description: JSON Web Token.
+        token_type:
+          type: string
+          description: Token type.
+          enum:
+            - Bearer
+        expires_in:
+          type: integer
+          description: Expiration time of the token.
+      required:
+        - access_token
+        - id_token
+        - token_type
+        - expires_in
+      description: Login credentials object.
+    Sign Up Response:
+      type: object
+      properties:
+        username:
+          type: string
+          description: User username.
+        email:
+          type: string
+          description: User email.
+          pattern: ' ^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+          format: email
+        phone_number:
+          type: string
+          description: User phone number.
+          pattern: ^\+\d{1,3}\s\d{4,14}$
+      required:
+        - username
+        - email
+        - phone_number
+      description: User Sign Up Response object.
+    User Credentials:
+      type: object
+      properties:
+        username:
+          type: string
+          description: User username.
+        email:
+          type: string
+          description: User email.
+          format: email
+          pattern: ^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$
+        password:
+          type: string
+          description: User password.
+          format: password
+          minLength: 8
+      required:
+        - password
+      description: User credentials object.
     User Profile:
       type: object
       properties:
@@ -309,6 +1092,31 @@ components:
                 message: The user has no permission to access this resource.
                 status: 403
                 owner: API_GATEWAY
+    Conflict:
+      description: ''
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error%20Response'
+          examples:
+            Conflict:
+              summary: Conflict
+              value:
+                code: CONFLICT
+                message: >-
+                  An internal conflict between external data and the API has
+                  occured. Requested data may already exist.
+                status: 409
+                owner: GYCODING
+            Invalid Sign Up:
+              summary: Invalid Sign Up
+              value:
+                code: INVALID_SIGN_UP
+                message: >-
+                  Invalid sign up due to the already existance of the user or an
+                  authentication error.
+                status: 409
+                owner: GYCODING
     Internal Error:
       description: ''
       content:
