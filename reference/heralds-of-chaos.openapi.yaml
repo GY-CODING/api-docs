@@ -1802,6 +1802,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Place'
+            description: World place.
           description: World places.
         image:
           type: string
@@ -1936,6 +1937,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Place4'
+            description: World place.
           description: World places.
         image:
           type: string
