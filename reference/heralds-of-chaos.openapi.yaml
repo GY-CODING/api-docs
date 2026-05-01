@@ -23,14 +23,14 @@ paths:
           in: path
           description: Character's identifier.
           required: true
-          example: odin
+          example: ''
           schema:
             type: string
         - name: lang
           in: query
-          description: Language of the response.
+          description: Language selector.
           required: true
-          example: es
+          example: ''
           schema:
             type: string
             enum:
@@ -43,7 +43,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Character'
-                description: Character object.
+                description: Character.
           headers: {}
         '400':
           $ref: '#/components/responses/Bad Request'
@@ -64,6 +64,7 @@ paths:
       x-roles:
         - COMMON
         - ADMIN
+        - DEVELOPER
   /characters/list:
     get:
       summary: List Characters
@@ -76,9 +77,9 @@ paths:
       parameters:
         - name: lang
           in: query
-          description: Language of the response.
+          description: Language selector.
           required: true
-          example: es
+          example: ''
           schema:
             type: string
             enum:
@@ -93,7 +94,7 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Character'
-                  description: Character object.
+                  description: Character.
                 description: List of characters.
                 uniqueItems: true
           headers: {}
@@ -116,6 +117,7 @@ paths:
       x-roles:
         - COMMON
         - ADMIN
+        - DEVELOPER
   /characters/page:
     get:
       summary: Page Characters
@@ -130,21 +132,21 @@ paths:
           in: query
           description: Number of page.
           required: true
-          example: 1
+          example: 0
           schema:
             type: integer
         - name: size
           in: query
           description: Amount of elements to show on one page.
           required: true
-          example: 10
+          example: 0
           schema:
             type: integer
         - name: lang
           in: query
-          description: Language of the response.
+          description: Language selector.
           required: true
-          example: es
+          example: ''
           schema:
             type: string
             enum:
@@ -159,7 +161,7 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Character'
-                  description: Character object.
+                  description: Character.
                 description: List of characters.
                 uniqueItems: true
           headers: {}
@@ -182,6 +184,7 @@ paths:
       x-roles:
         - COMMON
         - ADMIN
+        - DEVELOPER
   /creatures/{id}:
     get:
       summary: Get Creature
@@ -196,14 +199,14 @@ paths:
           in: path
           description: Creature's identifier.
           required: true
-          example: audumbla
+          example: ''
           schema:
             type: string
         - name: lang
           in: query
-          description: Language of the response.
+          description: Language selector.
           required: true
-          example: es
+          example: ''
           schema:
             type: string
             enum:
@@ -216,7 +219,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Creature'
-                description: Creature object.
+                description: Creature.
           headers: {}
         '400':
           $ref: '#/components/responses/Bad Request'
@@ -237,6 +240,7 @@ paths:
       x-roles:
         - COMMON
         - ADMIN
+        - DEVELOPER
   /creatures/list:
     get:
       summary: List Creatures
@@ -249,9 +253,9 @@ paths:
       parameters:
         - name: lang
           in: query
-          description: Language of the response.
+          description: Language selector.
           required: true
-          example: es
+          example: ''
           schema:
             type: string
             enum:
@@ -266,7 +270,7 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Creature'
-                  description: Creature object.
+                  description: Creature.
                 description: List of creatures.
                 uniqueItems: true
           headers: {}
@@ -289,6 +293,7 @@ paths:
       x-roles:
         - COMMON
         - ADMIN
+        - DEVELOPER
   /creatures/page:
     get:
       summary: Page Characters
@@ -303,21 +308,21 @@ paths:
           in: query
           description: Number of page.
           required: true
-          example: 1
+          example: 0
           schema:
             type: integer
         - name: size
           in: query
           description: Amount of elements to show on one page.
           required: true
-          example: 10
+          example: 0
           schema:
             type: integer
         - name: lang
           in: query
-          description: Language of the response.
+          description: Language selector.
           required: true
-          example: es
+          example: ''
           schema:
             type: string
             enum:
@@ -332,7 +337,7 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Creature'
-                  description: Creature object.
+                  description: Creature.
                 description: List of creatures.
                 uniqueItems: true
           headers: {}
@@ -355,6 +360,7 @@ paths:
       x-roles:
         - COMMON
         - ADMIN
+        - DEVELOPER
   /items/{id}:
     get:
       summary: Get Item
@@ -367,14 +373,14 @@ paths:
           in: path
           description: Item's identifier.
           required: true
-          example: mjolnir
+          example: ''
           schema:
             type: string
         - name: lang
           in: query
-          description: Language of the response.
+          description: Language selector.
           required: true
-          example: es
+          example: ''
           schema:
             type: string
             enum:
@@ -387,7 +393,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Item'
-                description: Item object.
+                description: Item.
           headers: {}
         '400':
           $ref: '#/components/responses/Bad Request'
@@ -408,6 +414,7 @@ paths:
       x-roles:
         - COMMON
         - ADMIN
+        - DEVELOPER
   /items/list:
     get:
       summary: List Items
@@ -420,9 +427,9 @@ paths:
       parameters:
         - name: lang
           in: query
-          description: Language of the response.
+          description: Language selector.
           required: true
-          example: es
+          example: ''
           schema:
             type: string
             enum:
@@ -437,7 +444,7 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Item'
-                  description: Item object.
+                  description: Item.
                 description: List of items.
           headers: {}
         '400':
@@ -459,6 +466,7 @@ paths:
       x-roles:
         - COMMON
         - ADMIN
+        - DEVELOPER
   /items/page:
     get:
       summary: Page Items
@@ -473,21 +481,21 @@ paths:
           in: query
           description: Number of page.
           required: true
-          example: 1
+          example: 0
           schema:
             type: integer
         - name: size
           in: query
           description: Amount of elements to show on one page.
           required: true
-          example: 10
+          example: 0
           schema:
             type: integer
         - name: lang
           in: query
-          description: Language of the response.
+          description: Language selector.
           required: true
-          example: es
+          example: ''
           schema:
             type: string
             enum:
@@ -502,7 +510,7 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Item'
-                  description: Item object.
+                  description: Item.
                 description: List of items.
           headers: {}
         '400':
@@ -524,6 +532,7 @@ paths:
       x-roles:
         - COMMON
         - ADMIN
+        - DEVELOPER
   /worlds/{id}:
     get:
       summary: Get World
@@ -536,14 +545,14 @@ paths:
           in: path
           description: World's identifier.
           required: true
-          example: asgard
+          example: ''
           schema:
             type: string
         - name: lang
           in: query
-          description: Language of the response.
+          description: Language selector.
           required: true
-          example: es
+          example: ''
           schema:
             type: string
             enum:
@@ -556,7 +565,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/World'
-                description: World object.
+                description: World.
           headers: {}
         '400':
           $ref: '#/components/responses/Bad Request'
@@ -577,6 +586,7 @@ paths:
       x-roles:
         - COMMON
         - ADMIN
+        - DEVELOPER
   /worlds/places/{id}:
     get:
       summary: Get Place
@@ -589,14 +599,14 @@ paths:
           in: path
           description: Place's identifier.
           required: true
-          example: idavoll
+          example: ''
           schema:
             type: string
         - name: lang
           in: query
-          description: Language of the response.
+          description: Language selector.
           required: true
-          example: es
+          example: ''
           schema:
             type: string
             enum:
@@ -609,7 +619,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Place'
-                description: Place object.
+                description: Place.
           headers: {}
         '400':
           $ref: '#/components/responses/Bad Request'
@@ -630,6 +640,7 @@ paths:
       x-roles:
         - COMMON
         - ADMIN
+        - DEVELOPER
   /worlds/list:
     get:
       summary: List Worlds
@@ -642,9 +653,9 @@ paths:
       parameters:
         - name: lang
           in: query
-          description: Language of the response.
+          description: Language selector.
           required: true
-          example: es
+          example: ''
           schema:
             type: string
             enum:
@@ -659,7 +670,7 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/World'
-                  description: World object.
+                  description: World.
                 description: List of worlds.
           headers: {}
         '400':
@@ -681,6 +692,7 @@ paths:
       x-roles:
         - COMMON
         - ADMIN
+        - DEVELOPER
   /worlds/places/list:
     get:
       summary: List Places
@@ -693,9 +705,9 @@ paths:
       parameters:
         - name: lang
           in: query
-          description: Language of the response.
+          description: Language selector.
           required: true
-          example: es
+          example: ''
           schema:
             type: string
             enum:
@@ -710,7 +722,7 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Place'
-                  description: Place object.
+                  description: Place.
                 description: List of places.
           headers: {}
         '400':
@@ -732,6 +744,7 @@ paths:
       x-roles:
         - COMMON
         - ADMIN
+        - DEVELOPER
   /worlds/places/{id}/list:
     get:
       summary: List Places by World
@@ -746,14 +759,14 @@ paths:
           in: path
           description: World's identifier.
           required: true
-          example: asgard
+          example: ''
           schema:
             type: string
         - name: lang
           in: query
-          description: Language of the response.
+          description: Language selector.
           required: true
-          example: es
+          example: ''
           schema:
             type: string
             enum:
@@ -768,7 +781,7 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Place'
-                  description: Place object.
+                  description: Place.
                 description: List of places.
           headers: {}
         '400':
@@ -790,6 +803,7 @@ paths:
       x-roles:
         - COMMON
         - ADMIN
+        - DEVELOPER
   /worlds/page:
     get:
       summary: Page Worlds
@@ -804,21 +818,21 @@ paths:
           in: query
           description: Number of page.
           required: true
-          example: 1
+          example: 0
           schema:
             type: integer
         - name: size
           in: query
           description: Amount of elements to show on one page.
           required: true
-          example: 10
+          example: 0
           schema:
             type: integer
         - name: lang
           in: query
-          description: Language of the response.
+          description: Language selector.
           required: true
-          example: es
+          example: ''
           schema:
             type: string
             enum:
@@ -833,7 +847,7 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/World'
-                  description: World object.
+                  description: World.
                 description: List of worlds.
           headers: {}
         '400':
@@ -855,6 +869,7 @@ paths:
       x-roles:
         - COMMON
         - ADMIN
+        - DEVELOPER
   /worlds/places/page:
     get:
       summary: Page Places
@@ -869,21 +884,21 @@ paths:
           in: query
           description: Number of page.
           required: true
-          example: 1
+          example: 0
           schema:
             type: integer
         - name: size
           in: query
           description: Amount of elements to show on one page.
           required: true
-          example: 10
+          example: 0
           schema:
             type: integer
         - name: lang
           in: query
-          description: Language of the response.
+          description: Language selector.
           required: true
-          example: es
+          example: ''
           schema:
             type: string
             enum:
@@ -898,7 +913,7 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Place'
-                  description: Place object.
+                  description: Place.
                 description: List of places.
           headers: {}
         '400':
@@ -920,6 +935,7 @@ paths:
       x-roles:
         - COMMON
         - ADMIN
+        - DEVELOPER
 webhooks: {}
 components:
   schemas:
