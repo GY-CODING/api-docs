@@ -1351,6 +1351,9 @@ paths:
                 $ref: '#/components/schemas/BookList'
                 description: Book List.
           headers: {}
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+          description: ''
         '403':
           $ref: '#/components/responses/Forbidden'
           description: ''
@@ -1359,9 +1362,6 @@ paths:
           description: ''
         '405':
           $ref: '#/components/responses/Method Not Allowed'
-          description: ''
-        '409':
-          $ref: '#/components/responses/Conflict'
           description: ''
         '500':
           $ref: '#/components/responses/Internal Error'
