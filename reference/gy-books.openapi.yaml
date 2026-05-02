@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: Default module
+  title: GY Books
   description: ''
   version: 1.0.0
 tags:
@@ -23,7 +23,7 @@ paths:
           in: path
           description: Book ID.
           required: true
-          example: '103241'
+          example: ''
           schema:
             type: string
       responses:
@@ -33,7 +33,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Book'
-                description: Book Data.
+                description: Book.
           headers: {}
         '400':
           $ref: '#/components/responses/Bad Request'
@@ -72,15 +72,11 @@ paths:
             type: string
         - name: Authorization
           in: header
-          description: Authorization token.
-          example: >-
-            Bearer
-            eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkJsaDdYazFlM3ZBNG94UkNMWXJ1YiJ9.eyJnaXZlbl9uYW1lIjoiSXbDoW4iLCJmYW1pbHlfbmFtZSI6IlZpY2VudGUiLCJuaWNrbmFtZSI6Iml2aTEwMDB2bSIsIm5hbWUiOiJJdsOhbiBWaWNlbnRlIiwicGljdHVyZSI6Imh0dHBzOi8vbGgzLmdvb2dsZXVzZXJjb250ZW50LmNvbS9hL0FDZzhvY0pkSG8wTkJDbXRPY3YwMHNVRE16ZDFSLU5ZbHhwY0MyRkRuTXowcUMxSWkzUWpGZk1YPXM5Ni1jIiwidXBkYXRlZF9hdCI6IjIwMjYtMDQtMjdUMTY6NTc6MTMuMTYyWiIsImVtYWlsIjoiaXZpMTAwMHZtQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJpc3MiOiJodHRwczovL2d5Y29kaW5nLmV1LmF1dGgwLmNvbS8iLCJhdWQiOiJRQmp4cTkxeFRkM1A2eExFUkplazJ1Q2VhdmRRWEhoSiIsInN1YiI6Imdvb2dsZS1vYXV0aDJ8MTE4MDI2ODU0MjgyNzY4MjUxODIzIiwiaWF0IjoxNzc3MzEwMDI3LCJleHAiOjE3NzczNDYwMjcsInNpZCI6IkM2NThja2o3ZTdHUXJMcEpwNzc2QlpJb2lPeXZRWDRkIiwibm9uY2UiOiJZckFRWHRaLU5ZWW5Gd0EyWTF5d2R2TUhRaHZvQ3ZEOUpPUUhEQXItcnRvIn0.mHUzGTDs64ejjB5RsxjmCIrgLIp89SO5R1GG-vnCika3mwzFiTfibxOge1t9030WkZx2ybD5no7sYoEVP68hhpq18FDdKDAwb7NyDEGYIGIQ7BILlftD2vYslm0j7iN5xXyF6x04XCzTW8IW127DnXIvk_TmxbuX218o_8iEVUbakycdDYFWSXR_CWSFYQ8QTbBQEKLb0DdJgeekijdHEs-1nM-BPEmO-dLE22VvfRGBqFsZt9yBkvyQaeEcV3Mq79BswxkE3H756Thh8vXHj35NUubvVAvMvtRhUNORAZI6LH_HYiQLno4OlmNCeHZDUhHO7q288rQ9w40lLhUeXg
+          description: Authorization token or API key.
+          required: true
+          example: ''
           schema:
             type: string
-            default: >-
-              Bearer
-              eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkJsaDdYazFlM3ZBNG94UkNMWXJ1YiJ9.eyJnaXZlbl9uYW1lIjoiSXbDoW4iLCJmYW1pbHlfbmFtZSI6IlZpY2VudGUiLCJuaWNrbmFtZSI6Iml2aTEwMDB2bSIsIm5hbWUiOiJJdsOhbiBWaWNlbnRlIiwicGljdHVyZSI6Imh0dHBzOi8vbGgzLmdvb2dsZXVzZXJjb250ZW50LmNvbS9hL0FDZzhvY0pkSG8wTkJDbXRPY3YwMHNVRE16ZDFSLU5ZbHhwY0MyRkRuTXowcUMxSWkzUWpGZk1YPXM5Ni1jIiwidXBkYXRlZF9hdCI6IjIwMjYtMDQtMjdUMTY6NTc6MTMuMTYyWiIsImVtYWlsIjoiaXZpMTAwMHZtQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJpc3MiOiJodHRwczovL2d5Y29kaW5nLmV1LmF1dGgwLmNvbS8iLCJhdWQiOiJRQmp4cTkxeFRkM1A2eExFUkplazJ1Q2VhdmRRWEhoSiIsInN1YiI6Imdvb2dsZS1vYXV0aDJ8MTE4MDI2ODU0MjgyNzY4MjUxODIzIiwiaWF0IjoxNzc3MzEwMDI3LCJleHAiOjE3NzczNDYwMjcsInNpZCI6IkM2NThja2o3ZTdHUXJMcEpwNzc2QlpJb2lPeXZRWDRkIiwibm9uY2UiOiJZckFRWHRaLU5ZWW5Gd0EyWTF5d2R2TUhRaHZvQ3ZEOUpPUUhEQXItcnRvIn0.mHUzGTDs64ejjB5RsxjmCIrgLIp89SO5R1GG-vnCika3mwzFiTfibxOge1t9030WkZx2ybD5no7sYoEVP68hhpq18FDdKDAwb7NyDEGYIGIQ7BILlftD2vYslm0j7iN5xXyF6x04XCzTW8IW127DnXIvk_TmxbuX218o_8iEVUbakycdDYFWSXR_CWSFYQ8QTbBQEKLb0DdJgeekijdHEs-1nM-BPEmO-dLE22VvfRGBqFsZt9yBkvyQaeEcV3Mq79BswxkE3H756Thh8vXHj35NUubvVAvMvtRhUNORAZI6LH_HYiQLno4OlmNCeHZDUhHO7q288rQ9w40lLhUeXg
       responses:
         '200':
           description: ''
@@ -88,7 +84,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Book'
-                description: Book Data.
+                description: Book.
           headers: {}
         '400':
           $ref: '#/components/responses/Bad Request'
@@ -124,30 +120,23 @@ paths:
           in: path
           description: Book ID.
           required: true
-          example: '103241'
+          example: ''
           schema:
             type: string
         - name: Authorization
           in: header
-          description: Authorization token.
-          example: >-
-            Bearer
-            eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkJsaDdYazFlM3ZBNG94UkNMWXJ1YiJ9.eyJnaXZlbl9uYW1lIjoiSXbDoW4iLCJmYW1pbHlfbmFtZSI6IlZpY2VudGUiLCJuaWNrbmFtZSI6Iml2aTEwMDB2bSIsIm5hbWUiOiJJdsOhbiBWaWNlbnRlIiwicGljdHVyZSI6Imh0dHBzOi8vbGgzLmdvb2dsZXVzZXJjb250ZW50LmNvbS9hL0FDZzhvY0pkSG8wTkJDbXRPY3YwMHNVRE16ZDFSLU5ZbHhwY0MyRkRuTXowcUMxSWkzUWpGZk1YPXM5Ni1jIiwidXBkYXRlZF9hdCI6IjIwMjYtMDQtMjdUMTY6NTc6MTMuMTYyWiIsImVtYWlsIjoiaXZpMTAwMHZtQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJpc3MiOiJodHRwczovL2d5Y29kaW5nLmV1LmF1dGgwLmNvbS8iLCJhdWQiOiJRQmp4cTkxeFRkM1A2eExFUkplazJ1Q2VhdmRRWEhoSiIsInN1YiI6Imdvb2dsZS1vYXV0aDJ8MTE4MDI2ODU0MjgyNzY4MjUxODIzIiwiaWF0IjoxNzc3MzEwMDI3LCJleHAiOjE3NzczNDYwMjcsInNpZCI6IkM2NThja2o3ZTdHUXJMcEpwNzc2QlpJb2lPeXZRWDRkIiwibm9uY2UiOiJZckFRWHRaLU5ZWW5Gd0EyWTF5d2R2TUhRaHZvQ3ZEOUpPUUhEQXItcnRvIn0.mHUzGTDs64ejjB5RsxjmCIrgLIp89SO5R1GG-vnCika3mwzFiTfibxOge1t9030WkZx2ybD5no7sYoEVP68hhpq18FDdKDAwb7NyDEGYIGIQ7BILlftD2vYslm0j7iN5xXyF6x04XCzTW8IW127DnXIvk_TmxbuX218o_8iEVUbakycdDYFWSXR_CWSFYQ8QTbBQEKLb0DdJgeekijdHEs-1nM-BPEmO-dLE22VvfRGBqFsZt9yBkvyQaeEcV3Mq79BswxkE3H756Thh8vXHj35NUubvVAvMvtRhUNORAZI6LH_HYiQLno4OlmNCeHZDUhHO7q288rQ9w40lLhUeXg
+          description: Authorization token or API key.
+          required: true
+          example: ''
           schema:
             type: string
-            default: >-
-              Bearer
-              eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkJsaDdYazFlM3ZBNG94UkNMWXJ1YiJ9.eyJnaXZlbl9uYW1lIjoiSXbDoW4iLCJmYW1pbHlfbmFtZSI6IlZpY2VudGUiLCJuaWNrbmFtZSI6Iml2aTEwMDB2bSIsIm5hbWUiOiJJdsOhbiBWaWNlbnRlIiwicGljdHVyZSI6Imh0dHBzOi8vbGgzLmdvb2dsZXVzZXJjb250ZW50LmNvbS9hL0FDZzhvY0pkSG8wTkJDbXRPY3YwMHNVRE16ZDFSLU5ZbHhwY0MyRkRuTXowcUMxSWkzUWpGZk1YPXM5Ni1jIiwidXBkYXRlZF9hdCI6IjIwMjYtMDQtMjdUMTY6NTc6MTMuMTYyWiIsImVtYWlsIjoiaXZpMTAwMHZtQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJpc3MiOiJodHRwczovL2d5Y29kaW5nLmV1LmF1dGgwLmNvbS8iLCJhdWQiOiJRQmp4cTkxeFRkM1A2eExFUkplazJ1Q2VhdmRRWEhoSiIsInN1YiI6Imdvb2dsZS1vYXV0aDJ8MTE4MDI2ODU0MjgyNzY4MjUxODIzIiwiaWF0IjoxNzc3MzEwMDI3LCJleHAiOjE3NzczNDYwMjcsInNpZCI6IkM2NThja2o3ZTdHUXJMcEpwNzc2QlpJb2lPeXZRWDRkIiwibm9uY2UiOiJZckFRWHRaLU5ZWW5Gd0EyWTF5d2R2TUhRaHZvQ3ZEOUpPUUhEQXItcnRvIn0.mHUzGTDs64ejjB5RsxjmCIrgLIp89SO5R1GG-vnCika3mwzFiTfibxOge1t9030WkZx2ybD5no7sYoEVP68hhpq18FDdKDAwb7NyDEGYIGIQ7BILlftD2vYslm0j7iN5xXyF6x04XCzTW8IW127DnXIvk_TmxbuX218o_8iEVUbakycdDYFWSXR_CWSFYQ8QTbBQEKLb0DdJgeekijdHEs-1nM-BPEmO-dLE22VvfRGBqFsZt9yBkvyQaeEcV3Mq79BswxkE3H756Thh8vXHj35NUubvVAvMvtRhUNORAZI6LH_HYiQLno4OlmNCeHZDUhHO7q288rQ9w40lLhUeXg
       requestBody:
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/Book'
-              description: Book Data.
-            example:
-              userData:
-                status: READ
-                rating: 0
+              description: Book.
+            examples: {}
       responses:
         '200':
           description: ''
@@ -155,7 +144,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Book'
-                description: Book Data.
+                description: Book.
           headers: {}
         '304':
           $ref: '#/components/responses/Not Modified'
@@ -194,27 +183,19 @@ paths:
           in: path
           description: Book ID.
           required: true
-          example: '382700'
+          example: ''
           schema:
             type: string
         - name: Authorization
           in: header
-          description: Authorization token.
-          example: >-
-            Bearer
-            eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkJsaDdYazFlM3ZBNG94UkNMWXJ1YiJ9.eyJnaXZlbl9uYW1lIjoiSXbDoW4iLCJmYW1pbHlfbmFtZSI6IlZpY2VudGUiLCJuaWNrbmFtZSI6Iml2aTEwMDB2bSIsIm5hbWUiOiJJdsOhbiBWaWNlbnRlIiwicGljdHVyZSI6Imh0dHBzOi8vbGgzLmdvb2dsZXVzZXJjb250ZW50LmNvbS9hL0FDZzhvY0pkSG8wTkJDbXRPY3YwMHNVRE16ZDFSLU5ZbHhwY0MyRkRuTXowcUMxSWkzUWpGZk1YPXM5Ni1jIiwidXBkYXRlZF9hdCI6IjIwMjYtMDQtMjdUMTY6NTc6MTMuMTYyWiIsImVtYWlsIjoiaXZpMTAwMHZtQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJpc3MiOiJodHRwczovL2d5Y29kaW5nLmV1LmF1dGgwLmNvbS8iLCJhdWQiOiJRQmp4cTkxeFRkM1A2eExFUkplazJ1Q2VhdmRRWEhoSiIsInN1YiI6Imdvb2dsZS1vYXV0aDJ8MTE4MDI2ODU0MjgyNzY4MjUxODIzIiwiaWF0IjoxNzc3MzEwMDI3LCJleHAiOjE3NzczNDYwMjcsInNpZCI6IkM2NThja2o3ZTdHUXJMcEpwNzc2QlpJb2lPeXZRWDRkIiwibm9uY2UiOiJZckFRWHRaLU5ZWW5Gd0EyWTF5d2R2TUhRaHZvQ3ZEOUpPUUhEQXItcnRvIn0.mHUzGTDs64ejjB5RsxjmCIrgLIp89SO5R1GG-vnCika3mwzFiTfibxOge1t9030WkZx2ybD5no7sYoEVP68hhpq18FDdKDAwb7NyDEGYIGIQ7BILlftD2vYslm0j7iN5xXyF6x04XCzTW8IW127DnXIvk_TmxbuX218o_8iEVUbakycdDYFWSXR_CWSFYQ8QTbBQEKLb0DdJgeekijdHEs-1nM-BPEmO-dLE22VvfRGBqFsZt9yBkvyQaeEcV3Mq79BswxkE3H756Thh8vXHj35NUubvVAvMvtRhUNORAZI6LH_HYiQLno4OlmNCeHZDUhHO7q288rQ9w40lLhUeXg
+          description: Authorization token or API key.
+          required: true
+          example: ''
           schema:
             type: string
-            default: >-
-              Bearer
-              eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkJsaDdYazFlM3ZBNG94UkNMWXJ1YiJ9.eyJnaXZlbl9uYW1lIjoiSXbDoW4iLCJmYW1pbHlfbmFtZSI6IlZpY2VudGUiLCJuaWNrbmFtZSI6Iml2aTEwMDB2bSIsIm5hbWUiOiJJdsOhbiBWaWNlbnRlIiwicGljdHVyZSI6Imh0dHBzOi8vbGgzLmdvb2dsZXVzZXJjb250ZW50LmNvbS9hL0FDZzhvY0pkSG8wTkJDbXRPY3YwMHNVRE16ZDFSLU5ZbHhwY0MyRkRuTXowcUMxSWkzUWpGZk1YPXM5Ni1jIiwidXBkYXRlZF9hdCI6IjIwMjYtMDQtMjdUMTY6NTc6MTMuMTYyWiIsImVtYWlsIjoiaXZpMTAwMHZtQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJpc3MiOiJodHRwczovL2d5Y29kaW5nLmV1LmF1dGgwLmNvbS8iLCJhdWQiOiJRQmp4cTkxeFRkM1A2eExFUkplazJ1Q2VhdmRRWEhoSiIsInN1YiI6Imdvb2dsZS1vYXV0aDJ8MTE4MDI2ODU0MjgyNzY4MjUxODIzIiwiaWF0IjoxNzc3MzEwMDI3LCJleHAiOjE3NzczNDYwMjcsInNpZCI6IkM2NThja2o3ZTdHUXJMcEpwNzc2QlpJb2lPeXZRWDRkIiwibm9uY2UiOiJZckFRWHRaLU5ZWW5Gd0EyWTF5d2R2TUhRaHZvQ3ZEOUpPUUhEQXItcnRvIn0.mHUzGTDs64ejjB5RsxjmCIrgLIp89SO5R1GG-vnCika3mwzFiTfibxOge1t9030WkZx2ybD5no7sYoEVP68hhpq18FDdKDAwb7NyDEGYIGIQ7BILlftD2vYslm0j7iN5xXyF6x04XCzTW8IW127DnXIvk_TmxbuX218o_8iEVUbakycdDYFWSXR_CWSFYQ8QTbBQEKLb0DdJgeekijdHEs-1nM-BPEmO-dLE22VvfRGBqFsZt9yBkvyQaeEcV3Mq79BswxkE3H756Thh8vXHj35NUubvVAvMvtRhUNORAZI6LH_HYiQLno4OlmNCeHZDUhHO7q288rQ9w40lLhUeXg
       responses:
         '204':
           description: ''
-          content:
-            application/json:
-              schema:
-                type: 'null'
           headers: {}
         '400':
           $ref: '#/components/responses/Bad Request'
@@ -251,9 +232,9 @@ paths:
       parameters:
         - name: profileId
           in: path
-          description: Profile ID.
+          description: User ProfileID.
           required: true
-          example: 93dcc507-c706-4ed9-841f-fe470bdbb7d6
+          example: ''
           schema:
             type: string
             format: uuid
@@ -261,14 +242,14 @@ paths:
           in: query
           description: Page of the list.
           required: true
-          example: 1
+          example: 0
           schema:
             type: number
         - name: size
           in: query
           description: Page size.
           required: true
-          example: 10
+          example: 0
           schema:
             type: number
       responses:
@@ -280,7 +261,7 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Book'
-                  description: Book Data.
+                  description: Book.
                 description: List of books.
           headers: {}
         '400':
@@ -313,15 +294,11 @@ paths:
       parameters:
         - name: Authorization
           in: header
-          description: Authorization token.
-          example: >-
-            Bearer
-            eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkJsaDdYazFlM3ZBNG94UkNMWXJ1YiJ9.eyJnaXZlbl9uYW1lIjoiSXbDoW4iLCJmYW1pbHlfbmFtZSI6IlZpY2VudGUiLCJuaWNrbmFtZSI6Iml2aTEwMDB2bSIsIm5hbWUiOiJJdsOhbiBWaWNlbnRlIiwicGljdHVyZSI6Imh0dHBzOi8vbGgzLmdvb2dsZXVzZXJjb250ZW50LmNvbS9hL0FDZzhvY0pkSG8wTkJDbXRPY3YwMHNVRE16ZDFSLU5ZbHhwY0MyRkRuTXowcUMxSWkzUWpGZk1YPXM5Ni1jIiwidXBkYXRlZF9hdCI6IjIwMjYtMDQtMjdUMTY6NTc6MTMuMTYyWiIsImVtYWlsIjoiaXZpMTAwMHZtQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJpc3MiOiJodHRwczovL2d5Y29kaW5nLmV1LmF1dGgwLmNvbS8iLCJhdWQiOiJRQmp4cTkxeFRkM1A2eExFUkplazJ1Q2VhdmRRWEhoSiIsInN1YiI6Imdvb2dsZS1vYXV0aDJ8MTE4MDI2ODU0MjgyNzY4MjUxODIzIiwiaWF0IjoxNzc3MzEwMDI3LCJleHAiOjE3NzczNDYwMjcsInNpZCI6IkM2NThja2o3ZTdHUXJMcEpwNzc2QlpJb2lPeXZRWDRkIiwibm9uY2UiOiJZckFRWHRaLU5ZWW5Gd0EyWTF5d2R2TUhRaHZvQ3ZEOUpPUUhEQXItcnRvIn0.mHUzGTDs64ejjB5RsxjmCIrgLIp89SO5R1GG-vnCika3mwzFiTfibxOge1t9030WkZx2ybD5no7sYoEVP68hhpq18FDdKDAwb7NyDEGYIGIQ7BILlftD2vYslm0j7iN5xXyF6x04XCzTW8IW127DnXIvk_TmxbuX218o_8iEVUbakycdDYFWSXR_CWSFYQ8QTbBQEKLb0DdJgeekijdHEs-1nM-BPEmO-dLE22VvfRGBqFsZt9yBkvyQaeEcV3Mq79BswxkE3H756Thh8vXHj35NUubvVAvMvtRhUNORAZI6LH_HYiQLno4OlmNCeHZDUhHO7q288rQ9w40lLhUeXg
+          description: Authorization token or API key.
+          required: true
+          example: ''
           schema:
             type: string
-            default: >-
-              Bearer
-              eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkJsaDdYazFlM3ZBNG94UkNMWXJ1YiJ9.eyJnaXZlbl9uYW1lIjoiSXbDoW4iLCJmYW1pbHlfbmFtZSI6IlZpY2VudGUiLCJuaWNrbmFtZSI6Iml2aTEwMDB2bSIsIm5hbWUiOiJJdsOhbiBWaWNlbnRlIiwicGljdHVyZSI6Imh0dHBzOi8vbGgzLmdvb2dsZXVzZXJjb250ZW50LmNvbS9hL0FDZzhvY0pkSG8wTkJDbXRPY3YwMHNVRE16ZDFSLU5ZbHhwY0MyRkRuTXowcUMxSWkzUWpGZk1YPXM5Ni1jIiwidXBkYXRlZF9hdCI6IjIwMjYtMDQtMjdUMTY6NTc6MTMuMTYyWiIsImVtYWlsIjoiaXZpMTAwMHZtQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJpc3MiOiJodHRwczovL2d5Y29kaW5nLmV1LmF1dGgwLmNvbS8iLCJhdWQiOiJRQmp4cTkxeFRkM1A2eExFUkplazJ1Q2VhdmRRWEhoSiIsInN1YiI6Imdvb2dsZS1vYXV0aDJ8MTE4MDI2ODU0MjgyNzY4MjUxODIzIiwiaWF0IjoxNzc3MzEwMDI3LCJleHAiOjE3NzczNDYwMjcsInNpZCI6IkM2NThja2o3ZTdHUXJMcEpwNzc2QlpJb2lPeXZRWDRkIiwibm9uY2UiOiJZckFRWHRaLU5ZWW5Gd0EyWTF5d2R2TUhRaHZvQ3ZEOUpPUUhEQXItcnRvIn0.mHUzGTDs64ejjB5RsxjmCIrgLIp89SO5R1GG-vnCika3mwzFiTfibxOge1t9030WkZx2ybD5no7sYoEVP68hhpq18FDdKDAwb7NyDEGYIGIQ7BILlftD2vYslm0j7iN5xXyF6x04XCzTW8IW127DnXIvk_TmxbuX218o_8iEVUbakycdDYFWSXR_CWSFYQ8QTbBQEKLb0DdJgeekijdHEs-1nM-BPEmO-dLE22VvfRGBqFsZt9yBkvyQaeEcV3Mq79BswxkE3H756Thh8vXHj35NUubvVAvMvtRhUNORAZI6LH_HYiQLno4OlmNCeHZDUhHO7q288rQ9w40lLhUeXg
       responses:
         '200':
           description: ''
@@ -364,29 +341,21 @@ paths:
       parameters:
         - name: profileId
           in: path
-          description: Profile ID.
+          description: User ProfileID.
           required: true
-          example: 93dcc507-c706-4ed9-841f-fe470bdbb7d6
+          example: ''
           schema:
             type: string
         - name: Authorization
           in: header
-          description: Authorization token.
-          example: >-
-            Bearer
-            eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkJsaDdYazFlM3ZBNG94UkNMWXJ1YiJ9.eyJnaXZlbl9uYW1lIjoiSXbDoW4iLCJmYW1pbHlfbmFtZSI6IlZpY2VudGUiLCJuaWNrbmFtZSI6Iml2aTEwMDB2bSIsIm5hbWUiOiJJdsOhbiBWaWNlbnRlIiwicGljdHVyZSI6Imh0dHBzOi8vbGgzLmdvb2dsZXVzZXJjb250ZW50LmNvbS9hL0FDZzhvY0pkSG8wTkJDbXRPY3YwMHNVRE16ZDFSLU5ZbHhwY0MyRkRuTXowcUMxSWkzUWpGZk1YPXM5Ni1jIiwidXBkYXRlZF9hdCI6IjIwMjYtMDQtMjdUMTY6NTc6MTMuMTYyWiIsImVtYWlsIjoiaXZpMTAwMHZtQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJpc3MiOiJodHRwczovL2d5Y29kaW5nLmV1LmF1dGgwLmNvbS8iLCJhdWQiOiJRQmp4cTkxeFRkM1A2eExFUkplazJ1Q2VhdmRRWEhoSiIsInN1YiI6Imdvb2dsZS1vYXV0aDJ8MTE4MDI2ODU0MjgyNzY4MjUxODIzIiwiaWF0IjoxNzc3MzEwMDI3LCJleHAiOjE3NzczNDYwMjcsInNpZCI6IkM2NThja2o3ZTdHUXJMcEpwNzc2QlpJb2lPeXZRWDRkIiwibm9uY2UiOiJZckFRWHRaLU5ZWW5Gd0EyWTF5d2R2TUhRaHZvQ3ZEOUpPUUhEQXItcnRvIn0.mHUzGTDs64ejjB5RsxjmCIrgLIp89SO5R1GG-vnCika3mwzFiTfibxOge1t9030WkZx2ybD5no7sYoEVP68hhpq18FDdKDAwb7NyDEGYIGIQ7BILlftD2vYslm0j7iN5xXyF6x04XCzTW8IW127DnXIvk_TmxbuX218o_8iEVUbakycdDYFWSXR_CWSFYQ8QTbBQEKLb0DdJgeekijdHEs-1nM-BPEmO-dLE22VvfRGBqFsZt9yBkvyQaeEcV3Mq79BswxkE3H756Thh8vXHj35NUubvVAvMvtRhUNORAZI6LH_HYiQLno4OlmNCeHZDUhHO7q288rQ9w40lLhUeXg
+          description: Authorization token or API key.
+          required: true
+          example: ''
           schema:
             type: string
-            default: >-
-              Bearer
-              eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkJsaDdYazFlM3ZBNG94UkNMWXJ1YiJ9.eyJnaXZlbl9uYW1lIjoiSXbDoW4iLCJmYW1pbHlfbmFtZSI6IlZpY2VudGUiLCJuaWNrbmFtZSI6Iml2aTEwMDB2bSIsIm5hbWUiOiJJdsOhbiBWaWNlbnRlIiwicGljdHVyZSI6Imh0dHBzOi8vbGgzLmdvb2dsZXVzZXJjb250ZW50LmNvbS9hL0FDZzhvY0pkSG8wTkJDbXRPY3YwMHNVRE16ZDFSLU5ZbHhwY0MyRkRuTXowcUMxSWkzUWpGZk1YPXM5Ni1jIiwidXBkYXRlZF9hdCI6IjIwMjYtMDQtMjdUMTY6NTc6MTMuMTYyWiIsImVtYWlsIjoiaXZpMTAwMHZtQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJpc3MiOiJodHRwczovL2d5Y29kaW5nLmV1LmF1dGgwLmNvbS8iLCJhdWQiOiJRQmp4cTkxeFRkM1A2eExFUkplazJ1Q2VhdmRRWEhoSiIsInN1YiI6Imdvb2dsZS1vYXV0aDJ8MTE4MDI2ODU0MjgyNzY4MjUxODIzIiwiaWF0IjoxNzc3MzEwMDI3LCJleHAiOjE3NzczNDYwMjcsInNpZCI6IkM2NThja2o3ZTdHUXJMcEpwNzc2QlpJb2lPeXZRWDRkIiwibm9uY2UiOiJZckFRWHRaLU5ZWW5Gd0EyWTF5d2R2TUhRaHZvQ3ZEOUpPUUhEQXItcnRvIn0.mHUzGTDs64ejjB5RsxjmCIrgLIp89SO5R1GG-vnCika3mwzFiTfibxOge1t9030WkZx2ybD5no7sYoEVP68hhpq18FDdKDAwb7NyDEGYIGIQ7BILlftD2vYslm0j7iN5xXyF6x04XCzTW8IW127DnXIvk_TmxbuX218o_8iEVUbakycdDYFWSXR_CWSFYQ8QTbBQEKLb0DdJgeekijdHEs-1nM-BPEmO-dLE22VvfRGBqFsZt9yBkvyQaeEcV3Mq79BswxkE3H756Thh8vXHj35NUubvVAvMvtRhUNORAZI6LH_HYiQLno4OlmNCeHZDUhHO7q288rQ9w40lLhUeXg
       responses:
         '204':
           description: ''
-          content:
-            application/json:
-              schema:
-                type: 'null'
           headers: {}
         '401':
           $ref: '#/components/responses/Unauthorized'
@@ -418,15 +387,11 @@ paths:
       parameters:
         - name: Authorization
           in: header
-          description: Authorization token.
-          example: >-
-            Bearer
-            eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkJsaDdYazFlM3ZBNG94UkNMWXJ1YiJ9.eyJnaXZlbl9uYW1lIjoiSXbDoW4iLCJmYW1pbHlfbmFtZSI6IlZpY2VudGUiLCJuaWNrbmFtZSI6Iml2aTEwMDB2bSIsIm5hbWUiOiJJdsOhbiBWaWNlbnRlIiwicGljdHVyZSI6Imh0dHBzOi8vbGgzLmdvb2dsZXVzZXJjb250ZW50LmNvbS9hL0FDZzhvY0pkSG8wTkJDbXRPY3YwMHNVRE16ZDFSLU5ZbHhwY0MyRkRuTXowcUMxSWkzUWpGZk1YPXM5Ni1jIiwidXBkYXRlZF9hdCI6IjIwMjYtMDQtMjdUMTY6NTc6MTMuMTYyWiIsImVtYWlsIjoiaXZpMTAwMHZtQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJpc3MiOiJodHRwczovL2d5Y29kaW5nLmV1LmF1dGgwLmNvbS8iLCJhdWQiOiJRQmp4cTkxeFRkM1A2eExFUkplazJ1Q2VhdmRRWEhoSiIsInN1YiI6Imdvb2dsZS1vYXV0aDJ8MTE4MDI2ODU0MjgyNzY4MjUxODIzIiwiaWF0IjoxNzc3MzEwMDI3LCJleHAiOjE3NzczNDYwMjcsInNpZCI6IkM2NThja2o3ZTdHUXJMcEpwNzc2QlpJb2lPeXZRWDRkIiwibm9uY2UiOiJZckFRWHRaLU5ZWW5Gd0EyWTF5d2R2TUhRaHZvQ3ZEOUpPUUhEQXItcnRvIn0.mHUzGTDs64ejjB5RsxjmCIrgLIp89SO5R1GG-vnCika3mwzFiTfibxOge1t9030WkZx2ybD5no7sYoEVP68hhpq18FDdKDAwb7NyDEGYIGIQ7BILlftD2vYslm0j7iN5xXyF6x04XCzTW8IW127DnXIvk_TmxbuX218o_8iEVUbakycdDYFWSXR_CWSFYQ8QTbBQEKLb0DdJgeekijdHEs-1nM-BPEmO-dLE22VvfRGBqFsZt9yBkvyQaeEcV3Mq79BswxkE3H756Thh8vXHj35NUubvVAvMvtRhUNORAZI6LH_HYiQLno4OlmNCeHZDUhHO7q288rQ9w40lLhUeXg
+          description: Authorization token or API key.
+          required: true
+          example: ''
           schema:
             type: string
-            default: >-
-              Bearer
-              eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkJsaDdYazFlM3ZBNG94UkNMWXJ1YiJ9.eyJnaXZlbl9uYW1lIjoiSXbDoW4iLCJmYW1pbHlfbmFtZSI6IlZpY2VudGUiLCJuaWNrbmFtZSI6Iml2aTEwMDB2bSIsIm5hbWUiOiJJdsOhbiBWaWNlbnRlIiwicGljdHVyZSI6Imh0dHBzOi8vbGgzLmdvb2dsZXVzZXJjb250ZW50LmNvbS9hL0FDZzhvY0pkSG8wTkJDbXRPY3YwMHNVRE16ZDFSLU5ZbHhwY0MyRkRuTXowcUMxSWkzUWpGZk1YPXM5Ni1jIiwidXBkYXRlZF9hdCI6IjIwMjYtMDQtMjdUMTY6NTc6MTMuMTYyWiIsImVtYWlsIjoiaXZpMTAwMHZtQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJpc3MiOiJodHRwczovL2d5Y29kaW5nLmV1LmF1dGgwLmNvbS8iLCJhdWQiOiJRQmp4cTkxeFRkM1A2eExFUkplazJ1Q2VhdmRRWEhoSiIsInN1YiI6Imdvb2dsZS1vYXV0aDJ8MTE4MDI2ODU0MjgyNzY4MjUxODIzIiwiaWF0IjoxNzc3MzEwMDI3LCJleHAiOjE3NzczNDYwMjcsInNpZCI6IkM2NThja2o3ZTdHUXJMcEpwNzc2QlpJb2lPeXZRWDRkIiwibm9uY2UiOiJZckFRWHRaLU5ZWW5Gd0EyWTF5d2R2TUhRaHZvQ3ZEOUpPUUhEQXItcnRvIn0.mHUzGTDs64ejjB5RsxjmCIrgLIp89SO5R1GG-vnCika3mwzFiTfibxOge1t9030WkZx2ybD5no7sYoEVP68hhpq18FDdKDAwb7NyDEGYIGIQ7BILlftD2vYslm0j7iN5xXyF6x04XCzTW8IW127DnXIvk_TmxbuX218o_8iEVUbakycdDYFWSXR_CWSFYQ8QTbBQEKLb0DdJgeekijdHEs-1nM-BPEmO-dLE22VvfRGBqFsZt9yBkvyQaeEcV3Mq79BswxkE3H756Thh8vXHj35NUubvVAvMvtRhUNORAZI6LH_HYiQLno4OlmNCeHZDUhHO7q288rQ9w40lLhUeXg
       requestBody:
         content:
           application/json:
@@ -440,8 +405,7 @@ paths:
               required:
                 - to
               description: Friend Request Object.
-            example:
-              to: e6b94363-d415-462d-9b0e-c5c4796fcbd9
+            examples: {}
         required: true
       responses:
         '200':
@@ -477,6 +441,7 @@ paths:
       x-roles:
         - COMMON
         - ADMIN
+        - DEVELOPER
     get:
       summary: Get Friend Requests
       deprecated: false
@@ -486,15 +451,11 @@ paths:
       parameters:
         - name: Authorization
           in: header
-          description: Authorization token.
-          example: >-
-            Bearer
-            eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkJsaDdYazFlM3ZBNG94UkNMWXJ1YiJ9.eyJnaXZlbl9uYW1lIjoiSXbDoW4iLCJmYW1pbHlfbmFtZSI6IlZpY2VudGUiLCJuaWNrbmFtZSI6Iml2aTEwMDB2bSIsIm5hbWUiOiJJdsOhbiBWaWNlbnRlIiwicGljdHVyZSI6Imh0dHBzOi8vbGgzLmdvb2dsZXVzZXJjb250ZW50LmNvbS9hL0FDZzhvY0pkSG8wTkJDbXRPY3YwMHNVRE16ZDFSLU5ZbHhwY0MyRkRuTXowcUMxSWkzUWpGZk1YPXM5Ni1jIiwidXBkYXRlZF9hdCI6IjIwMjYtMDQtMjdUMTY6NTc6MTMuMTYyWiIsImVtYWlsIjoiaXZpMTAwMHZtQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJpc3MiOiJodHRwczovL2d5Y29kaW5nLmV1LmF1dGgwLmNvbS8iLCJhdWQiOiJRQmp4cTkxeFRkM1A2eExFUkplazJ1Q2VhdmRRWEhoSiIsInN1YiI6Imdvb2dsZS1vYXV0aDJ8MTE4MDI2ODU0MjgyNzY4MjUxODIzIiwiaWF0IjoxNzc3MzEwMDI3LCJleHAiOjE3NzczNDYwMjcsInNpZCI6IkM2NThja2o3ZTdHUXJMcEpwNzc2QlpJb2lPeXZRWDRkIiwibm9uY2UiOiJZckFRWHRaLU5ZWW5Gd0EyWTF5d2R2TUhRaHZvQ3ZEOUpPUUhEQXItcnRvIn0.mHUzGTDs64ejjB5RsxjmCIrgLIp89SO5R1GG-vnCika3mwzFiTfibxOge1t9030WkZx2ybD5no7sYoEVP68hhpq18FDdKDAwb7NyDEGYIGIQ7BILlftD2vYslm0j7iN5xXyF6x04XCzTW8IW127DnXIvk_TmxbuX218o_8iEVUbakycdDYFWSXR_CWSFYQ8QTbBQEKLb0DdJgeekijdHEs-1nM-BPEmO-dLE22VvfRGBqFsZt9yBkvyQaeEcV3Mq79BswxkE3H756Thh8vXHj35NUubvVAvMvtRhUNORAZI6LH_HYiQLno4OlmNCeHZDUhHO7q288rQ9w40lLhUeXg
+          description: Authorization token or API key.
+          required: true
+          example: ''
           schema:
             type: string
-            default: >-
-              Bearer
-              eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkJsaDdYazFlM3ZBNG94UkNMWXJ1YiJ9.eyJnaXZlbl9uYW1lIjoiSXbDoW4iLCJmYW1pbHlfbmFtZSI6IlZpY2VudGUiLCJuaWNrbmFtZSI6Iml2aTEwMDB2bSIsIm5hbWUiOiJJdsOhbiBWaWNlbnRlIiwicGljdHVyZSI6Imh0dHBzOi8vbGgzLmdvb2dsZXVzZXJjb250ZW50LmNvbS9hL0FDZzhvY0pkSG8wTkJDbXRPY3YwMHNVRE16ZDFSLU5ZbHhwY0MyRkRuTXowcUMxSWkzUWpGZk1YPXM5Ni1jIiwidXBkYXRlZF9hdCI6IjIwMjYtMDQtMjdUMTY6NTc6MTMuMTYyWiIsImVtYWlsIjoiaXZpMTAwMHZtQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJpc3MiOiJodHRwczovL2d5Y29kaW5nLmV1LmF1dGgwLmNvbS8iLCJhdWQiOiJRQmp4cTkxeFRkM1A2eExFUkplazJ1Q2VhdmRRWEhoSiIsInN1YiI6Imdvb2dsZS1vYXV0aDJ8MTE4MDI2ODU0MjgyNzY4MjUxODIzIiwiaWF0IjoxNzc3MzEwMDI3LCJleHAiOjE3NzczNDYwMjcsInNpZCI6IkM2NThja2o3ZTdHUXJMcEpwNzc2QlpJb2lPeXZRWDRkIiwibm9uY2UiOiJZckFRWHRaLU5ZWW5Gd0EyWTF5d2R2TUhRaHZvQ3ZEOUpPUUhEQXItcnRvIn0.mHUzGTDs64ejjB5RsxjmCIrgLIp89SO5R1GG-vnCika3mwzFiTfibxOge1t9030WkZx2ybD5no7sYoEVP68hhpq18FDdKDAwb7NyDEGYIGIQ7BILlftD2vYslm0j7iN5xXyF6x04XCzTW8IW127DnXIvk_TmxbuX218o_8iEVUbakycdDYFWSXR_CWSFYQ8QTbBQEKLb0DdJgeekijdHEs-1nM-BPEmO-dLE22VvfRGBqFsZt9yBkvyQaeEcV3Mq79BswxkE3H756Thh8vXHj35NUubvVAvMvtRhUNORAZI6LH_HYiQLno4OlmNCeHZDUhHO7q288rQ9w40lLhUeXg
       responses:
         '200':
           description: ''
@@ -539,21 +500,17 @@ paths:
           in: query
           description: Friend Request ID.
           required: true
-          example: 3290723d-f233-4759-a0d3-d486049d785f
+          example: ''
           schema:
             type: string
             format: uuid
         - name: Authorization
           in: header
-          description: Authorization token.
-          example: >-
-            Bearer
-            eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkJsaDdYazFlM3ZBNG94UkNMWXJ1YiJ9.eyJnaXZlbl9uYW1lIjoiSXbDoW4iLCJmYW1pbHlfbmFtZSI6IlZpY2VudGUiLCJuaWNrbmFtZSI6Iml2aTEwMDB2bSIsIm5hbWUiOiJJdsOhbiBWaWNlbnRlIiwicGljdHVyZSI6Imh0dHBzOi8vbGgzLmdvb2dsZXVzZXJjb250ZW50LmNvbS9hL0FDZzhvY0pkSG8wTkJDbXRPY3YwMHNVRE16ZDFSLU5ZbHhwY0MyRkRuTXowcUMxSWkzUWpGZk1YPXM5Ni1jIiwidXBkYXRlZF9hdCI6IjIwMjYtMDQtMjdUMTY6NTc6MTMuMTYyWiIsImVtYWlsIjoiaXZpMTAwMHZtQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJpc3MiOiJodHRwczovL2d5Y29kaW5nLmV1LmF1dGgwLmNvbS8iLCJhdWQiOiJRQmp4cTkxeFRkM1A2eExFUkplazJ1Q2VhdmRRWEhoSiIsInN1YiI6Imdvb2dsZS1vYXV0aDJ8MTE4MDI2ODU0MjgyNzY4MjUxODIzIiwiaWF0IjoxNzc3MzEwMDI3LCJleHAiOjE3NzczNDYwMjcsInNpZCI6IkM2NThja2o3ZTdHUXJMcEpwNzc2QlpJb2lPeXZRWDRkIiwibm9uY2UiOiJZckFRWHRaLU5ZWW5Gd0EyWTF5d2R2TUhRaHZvQ3ZEOUpPUUhEQXItcnRvIn0.mHUzGTDs64ejjB5RsxjmCIrgLIp89SO5R1GG-vnCika3mwzFiTfibxOge1t9030WkZx2ybD5no7sYoEVP68hhpq18FDdKDAwb7NyDEGYIGIQ7BILlftD2vYslm0j7iN5xXyF6x04XCzTW8IW127DnXIvk_TmxbuX218o_8iEVUbakycdDYFWSXR_CWSFYQ8QTbBQEKLb0DdJgeekijdHEs-1nM-BPEmO-dLE22VvfRGBqFsZt9yBkvyQaeEcV3Mq79BswxkE3H756Thh8vXHj35NUubvVAvMvtRhUNORAZI6LH_HYiQLno4OlmNCeHZDUhHO7q288rQ9w40lLhUeXg
+          description: Authorization token or API key.
+          required: true
+          example: ''
           schema:
             type: string
-            default: >-
-              Bearer
-              eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkJsaDdYazFlM3ZBNG94UkNMWXJ1YiJ9.eyJnaXZlbl9uYW1lIjoiSXbDoW4iLCJmYW1pbHlfbmFtZSI6IlZpY2VudGUiLCJuaWNrbmFtZSI6Iml2aTEwMDB2bSIsIm5hbWUiOiJJdsOhbiBWaWNlbnRlIiwicGljdHVyZSI6Imh0dHBzOi8vbGgzLmdvb2dsZXVzZXJjb250ZW50LmNvbS9hL0FDZzhvY0pkSG8wTkJDbXRPY3YwMHNVRE16ZDFSLU5ZbHhwY0MyRkRuTXowcUMxSWkzUWpGZk1YPXM5Ni1jIiwidXBkYXRlZF9hdCI6IjIwMjYtMDQtMjdUMTY6NTc6MTMuMTYyWiIsImVtYWlsIjoiaXZpMTAwMHZtQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJpc3MiOiJodHRwczovL2d5Y29kaW5nLmV1LmF1dGgwLmNvbS8iLCJhdWQiOiJRQmp4cTkxeFRkM1A2eExFUkplazJ1Q2VhdmRRWEhoSiIsInN1YiI6Imdvb2dsZS1vYXV0aDJ8MTE4MDI2ODU0MjgyNzY4MjUxODIzIiwiaWF0IjoxNzc3MzEwMDI3LCJleHAiOjE3NzczNDYwMjcsInNpZCI6IkM2NThja2o3ZTdHUXJMcEpwNzc2QlpJb2lPeXZRWDRkIiwibm9uY2UiOiJZckFRWHRaLU5ZWW5Gd0EyWTF5d2R2TUhRaHZvQ3ZEOUpPUUhEQXItcnRvIn0.mHUzGTDs64ejjB5RsxjmCIrgLIp89SO5R1GG-vnCika3mwzFiTfibxOge1t9030WkZx2ybD5no7sYoEVP68hhpq18FDdKDAwb7NyDEGYIGIQ7BILlftD2vYslm0j7iN5xXyF6x04XCzTW8IW127DnXIvk_TmxbuX218o_8iEVUbakycdDYFWSXR_CWSFYQ8QTbBQEKLb0DdJgeekijdHEs-1nM-BPEmO-dLE22VvfRGBqFsZt9yBkvyQaeEcV3Mq79BswxkE3H756Thh8vXHj35NUubvVAvMvtRhUNORAZI6LH_HYiQLno4OlmNCeHZDUhHO7q288rQ9w40lLhUeXg
       requestBody:
         content:
           application/json:
@@ -575,10 +532,6 @@ paths:
       responses:
         '204':
           description: ''
-          content:
-            application/json:
-              schema:
-                type: 'null'
           headers: {}
         '400':
           $ref: '#/components/responses/Bad Request'
@@ -623,17 +576,6 @@ paths:
           example: toxyc
           schema:
             type: string
-        - name: Authorization
-          in: header
-          description: Authorization token.
-          example: >-
-            Bearer
-            eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkJsaDdYazFlM3ZBNG94UkNMWXJ1YiJ9.eyJnaXZlbl9uYW1lIjoiSXbDoW4iLCJmYW1pbHlfbmFtZSI6IlZpY2VudGUiLCJuaWNrbmFtZSI6Iml2aTEwMDB2bSIsIm5hbWUiOiJJdsOhbiBWaWNlbnRlIiwicGljdHVyZSI6Imh0dHBzOi8vbGgzLmdvb2dsZXVzZXJjb250ZW50LmNvbS9hL0FDZzhvY0pkSG8wTkJDbXRPY3YwMHNVRE16ZDFSLU5ZbHhwY0MyRkRuTXowcUMxSWkzUWpGZk1YPXM5Ni1jIiwidXBkYXRlZF9hdCI6IjIwMjYtMDQtMjdUMTY6NTc6MTMuMTYyWiIsImVtYWlsIjoiaXZpMTAwMHZtQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJpc3MiOiJodHRwczovL2d5Y29kaW5nLmV1LmF1dGgwLmNvbS8iLCJhdWQiOiJRQmp4cTkxeFRkM1A2eExFUkplazJ1Q2VhdmRRWEhoSiIsInN1YiI6Imdvb2dsZS1vYXV0aDJ8MTE4MDI2ODU0MjgyNzY4MjUxODIzIiwiaWF0IjoxNzc3MzEwMDI3LCJleHAiOjE3NzczNDYwMjcsInNpZCI6IkM2NThja2o3ZTdHUXJMcEpwNzc2QlpJb2lPeXZRWDRkIiwibm9uY2UiOiJZckFRWHRaLU5ZWW5Gd0EyWTF5d2R2TUhRaHZvQ3ZEOUpPUUhEQXItcnRvIn0.mHUzGTDs64ejjB5RsxjmCIrgLIp89SO5R1GG-vnCika3mwzFiTfibxOge1t9030WkZx2ybD5no7sYoEVP68hhpq18FDdKDAwb7NyDEGYIGIQ7BILlftD2vYslm0j7iN5xXyF6x04XCzTW8IW127DnXIvk_TmxbuX218o_8iEVUbakycdDYFWSXR_CWSFYQ8QTbBQEKLb0DdJgeekijdHEs-1nM-BPEmO-dLE22VvfRGBqFsZt9yBkvyQaeEcV3Mq79BswxkE3H756Thh8vXHj35NUubvVAvMvtRhUNORAZI6LH_HYiQLno4OlmNCeHZDUhHO7q288rQ9w40lLhUeXg
-          schema:
-            type: string
-            default: >-
-              Bearer
-              eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkJsaDdYazFlM3ZBNG94UkNMWXJ1YiJ9.eyJnaXZlbl9uYW1lIjoiSXbDoW4iLCJmYW1pbHlfbmFtZSI6IlZpY2VudGUiLCJuaWNrbmFtZSI6Iml2aTEwMDB2bSIsIm5hbWUiOiJJdsOhbiBWaWNlbnRlIiwicGljdHVyZSI6Imh0dHBzOi8vbGgzLmdvb2dsZXVzZXJjb250ZW50LmNvbS9hL0FDZzhvY0pkSG8wTkJDbXRPY3YwMHNVRE16ZDFSLU5ZbHhwY0MyRkRuTXowcUMxSWkzUWpGZk1YPXM5Ni1jIiwidXBkYXRlZF9hdCI6IjIwMjYtMDQtMjdUMTY6NTc6MTMuMTYyWiIsImVtYWlsIjoiaXZpMTAwMHZtQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJpc3MiOiJodHRwczovL2d5Y29kaW5nLmV1LmF1dGgwLmNvbS8iLCJhdWQiOiJRQmp4cTkxeFRkM1A2eExFUkplazJ1Q2VhdmRRWEhoSiIsInN1YiI6Imdvb2dsZS1vYXV0aDJ8MTE4MDI2ODU0MjgyNzY4MjUxODIzIiwiaWF0IjoxNzc3MzEwMDI3LCJleHAiOjE3NzczNDYwMjcsInNpZCI6IkM2NThja2o3ZTdHUXJMcEpwNzc2QlpJb2lPeXZRWDRkIiwibm9uY2UiOiJZckFRWHRaLU5ZWW5Gd0EyWTF5d2R2TUhRaHZvQ3ZEOUpPUUhEQXItcnRvIn0.mHUzGTDs64ejjB5RsxjmCIrgLIp89SO5R1GG-vnCika3mwzFiTfibxOge1t9030WkZx2ybD5no7sYoEVP68hhpq18FDdKDAwb7NyDEGYIGIQ7BILlftD2vYslm0j7iN5xXyF6x04XCzTW8IW127DnXIvk_TmxbuX218o_8iEVUbakycdDYFWSXR_CWSFYQ8QTbBQEKLb0DdJgeekijdHEs-1nM-BPEmO-dLE22VvfRGBqFsZt9yBkvyQaeEcV3Mq79BswxkE3H756Thh8vXHj35NUubvVAvMvtRhUNORAZI6LH_HYiQLno4OlmNCeHZDUhHO7q288rQ9w40lLhUeXg
       responses:
         '200':
           description: ''
@@ -726,17 +668,6 @@ paths:
           schema:
             type: string
             format: uuid
-        - name: Authorization
-          in: header
-          description: Authorization token.
-          example: >-
-            Bearer
-            eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkJsaDdYazFlM3ZBNG94UkNMWXJ1YiJ9.eyJnaXZlbl9uYW1lIjoiSXbDoW4iLCJmYW1pbHlfbmFtZSI6IlZpY2VudGUiLCJuaWNrbmFtZSI6Iml2aTEwMDB2bSIsIm5hbWUiOiJJdsOhbiBWaWNlbnRlIiwicGljdHVyZSI6Imh0dHBzOi8vbGgzLmdvb2dsZXVzZXJjb250ZW50LmNvbS9hL0FDZzhvY0pkSG8wTkJDbXRPY3YwMHNVRE16ZDFSLU5ZbHhwY0MyRkRuTXowcUMxSWkzUWpGZk1YPXM5Ni1jIiwidXBkYXRlZF9hdCI6IjIwMjYtMDQtMjdUMTY6NTc6MTMuMTYyWiIsImVtYWlsIjoiaXZpMTAwMHZtQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJpc3MiOiJodHRwczovL2d5Y29kaW5nLmV1LmF1dGgwLmNvbS8iLCJhdWQiOiJRQmp4cTkxeFRkM1A2eExFUkplazJ1Q2VhdmRRWEhoSiIsInN1YiI6Imdvb2dsZS1vYXV0aDJ8MTE4MDI2ODU0MjgyNzY4MjUxODIzIiwiaWF0IjoxNzc3MzEwMDI3LCJleHAiOjE3NzczNDYwMjcsInNpZCI6IkM2NThja2o3ZTdHUXJMcEpwNzc2QlpJb2lPeXZRWDRkIiwibm9uY2UiOiJZckFRWHRaLU5ZWW5Gd0EyWTF5d2R2TUhRaHZvQ3ZEOUpPUUhEQXItcnRvIn0.mHUzGTDs64ejjB5RsxjmCIrgLIp89SO5R1GG-vnCika3mwzFiTfibxOge1t9030WkZx2ybD5no7sYoEVP68hhpq18FDdKDAwb7NyDEGYIGIQ7BILlftD2vYslm0j7iN5xXyF6x04XCzTW8IW127DnXIvk_TmxbuX218o_8iEVUbakycdDYFWSXR_CWSFYQ8QTbBQEKLb0DdJgeekijdHEs-1nM-BPEmO-dLE22VvfRGBqFsZt9yBkvyQaeEcV3Mq79BswxkE3H756Thh8vXHj35NUubvVAvMvtRhUNORAZI6LH_HYiQLno4OlmNCeHZDUhHO7q288rQ9w40lLhUeXg
-          schema:
-            type: string
-            default: >-
-              Bearer
-              eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkJsaDdYazFlM3ZBNG94UkNMWXJ1YiJ9.eyJnaXZlbl9uYW1lIjoiSXbDoW4iLCJmYW1pbHlfbmFtZSI6IlZpY2VudGUiLCJuaWNrbmFtZSI6Iml2aTEwMDB2bSIsIm5hbWUiOiJJdsOhbiBWaWNlbnRlIiwicGljdHVyZSI6Imh0dHBzOi8vbGgzLmdvb2dsZXVzZXJjb250ZW50LmNvbS9hL0FDZzhvY0pkSG8wTkJDbXRPY3YwMHNVRE16ZDFSLU5ZbHhwY0MyRkRuTXowcUMxSWkzUWpGZk1YPXM5Ni1jIiwidXBkYXRlZF9hdCI6IjIwMjYtMDQtMjdUMTY6NTc6MTMuMTYyWiIsImVtYWlsIjoiaXZpMTAwMHZtQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJpc3MiOiJodHRwczovL2d5Y29kaW5nLmV1LmF1dGgwLmNvbS8iLCJhdWQiOiJRQmp4cTkxeFRkM1A2eExFUkplazJ1Q2VhdmRRWEhoSiIsInN1YiI6Imdvb2dsZS1vYXV0aDJ8MTE4MDI2ODU0MjgyNzY4MjUxODIzIiwiaWF0IjoxNzc3MzEwMDI3LCJleHAiOjE3NzczNDYwMjcsInNpZCI6IkM2NThja2o3ZTdHUXJMcEpwNzc2QlpJb2lPeXZRWDRkIiwibm9uY2UiOiJZckFRWHRaLU5ZWW5Gd0EyWTF5d2R2TUhRaHZvQ3ZEOUpPUUhEQXItcnRvIn0.mHUzGTDs64ejjB5RsxjmCIrgLIp89SO5R1GG-vnCika3mwzFiTfibxOge1t9030WkZx2ybD5no7sYoEVP68hhpq18FDdKDAwb7NyDEGYIGIQ7BILlftD2vYslm0j7iN5xXyF6x04XCzTW8IW127DnXIvk_TmxbuX218o_8iEVUbakycdDYFWSXR_CWSFYQ8QTbBQEKLb0DdJgeekijdHEs-1nM-BPEmO-dLE22VvfRGBqFsZt9yBkvyQaeEcV3Mq79BswxkE3H756Thh8vXHj35NUubvVAvMvtRhUNORAZI6LH_HYiQLno4OlmNCeHZDUhHO7q288rQ9w40lLhUeXg
       responses:
         '200':
           description: ''
@@ -818,18 +749,7 @@ paths:
       description: Modifies the biography of a user profile.
       tags:
         - Profile
-      parameters:
-        - name: Authorization
-          in: header
-          description: Authorization token.
-          example: >-
-            Bearer
-            eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkJsaDdYazFlM3ZBNG94UkNMWXJ1YiJ9.eyJnaXZlbl9uYW1lIjoiSXbDoW4iLCJmYW1pbHlfbmFtZSI6IlZpY2VudGUiLCJuaWNrbmFtZSI6Iml2aTEwMDB2bSIsIm5hbWUiOiJJdsOhbiBWaWNlbnRlIiwicGljdHVyZSI6Imh0dHBzOi8vbGgzLmdvb2dsZXVzZXJjb250ZW50LmNvbS9hL0FDZzhvY0pkSG8wTkJDbXRPY3YwMHNVRE16ZDFSLU5ZbHhwY0MyRkRuTXowcUMxSWkzUWpGZk1YPXM5Ni1jIiwidXBkYXRlZF9hdCI6IjIwMjYtMDQtMjdUMTY6NTc6MTMuMTYyWiIsImVtYWlsIjoiaXZpMTAwMHZtQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJpc3MiOiJodHRwczovL2d5Y29kaW5nLmV1LmF1dGgwLmNvbS8iLCJhdWQiOiJRQmp4cTkxeFRkM1A2eExFUkplazJ1Q2VhdmRRWEhoSiIsInN1YiI6Imdvb2dsZS1vYXV0aDJ8MTE4MDI2ODU0MjgyNzY4MjUxODIzIiwiaWF0IjoxNzc3MzEwMDI3LCJleHAiOjE3NzczNDYwMjcsInNpZCI6IkM2NThja2o3ZTdHUXJMcEpwNzc2QlpJb2lPeXZRWDRkIiwibm9uY2UiOiJZckFRWHRaLU5ZWW5Gd0EyWTF5d2R2TUhRaHZvQ3ZEOUpPUUhEQXItcnRvIn0.mHUzGTDs64ejjB5RsxjmCIrgLIp89SO5R1GG-vnCika3mwzFiTfibxOge1t9030WkZx2ybD5no7sYoEVP68hhpq18FDdKDAwb7NyDEGYIGIQ7BILlftD2vYslm0j7iN5xXyF6x04XCzTW8IW127DnXIvk_TmxbuX218o_8iEVUbakycdDYFWSXR_CWSFYQ8QTbBQEKLb0DdJgeekijdHEs-1nM-BPEmO-dLE22VvfRGBqFsZt9yBkvyQaeEcV3Mq79BswxkE3H756Thh8vXHj35NUubvVAvMvtRhUNORAZI6LH_HYiQLno4OlmNCeHZDUhHO7q288rQ9w40lLhUeXg
-          schema:
-            type: string
-            default: >-
-              Bearer
-              eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkJsaDdYazFlM3ZBNG94UkNMWXJ1YiJ9.eyJnaXZlbl9uYW1lIjoiSXbDoW4iLCJmYW1pbHlfbmFtZSI6IlZpY2VudGUiLCJuaWNrbmFtZSI6Iml2aTEwMDB2bSIsIm5hbWUiOiJJdsOhbiBWaWNlbnRlIiwicGljdHVyZSI6Imh0dHBzOi8vbGgzLmdvb2dsZXVzZXJjb250ZW50LmNvbS9hL0FDZzhvY0pkSG8wTkJDbXRPY3YwMHNVRE16ZDFSLU5ZbHhwY0MyRkRuTXowcUMxSWkzUWpGZk1YPXM5Ni1jIiwidXBkYXRlZF9hdCI6IjIwMjYtMDQtMjdUMTY6NTc6MTMuMTYyWiIsImVtYWlsIjoiaXZpMTAwMHZtQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJpc3MiOiJodHRwczovL2d5Y29kaW5nLmV1LmF1dGgwLmNvbS8iLCJhdWQiOiJRQmp4cTkxeFRkM1A2eExFUkplazJ1Q2VhdmRRWEhoSiIsInN1YiI6Imdvb2dsZS1vYXV0aDJ8MTE4MDI2ODU0MjgyNzY4MjUxODIzIiwiaWF0IjoxNzc3MzEwMDI3LCJleHAiOjE3NzczNDYwMjcsInNpZCI6IkM2NThja2o3ZTdHUXJMcEpwNzc2QlpJb2lPeXZRWDRkIiwibm9uY2UiOiJZckFRWHRaLU5ZWW5Gd0EyWTF5d2R2TUhRaHZvQ3ZEOUpPUUhEQXItcnRvIn0.mHUzGTDs64ejjB5RsxjmCIrgLIp89SO5R1GG-vnCika3mwzFiTfibxOge1t9030WkZx2ybD5no7sYoEVP68hhpq18FDdKDAwb7NyDEGYIGIQ7BILlftD2vYslm0j7iN5xXyF6x04XCzTW8IW127DnXIvk_TmxbuX218o_8iEVUbakycdDYFWSXR_CWSFYQ8QTbBQEKLb0DdJgeekijdHEs-1nM-BPEmO-dLE22VvfRGBqFsZt9yBkvyQaeEcV3Mq79BswxkE3H756Thh8vXHj35NUubvVAvMvtRhUNORAZI6LH_HYiQLno4OlmNCeHZDUhHO7q288rQ9w40lLhUeXg
+      parameters: []
       requestBody:
         content:
           application/json:
@@ -931,18 +851,7 @@ paths:
       description: Adds a book to the Hall of Fame of a user.
       tags:
         - Profile
-      parameters:
-        - name: Authorization
-          in: header
-          description: Authorization token.
-          example: >-
-            Bearer
-            eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkJsaDdYazFlM3ZBNG94UkNMWXJ1YiJ9.eyJnaXZlbl9uYW1lIjoiSXbDoW4iLCJmYW1pbHlfbmFtZSI6IlZpY2VudGUiLCJuaWNrbmFtZSI6Iml2aTEwMDB2bSIsIm5hbWUiOiJJdsOhbiBWaWNlbnRlIiwicGljdHVyZSI6Imh0dHBzOi8vbGgzLmdvb2dsZXVzZXJjb250ZW50LmNvbS9hL0FDZzhvY0pkSG8wTkJDbXRPY3YwMHNVRE16ZDFSLU5ZbHhwY0MyRkRuTXowcUMxSWkzUWpGZk1YPXM5Ni1jIiwidXBkYXRlZF9hdCI6IjIwMjYtMDQtMjdUMTY6NTc6MTMuMTYyWiIsImVtYWlsIjoiaXZpMTAwMHZtQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJpc3MiOiJodHRwczovL2d5Y29kaW5nLmV1LmF1dGgwLmNvbS8iLCJhdWQiOiJRQmp4cTkxeFRkM1A2eExFUkplazJ1Q2VhdmRRWEhoSiIsInN1YiI6Imdvb2dsZS1vYXV0aDJ8MTE4MDI2ODU0MjgyNzY4MjUxODIzIiwiaWF0IjoxNzc3MzEwMDI3LCJleHAiOjE3NzczNDYwMjcsInNpZCI6IkM2NThja2o3ZTdHUXJMcEpwNzc2QlpJb2lPeXZRWDRkIiwibm9uY2UiOiJZckFRWHRaLU5ZWW5Gd0EyWTF5d2R2TUhRaHZvQ3ZEOUpPUUhEQXItcnRvIn0.mHUzGTDs64ejjB5RsxjmCIrgLIp89SO5R1GG-vnCika3mwzFiTfibxOge1t9030WkZx2ybD5no7sYoEVP68hhpq18FDdKDAwb7NyDEGYIGIQ7BILlftD2vYslm0j7iN5xXyF6x04XCzTW8IW127DnXIvk_TmxbuX218o_8iEVUbakycdDYFWSXR_CWSFYQ8QTbBQEKLb0DdJgeekijdHEs-1nM-BPEmO-dLE22VvfRGBqFsZt9yBkvyQaeEcV3Mq79BswxkE3H756Thh8vXHj35NUubvVAvMvtRhUNORAZI6LH_HYiQLno4OlmNCeHZDUhHO7q288rQ9w40lLhUeXg
-          schema:
-            type: string
-            default: >-
-              Bearer
-              eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkJsaDdYazFlM3ZBNG94UkNMWXJ1YiJ9.eyJnaXZlbl9uYW1lIjoiSXbDoW4iLCJmYW1pbHlfbmFtZSI6IlZpY2VudGUiLCJuaWNrbmFtZSI6Iml2aTEwMDB2bSIsIm5hbWUiOiJJdsOhbiBWaWNlbnRlIiwicGljdHVyZSI6Imh0dHBzOi8vbGgzLmdvb2dsZXVzZXJjb250ZW50LmNvbS9hL0FDZzhvY0pkSG8wTkJDbXRPY3YwMHNVRE16ZDFSLU5ZbHhwY0MyRkRuTXowcUMxSWkzUWpGZk1YPXM5Ni1jIiwidXBkYXRlZF9hdCI6IjIwMjYtMDQtMjdUMTY6NTc6MTMuMTYyWiIsImVtYWlsIjoiaXZpMTAwMHZtQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJpc3MiOiJodHRwczovL2d5Y29kaW5nLmV1LmF1dGgwLmNvbS8iLCJhdWQiOiJRQmp4cTkxeFRkM1A2eExFUkplazJ1Q2VhdmRRWEhoSiIsInN1YiI6Imdvb2dsZS1vYXV0aDJ8MTE4MDI2ODU0MjgyNzY4MjUxODIzIiwiaWF0IjoxNzc3MzEwMDI3LCJleHAiOjE3NzczNDYwMjcsInNpZCI6IkM2NThja2o3ZTdHUXJMcEpwNzc2QlpJb2lPeXZRWDRkIiwibm9uY2UiOiJZckFRWHRaLU5ZWW5Gd0EyWTF5d2R2TUhRaHZvQ3ZEOUpPUUhEQXItcnRvIn0.mHUzGTDs64ejjB5RsxjmCIrgLIp89SO5R1GG-vnCika3mwzFiTfibxOge1t9030WkZx2ybD5no7sYoEVP68hhpq18FDdKDAwb7NyDEGYIGIQ7BILlftD2vYslm0j7iN5xXyF6x04XCzTW8IW127DnXIvk_TmxbuX218o_8iEVUbakycdDYFWSXR_CWSFYQ8QTbBQEKLb0DdJgeekijdHEs-1nM-BPEmO-dLE22VvfRGBqFsZt9yBkvyQaeEcV3Mq79BswxkE3H756Thh8vXHj35NUubvVAvMvtRhUNORAZI6LH_HYiQLno4OlmNCeHZDUhHO7q288rQ9w40lLhUeXg
+      parameters: []
       requestBody:
         content:
           application/json:
@@ -1010,17 +919,6 @@ paths:
           example: '386446'
           schema:
             type: string
-        - name: Authorization
-          in: header
-          description: Authorization token.
-          example: >-
-            Bearer
-            eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkJsaDdYazFlM3ZBNG94UkNMWXJ1YiJ9.eyJnaXZlbl9uYW1lIjoiSXbDoW4iLCJmYW1pbHlfbmFtZSI6IlZpY2VudGUiLCJuaWNrbmFtZSI6Iml2aTEwMDB2bSIsIm5hbWUiOiJJdsOhbiBWaWNlbnRlIiwicGljdHVyZSI6Imh0dHBzOi8vbGgzLmdvb2dsZXVzZXJjb250ZW50LmNvbS9hL0FDZzhvY0pkSG8wTkJDbXRPY3YwMHNVRE16ZDFSLU5ZbHhwY0MyRkRuTXowcUMxSWkzUWpGZk1YPXM5Ni1jIiwidXBkYXRlZF9hdCI6IjIwMjYtMDQtMjdUMTY6NTc6MTMuMTYyWiIsImVtYWlsIjoiaXZpMTAwMHZtQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJpc3MiOiJodHRwczovL2d5Y29kaW5nLmV1LmF1dGgwLmNvbS8iLCJhdWQiOiJRQmp4cTkxeFRkM1A2eExFUkplazJ1Q2VhdmRRWEhoSiIsInN1YiI6Imdvb2dsZS1vYXV0aDJ8MTE4MDI2ODU0MjgyNzY4MjUxODIzIiwiaWF0IjoxNzc3MzEwMDI3LCJleHAiOjE3NzczNDYwMjcsInNpZCI6IkM2NThja2o3ZTdHUXJMcEpwNzc2QlpJb2lPeXZRWDRkIiwibm9uY2UiOiJZckFRWHRaLU5ZWW5Gd0EyWTF5d2R2TUhRaHZvQ3ZEOUpPUUhEQXItcnRvIn0.mHUzGTDs64ejjB5RsxjmCIrgLIp89SO5R1GG-vnCika3mwzFiTfibxOge1t9030WkZx2ybD5no7sYoEVP68hhpq18FDdKDAwb7NyDEGYIGIQ7BILlftD2vYslm0j7iN5xXyF6x04XCzTW8IW127DnXIvk_TmxbuX218o_8iEVUbakycdDYFWSXR_CWSFYQ8QTbBQEKLb0DdJgeekijdHEs-1nM-BPEmO-dLE22VvfRGBqFsZt9yBkvyQaeEcV3Mq79BswxkE3H756Thh8vXHj35NUubvVAvMvtRhUNORAZI6LH_HYiQLno4OlmNCeHZDUhHO7q288rQ9w40lLhUeXg
-          schema:
-            type: string
-            default: >-
-              Bearer
-              eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkJsaDdYazFlM3ZBNG94UkNMWXJ1YiJ9.eyJnaXZlbl9uYW1lIjoiSXbDoW4iLCJmYW1pbHlfbmFtZSI6IlZpY2VudGUiLCJuaWNrbmFtZSI6Iml2aTEwMDB2bSIsIm5hbWUiOiJJdsOhbiBWaWNlbnRlIiwicGljdHVyZSI6Imh0dHBzOi8vbGgzLmdvb2dsZXVzZXJjb250ZW50LmNvbS9hL0FDZzhvY0pkSG8wTkJDbXRPY3YwMHNVRE16ZDFSLU5ZbHhwY0MyRkRuTXowcUMxSWkzUWpGZk1YPXM5Ni1jIiwidXBkYXRlZF9hdCI6IjIwMjYtMDQtMjdUMTY6NTc6MTMuMTYyWiIsImVtYWlsIjoiaXZpMTAwMHZtQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJpc3MiOiJodHRwczovL2d5Y29kaW5nLmV1LmF1dGgwLmNvbS8iLCJhdWQiOiJRQmp4cTkxeFRkM1A2eExFUkplazJ1Q2VhdmRRWEhoSiIsInN1YiI6Imdvb2dsZS1vYXV0aDJ8MTE4MDI2ODU0MjgyNzY4MjUxODIzIiwiaWF0IjoxNzc3MzEwMDI3LCJleHAiOjE3NzczNDYwMjcsInNpZCI6IkM2NThja2o3ZTdHUXJMcEpwNzc2QlpJb2lPeXZRWDRkIiwibm9uY2UiOiJZckFRWHRaLU5ZWW5Gd0EyWTF5d2R2TUhRaHZvQ3ZEOUpPUUhEQXItcnRvIn0.mHUzGTDs64ejjB5RsxjmCIrgLIp89SO5R1GG-vnCika3mwzFiTfibxOge1t9030WkZx2ybD5no7sYoEVP68hhpq18FDdKDAwb7NyDEGYIGIQ7BILlftD2vYslm0j7iN5xXyF6x04XCzTW8IW127DnXIvk_TmxbuX218o_8iEVUbakycdDYFWSXR_CWSFYQ8QTbBQEKLb0DdJgeekijdHEs-1nM-BPEmO-dLE22VvfRGBqFsZt9yBkvyQaeEcV3Mq79BswxkE3H756Thh8vXHj35NUubvVAvMvtRhUNORAZI6LH_HYiQLno4OlmNCeHZDUhHO7q288rQ9w40lLhUeXg
       responses:
         '204':
           description: ''
@@ -1056,18 +954,7 @@ paths:
       description: Sets the quote on the Hall of Fame of a user.
       tags:
         - Profile
-      parameters:
-        - name: Authorization
-          in: header
-          description: Authorization token.
-          example: >-
-            Bearer
-            eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkJsaDdYazFlM3ZBNG94UkNMWXJ1YiJ9.eyJnaXZlbl9uYW1lIjoiSXbDoW4iLCJmYW1pbHlfbmFtZSI6IlZpY2VudGUiLCJuaWNrbmFtZSI6Iml2aTEwMDB2bSIsIm5hbWUiOiJJdsOhbiBWaWNlbnRlIiwicGljdHVyZSI6Imh0dHBzOi8vbGgzLmdvb2dsZXVzZXJjb250ZW50LmNvbS9hL0FDZzhvY0pkSG8wTkJDbXRPY3YwMHNVRE16ZDFSLU5ZbHhwY0MyRkRuTXowcUMxSWkzUWpGZk1YPXM5Ni1jIiwidXBkYXRlZF9hdCI6IjIwMjYtMDQtMjdUMTY6NTc6MTMuMTYyWiIsImVtYWlsIjoiaXZpMTAwMHZtQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJpc3MiOiJodHRwczovL2d5Y29kaW5nLmV1LmF1dGgwLmNvbS8iLCJhdWQiOiJRQmp4cTkxeFRkM1A2eExFUkplazJ1Q2VhdmRRWEhoSiIsInN1YiI6Imdvb2dsZS1vYXV0aDJ8MTE4MDI2ODU0MjgyNzY4MjUxODIzIiwiaWF0IjoxNzc3MzEwMDI3LCJleHAiOjE3NzczNDYwMjcsInNpZCI6IkM2NThja2o3ZTdHUXJMcEpwNzc2QlpJb2lPeXZRWDRkIiwibm9uY2UiOiJZckFRWHRaLU5ZWW5Gd0EyWTF5d2R2TUhRaHZvQ3ZEOUpPUUhEQXItcnRvIn0.mHUzGTDs64ejjB5RsxjmCIrgLIp89SO5R1GG-vnCika3mwzFiTfibxOge1t9030WkZx2ybD5no7sYoEVP68hhpq18FDdKDAwb7NyDEGYIGIQ7BILlftD2vYslm0j7iN5xXyF6x04XCzTW8IW127DnXIvk_TmxbuX218o_8iEVUbakycdDYFWSXR_CWSFYQ8QTbBQEKLb0DdJgeekijdHEs-1nM-BPEmO-dLE22VvfRGBqFsZt9yBkvyQaeEcV3Mq79BswxkE3H756Thh8vXHj35NUubvVAvMvtRhUNORAZI6LH_HYiQLno4OlmNCeHZDUhHO7q288rQ9w40lLhUeXg
-          schema:
-            type: string
-            default: >-
-              Bearer
-              eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkJsaDdYazFlM3ZBNG94UkNMWXJ1YiJ9.eyJnaXZlbl9uYW1lIjoiSXbDoW4iLCJmYW1pbHlfbmFtZSI6IlZpY2VudGUiLCJuaWNrbmFtZSI6Iml2aTEwMDB2bSIsIm5hbWUiOiJJdsOhbiBWaWNlbnRlIiwicGljdHVyZSI6Imh0dHBzOi8vbGgzLmdvb2dsZXVzZXJjb250ZW50LmNvbS9hL0FDZzhvY0pkSG8wTkJDbXRPY3YwMHNVRE16ZDFSLU5ZbHhwY0MyRkRuTXowcUMxSWkzUWpGZk1YPXM5Ni1jIiwidXBkYXRlZF9hdCI6IjIwMjYtMDQtMjdUMTY6NTc6MTMuMTYyWiIsImVtYWlsIjoiaXZpMTAwMHZtQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJpc3MiOiJodHRwczovL2d5Y29kaW5nLmV1LmF1dGgwLmNvbS8iLCJhdWQiOiJRQmp4cTkxeFRkM1A2eExFUkplazJ1Q2VhdmRRWEhoSiIsInN1YiI6Imdvb2dsZS1vYXV0aDJ8MTE4MDI2ODU0MjgyNzY4MjUxODIzIiwiaWF0IjoxNzc3MzEwMDI3LCJleHAiOjE3NzczNDYwMjcsInNpZCI6IkM2NThja2o3ZTdHUXJMcEpwNzc2QlpJb2lPeXZRWDRkIiwibm9uY2UiOiJZckFRWHRaLU5ZWW5Gd0EyWTF5d2R2TUhRaHZvQ3ZEOUpPUUhEQXItcnRvIn0.mHUzGTDs64ejjB5RsxjmCIrgLIp89SO5R1GG-vnCika3mwzFiTfibxOge1t9030WkZx2ybD5no7sYoEVP68hhpq18FDdKDAwb7NyDEGYIGIQ7BILlftD2vYslm0j7iN5xXyF6x04XCzTW8IW127DnXIvk_TmxbuX218o_8iEVUbakycdDYFWSXR_CWSFYQ8QTbBQEKLb0DdJgeekijdHEs-1nM-BPEmO-dLE22VvfRGBqFsZt9yBkvyQaeEcV3Mq79BswxkE3H756Thh8vXHj35NUubvVAvMvtRhUNORAZI6LH_HYiQLno4OlmNCeHZDUhHO7q288rQ9w40lLhUeXg
+      parameters: []
       requestBody:
         content:
           application/json:
@@ -1125,29 +1012,25 @@ paths:
       parameters:
         - name: page
           in: query
-          description: ''
-          required: false
-          example: '0'
+          description: Number of page.
+          required: true
+          example: 0
           schema:
-            type: string
+            type: integer
         - name: size
           in: query
-          description: ''
-          required: false
-          example: '10'
+          description: Amount of elements to show on one page.
+          required: true
+          example: 0
           schema:
-            type: string
+            type: integer
         - name: Authorization
           in: header
-          description: Authorization token.
-          example: >-
-            Bearer
-            eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkJsaDdYazFlM3ZBNG94UkNMWXJ1YiJ9.eyJnaXZlbl9uYW1lIjoiSXbDoW4iLCJmYW1pbHlfbmFtZSI6IlZpY2VudGUiLCJuaWNrbmFtZSI6Iml2aTEwMDB2bSIsIm5hbWUiOiJJdsOhbiBWaWNlbnRlIiwicGljdHVyZSI6Imh0dHBzOi8vbGgzLmdvb2dsZXVzZXJjb250ZW50LmNvbS9hL0FDZzhvY0pkSG8wTkJDbXRPY3YwMHNVRE16ZDFSLU5ZbHhwY0MyRkRuTXowcUMxSWkzUWpGZk1YPXM5Ni1jIiwidXBkYXRlZF9hdCI6IjIwMjYtMDQtMjdUMTY6NTc6MTMuMTYyWiIsImVtYWlsIjoiaXZpMTAwMHZtQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJpc3MiOiJodHRwczovL2d5Y29kaW5nLmV1LmF1dGgwLmNvbS8iLCJhdWQiOiJRQmp4cTkxeFRkM1A2eExFUkplazJ1Q2VhdmRRWEhoSiIsInN1YiI6Imdvb2dsZS1vYXV0aDJ8MTE4MDI2ODU0MjgyNzY4MjUxODIzIiwiaWF0IjoxNzc3MzEwMDI3LCJleHAiOjE3NzczNDYwMjcsInNpZCI6IkM2NThja2o3ZTdHUXJMcEpwNzc2QlpJb2lPeXZRWDRkIiwibm9uY2UiOiJZckFRWHRaLU5ZWW5Gd0EyWTF5d2R2TUhRaHZvQ3ZEOUpPUUhEQXItcnRvIn0.mHUzGTDs64ejjB5RsxjmCIrgLIp89SO5R1GG-vnCika3mwzFiTfibxOge1t9030WkZx2ybD5no7sYoEVP68hhpq18FDdKDAwb7NyDEGYIGIQ7BILlftD2vYslm0j7iN5xXyF6x04XCzTW8IW127DnXIvk_TmxbuX218o_8iEVUbakycdDYFWSXR_CWSFYQ8QTbBQEKLb0DdJgeekijdHEs-1nM-BPEmO-dLE22VvfRGBqFsZt9yBkvyQaeEcV3Mq79BswxkE3H756Thh8vXHj35NUubvVAvMvtRhUNORAZI6LH_HYiQLno4OlmNCeHZDUhHO7q288rQ9w40lLhUeXg
+          description: Authorization token or API key.
+          required: true
+          example: ''
           schema:
             type: string
-            default: >-
-              Bearer
-              eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkJsaDdYazFlM3ZBNG94UkNMWXJ1YiJ9.eyJnaXZlbl9uYW1lIjoiSXbDoW4iLCJmYW1pbHlfbmFtZSI6IlZpY2VudGUiLCJuaWNrbmFtZSI6Iml2aTEwMDB2bSIsIm5hbWUiOiJJdsOhbiBWaWNlbnRlIiwicGljdHVyZSI6Imh0dHBzOi8vbGgzLmdvb2dsZXVzZXJjb250ZW50LmNvbS9hL0FDZzhvY0pkSG8wTkJDbXRPY3YwMHNVRE16ZDFSLU5ZbHhwY0MyRkRuTXowcUMxSWkzUWpGZk1YPXM5Ni1jIiwidXBkYXRlZF9hdCI6IjIwMjYtMDQtMjdUMTY6NTc6MTMuMTYyWiIsImVtYWlsIjoiaXZpMTAwMHZtQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJpc3MiOiJodHRwczovL2d5Y29kaW5nLmV1LmF1dGgwLmNvbS8iLCJhdWQiOiJRQmp4cTkxeFRkM1A2eExFUkplazJ1Q2VhdmRRWEhoSiIsInN1YiI6Imdvb2dsZS1vYXV0aDJ8MTE4MDI2ODU0MjgyNzY4MjUxODIzIiwiaWF0IjoxNzc3MzEwMDI3LCJleHAiOjE3NzczNDYwMjcsInNpZCI6IkM2NThja2o3ZTdHUXJMcEpwNzc2QlpJb2lPeXZRWDRkIiwibm9uY2UiOiJZckFRWHRaLU5ZWW5Gd0EyWTF5d2R2TUhRaHZvQ3ZEOUpPUUhEQXItcnRvIn0.mHUzGTDs64ejjB5RsxjmCIrgLIp89SO5R1GG-vnCika3mwzFiTfibxOge1t9030WkZx2ybD5no7sYoEVP68hhpq18FDdKDAwb7NyDEGYIGIQ7BILlftD2vYslm0j7iN5xXyF6x04XCzTW8IW127DnXIvk_TmxbuX218o_8iEVUbakycdDYFWSXR_CWSFYQ8QTbBQEKLb0DdJgeekijdHEs-1nM-BPEmO-dLE22VvfRGBqFsZt9yBkvyQaeEcV3Mq79BswxkE3H756Thh8vXHj35NUubvVAvMvtRhUNORAZI6LH_HYiQLno4OlmNCeHZDUhHO7q288rQ9w40lLhUeXg
       responses:
         '200':
           description: ''
@@ -1161,8 +1044,7 @@ paths:
                 description: List of activities.
           headers:
             X-HasNext:
-              example: true
-              required: false
+              required: true
               description: >-
                 Whether the paginated list still has more elements to show on
                 further pages or not.
@@ -1197,23 +1079,18 @@ paths:
       parameters:
         - name: Authorization
           in: header
-          description: Authorization token.
-          example: >-
-            Bearer
-            eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkJsaDdYazFlM3ZBNG94UkNMWXJ1YiJ9.eyJnaXZlbl9uYW1lIjoiSXbDoW4iLCJmYW1pbHlfbmFtZSI6IlZpY2VudGUiLCJuaWNrbmFtZSI6Iml2aTEwMDB2bSIsIm5hbWUiOiJJdsOhbiBWaWNlbnRlIiwicGljdHVyZSI6Imh0dHBzOi8vbGgzLmdvb2dsZXVzZXJjb250ZW50LmNvbS9hL0FDZzhvY0pkSG8wTkJDbXRPY3YwMHNVRE16ZDFSLU5ZbHhwY0MyRkRuTXowcUMxSWkzUWpGZk1YPXM5Ni1jIiwidXBkYXRlZF9hdCI6IjIwMjYtMDQtMjdUMTY6NTc6MTMuMTYyWiIsImVtYWlsIjoiaXZpMTAwMHZtQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJpc3MiOiJodHRwczovL2d5Y29kaW5nLmV1LmF1dGgwLmNvbS8iLCJhdWQiOiJRQmp4cTkxeFRkM1A2eExFUkplazJ1Q2VhdmRRWEhoSiIsInN1YiI6Imdvb2dsZS1vYXV0aDJ8MTE4MDI2ODU0MjgyNzY4MjUxODIzIiwiaWF0IjoxNzc3MzEwMDI3LCJleHAiOjE3NzczNDYwMjcsInNpZCI6IkM2NThja2o3ZTdHUXJMcEpwNzc2QlpJb2lPeXZRWDRkIiwibm9uY2UiOiJZckFRWHRaLU5ZWW5Gd0EyWTF5d2R2TUhRaHZvQ3ZEOUpPUUhEQXItcnRvIn0.mHUzGTDs64ejjB5RsxjmCIrgLIp89SO5R1GG-vnCika3mwzFiTfibxOge1t9030WkZx2ybD5no7sYoEVP68hhpq18FDdKDAwb7NyDEGYIGIQ7BILlftD2vYslm0j7iN5xXyF6x04XCzTW8IW127DnXIvk_TmxbuX218o_8iEVUbakycdDYFWSXR_CWSFYQ8QTbBQEKLb0DdJgeekijdHEs-1nM-BPEmO-dLE22VvfRGBqFsZt9yBkvyQaeEcV3Mq79BswxkE3H756Thh8vXHj35NUubvVAvMvtRhUNORAZI6LH_HYiQLno4OlmNCeHZDUhHO7q288rQ9w40lLhUeXg
+          description: Authorization token or API key.
+          required: true
+          example: ''
           schema:
             type: string
-            default: >-
-              Bearer
-              eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkJsaDdYazFlM3ZBNG94UkNMWXJ1YiJ9.eyJnaXZlbl9uYW1lIjoiSXbDoW4iLCJmYW1pbHlfbmFtZSI6IlZpY2VudGUiLCJuaWNrbmFtZSI6Iml2aTEwMDB2bSIsIm5hbWUiOiJJdsOhbiBWaWNlbnRlIiwicGljdHVyZSI6Imh0dHBzOi8vbGgzLmdvb2dsZXVzZXJjb250ZW50LmNvbS9hL0FDZzhvY0pkSG8wTkJDbXRPY3YwMHNVRE16ZDFSLU5ZbHhwY0MyRkRuTXowcUMxSWkzUWpGZk1YPXM5Ni1jIiwidXBkYXRlZF9hdCI6IjIwMjYtMDQtMjdUMTY6NTc6MTMuMTYyWiIsImVtYWlsIjoiaXZpMTAwMHZtQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJpc3MiOiJodHRwczovL2d5Y29kaW5nLmV1LmF1dGgwLmNvbS8iLCJhdWQiOiJRQmp4cTkxeFRkM1A2eExFUkplazJ1Q2VhdmRRWEhoSiIsInN1YiI6Imdvb2dsZS1vYXV0aDJ8MTE4MDI2ODU0MjgyNzY4MjUxODIzIiwiaWF0IjoxNzc3MzEwMDI3LCJleHAiOjE3NzczNDYwMjcsInNpZCI6IkM2NThja2o3ZTdHUXJMcEpwNzc2QlpJb2lPeXZRWDRkIiwibm9uY2UiOiJZckFRWHRaLU5ZWW5Gd0EyWTF5d2R2TUhRaHZvQ3ZEOUpPUUhEQXItcnRvIn0.mHUzGTDs64ejjB5RsxjmCIrgLIp89SO5R1GG-vnCika3mwzFiTfibxOge1t9030WkZx2ybD5no7sYoEVP68hhpq18FDdKDAwb7NyDEGYIGIQ7BILlftD2vYslm0j7iN5xXyF6x04XCzTW8IW127DnXIvk_TmxbuX218o_8iEVUbakycdDYFWSXR_CWSFYQ8QTbBQEKLb0DdJgeekijdHEs-1nM-BPEmO-dLE22VvfRGBqFsZt9yBkvyQaeEcV3Mq79BswxkE3H756Thh8vXHj35NUubvVAvMvtRhUNORAZI6LH_HYiQLno4OlmNCeHZDUhHO7q288rQ9w40lLhUeXg
       requestBody:
         content:
           application/json:
             schema:
-              description: Activity Object.
+              description: Activity.
               $ref: '#/components/schemas/Activity'
-            example:
-              message: Test.
+            examples: {}
         required: true
       responses:
         '200':
@@ -1222,7 +1099,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Activity'
-                description: Activity
+                description: Activity.
           headers: {}
         '400':
           $ref: '#/components/responses/Bad Request'
@@ -1256,20 +1133,16 @@ paths:
       parameters:
         - name: Authorization
           in: header
-          description: Authorization token.
-          example: >-
-            Bearer
-            eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkJsaDdYazFlM3ZBNG94UkNMWXJ1YiJ9.eyJnaXZlbl9uYW1lIjoiSXbDoW4iLCJmYW1pbHlfbmFtZSI6IlZpY2VudGUiLCJuaWNrbmFtZSI6Iml2aTEwMDB2bSIsIm5hbWUiOiJJdsOhbiBWaWNlbnRlIiwicGljdHVyZSI6Imh0dHBzOi8vbGgzLmdvb2dsZXVzZXJjb250ZW50LmNvbS9hL0FDZzhvY0pkSG8wTkJDbXRPY3YwMHNVRE16ZDFSLU5ZbHhwY0MyRkRuTXowcUMxSWkzUWpGZk1YPXM5Ni1jIiwidXBkYXRlZF9hdCI6IjIwMjYtMDQtMjdUMTY6NTc6MTMuMTYyWiIsImVtYWlsIjoiaXZpMTAwMHZtQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJpc3MiOiJodHRwczovL2d5Y29kaW5nLmV1LmF1dGgwLmNvbS8iLCJhdWQiOiJRQmp4cTkxeFRkM1A2eExFUkplazJ1Q2VhdmRRWEhoSiIsInN1YiI6Imdvb2dsZS1vYXV0aDJ8MTE4MDI2ODU0MjgyNzY4MjUxODIzIiwiaWF0IjoxNzc3MzEwMDI3LCJleHAiOjE3NzczNDYwMjcsInNpZCI6IkM2NThja2o3ZTdHUXJMcEpwNzc2QlpJb2lPeXZRWDRkIiwibm9uY2UiOiJZckFRWHRaLU5ZWW5Gd0EyWTF5d2R2TUhRaHZvQ3ZEOUpPUUhEQXItcnRvIn0.mHUzGTDs64ejjB5RsxjmCIrgLIp89SO5R1GG-vnCika3mwzFiTfibxOge1t9030WkZx2ybD5no7sYoEVP68hhpq18FDdKDAwb7NyDEGYIGIQ7BILlftD2vYslm0j7iN5xXyF6x04XCzTW8IW127DnXIvk_TmxbuX218o_8iEVUbakycdDYFWSXR_CWSFYQ8QTbBQEKLb0DdJgeekijdHEs-1nM-BPEmO-dLE22VvfRGBqFsZt9yBkvyQaeEcV3Mq79BswxkE3H756Thh8vXHj35NUubvVAvMvtRhUNORAZI6LH_HYiQLno4OlmNCeHZDUhHO7q288rQ9w40lLhUeXg
+          description: Authorization token or API key.
+          required: true
+          example: ''
           schema:
             type: string
-            default: >-
-              Bearer
-              eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkJsaDdYazFlM3ZBNG94UkNMWXJ1YiJ9.eyJnaXZlbl9uYW1lIjoiSXbDoW4iLCJmYW1pbHlfbmFtZSI6IlZpY2VudGUiLCJuaWNrbmFtZSI6Iml2aTEwMDB2bSIsIm5hbWUiOiJJdsOhbiBWaWNlbnRlIiwicGljdHVyZSI6Imh0dHBzOi8vbGgzLmdvb2dsZXVzZXJjb250ZW50LmNvbS9hL0FDZzhvY0pkSG8wTkJDbXRPY3YwMHNVRE16ZDFSLU5ZbHhwY0MyRkRuTXowcUMxSWkzUWpGZk1YPXM5Ni1jIiwidXBkYXRlZF9hdCI6IjIwMjYtMDQtMjdUMTY6NTc6MTMuMTYyWiIsImVtYWlsIjoiaXZpMTAwMHZtQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJpc3MiOiJodHRwczovL2d5Y29kaW5nLmV1LmF1dGgwLmNvbS8iLCJhdWQiOiJRQmp4cTkxeFRkM1A2eExFUkplazJ1Q2VhdmRRWEhoSiIsInN1YiI6Imdvb2dsZS1vYXV0aDJ8MTE4MDI2ODU0MjgyNzY4MjUxODIzIiwiaWF0IjoxNzc3MzEwMDI3LCJleHAiOjE3NzczNDYwMjcsInNpZCI6IkM2NThja2o3ZTdHUXJMcEpwNzc2QlpJb2lPeXZRWDRkIiwibm9uY2UiOiJZckFRWHRaLU5ZWW5Gd0EyWTF5d2R2TUhRaHZvQ3ZEOUpPUUhEQXItcnRvIn0.mHUzGTDs64ejjB5RsxjmCIrgLIp89SO5R1GG-vnCika3mwzFiTfibxOge1t9030WkZx2ybD5no7sYoEVP68hhpq18FDdKDAwb7NyDEGYIGIQ7BILlftD2vYslm0j7iN5xXyF6x04XCzTW8IW127DnXIvk_TmxbuX218o_8iEVUbakycdDYFWSXR_CWSFYQ8QTbBQEKLb0DdJgeekijdHEs-1nM-BPEmO-dLE22VvfRGBqFsZt9yBkvyQaeEcV3Mq79BswxkE3H756Thh8vXHj35NUubvVAvMvtRhUNORAZI6LH_HYiQLno4OlmNCeHZDUhHO7q288rQ9w40lLhUeXg
       requestBody:
         content:
           application/json:
             schema:
-              description: Activity Object.
+              description: Activity.
               $ref: '#/components/schemas/Activity'
             example:
               id: a0b51068-d6c4-408a-9141-a4be3f300367
@@ -1282,7 +1155,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Activity'
-                description: Activity
+                description: Activity.
           headers: {}
         '400':
           $ref: '#/components/responses/Bad Request'
@@ -1317,9 +1190,9 @@ paths:
       parameters:
         - name: profileId
           in: path
-          description: Profile ID.
+          description: User ProfileID.
           required: true
-          example: b526448f-1c92-4163-afc1-fd00ebff34f1
+          example: ''
           schema:
             type: string
             format: uuid
@@ -1365,23 +1238,22 @@ paths:
       parameters:
         - name: Authorization
           in: header
-          description: Authorization token.
-          example: >-
-            Bearer
-            eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkJsaDdYazFlM3ZBNG94UkNMWXJ1YiJ9.eyJnaXZlbl9uYW1lIjoiSXbDoW4iLCJmYW1pbHlfbmFtZSI6IlZpY2VudGUiLCJuaWNrbmFtZSI6Iml2aTEwMDB2bSIsIm5hbWUiOiJJdsOhbiBWaWNlbnRlIiwicGljdHVyZSI6Imh0dHBzOi8vbGgzLmdvb2dsZXVzZXJjb250ZW50LmNvbS9hL0FDZzhvY0pkSG8wTkJDbXRPY3YwMHNVRE16ZDFSLU5ZbHhwY0MyRkRuTXowcUMxSWkzUWpGZk1YPXM5Ni1jIiwidXBkYXRlZF9hdCI6IjIwMjYtMDQtMjdUMTY6NTc6MTMuMTYyWiIsImVtYWlsIjoiaXZpMTAwMHZtQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJpc3MiOiJodHRwczovL2d5Y29kaW5nLmV1LmF1dGgwLmNvbS8iLCJhdWQiOiJRQmp4cTkxeFRkM1A2eExFUkplazJ1Q2VhdmRRWEhoSiIsInN1YiI6Imdvb2dsZS1vYXV0aDJ8MTE4MDI2ODU0MjgyNzY4MjUxODIzIiwiaWF0IjoxNzc3MzEwMDI3LCJleHAiOjE3NzczNDYwMjcsInNpZCI6IkM2NThja2o3ZTdHUXJMcEpwNzc2QlpJb2lPeXZRWDRkIiwibm9uY2UiOiJZckFRWHRaLU5ZWW5Gd0EyWTF5d2R2TUhRaHZvQ3ZEOUpPUUhEQXItcnRvIn0.mHUzGTDs64ejjB5RsxjmCIrgLIp89SO5R1GG-vnCika3mwzFiTfibxOge1t9030WkZx2ybD5no7sYoEVP68hhpq18FDdKDAwb7NyDEGYIGIQ7BILlftD2vYslm0j7iN5xXyF6x04XCzTW8IW127DnXIvk_TmxbuX218o_8iEVUbakycdDYFWSXR_CWSFYQ8QTbBQEKLb0DdJgeekijdHEs-1nM-BPEmO-dLE22VvfRGBqFsZt9yBkvyQaeEcV3Mq79BswxkE3H756Thh8vXHj35NUubvVAvMvtRhUNORAZI6LH_HYiQLno4OlmNCeHZDUhHO7q288rQ9w40lLhUeXg
+          description: Authorization token or API key.
+          required: true
+          example: ''
           schema:
             type: string
-            default: >-
-              Bearer
-              eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkJsaDdYazFlM3ZBNG94UkNMWXJ1YiJ9.eyJnaXZlbl9uYW1lIjoiSXbDoW4iLCJmYW1pbHlfbmFtZSI6IlZpY2VudGUiLCJuaWNrbmFtZSI6Iml2aTEwMDB2bSIsIm5hbWUiOiJJdsOhbiBWaWNlbnRlIiwicGljdHVyZSI6Imh0dHBzOi8vbGgzLmdvb2dsZXVzZXJjb250ZW50LmNvbS9hL0FDZzhvY0pkSG8wTkJDbXRPY3YwMHNVRE16ZDFSLU5ZbHhwY0MyRkRuTXowcUMxSWkzUWpGZk1YPXM5Ni1jIiwidXBkYXRlZF9hdCI6IjIwMjYtMDQtMjdUMTY6NTc6MTMuMTYyWiIsImVtYWlsIjoiaXZpMTAwMHZtQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJpc3MiOiJodHRwczovL2d5Y29kaW5nLmV1LmF1dGgwLmNvbS8iLCJhdWQiOiJRQmp4cTkxeFRkM1A2eExFUkplazJ1Q2VhdmRRWEhoSiIsInN1YiI6Imdvb2dsZS1vYXV0aDJ8MTE4MDI2ODU0MjgyNzY4MjUxODIzIiwiaWF0IjoxNzc3MzEwMDI3LCJleHAiOjE3NzczNDYwMjcsInNpZCI6IkM2NThja2o3ZTdHUXJMcEpwNzc2QlpJb2lPeXZRWDRkIiwibm9uY2UiOiJZckFRWHRaLU5ZWW5Gd0EyWTF5d2R2TUhRaHZvQ3ZEOUpPUUhEQXItcnRvIn0.mHUzGTDs64ejjB5RsxjmCIrgLIp89SO5R1GG-vnCika3mwzFiTfibxOge1t9030WkZx2ybD5no7sYoEVP68hhpq18FDdKDAwb7NyDEGYIGIQ7BILlftD2vYslm0j7iN5xXyF6x04XCzTW8IW127DnXIvk_TmxbuX218o_8iEVUbakycdDYFWSXR_CWSFYQ8QTbBQEKLb0DdJgeekijdHEs-1nM-BPEmO-dLE22VvfRGBqFsZt9yBkvyQaeEcV3Mq79BswxkE3H756Thh8vXHj35NUubvVAvMvtRhUNORAZI6LH_HYiQLno4OlmNCeHZDUhHO7q288rQ9w40lLhUeXg
       responses:
         '200':
           description: ''
           content:
             application/json:
               schema:
-                type: object
-                properties: {}
+                type: array
+                items:
+                  $ref: '#/components/schemas/BookList'
+                  description: Book List.
+                description: Book Lists.
           headers: {}
         '403':
           $ref: '#/components/responses/Forbidden'
@@ -1409,25 +1281,18 @@ paths:
       parameters:
         - name: Authorization
           in: header
-          description: Authorization token.
-          example: >-
-            Bearer
-            eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkJsaDdYazFlM3ZBNG94UkNMWXJ1YiJ9.eyJnaXZlbl9uYW1lIjoiSXbDoW4iLCJmYW1pbHlfbmFtZSI6IlZpY2VudGUiLCJuaWNrbmFtZSI6Iml2aTEwMDB2bSIsIm5hbWUiOiJJdsOhbiBWaWNlbnRlIiwicGljdHVyZSI6Imh0dHBzOi8vbGgzLmdvb2dsZXVzZXJjb250ZW50LmNvbS9hL0FDZzhvY0pkSG8wTkJDbXRPY3YwMHNVRE16ZDFSLU5ZbHhwY0MyRkRuTXowcUMxSWkzUWpGZk1YPXM5Ni1jIiwidXBkYXRlZF9hdCI6IjIwMjYtMDQtMjdUMTY6NTc6MTMuMTYyWiIsImVtYWlsIjoiaXZpMTAwMHZtQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJpc3MiOiJodHRwczovL2d5Y29kaW5nLmV1LmF1dGgwLmNvbS8iLCJhdWQiOiJRQmp4cTkxeFRkM1A2eExFUkplazJ1Q2VhdmRRWEhoSiIsInN1YiI6Imdvb2dsZS1vYXV0aDJ8MTE4MDI2ODU0MjgyNzY4MjUxODIzIiwiaWF0IjoxNzc3MzEwMDI3LCJleHAiOjE3NzczNDYwMjcsInNpZCI6IkM2NThja2o3ZTdHUXJMcEpwNzc2QlpJb2lPeXZRWDRkIiwibm9uY2UiOiJZckFRWHRaLU5ZWW5Gd0EyWTF5d2R2TUhRaHZvQ3ZEOUpPUUhEQXItcnRvIn0.mHUzGTDs64ejjB5RsxjmCIrgLIp89SO5R1GG-vnCika3mwzFiTfibxOge1t9030WkZx2ybD5no7sYoEVP68hhpq18FDdKDAwb7NyDEGYIGIQ7BILlftD2vYslm0j7iN5xXyF6x04XCzTW8IW127DnXIvk_TmxbuX218o_8iEVUbakycdDYFWSXR_CWSFYQ8QTbBQEKLb0DdJgeekijdHEs-1nM-BPEmO-dLE22VvfRGBqFsZt9yBkvyQaeEcV3Mq79BswxkE3H756Thh8vXHj35NUubvVAvMvtRhUNORAZI6LH_HYiQLno4OlmNCeHZDUhHO7q288rQ9w40lLhUeXg
+          description: Authorization token or API key.
+          required: true
+          example: ''
           schema:
             type: string
-            default: >-
-              Bearer
-              eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkJsaDdYazFlM3ZBNG94UkNMWXJ1YiJ9.eyJnaXZlbl9uYW1lIjoiSXbDoW4iLCJmYW1pbHlfbmFtZSI6IlZpY2VudGUiLCJuaWNrbmFtZSI6Iml2aTEwMDB2bSIsIm5hbWUiOiJJdsOhbiBWaWNlbnRlIiwicGljdHVyZSI6Imh0dHBzOi8vbGgzLmdvb2dsZXVzZXJjb250ZW50LmNvbS9hL0FDZzhvY0pkSG8wTkJDbXRPY3YwMHNVRE16ZDFSLU5ZbHhwY0MyRkRuTXowcUMxSWkzUWpGZk1YPXM5Ni1jIiwidXBkYXRlZF9hdCI6IjIwMjYtMDQtMjdUMTY6NTc6MTMuMTYyWiIsImVtYWlsIjoiaXZpMTAwMHZtQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJpc3MiOiJodHRwczovL2d5Y29kaW5nLmV1LmF1dGgwLmNvbS8iLCJhdWQiOiJRQmp4cTkxeFRkM1A2eExFUkplazJ1Q2VhdmRRWEhoSiIsInN1YiI6Imdvb2dsZS1vYXV0aDJ8MTE4MDI2ODU0MjgyNzY4MjUxODIzIiwiaWF0IjoxNzc3MzEwMDI3LCJleHAiOjE3NzczNDYwMjcsInNpZCI6IkM2NThja2o3ZTdHUXJMcEpwNzc2QlpJb2lPeXZRWDRkIiwibm9uY2UiOiJZckFRWHRaLU5ZWW5Gd0EyWTF5d2R2TUhRaHZvQ3ZEOUpPUUhEQXItcnRvIn0.mHUzGTDs64ejjB5RsxjmCIrgLIp89SO5R1GG-vnCika3mwzFiTfibxOge1t9030WkZx2ybD5no7sYoEVP68hhpq18FDdKDAwb7NyDEGYIGIQ7BILlftD2vYslm0j7iN5xXyF6x04XCzTW8IW127DnXIvk_TmxbuX218o_8iEVUbakycdDYFWSXR_CWSFYQ8QTbBQEKLb0DdJgeekijdHEs-1nM-BPEmO-dLE22VvfRGBqFsZt9yBkvyQaeEcV3Mq79BswxkE3H756Thh8vXHj35NUubvVAvMvtRhUNORAZI6LH_HYiQLno4OlmNCeHZDUhHO7q288rQ9w40lLhUeXg
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties: {}
-            example:
-              name: 'Prueba #1'
-              description: Esta lista es una prueba.
-              books: []
+              $ref: '#/components/schemas/BookList'
+              description: Book List.
+            examples: {}
         required: true
       responses:
         '200':
@@ -1435,14 +1300,17 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties: {}
+                $ref: '#/components/schemas/BookList'
+                description: Book List.
           headers: {}
         '403':
           $ref: '#/components/responses/Forbidden'
           description: ''
         '405':
           $ref: '#/components/responses/Method Not Allowed'
+          description: ''
+        '409':
+          $ref: '#/components/responses/Conflict'
           description: ''
         '500':
           $ref: '#/components/responses/Internal Error'
@@ -1461,26 +1329,18 @@ paths:
       parameters:
         - name: Authorization
           in: header
-          description: Authorization token.
-          example: >-
-            Bearer
-            eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkJsaDdYazFlM3ZBNG94UkNMWXJ1YiJ9.eyJnaXZlbl9uYW1lIjoiSXbDoW4iLCJmYW1pbHlfbmFtZSI6IlZpY2VudGUiLCJuaWNrbmFtZSI6Iml2aTEwMDB2bSIsIm5hbWUiOiJJdsOhbiBWaWNlbnRlIiwicGljdHVyZSI6Imh0dHBzOi8vbGgzLmdvb2dsZXVzZXJjb250ZW50LmNvbS9hL0FDZzhvY0pkSG8wTkJDbXRPY3YwMHNVRE16ZDFSLU5ZbHhwY0MyRkRuTXowcUMxSWkzUWpGZk1YPXM5Ni1jIiwidXBkYXRlZF9hdCI6IjIwMjYtMDQtMjdUMTY6NTc6MTMuMTYyWiIsImVtYWlsIjoiaXZpMTAwMHZtQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJpc3MiOiJodHRwczovL2d5Y29kaW5nLmV1LmF1dGgwLmNvbS8iLCJhdWQiOiJRQmp4cTkxeFRkM1A2eExFUkplazJ1Q2VhdmRRWEhoSiIsInN1YiI6Imdvb2dsZS1vYXV0aDJ8MTE4MDI2ODU0MjgyNzY4MjUxODIzIiwiaWF0IjoxNzc3MzEwMDI3LCJleHAiOjE3NzczNDYwMjcsInNpZCI6IkM2NThja2o3ZTdHUXJMcEpwNzc2QlpJb2lPeXZRWDRkIiwibm9uY2UiOiJZckFRWHRaLU5ZWW5Gd0EyWTF5d2R2TUhRaHZvQ3ZEOUpPUUhEQXItcnRvIn0.mHUzGTDs64ejjB5RsxjmCIrgLIp89SO5R1GG-vnCika3mwzFiTfibxOge1t9030WkZx2ybD5no7sYoEVP68hhpq18FDdKDAwb7NyDEGYIGIQ7BILlftD2vYslm0j7iN5xXyF6x04XCzTW8IW127DnXIvk_TmxbuX218o_8iEVUbakycdDYFWSXR_CWSFYQ8QTbBQEKLb0DdJgeekijdHEs-1nM-BPEmO-dLE22VvfRGBqFsZt9yBkvyQaeEcV3Mq79BswxkE3H756Thh8vXHj35NUubvVAvMvtRhUNORAZI6LH_HYiQLno4OlmNCeHZDUhHO7q288rQ9w40lLhUeXg
+          description: Authorization token or API key.
+          required: true
+          example: ''
           schema:
             type: string
-            default: >-
-              Bearer
-              eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkJsaDdYazFlM3ZBNG94UkNMWXJ1YiJ9.eyJnaXZlbl9uYW1lIjoiSXbDoW4iLCJmYW1pbHlfbmFtZSI6IlZpY2VudGUiLCJuaWNrbmFtZSI6Iml2aTEwMDB2bSIsIm5hbWUiOiJJdsOhbiBWaWNlbnRlIiwicGljdHVyZSI6Imh0dHBzOi8vbGgzLmdvb2dsZXVzZXJjb250ZW50LmNvbS9hL0FDZzhvY0pkSG8wTkJDbXRPY3YwMHNVRE16ZDFSLU5ZbHhwY0MyRkRuTXowcUMxSWkzUWpGZk1YPXM5Ni1jIiwidXBkYXRlZF9hdCI6IjIwMjYtMDQtMjdUMTY6NTc6MTMuMTYyWiIsImVtYWlsIjoiaXZpMTAwMHZtQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJpc3MiOiJodHRwczovL2d5Y29kaW5nLmV1LmF1dGgwLmNvbS8iLCJhdWQiOiJRQmp4cTkxeFRkM1A2eExFUkplazJ1Q2VhdmRRWEhoSiIsInN1YiI6Imdvb2dsZS1vYXV0aDJ8MTE4MDI2ODU0MjgyNzY4MjUxODIzIiwiaWF0IjoxNzc3MzEwMDI3LCJleHAiOjE3NzczNDYwMjcsInNpZCI6IkM2NThja2o3ZTdHUXJMcEpwNzc2QlpJb2lPeXZRWDRkIiwibm9uY2UiOiJZckFRWHRaLU5ZWW5Gd0EyWTF5d2R2TUhRaHZvQ3ZEOUpPUUhEQXItcnRvIn0.mHUzGTDs64ejjB5RsxjmCIrgLIp89SO5R1GG-vnCika3mwzFiTfibxOge1t9030WkZx2ybD5no7sYoEVP68hhpq18FDdKDAwb7NyDEGYIGIQ7BILlftD2vYslm0j7iN5xXyF6x04XCzTW8IW127DnXIvk_TmxbuX218o_8iEVUbakycdDYFWSXR_CWSFYQ8QTbBQEKLb0DdJgeekijdHEs-1nM-BPEmO-dLE22VvfRGBqFsZt9yBkvyQaeEcV3Mq79BswxkE3H756Thh8vXHj35NUubvVAvMvtRhUNORAZI6LH_HYiQLno4OlmNCeHZDUhHO7q288rQ9w40lLhUeXg
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties: {}
-            example:
-              id: 8c11b875-0a35-406d-9aed-0c4259be080b
-              books:
-                - bookId: '386446'
-                  order: 5
+              $ref: '#/components/schemas/BookList'
+              description: Book List.
+            examples: {}
         required: true
       responses:
         '200':
@@ -1488,14 +1348,20 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties: {}
+                $ref: '#/components/schemas/BookList'
+                description: Book List.
           headers: {}
         '403':
           $ref: '#/components/responses/Forbidden'
           description: ''
+        '404':
+          $ref: '#/components/responses/Not Found'
+          description: ''
         '405':
           $ref: '#/components/responses/Method Not Allowed'
+          description: ''
+        '409':
+          $ref: '#/components/responses/Conflict'
           description: ''
         '500':
           $ref: '#/components/responses/Internal Error'
@@ -1517,31 +1383,31 @@ paths:
           in: path
           description: List ID.
           required: true
-          example: cbcd64fe-d1ad-474e-a0d8-4f117420a119
+          example: ''
           schema:
             type: string
+            format: uuid
         - name: Authorization
           in: header
-          description: Authorization token.
-          example: >-
-            Bearer
-            eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkJsaDdYazFlM3ZBNG94UkNMWXJ1YiJ9.eyJnaXZlbl9uYW1lIjoiSXbDoW4iLCJmYW1pbHlfbmFtZSI6IlZpY2VudGUiLCJuaWNrbmFtZSI6Iml2aTEwMDB2bSIsIm5hbWUiOiJJdsOhbiBWaWNlbnRlIiwicGljdHVyZSI6Imh0dHBzOi8vbGgzLmdvb2dsZXVzZXJjb250ZW50LmNvbS9hL0FDZzhvY0pkSG8wTkJDbXRPY3YwMHNVRE16ZDFSLU5ZbHhwY0MyRkRuTXowcUMxSWkzUWpGZk1YPXM5Ni1jIiwidXBkYXRlZF9hdCI6IjIwMjYtMDQtMjdUMTY6NTc6MTMuMTYyWiIsImVtYWlsIjoiaXZpMTAwMHZtQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJpc3MiOiJodHRwczovL2d5Y29kaW5nLmV1LmF1dGgwLmNvbS8iLCJhdWQiOiJRQmp4cTkxeFRkM1A2eExFUkplazJ1Q2VhdmRRWEhoSiIsInN1YiI6Imdvb2dsZS1vYXV0aDJ8MTE4MDI2ODU0MjgyNzY4MjUxODIzIiwiaWF0IjoxNzc3MzEwMDI3LCJleHAiOjE3NzczNDYwMjcsInNpZCI6IkM2NThja2o3ZTdHUXJMcEpwNzc2QlpJb2lPeXZRWDRkIiwibm9uY2UiOiJZckFRWHRaLU5ZWW5Gd0EyWTF5d2R2TUhRaHZvQ3ZEOUpPUUhEQXItcnRvIn0.mHUzGTDs64ejjB5RsxjmCIrgLIp89SO5R1GG-vnCika3mwzFiTfibxOge1t9030WkZx2ybD5no7sYoEVP68hhpq18FDdKDAwb7NyDEGYIGIQ7BILlftD2vYslm0j7iN5xXyF6x04XCzTW8IW127DnXIvk_TmxbuX218o_8iEVUbakycdDYFWSXR_CWSFYQ8QTbBQEKLb0DdJgeekijdHEs-1nM-BPEmO-dLE22VvfRGBqFsZt9yBkvyQaeEcV3Mq79BswxkE3H756Thh8vXHj35NUubvVAvMvtRhUNORAZI6LH_HYiQLno4OlmNCeHZDUhHO7q288rQ9w40lLhUeXg
+          description: Authorization token or API key.
+          required: true
+          example: ''
           schema:
             type: string
-            default: >-
-              Bearer
-              eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkJsaDdYazFlM3ZBNG94UkNMWXJ1YiJ9.eyJnaXZlbl9uYW1lIjoiSXbDoW4iLCJmYW1pbHlfbmFtZSI6IlZpY2VudGUiLCJuaWNrbmFtZSI6Iml2aTEwMDB2bSIsIm5hbWUiOiJJdsOhbiBWaWNlbnRlIiwicGljdHVyZSI6Imh0dHBzOi8vbGgzLmdvb2dsZXVzZXJjb250ZW50LmNvbS9hL0FDZzhvY0pkSG8wTkJDbXRPY3YwMHNVRE16ZDFSLU5ZbHhwY0MyRkRuTXowcUMxSWkzUWpGZk1YPXM5Ni1jIiwidXBkYXRlZF9hdCI6IjIwMjYtMDQtMjdUMTY6NTc6MTMuMTYyWiIsImVtYWlsIjoiaXZpMTAwMHZtQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJpc3MiOiJodHRwczovL2d5Y29kaW5nLmV1LmF1dGgwLmNvbS8iLCJhdWQiOiJRQmp4cTkxeFRkM1A2eExFUkplazJ1Q2VhdmRRWEhoSiIsInN1YiI6Imdvb2dsZS1vYXV0aDJ8MTE4MDI2ODU0MjgyNzY4MjUxODIzIiwiaWF0IjoxNzc3MzEwMDI3LCJleHAiOjE3NzczNDYwMjcsInNpZCI6IkM2NThja2o3ZTdHUXJMcEpwNzc2QlpJb2lPeXZRWDRkIiwibm9uY2UiOiJZckFRWHRaLU5ZWW5Gd0EyWTF5d2R2TUhRaHZvQ3ZEOUpPUUhEQXItcnRvIn0.mHUzGTDs64ejjB5RsxjmCIrgLIp89SO5R1GG-vnCika3mwzFiTfibxOge1t9030WkZx2ybD5no7sYoEVP68hhpq18FDdKDAwb7NyDEGYIGIQ7BILlftD2vYslm0j7iN5xXyF6x04XCzTW8IW127DnXIvk_TmxbuX218o_8iEVUbakycdDYFWSXR_CWSFYQ8QTbBQEKLb0DdJgeekijdHEs-1nM-BPEmO-dLE22VvfRGBqFsZt9yBkvyQaeEcV3Mq79BswxkE3H756Thh8vXHj35NUubvVAvMvtRhUNORAZI6LH_HYiQLno4OlmNCeHZDUhHO7q288rQ9w40lLhUeXg
       responses:
         '200':
           description: ''
           content:
             application/json:
               schema:
-                type: object
-                properties: {}
+                $ref: '#/components/schemas/BookList'
+                description: Book List.
           headers: {}
         '403':
           $ref: '#/components/responses/Forbidden'
+          description: ''
+        '404':
+          $ref: '#/components/responses/Not Found'
           description: ''
         '405':
           $ref: '#/components/responses/Method Not Allowed'
@@ -1565,31 +1431,28 @@ paths:
           in: path
           description: List ID.
           required: true
-          example: 3590776a-7c4e-4709-a9af-06f312c6e212
+          example: ''
           schema:
             type: string
         - name: Authorization
           in: header
-          description: Authorization token.
-          example: >-
-            Bearer
-            eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkJsaDdYazFlM3ZBNG94UkNMWXJ1YiJ9.eyJnaXZlbl9uYW1lIjoiSXbDoW4iLCJmYW1pbHlfbmFtZSI6IlZpY2VudGUiLCJuaWNrbmFtZSI6Iml2aTEwMDB2bSIsIm5hbWUiOiJJdsOhbiBWaWNlbnRlIiwicGljdHVyZSI6Imh0dHBzOi8vbGgzLmdvb2dsZXVzZXJjb250ZW50LmNvbS9hL0FDZzhvY0pkSG8wTkJDbXRPY3YwMHNVRE16ZDFSLU5ZbHhwY0MyRkRuTXowcUMxSWkzUWpGZk1YPXM5Ni1jIiwidXBkYXRlZF9hdCI6IjIwMjYtMDQtMjdUMTY6NTc6MTMuMTYyWiIsImVtYWlsIjoiaXZpMTAwMHZtQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJpc3MiOiJodHRwczovL2d5Y29kaW5nLmV1LmF1dGgwLmNvbS8iLCJhdWQiOiJRQmp4cTkxeFRkM1A2eExFUkplazJ1Q2VhdmRRWEhoSiIsInN1YiI6Imdvb2dsZS1vYXV0aDJ8MTE4MDI2ODU0MjgyNzY4MjUxODIzIiwiaWF0IjoxNzc3MzEwMDI3LCJleHAiOjE3NzczNDYwMjcsInNpZCI6IkM2NThja2o3ZTdHUXJMcEpwNzc2QlpJb2lPeXZRWDRkIiwibm9uY2UiOiJZckFRWHRaLU5ZWW5Gd0EyWTF5d2R2TUhRaHZvQ3ZEOUpPUUhEQXItcnRvIn0.mHUzGTDs64ejjB5RsxjmCIrgLIp89SO5R1GG-vnCika3mwzFiTfibxOge1t9030WkZx2ybD5no7sYoEVP68hhpq18FDdKDAwb7NyDEGYIGIQ7BILlftD2vYslm0j7iN5xXyF6x04XCzTW8IW127DnXIvk_TmxbuX218o_8iEVUbakycdDYFWSXR_CWSFYQ8QTbBQEKLb0DdJgeekijdHEs-1nM-BPEmO-dLE22VvfRGBqFsZt9yBkvyQaeEcV3Mq79BswxkE3H756Thh8vXHj35NUubvVAvMvtRhUNORAZI6LH_HYiQLno4OlmNCeHZDUhHO7q288rQ9w40lLhUeXg
+          description: Authorization token or API key.
+          required: true
+          example: ''
           schema:
             type: string
-            default: >-
-              Bearer
-              eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkJsaDdYazFlM3ZBNG94UkNMWXJ1YiJ9.eyJnaXZlbl9uYW1lIjoiSXbDoW4iLCJmYW1pbHlfbmFtZSI6IlZpY2VudGUiLCJuaWNrbmFtZSI6Iml2aTEwMDB2bSIsIm5hbWUiOiJJdsOhbiBWaWNlbnRlIiwicGljdHVyZSI6Imh0dHBzOi8vbGgzLmdvb2dsZXVzZXJjb250ZW50LmNvbS9hL0FDZzhvY0pkSG8wTkJDbXRPY3YwMHNVRE16ZDFSLU5ZbHhwY0MyRkRuTXowcUMxSWkzUWpGZk1YPXM5Ni1jIiwidXBkYXRlZF9hdCI6IjIwMjYtMDQtMjdUMTY6NTc6MTMuMTYyWiIsImVtYWlsIjoiaXZpMTAwMHZtQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJpc3MiOiJodHRwczovL2d5Y29kaW5nLmV1LmF1dGgwLmNvbS8iLCJhdWQiOiJRQmp4cTkxeFRkM1A2eExFUkplazJ1Q2VhdmRRWEhoSiIsInN1YiI6Imdvb2dsZS1vYXV0aDJ8MTE4MDI2ODU0MjgyNzY4MjUxODIzIiwiaWF0IjoxNzc3MzEwMDI3LCJleHAiOjE3NzczNDYwMjcsInNpZCI6IkM2NThja2o3ZTdHUXJMcEpwNzc2QlpJb2lPeXZRWDRkIiwibm9uY2UiOiJZckFRWHRaLU5ZWW5Gd0EyWTF5d2R2TUhRaHZvQ3ZEOUpPUUhEQXItcnRvIn0.mHUzGTDs64ejjB5RsxjmCIrgLIp89SO5R1GG-vnCika3mwzFiTfibxOge1t9030WkZx2ybD5no7sYoEVP68hhpq18FDdKDAwb7NyDEGYIGIQ7BILlftD2vYslm0j7iN5xXyF6x04XCzTW8IW127DnXIvk_TmxbuX218o_8iEVUbakycdDYFWSXR_CWSFYQ8QTbBQEKLb0DdJgeekijdHEs-1nM-BPEmO-dLE22VvfRGBqFsZt9yBkvyQaeEcV3Mq79BswxkE3H756Thh8vXHj35NUubvVAvMvtRhUNORAZI6LH_HYiQLno4OlmNCeHZDUhHO7q288rQ9w40lLhUeXg
       responses:
-        '200':
+        '204':
           description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                properties: {}
           headers: {}
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+          description: ''
         '403':
           $ref: '#/components/responses/Forbidden'
+          description: ''
+        '404':
+          $ref: '#/components/responses/Not Found'
           description: ''
         '405':
           $ref: '#/components/responses/Method Not Allowed'
@@ -1614,28 +1477,24 @@ paths:
           in: path
           description: List ID.
           required: true
-          example: efabeeb9-4aed-4d35-aaff-91eb37183183
+          example: ''
           schema:
             type: string
+            format: uuid
         - name: Authorization
           in: header
-          description: Authorization token.
-          example: >-
-            Bearer
-            eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkJsaDdYazFlM3ZBNG94UkNMWXJ1YiJ9.eyJnaXZlbl9uYW1lIjoiSXbDoW4iLCJmYW1pbHlfbmFtZSI6IlZpY2VudGUiLCJuaWNrbmFtZSI6Iml2aTEwMDB2bSIsIm5hbWUiOiJJdsOhbiBWaWNlbnRlIiwicGljdHVyZSI6Imh0dHBzOi8vbGgzLmdvb2dsZXVzZXJjb250ZW50LmNvbS9hL0FDZzhvY0pkSG8wTkJDbXRPY3YwMHNVRE16ZDFSLU5ZbHhwY0MyRkRuTXowcUMxSWkzUWpGZk1YPXM5Ni1jIiwidXBkYXRlZF9hdCI6IjIwMjYtMDQtMjdUMTY6NTc6MTMuMTYyWiIsImVtYWlsIjoiaXZpMTAwMHZtQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJpc3MiOiJodHRwczovL2d5Y29kaW5nLmV1LmF1dGgwLmNvbS8iLCJhdWQiOiJRQmp4cTkxeFRkM1A2eExFUkplazJ1Q2VhdmRRWEhoSiIsInN1YiI6Imdvb2dsZS1vYXV0aDJ8MTE4MDI2ODU0MjgyNzY4MjUxODIzIiwiaWF0IjoxNzc3MzEwMDI3LCJleHAiOjE3NzczNDYwMjcsInNpZCI6IkM2NThja2o3ZTdHUXJMcEpwNzc2QlpJb2lPeXZRWDRkIiwibm9uY2UiOiJZckFRWHRaLU5ZWW5Gd0EyWTF5d2R2TUhRaHZvQ3ZEOUpPUUhEQXItcnRvIn0.mHUzGTDs64ejjB5RsxjmCIrgLIp89SO5R1GG-vnCika3mwzFiTfibxOge1t9030WkZx2ybD5no7sYoEVP68hhpq18FDdKDAwb7NyDEGYIGIQ7BILlftD2vYslm0j7iN5xXyF6x04XCzTW8IW127DnXIvk_TmxbuX218o_8iEVUbakycdDYFWSXR_CWSFYQ8QTbBQEKLb0DdJgeekijdHEs-1nM-BPEmO-dLE22VvfRGBqFsZt9yBkvyQaeEcV3Mq79BswxkE3H756Thh8vXHj35NUubvVAvMvtRhUNORAZI6LH_HYiQLno4OlmNCeHZDUhHO7q288rQ9w40lLhUeXg
+          description: Authorization token or API key.
+          required: true
+          example: ''
           schema:
             type: string
-            default: >-
-              Bearer
-              eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkJsaDdYazFlM3ZBNG94UkNMWXJ1YiJ9.eyJnaXZlbl9uYW1lIjoiSXbDoW4iLCJmYW1pbHlfbmFtZSI6IlZpY2VudGUiLCJuaWNrbmFtZSI6Iml2aTEwMDB2bSIsIm5hbWUiOiJJdsOhbiBWaWNlbnRlIiwicGljdHVyZSI6Imh0dHBzOi8vbGgzLmdvb2dsZXVzZXJjb250ZW50LmNvbS9hL0FDZzhvY0pkSG8wTkJDbXRPY3YwMHNVRE16ZDFSLU5ZbHhwY0MyRkRuTXowcUMxSWkzUWpGZk1YPXM5Ni1jIiwidXBkYXRlZF9hdCI6IjIwMjYtMDQtMjdUMTY6NTc6MTMuMTYyWiIsImVtYWlsIjoiaXZpMTAwMHZtQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJpc3MiOiJodHRwczovL2d5Y29kaW5nLmV1LmF1dGgwLmNvbS8iLCJhdWQiOiJRQmp4cTkxeFRkM1A2eExFUkplazJ1Q2VhdmRRWEhoSiIsInN1YiI6Imdvb2dsZS1vYXV0aDJ8MTE4MDI2ODU0MjgyNzY4MjUxODIzIiwiaWF0IjoxNzc3MzEwMDI3LCJleHAiOjE3NzczNDYwMjcsInNpZCI6IkM2NThja2o3ZTdHUXJMcEpwNzc2QlpJb2lPeXZRWDRkIiwibm9uY2UiOiJZckFRWHRaLU5ZWW5Gd0EyWTF5d2R2TUhRaHZvQ3ZEOUpPUUhEQXItcnRvIn0.mHUzGTDs64ejjB5RsxjmCIrgLIp89SO5R1GG-vnCika3mwzFiTfibxOge1t9030WkZx2ybD5no7sYoEVP68hhpq18FDdKDAwb7NyDEGYIGIQ7BILlftD2vYslm0j7iN5xXyF6x04XCzTW8IW127DnXIvk_TmxbuX218o_8iEVUbakycdDYFWSXR_CWSFYQ8QTbBQEKLb0DdJgeekijdHEs-1nM-BPEmO-dLE22VvfRGBqFsZt9yBkvyQaeEcV3Mq79BswxkE3H756Thh8vXHj35NUubvVAvMvtRhUNORAZI6LH_HYiQLno4OlmNCeHZDUhHO7q288rQ9w40lLhUeXg
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties: {}
-            example:
-              bookId: '386446'
+              $ref: '#/components/schemas/BookListElement'
+              description: Book List book.
+            examples: {}
         required: true
       responses:
         '200':
@@ -1643,11 +1502,20 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties: {}
+                $ref: '#/components/schemas/BookList'
+                description: Book List.
           headers: {}
+        '400':
+          $ref: '#/components/responses/Bad Request'
+          description: ''
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+          description: ''
         '403':
           $ref: '#/components/responses/Forbidden'
+          description: ''
+        '404':
+          $ref: '#/components/responses/Not Found'
           description: ''
         '405':
           $ref: '#/components/responses/Method Not Allowed'
@@ -1671,29 +1539,24 @@ paths:
           in: path
           description: List ID.
           required: true
-          example: 8c11b875-0a35-406d-9aed-0c4259be080b
+          example: ''
           schema:
             type: string
+            format: uuid
         - name: Authorization
           in: header
-          description: Authorization token.
-          example: >-
-            Bearer
-            eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkJsaDdYazFlM3ZBNG94UkNMWXJ1YiJ9.eyJnaXZlbl9uYW1lIjoiSXbDoW4iLCJmYW1pbHlfbmFtZSI6IlZpY2VudGUiLCJuaWNrbmFtZSI6Iml2aTEwMDB2bSIsIm5hbWUiOiJJdsOhbiBWaWNlbnRlIiwicGljdHVyZSI6Imh0dHBzOi8vbGgzLmdvb2dsZXVzZXJjb250ZW50LmNvbS9hL0FDZzhvY0pkSG8wTkJDbXRPY3YwMHNVRE16ZDFSLU5ZbHhwY0MyRkRuTXowcUMxSWkzUWpGZk1YPXM5Ni1jIiwidXBkYXRlZF9hdCI6IjIwMjYtMDQtMjdUMTY6NTc6MTMuMTYyWiIsImVtYWlsIjoiaXZpMTAwMHZtQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJpc3MiOiJodHRwczovL2d5Y29kaW5nLmV1LmF1dGgwLmNvbS8iLCJhdWQiOiJRQmp4cTkxeFRkM1A2eExFUkplazJ1Q2VhdmRRWEhoSiIsInN1YiI6Imdvb2dsZS1vYXV0aDJ8MTE4MDI2ODU0MjgyNzY4MjUxODIzIiwiaWF0IjoxNzc3MzEwMDI3LCJleHAiOjE3NzczNDYwMjcsInNpZCI6IkM2NThja2o3ZTdHUXJMcEpwNzc2QlpJb2lPeXZRWDRkIiwibm9uY2UiOiJZckFRWHRaLU5ZWW5Gd0EyWTF5d2R2TUhRaHZvQ3ZEOUpPUUhEQXItcnRvIn0.mHUzGTDs64ejjB5RsxjmCIrgLIp89SO5R1GG-vnCika3mwzFiTfibxOge1t9030WkZx2ybD5no7sYoEVP68hhpq18FDdKDAwb7NyDEGYIGIQ7BILlftD2vYslm0j7iN5xXyF6x04XCzTW8IW127DnXIvk_TmxbuX218o_8iEVUbakycdDYFWSXR_CWSFYQ8QTbBQEKLb0DdJgeekijdHEs-1nM-BPEmO-dLE22VvfRGBqFsZt9yBkvyQaeEcV3Mq79BswxkE3H756Thh8vXHj35NUubvVAvMvtRhUNORAZI6LH_HYiQLno4OlmNCeHZDUhHO7q288rQ9w40lLhUeXg
+          description: Authorization token or API key.
+          required: true
+          example: ''
           schema:
             type: string
-            default: >-
-              Bearer
-              eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkJsaDdYazFlM3ZBNG94UkNMWXJ1YiJ9.eyJnaXZlbl9uYW1lIjoiSXbDoW4iLCJmYW1pbHlfbmFtZSI6IlZpY2VudGUiLCJuaWNrbmFtZSI6Iml2aTEwMDB2bSIsIm5hbWUiOiJJdsOhbiBWaWNlbnRlIiwicGljdHVyZSI6Imh0dHBzOi8vbGgzLmdvb2dsZXVzZXJjb250ZW50LmNvbS9hL0FDZzhvY0pkSG8wTkJDbXRPY3YwMHNVRE16ZDFSLU5ZbHhwY0MyRkRuTXowcUMxSWkzUWpGZk1YPXM5Ni1jIiwidXBkYXRlZF9hdCI6IjIwMjYtMDQtMjdUMTY6NTc6MTMuMTYyWiIsImVtYWlsIjoiaXZpMTAwMHZtQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJpc3MiOiJodHRwczovL2d5Y29kaW5nLmV1LmF1dGgwLmNvbS8iLCJhdWQiOiJRQmp4cTkxeFRkM1A2eExFUkplazJ1Q2VhdmRRWEhoSiIsInN1YiI6Imdvb2dsZS1vYXV0aDJ8MTE4MDI2ODU0MjgyNzY4MjUxODIzIiwiaWF0IjoxNzc3MzEwMDI3LCJleHAiOjE3NzczNDYwMjcsInNpZCI6IkM2NThja2o3ZTdHUXJMcEpwNzc2QlpJb2lPeXZRWDRkIiwibm9uY2UiOiJZckFRWHRaLU5ZWW5Gd0EyWTF5d2R2TUhRaHZvQ3ZEOUpPUUhEQXItcnRvIn0.mHUzGTDs64ejjB5RsxjmCIrgLIp89SO5R1GG-vnCika3mwzFiTfibxOge1t9030WkZx2ybD5no7sYoEVP68hhpq18FDdKDAwb7NyDEGYIGIQ7BILlftD2vYslm0j7iN5xXyF6x04XCzTW8IW127DnXIvk_TmxbuX218o_8iEVUbakycdDYFWSXR_CWSFYQ8QTbBQEKLb0DdJgeekijdHEs-1nM-BPEmO-dLE22VvfRGBqFsZt9yBkvyQaeEcV3Mq79BswxkE3H756Thh8vXHj35NUubvVAvMvtRhUNORAZI6LH_HYiQLno4OlmNCeHZDUhHO7q288rQ9w40lLhUeXg
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties: {}
-            example:
-              bookId: '386446'
-              order: 2
+              $ref: '#/components/schemas/BookListElement'
+              description: Book List book.
+            examples: {}
         required: true
       responses:
         '200':
@@ -1701,11 +1564,23 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties: {}
+                $ref: '#/components/schemas/BookList'
+                description: Book List.
           headers: {}
+        '304':
+          $ref: '#/components/responses/Not Modified'
+          description: ''
+        '400':
+          $ref: '#/components/responses/Bad Request'
+          description: ''
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+          description: ''
         '403':
           $ref: '#/components/responses/Forbidden'
+          description: ''
+        '404':
+          $ref: '#/components/responses/Not Found'
           description: ''
         '405':
           $ref: '#/components/responses/Method Not Allowed'
@@ -1730,38 +1605,36 @@ paths:
           in: path
           description: List ID.
           required: true
-          example: cbcd64fe-d1ad-474e-a0d8-4f117420a119
+          example: ''
           schema:
             type: string
+            format: uuid
         - name: bookId
           in: path
           description: Book ID.
           required: true
-          example: '427522'
+          example: ''
           schema:
             type: string
         - name: Authorization
           in: header
-          description: Authorization token.
-          example: >-
-            Bearer
-            eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkJsaDdYazFlM3ZBNG94UkNMWXJ1YiJ9.eyJnaXZlbl9uYW1lIjoiSXbDoW4iLCJmYW1pbHlfbmFtZSI6IlZpY2VudGUiLCJuaWNrbmFtZSI6Iml2aTEwMDB2bSIsIm5hbWUiOiJJdsOhbiBWaWNlbnRlIiwicGljdHVyZSI6Imh0dHBzOi8vbGgzLmdvb2dsZXVzZXJjb250ZW50LmNvbS9hL0FDZzhvY0pkSG8wTkJDbXRPY3YwMHNVRE16ZDFSLU5ZbHhwY0MyRkRuTXowcUMxSWkzUWpGZk1YPXM5Ni1jIiwidXBkYXRlZF9hdCI6IjIwMjYtMDQtMjdUMTY6NTc6MTMuMTYyWiIsImVtYWlsIjoiaXZpMTAwMHZtQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJpc3MiOiJodHRwczovL2d5Y29kaW5nLmV1LmF1dGgwLmNvbS8iLCJhdWQiOiJRQmp4cTkxeFRkM1A2eExFUkplazJ1Q2VhdmRRWEhoSiIsInN1YiI6Imdvb2dsZS1vYXV0aDJ8MTE4MDI2ODU0MjgyNzY4MjUxODIzIiwiaWF0IjoxNzc3MzEwMDI3LCJleHAiOjE3NzczNDYwMjcsInNpZCI6IkM2NThja2o3ZTdHUXJMcEpwNzc2QlpJb2lPeXZRWDRkIiwibm9uY2UiOiJZckFRWHRaLU5ZWW5Gd0EyWTF5d2R2TUhRaHZvQ3ZEOUpPUUhEQXItcnRvIn0.mHUzGTDs64ejjB5RsxjmCIrgLIp89SO5R1GG-vnCika3mwzFiTfibxOge1t9030WkZx2ybD5no7sYoEVP68hhpq18FDdKDAwb7NyDEGYIGIQ7BILlftD2vYslm0j7iN5xXyF6x04XCzTW8IW127DnXIvk_TmxbuX218o_8iEVUbakycdDYFWSXR_CWSFYQ8QTbBQEKLb0DdJgeekijdHEs-1nM-BPEmO-dLE22VvfRGBqFsZt9yBkvyQaeEcV3Mq79BswxkE3H756Thh8vXHj35NUubvVAvMvtRhUNORAZI6LH_HYiQLno4OlmNCeHZDUhHO7q288rQ9w40lLhUeXg
+          description: Authorization token or API key.
+          required: true
+          example: ''
           schema:
             type: string
-            default: >-
-              Bearer
-              eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkJsaDdYazFlM3ZBNG94UkNMWXJ1YiJ9.eyJnaXZlbl9uYW1lIjoiSXbDoW4iLCJmYW1pbHlfbmFtZSI6IlZpY2VudGUiLCJuaWNrbmFtZSI6Iml2aTEwMDB2bSIsIm5hbWUiOiJJdsOhbiBWaWNlbnRlIiwicGljdHVyZSI6Imh0dHBzOi8vbGgzLmdvb2dsZXVzZXJjb250ZW50LmNvbS9hL0FDZzhvY0pkSG8wTkJDbXRPY3YwMHNVRE16ZDFSLU5ZbHhwY0MyRkRuTXowcUMxSWkzUWpGZk1YPXM5Ni1jIiwidXBkYXRlZF9hdCI6IjIwMjYtMDQtMjdUMTY6NTc6MTMuMTYyWiIsImVtYWlsIjoiaXZpMTAwMHZtQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJpc3MiOiJodHRwczovL2d5Y29kaW5nLmV1LmF1dGgwLmNvbS8iLCJhdWQiOiJRQmp4cTkxeFRkM1A2eExFUkplazJ1Q2VhdmRRWEhoSiIsInN1YiI6Imdvb2dsZS1vYXV0aDJ8MTE4MDI2ODU0MjgyNzY4MjUxODIzIiwiaWF0IjoxNzc3MzEwMDI3LCJleHAiOjE3NzczNDYwMjcsInNpZCI6IkM2NThja2o3ZTdHUXJMcEpwNzc2QlpJb2lPeXZRWDRkIiwibm9uY2UiOiJZckFRWHRaLU5ZWW5Gd0EyWTF5d2R2TUhRaHZvQ3ZEOUpPUUhEQXItcnRvIn0.mHUzGTDs64ejjB5RsxjmCIrgLIp89SO5R1GG-vnCika3mwzFiTfibxOge1t9030WkZx2ybD5no7sYoEVP68hhpq18FDdKDAwb7NyDEGYIGIQ7BILlftD2vYslm0j7iN5xXyF6x04XCzTW8IW127DnXIvk_TmxbuX218o_8iEVUbakycdDYFWSXR_CWSFYQ8QTbBQEKLb0DdJgeekijdHEs-1nM-BPEmO-dLE22VvfRGBqFsZt9yBkvyQaeEcV3Mq79BswxkE3H756Thh8vXHj35NUubvVAvMvtRhUNORAZI6LH_HYiQLno4OlmNCeHZDUhHO7q288rQ9w40lLhUeXg
       responses:
-        '200':
+        '204':
           description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                properties: {}
           headers: {}
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+          description: ''
         '403':
           $ref: '#/components/responses/Forbidden'
+          description: ''
+        '404':
+          $ref: '#/components/responses/Not Found'
           description: ''
         '405':
           $ref: '#/components/responses/Method Not Allowed'
@@ -1784,16 +1657,16 @@ paths:
       parameters:
         - name: x-profile-id
           in: header
-          description: Profile ID.
+          description: User ProfileID.
           required: true
-          example: '{{profile-id}}'
+          example: ''
           schema:
             type: string
         - name: x-api-key
           in: header
-          description: API Key for the service.
+          description: Service API Key.
           required: true
-          example: '{{api-key}}'
+          example: ''
           schema:
             type: string
       responses:
@@ -1812,6 +1685,8 @@ paths:
       security: []
       x-roles:
         - ADMIN
+        - DEVELOPER
+        - COMMON
     delete:
       summary: Remove Metadata
       deprecated: false
@@ -1821,17 +1696,17 @@ paths:
       parameters:
         - name: x-profile-id
           in: header
-          description: Profile ID.
+          description: User ProfileID.
           required: true
-          example: '{{profile-id}}'
+          example: ''
           schema:
             type: string
             format: uuid
         - name: x-api-key
           in: header
-          description: API Key for the service.
+          description: Service API Key.
           required: true
-          example: '{{api-key}}'
+          example: ''
           schema:
             type: string
       responses:
@@ -1995,6 +1870,67 @@ components:
       required:
         - books
         - quote
+    Activity:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Activity ID.
+          format: uuid
+        message:
+          type: string
+          description: Activity Message.
+        profileId:
+          type: string
+          format: uuid
+          description: Activity Profile ID.
+        likes:
+          type: array
+          items:
+            type: string
+            description: Activity Like Profile ID.
+            format: uuid
+          description: Activity Likes.
+      description: Activity object.
+      required:
+        - id
+    BookList:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Book List ID.
+        name:
+          type: string
+          description: Book List name.
+        description:
+          type: string
+          description: Book List description.
+        books:
+          type: array
+          items:
+            description: Book List book.
+            $ref: '#/components/schemas/BookListElement'
+          description: Book List books.
+      required:
+        - name
+        - description
+        - books
+      description: Book List.
+    BookListElement:
+      type: object
+      properties:
+        bookId:
+          type: string
+          description: Book List book ID.
+        order:
+          type: integer
+          description: Book List book order.
+      required:
+        - bookId
+        - order
+      description: Book List book.
     Books Metadata:
       type: object
       properties:
@@ -2023,30 +1959,6 @@ components:
         - activity
         - biography
       description: Books Metadata Object.
-    Activity:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Activity ID.
-          format: uuid
-        message:
-          type: string
-          description: Activity Message.
-        profileId:
-          type: string
-          format: uuid
-          description: Activity Profile ID.
-        likes:
-          type: array
-          items:
-            type: string
-            description: Activity Like Profile ID.
-            format: uuid
-          description: Activity Likes.
-      description: Activity object.
-      required:
-        - id
     Error Response:
       type: object
       properties:
