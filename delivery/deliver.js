@@ -21,6 +21,20 @@ async function fetchAPIRoutes() {
     const yamlText = await response.text();
     const openApiSpec = yaml.load(yamlText);
 
+    const serverUrl = openApiSpec?.servers?.[0]?.url;
+    let servicePrefix = "";
+
+    if (typeof serverUrl === 'string' && serverUrl.length > 0) {
+        const firstPathSegment = new URL(serverUrl, 'http://localhost')
+            .pathname
+            .split('/')
+            .filter(Boolean)[0];
+
+        if (firstPathSegment) {
+            servicePrefix = "/" + firstPathSegment;
+        }
+    }
+
     const paths = openApiSpec.paths;
 
     for (const path in paths) {
@@ -42,7 +56,7 @@ async function fetchAPIRoutes() {
             const body = route.requestBody ? route.requestBody.content : null;
 
             const routeObject = new Route(
-                "/" + openApiSpec.servers[0].url.split('/')[3],
+                servicePrefix,
                 path,
                 method.toUpperCase(),
                 queryParameters,
