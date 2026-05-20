@@ -13,52 +13,46 @@ function getParameter(ref, components) {
 }
 
 async function fetchAPIRoutes() {
-    const apiDocsServicesPaths = [
-        "https://raw.githubusercontent.com/GY-CODING/api-docs/refs/heads/master/reference/heralds-of-chaos.openapi.yaml",
-        "https://raw.githubusercontent.com/GY-CODING/api-docs/refs/heads/master/reference/gy-accounts.openapi.yaml",
-        "https://raw.githubusercontent.com/GY-CODING/api-docs/refs/heads/master/reference/gy-books.openapi.yaml"
-    ];
+    const servicePath = "https://raw.githubusercontent.com/GY-CODING/api-docs/refs/heads/master/reference/gy.openapi.yaml";
 
     const routes = new Array();
 
-    for (const servicePath of apiDocsServicesPaths) {
-        const response = await fetch(servicePath);
-        const yamlText = await response.text();
-        const openApiSpec = yaml.load(yamlText);
+    const response = await fetch(servicePath);
+    const yamlText = await response.text();
+    const openApiSpec = yaml.load(yamlText);
 
-        const paths = openApiSpec.paths;
+    const paths = openApiSpec.paths;
 
-        for (const path in paths) {
-            for (const method in paths[path]) {
-                const route = paths[path][method];
-                const parameters = route.parameters || [];
-                const roles = route['x-roles'] || [];
+    for (const path in paths) {
+        for (const method in paths[path]) {
+            const route = paths[path][method];
+            const parameters = route.parameters || [];
+            const roles = route['x-roles'] || [];
 
-                const resolvedParameters = parameters.map(param => {
-                    if (param.$ref) {
-                        return getParameter(param.$ref, openApiSpec.components);
-                    }
-                    return param;
-                });
+            const resolvedParameters = parameters.map(param => {
+                if (param.$ref) {
+                    return getParameter(param.$ref, openApiSpec.components);
+                }
+                return param;
+            });
 
-                const queryParameters = resolvedParameters.filter(p => p.in === 'query');
-                const pathVariables = resolvedParameters.filter(p => p.in === 'path');
-                const headers = resolvedParameters.filter(p => p.in === 'header');
-                const body = route.requestBody ? route.requestBody.content : null;
+            const queryParameters = resolvedParameters.filter(p => p.in === 'query');
+            const pathVariables = resolvedParameters.filter(p => p.in === 'path');
+            const headers = resolvedParameters.filter(p => p.in === 'header');
+            const body = route.requestBody ? route.requestBody.content : null;
 
-                const routeObject = new Route(
-                    "/" + openApiSpec.servers[0].url.split('/')[3],
-                    path,
-                    method.toUpperCase(),
-                    queryParameters,
-                    pathVariables,
-                    headers,
-                    body,
-                    roles
-                );
+            const routeObject = new Route(
+                "/" + openApiSpec.servers[0].url.split('/')[3],
+                path,
+                method.toUpperCase(),
+                queryParameters,
+                pathVariables,
+                headers,
+                body,
+                roles
+            );
 
-                routes.push(routeObject);
-            }
+            routes.push(routeObject);
         }
     }
 
