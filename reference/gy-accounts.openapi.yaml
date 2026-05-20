@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: Default module
+  title: GY Accounts
   description: ''
   version: 1.0.0
 tags:
@@ -29,15 +29,18 @@ paths:
                   type: string
                   description: User email.
                   format: email
+                  pattern: ^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$
                 password:
                   type: string
                   description: User password.
                   format: password
+                  minLength: 8
               required:
                 - password
+                - email
             example:
               email: test@gycoding.com
-              password: testtest_0
+              password: testpasswd-0
       responses:
         '200':
           description: ''
@@ -81,9 +84,9 @@ paths:
               description: User credentials object.
               $ref: '#/components/schemas/User%20Credentials'
             example:
-              username: test-migration-1
-              email: test-migration-1@gycoding.com
-              password: test-migration-1
+              username: test-user
+              email: test@gycoding.com
+              password: testpasswd-0
       responses:
         '200':
           description: ''
@@ -126,6 +129,7 @@ paths:
               schema:
                 type: string
                 description: Google Authentication URL.
+                format: uri
           headers: {}
         '400':
           $ref: '#/components/responses/Bad Request'
@@ -143,9 +147,11 @@ paths:
         - DEVELOPER
   /user/list:
     get:
-      summary: List Users (Public)
+      summary: List Users
       deprecated: false
-      description: Retrieves a list of users.
+      description: >-
+        Retrieves a list of users while being authenticated for private
+        information.
       tags:
         - Users
       parameters:
@@ -153,7 +159,14 @@ paths:
           in: query
           description: Query to find users.
           required: true
-          example: toxyc
+          example: ''
+          schema:
+            type: string
+        - name: Authorization
+          in: header
+          description: Authorization token or API key.
+          required: true
+          example: ''
           schema:
             type: string
       responses:
@@ -191,6 +204,95 @@ paths:
         - COMMON
         - ADMIN
         - DEVELOPER
+  /user/list/public:
+    get:
+      summary: List Users (Public)
+      deprecated: false
+      description: Retrieves a list of users.
+      tags:
+        - Users
+      parameters:
+        - name: query
+          in: query
+          description: Query to find users.
+          required: true
+          example: ''
+          schema:
+            type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User%20Profile'
+                  description: User profile.
+                description: List of profiles.
+          headers: {}
+        '400':
+          $ref: '#/components/responses/Bad Request'
+          description: ''
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+          description: ''
+        '403':
+          $ref: '#/components/responses/Forbidden'
+          description: ''
+        '404':
+          $ref: '#/components/responses/Not Found'
+          description: ''
+        '405':
+          $ref: '#/components/responses/Method Not Allowed'
+          description: ''
+        '500':
+          $ref: '#/components/responses/Internal Error'
+          description: ''
+      security: []
+      x-roles:
+        - COMMON
+        - ADMIN
+        - DEVELOPER
+  /user:
+    delete:
+      summary: Remove User
+      deprecated: false
+      description: Removes a User.
+      tags:
+        - Users
+      parameters:
+        - name: Authorization
+          in: header
+          description: Authorization token or API key.
+          required: true
+          example: ''
+          schema:
+            type: string
+      responses:
+        '204':
+          description: ''
+          headers: {}
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+          description: ''
+        '403':
+          $ref: '#/components/responses/Forbidden'
+          description: ''
+        '404':
+          $ref: '#/components/responses/Not Found'
+          description: ''
+        '405':
+          $ref: '#/components/responses/Method Not Allowed'
+          description: ''
+        '500':
+          $ref: '#/components/responses/Internal Error'
+          description: ''
+      security: []
+      x-roles:
+        - ADMIN
+        - DEVELOPER
+        - COMMON
   /user/profile:
     get:
       summary: Get User Profile
@@ -203,12 +305,11 @@ paths:
       parameters:
         - name: Authorization
           in: header
-          description: Authorization token.
-          required: false
-          example: 9BVTbqHiqloTZMmpRCBpC4-tEzyvoEiWap62nlxzkOM
+          description: Authorization token or API key.
+          required: true
+          example: ''
           schema:
             type: string
-            default: 9BVTbqHiqloTZMmpRCBpC4-tEzyvoEiWap62nlxzkOM
       responses:
         '200':
           description: ''
@@ -250,18 +351,17 @@ paths:
       parameters:
         - name: Authorization
           in: header
-          description: Authorization token.
-          required: false
-          example: 9BVTbqHiqloTZMmpRCBpC4-tEzyvoEiWap62nlxzkOM
+          description: Authorization token or API key.
+          required: true
+          example: ''
           schema:
             type: string
-            default: 9BVTbqHiqloTZMmpRCBpC4-tEzyvoEiWap62nlxzkOM
       requestBody:
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/User%20Profile'
-              description: User Profile object.
+              description: User profile.
             example:
               username: test
               email: test-email
@@ -309,12 +409,11 @@ paths:
       parameters:
         - name: Authorization
           in: header
-          description: Authorization token.
-          required: false
-          example: 9BVTbqHiqloTZMmpRCBpC4-tEzyvoEiWap62nlxzkOM
+          description: Authorization token or API key.
+          required: true
+          example: ''
           schema:
             type: string
-            default: 9BVTbqHiqloTZMmpRCBpC4-tEzyvoEiWap62nlxzkOM
       responses:
         '200':
           description: ''
@@ -346,6 +445,7 @@ paths:
       x-roles:
         - COMMON
         - ADMIN
+        - DEVELOPER
     patch:
       summary: Update Username
       deprecated: false
@@ -355,18 +455,18 @@ paths:
       parameters:
         - name: Authorization
           in: header
-          description: Authorization token.
-          required: false
-          example: 9BVTbqHiqloTZMmpRCBpC4-tEzyvoEiWap62nlxzkOM
+          description: Authorization token or API key.
+          required: true
+          example: ''
           schema:
             type: string
-            default: 9BVTbqHiqloTZMmpRCBpC4-tEzyvoEiWap62nlxzkOM
       requestBody:
         content:
           text/plain:
             schema:
               type: string
-            example: username-example
+            examples: {}
+        required: true
       responses:
         '200':
           description: ''
@@ -398,6 +498,7 @@ paths:
       x-roles:
         - COMMON
         - ADMIN
+        - DEVELOPER
   /user/email:
     get:
       summary: Get Email
@@ -408,12 +509,11 @@ paths:
       parameters:
         - name: Authorization
           in: header
-          description: Authorization token.
-          required: false
-          example: 9BVTbqHiqloTZMmpRCBpC4-tEzyvoEiWap62nlxzkOM
+          description: Authorization token or API key.
+          required: true
+          example: ''
           schema:
             type: string
-            default: 9BVTbqHiqloTZMmpRCBpC4-tEzyvoEiWap62nlxzkOM
       responses:
         '200':
           description: ''
@@ -421,8 +521,9 @@ paths:
             application/json:
               schema:
                 type: string
-                format: email
                 description: User email.
+                format: email
+                pattern: ^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$
           headers: {}
         '401':
           $ref: '#/components/responses/Unauthorized'
@@ -443,7 +544,7 @@ paths:
       x-roles:
         - COMMON
         - ADMIN
-  /user/picture/{userId}:
+  /user/picture/{profileId}:
     get:
       summary: Get Picture
       deprecated: false
@@ -451,11 +552,10 @@ paths:
       tags:
         - Users
       parameters:
-        - name: userId
+        - name: profileId
           in: path
-          description: User ID.
+          description: User ProfileID.
           required: true
-          example: '101667041712464068613'
           schema:
             type: string
       responses:
@@ -506,27 +606,32 @@ paths:
       parameters:
         - name: Authorization
           in: header
-          description: Authorization token.
-          required: false
-          example: 9BVTbqHiqloTZMmpRCBpC4-tEzyvoEiWap62nlxzkOM
+          description: Authorization token or API key.
+          required: true
+          example: ''
           schema:
             type: string
-            default: 9BVTbqHiqloTZMmpRCBpC4-tEzyvoEiWap62nlxzkOM
       requestBody:
         content:
           text/plain:
             schema:
               type: string
-            example: >-
-              https://lh3.googleusercontent.com/a/ACg8ocJrdg1JZzP7rkgxnBCnr9xI-jeSnmoH-dZ82-SBD_3dbK4m7kI=s96-c
+            examples: {}
+        required: true
       responses:
         '200':
           description: ''
           content:
             application/json:
               schema:
-                type: string
-                format: uri
+                type:
+                  - string
+                  - integer
+                  - boolean
+                  - array
+                  - object
+                  - number
+                  - 'null'
                 description: User profile picture.
           headers: {}
         '304':
@@ -551,6 +656,7 @@ paths:
       x-roles:
         - COMMON
         - ADMIN
+        - DEVELOPER
   /user/phonenumber:
     get:
       summary: Get Phone Number
@@ -561,12 +667,11 @@ paths:
       parameters:
         - name: Authorization
           in: header
-          description: Authorization token.
-          required: false
-          example: 9BVTbqHiqloTZMmpRCBpC4-tEzyvoEiWap62nlxzkOM
+          description: Authorization token or API key.
+          required: true
+          example: ''
           schema:
             type: string
-            default: 9BVTbqHiqloTZMmpRCBpC4-tEzyvoEiWap62nlxzkOM
       responses:
         '200':
           description: ''
@@ -575,6 +680,7 @@ paths:
               schema:
                 type: string
                 description: User phone number.
+                pattern: ^\+\d{1,3}\s\d{4,14}$
           headers: {}
         '400':
           $ref: '#/components/responses/Bad Request'
@@ -598,6 +704,7 @@ paths:
       x-roles:
         - COMMON
         - ADMIN
+        - DEVELOPER
     patch:
       summary: Update Phone Number
       deprecated: false
@@ -607,18 +714,18 @@ paths:
       parameters:
         - name: Authorization
           in: header
-          description: Authorization token.
-          required: false
-          example: 9BVTbqHiqloTZMmpRCBpC4-tEzyvoEiWap62nlxzkOM
+          description: Authorization token or API key.
+          required: true
+          example: ''
           schema:
             type: string
-            default: 9BVTbqHiqloTZMmpRCBpC4-tEzyvoEiWap62nlxzkOM
       requestBody:
         content:
           text/plain:
             schema:
               type: string
-            example: +01 123456789
+            examples: {}
+        required: true
       responses:
         '200':
           description: ''
@@ -627,6 +734,7 @@ paths:
               schema:
                 type: string
                 description: User phone number.
+                pattern: ^\+\d{1,3}\s\d{4,14}$
           headers: {}
         '304':
           $ref: '#/components/responses/Not Modified'
@@ -650,6 +758,7 @@ paths:
       x-roles:
         - COMMON
         - ADMIN
+        - DEVELOPER
   /user/password:
     patch:
       summary: Update Password
@@ -660,25 +769,21 @@ paths:
       parameters:
         - name: Authorization
           in: header
-          description: Authorization token.
-          required: false
-          example: 9BVTbqHiqloTZMmpRCBpC4-tEzyvoEiWap62nlxzkOM
+          description: Authorization token or API key.
+          required: true
+          example: ''
           schema:
             type: string
-            default: 9BVTbqHiqloTZMmpRCBpC4-tEzyvoEiWap62nlxzkOM
       requestBody:
         content:
           text/plain:
             schema:
               type: string
-            example: password-example
+            examples: {}
+        required: true
       responses:
         '204':
           description: ''
-          content:
-            application/json:
-              schema:
-                type: 'null'
           headers: {}
         '304':
           $ref: '#/components/responses/Not Modified'
@@ -712,12 +817,11 @@ paths:
       parameters:
         - name: Authorization
           in: header
-          description: Authorization token.
-          required: false
-          example: 9BVTbqHiqloTZMmpRCBpC4-tEzyvoEiWap62nlxzkOM
+          description: Authorization token or API key.
+          required: true
+          example: ''
           schema:
             type: string
-            default: 9BVTbqHiqloTZMmpRCBpC4-tEzyvoEiWap62nlxzkOM
       responses:
         '200':
           description: ''
@@ -725,6 +829,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/User%20Metadata'
+                description: User metadata.
           headers: {}
         '400':
           $ref: '#/components/responses/Bad Request'
@@ -748,51 +853,7 @@ paths:
       x-roles:
         - COMMON
         - ADMIN
-    post:
-      summary: Initialize and Sync Metadata
-      deprecated: false
-      description: Initializes and syncs user's metadata.
-      tags:
-        - Users
-      parameters:
-        - name: Authorization
-          in: header
-          description: Authorization token.
-          required: false
-          example: 9BVTbqHiqloTZMmpRCBpC4-tEzyvoEiWap62nlxzkOM
-          schema:
-            type: string
-            default: 9BVTbqHiqloTZMmpRCBpC4-tEzyvoEiWap62nlxzkOM
-      responses:
-        '200':
-          description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/User%20Metadata'
-          headers: {}
-        '304':
-          $ref: '#/components/responses/Not Modified'
-          description: ''
-        '400':
-          $ref: '#/components/responses/Bad Request'
-          description: ''
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-          description: ''
-        '403':
-          $ref: '#/components/responses/Forbidden'
-          description: ''
-        '405':
-          $ref: '#/components/responses/Method Not Allowed'
-          description: ''
-        '500':
-          $ref: '#/components/responses/Internal Error'
-          description: ''
-      security: []
-      x-roles:
-        - COMMON
-        - ADMIN
+        - DEVELOPER
   /user/metadata/apikey:
     patch:
       summary: Refresh API Key
@@ -803,19 +864,14 @@ paths:
       parameters:
         - name: Authorization
           in: header
-          description: Authorization token.
-          required: false
-          example: 9BVTbqHiqloTZMmpRCBpC4-tEzyvoEiWap62nlxzkOM
+          description: Authorization token or API key.
+          required: true
+          example: ''
           schema:
             type: string
-            default: 9BVTbqHiqloTZMmpRCBpC4-tEzyvoEiWap62nlxzkOM
       responses:
         '204':
           description: ''
-          content:
-            application/json:
-              schema:
-                type: 'null'
           headers: {}
         '304':
           $ref: '#/components/responses/Not Modified'
@@ -839,106 +895,7 @@ paths:
       x-roles:
         - COMMON
         - ADMIN
-  /user/transform/userId:
-    post:
-      summary: Transform ProfileID to UserID
-      deprecated: false
-      description: Transforms a ProfileID into a UserID.
-      tags:
-        - Users
-      parameters: []
-      requestBody:
-        content:
-          application/json:
-            schema:
-              title: ''
-              type: object
-              properties:
-                profileId:
-                  type: string
-                  format: uuid
-                  description: Profile ID to be transformed.
-              required:
-                - profileId
-            examples: {}
-      responses:
-        '200':
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: string
-                description: User ID transformed from the given Profile ID.
-          headers: {}
-        '400':
-          $ref: '#/components/responses/Bad Request'
-          description: ''
-        '403':
-          $ref: '#/components/responses/Forbidden'
-          description: ''
-        '404':
-          $ref: '#/components/responses/Not Found'
-          description: ''
-        '405':
-          $ref: '#/components/responses/Method Not Allowed'
-          description: ''
-        '500':
-          $ref: '#/components/responses/Internal Error'
-          description: ''
-      security: []
-      x-roles:
-        - COMMON
-        - ADMIN
-  /user/transform/profileId:
-    post:
-      summary: Transform UserID to ProfileID
-      deprecated: false
-      description: Transforms a UserID into a ProfileID.
-      tags:
-        - Users
-      parameters: []
-      requestBody:
-        content:
-          application/json:
-            schema:
-              title: ''
-              type: object
-              properties:
-                userId:
-                  type: string
-                  description: User ID to be transformed.
-              required:
-                - userId
-            examples: {}
-      responses:
-        '200':
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: string
-                format: uuid
-                description: Profile ID transformed from the given User ID.
-          headers: {}
-        '400':
-          $ref: '#/components/responses/Bad Request'
-          description: ''
-        '403':
-          $ref: '#/components/responses/Forbidden'
-          description: ''
-        '404':
-          $ref: '#/components/responses/Not Found'
-          description: ''
-        '405':
-          $ref: '#/components/responses/Method Not Allowed'
-          description: ''
-        '500':
-          $ref: '#/components/responses/Internal Error'
-          description: ''
-      security: []
-      x-roles:
-        - COMMON
-        - ADMIN
+        - DEVELOPER
 webhooks: {}
 components:
   schemas:
@@ -947,7 +904,7 @@ components:
       properties:
         access_token:
           type: string
-          description: Acess Token.
+          description: Access Token.
         id_token:
           type: string
           description: JSON Web Token.
@@ -974,123 +931,17 @@ components:
         email:
           type: string
           description: User email.
+          pattern: ' ^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+          format: email
         phone_number:
           type: string
           description: User phone number.
+          pattern: ^\+\d{1,3}\s\d{4,14}$
       required:
         - username
         - email
         - phone_number
       description: User Sign Up Response object.
-    Friend Request:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          description: Friend Request ID.
-        from:
-          type: string
-          format: uuid
-          description: Profile ID of the user who sent the friend request.
-        to:
-          type: string
-          format: uuid
-          description: Profile ID of the user who receives the friend request.
-      required:
-        - id
-        - from
-        - to
-      description: Friend Request Object.
-    Books Metadata:
-      type: object
-      properties:
-        friends:
-          type: array
-          items:
-            type: string
-            format: uuid
-            description: Profile ID of a friend.
-          description: List of friends.
-      required:
-        - friends
-      description: Books Metadata Object.
-    Books User Profile:
-      type: object
-      properties:
-        username:
-          type: string
-          description: User username.
-        phoneNumber:
-          type: string
-          description: User phone number.
-          pattern: ^\+\d{1,3}\s\d{4,14}$
-        roles:
-          type: array
-          items:
-            type: string
-            enum:
-              - COMMON
-              - ADMIN
-              - DEVELOPER
-            default: COMMON
-          description: User roles.
-        picture:
-          type: string
-          format: uri
-          description: User profile picture.
-        email:
-          type: string
-          format: email
-          description: User email.
-        isFriend:
-          type: boolean
-          description: Whether user is friend or not of the user requesting.
-        biography:
-          type: string
-          description: User biography for GY Books.
-        apiKey:
-          type: string
-          description: User API Key.
-      required:
-        - username
-        - picture
-        - phoneNumber
-        - email
-        - biography
-      description: User Profile object.
-    Hall of Fame:
-      type: object
-      properties:
-        books:
-          type: array
-          items:
-            type: string
-          minItems: 0
-          maxItems: 5
-          uniqueItems: true
-          description: List of books on the Hall of Fame.
-        quote:
-          type: string
-          description: Quote for the Hall of Fame.
-      description: Hall of Fame object.
-      required:
-        - books
-        - quote
-    Activity:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Activity ID.
-          format: uuid
-        message:
-          type: string
-          description: Activity Message.
-      description: Activity object.
-      required:
-        - id
-        - message
     User Credentials:
       type: object
       properties:
@@ -1106,6 +957,7 @@ components:
           type: string
           description: User password.
           format: password
+          minLength: 8
       required:
         - password
       description: User credentials object.
@@ -1115,6 +967,10 @@ components:
         username:
           type: string
           description: User username.
+        id:
+          type: string
+          description: User ProfileID.
+          format: uuid
         phoneNumber:
           type: string
           description: User phone number.
@@ -1128,15 +984,19 @@ components:
               - ADMIN
               - DEVELOPER
             default: COMMON
+            description: User role.
           description: User roles.
         picture:
           type: string
-          format: uri
           description: User profile picture.
+          format: uri
+          pattern: >-
+            ^https:\/\/api\.gycoding\.com\/accounts\/user\/picture\/[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-5][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$
         email:
           type: string
-          format: email
           description: User email.
+          format: email
+          pattern: ^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$
         apiKey:
           type: string
           description: User API Key.
@@ -1145,22 +1005,16 @@ components:
         - picture
         - phoneNumber
         - email
+        - id
       description: User Profile object.
     User Metadata:
       type: object
       properties:
-        messages:
-          description: User GY Messages Metadata object.
         profile:
           $ref: '#/components/schemas/User%20Profile'
           description: User Profile object.
-        books:
-          $ref: '#/components/schemas/Books%20Metadata'
-          description: User GY Books Metadata object.
       required:
-        - messages
         - profile
-        - books
       description: User metadata object.
     Error Response:
       type: object
@@ -1345,20 +1199,6 @@ components:
                   conflict or error.
                 status: 304
                 owner: GYCODING
-    Not Implemented:
-      description: ''
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error%20Response'
-          examples:
-            Not Implemented:
-              summary: Not Implemented
-              value:
-                code: NOT_IMPLEMENTED
-                message: The resource is not implemented yet.
-                status: 501
-                owner: API_GATEWAY
     Unauthorized:
       description: ''
       content:

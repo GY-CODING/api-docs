@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: Default module
+  title: Heralds of Chaos
   description: ''
   version: 1.0.0
 tags:
@@ -24,14 +24,14 @@ paths:
           in: path
           description: Character's identifier.
           required: true
-          example: odin
+          example: ''
           schema:
             type: string
         - name: lang
           in: query
-          description: Language of the response.
+          description: Language selector.
           required: true
-          example: es
+          example: ''
           schema:
             type: string
             enum:
@@ -44,7 +44,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Character'
-                description: Character object.
+                description: Character.
           headers: {}
         '400':
           $ref: '#/components/responses/Bad Request'
@@ -65,6 +65,7 @@ paths:
       x-roles:
         - COMMON
         - ADMIN
+        - DEVELOPER
   /characters/list:
     get:
       summary: List Characters
@@ -77,9 +78,9 @@ paths:
       parameters:
         - name: lang
           in: query
-          description: Language of the response.
+          description: Language selector.
           required: true
-          example: es
+          example: ''
           schema:
             type: string
             enum:
@@ -94,7 +95,7 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Character'
-                  description: Character object.
+                  description: Character.
                 description: List of characters.
                 uniqueItems: true
           headers: {}
@@ -117,6 +118,7 @@ paths:
       x-roles:
         - COMMON
         - ADMIN
+        - DEVELOPER
   /characters/page:
     get:
       summary: Page Characters
@@ -131,21 +133,21 @@ paths:
           in: query
           description: Number of page.
           required: true
-          example: 1
+          example: 0
           schema:
             type: integer
         - name: size
           in: query
           description: Amount of elements to show on one page.
           required: true
-          example: 10
+          example: 0
           schema:
             type: integer
         - name: lang
           in: query
-          description: Language of the response.
+          description: Language selector.
           required: true
-          example: es
+          example: ''
           schema:
             type: string
             enum:
@@ -160,7 +162,7 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Character'
-                  description: Character object.
+                  description: Character.
                 description: List of characters.
                 uniqueItems: true
           headers: {}
@@ -183,6 +185,7 @@ paths:
       x-roles:
         - COMMON
         - ADMIN
+        - DEVELOPER
   /creatures/{id}:
     get:
       summary: Get Creature
@@ -197,14 +200,14 @@ paths:
           in: path
           description: Creature's identifier.
           required: true
-          example: audumbla
+          example: ''
           schema:
             type: string
         - name: lang
           in: query
-          description: Language of the response.
+          description: Language selector.
           required: true
-          example: es
+          example: ''
           schema:
             type: string
             enum:
@@ -217,7 +220,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Creature'
-                description: Creature object.
+                description: Creature.
           headers: {}
         '400':
           $ref: '#/components/responses/Bad Request'
@@ -238,6 +241,7 @@ paths:
       x-roles:
         - COMMON
         - ADMIN
+        - DEVELOPER
   /creatures/list:
     get:
       summary: List Creatures
@@ -250,9 +254,9 @@ paths:
       parameters:
         - name: lang
           in: query
-          description: Language of the response.
+          description: Language selector.
           required: true
-          example: es
+          example: ''
           schema:
             type: string
             enum:
@@ -267,7 +271,7 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Creature'
-                  description: Creature object.
+                  description: Creature.
                 description: List of creatures.
                 uniqueItems: true
           headers: {}
@@ -290,6 +294,7 @@ paths:
       x-roles:
         - COMMON
         - ADMIN
+        - DEVELOPER
   /creatures/page:
     get:
       summary: Page Characters
@@ -304,21 +309,21 @@ paths:
           in: query
           description: Number of page.
           required: true
-          example: 1
+          example: 0
           schema:
             type: integer
         - name: size
           in: query
           description: Amount of elements to show on one page.
           required: true
-          example: 10
+          example: 0
           schema:
             type: integer
         - name: lang
           in: query
-          description: Language of the response.
+          description: Language selector.
           required: true
-          example: es
+          example: ''
           schema:
             type: string
             enum:
@@ -333,7 +338,7 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Creature'
-                  description: Creature object.
+                  description: Creature.
                 description: List of creatures.
                 uniqueItems: true
           headers: {}
@@ -356,6 +361,7 @@ paths:
       x-roles:
         - COMMON
         - ADMIN
+        - DEVELOPER
   /items/{id}:
     get:
       summary: Get Item
@@ -368,14 +374,14 @@ paths:
           in: path
           description: Item's identifier.
           required: true
-          example: mjolnir
+          example: ''
           schema:
             type: string
         - name: lang
           in: query
-          description: Language of the response.
+          description: Language selector.
           required: true
-          example: es
+          example: ''
           schema:
             type: string
             enum:
@@ -388,7 +394,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Item'
-                description: Item object.
+                description: Item.
           headers: {}
         '400':
           $ref: '#/components/responses/Bad Request'
@@ -409,6 +415,7 @@ paths:
       x-roles:
         - COMMON
         - ADMIN
+        - DEVELOPER
   /items/list:
     get:
       summary: List Items
@@ -421,9 +428,9 @@ paths:
       parameters:
         - name: lang
           in: query
-          description: Language of the response.
+          description: Language selector.
           required: true
-          example: es
+          example: ''
           schema:
             type: string
             enum:
@@ -438,7 +445,7 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Item'
-                  description: Item object.
+                  description: Item.
                 description: List of items.
           headers: {}
         '400':
@@ -460,6 +467,7 @@ paths:
       x-roles:
         - COMMON
         - ADMIN
+        - DEVELOPER
   /items/page:
     get:
       summary: Page Items
@@ -474,21 +482,21 @@ paths:
           in: query
           description: Number of page.
           required: true
-          example: 1
+          example: 0
           schema:
             type: integer
         - name: size
           in: query
           description: Amount of elements to show on one page.
           required: true
-          example: 10
+          example: 0
           schema:
             type: integer
         - name: lang
           in: query
-          description: Language of the response.
+          description: Language selector.
           required: true
-          example: es
+          example: ''
           schema:
             type: string
             enum:
@@ -503,7 +511,7 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Item'
-                  description: Item object.
+                  description: Item.
                 description: List of items.
           headers: {}
         '400':
@@ -525,6 +533,7 @@ paths:
       x-roles:
         - COMMON
         - ADMIN
+        - DEVELOPER
   /worlds/{id}:
     get:
       summary: Get World
@@ -537,14 +546,14 @@ paths:
           in: path
           description: World's identifier.
           required: true
-          example: asgard
+          example: ''
           schema:
             type: string
         - name: lang
           in: query
-          description: Language of the response.
+          description: Language selector.
           required: true
-          example: es
+          example: ''
           schema:
             type: string
             enum:
@@ -557,7 +566,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/World'
-                description: World object.
+                description: World.
           headers: {}
         '400':
           $ref: '#/components/responses/Bad Request'
@@ -578,6 +587,7 @@ paths:
       x-roles:
         - COMMON
         - ADMIN
+        - DEVELOPER
   /worlds/places/{id}:
     get:
       summary: Get Place
@@ -590,14 +600,14 @@ paths:
           in: path
           description: Place's identifier.
           required: true
-          example: idavoll
+          example: ''
           schema:
             type: string
         - name: lang
           in: query
-          description: Language of the response.
+          description: Language selector.
           required: true
-          example: es
+          example: ''
           schema:
             type: string
             enum:
@@ -610,7 +620,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Place'
-                description: Place object.
+                description: Place.
           headers: {}
         '400':
           $ref: '#/components/responses/Bad Request'
@@ -631,6 +641,7 @@ paths:
       x-roles:
         - COMMON
         - ADMIN
+        - DEVELOPER
   /worlds/list:
     get:
       summary: List Worlds
@@ -643,9 +654,9 @@ paths:
       parameters:
         - name: lang
           in: query
-          description: Language of the response.
+          description: Language selector.
           required: true
-          example: es
+          example: ''
           schema:
             type: string
             enum:
@@ -660,7 +671,7 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/World'
-                  description: World object.
+                  description: World.
                 description: List of worlds.
           headers: {}
         '400':
@@ -682,6 +693,7 @@ paths:
       x-roles:
         - COMMON
         - ADMIN
+        - DEVELOPER
   /worlds/places/list:
     get:
       summary: List Places
@@ -694,9 +706,9 @@ paths:
       parameters:
         - name: lang
           in: query
-          description: Language of the response.
+          description: Language selector.
           required: true
-          example: es
+          example: ''
           schema:
             type: string
             enum:
@@ -711,7 +723,7 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Place'
-                  description: Place object.
+                  description: Place.
                 description: List of places.
           headers: {}
         '400':
@@ -733,6 +745,7 @@ paths:
       x-roles:
         - COMMON
         - ADMIN
+        - DEVELOPER
   /worlds/places/{id}/list:
     get:
       summary: List Places by World
@@ -747,14 +760,14 @@ paths:
           in: path
           description: World's identifier.
           required: true
-          example: asgard
+          example: ''
           schema:
             type: string
         - name: lang
           in: query
-          description: Language of the response.
+          description: Language selector.
           required: true
-          example: es
+          example: ''
           schema:
             type: string
             enum:
@@ -769,7 +782,7 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Place'
-                  description: Place object.
+                  description: Place.
                 description: List of places.
           headers: {}
         '400':
@@ -791,6 +804,7 @@ paths:
       x-roles:
         - COMMON
         - ADMIN
+        - DEVELOPER
   /worlds/page:
     get:
       summary: Page Worlds
@@ -805,21 +819,21 @@ paths:
           in: query
           description: Number of page.
           required: true
-          example: 1
+          example: 0
           schema:
             type: integer
         - name: size
           in: query
           description: Amount of elements to show on one page.
           required: true
-          example: 10
+          example: 0
           schema:
             type: integer
         - name: lang
           in: query
-          description: Language of the response.
+          description: Language selector.
           required: true
-          example: es
+          example: ''
           schema:
             type: string
             enum:
@@ -834,7 +848,7 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/World'
-                  description: World object.
+                  description: World.
                 description: List of worlds.
           headers: {}
         '400':
@@ -856,6 +870,7 @@ paths:
       x-roles:
         - COMMON
         - ADMIN
+        - DEVELOPER
   /worlds/places/page:
     get:
       summary: Page Places
@@ -870,21 +885,21 @@ paths:
           in: query
           description: Number of page.
           required: true
-          example: 1
+          example: 0
           schema:
             type: integer
         - name: size
           in: query
           description: Amount of elements to show on one page.
           required: true
-          example: 10
+          example: 0
           schema:
             type: integer
         - name: lang
           in: query
-          description: Language of the response.
+          description: Language selector.
           required: true
-          example: es
+          example: ''
           schema:
             type: string
             enum:
@@ -899,7 +914,7 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Place'
-                  description: Place object.
+                  description: Place.
                 description: List of places.
           headers: {}
         '400':
@@ -921,6 +936,7 @@ paths:
       x-roles:
         - COMMON
         - ADMIN
+        - DEVELOPER
   /characters:
     post:
       summary: Insert Character
@@ -931,42 +947,18 @@ paths:
       parameters:
         - name: Authorization
           in: header
-          description: Authorization token.
-          example: 9BVTbqHiqloTZMmpRCBpC4-tEzyvoEiWap62nlxzkOM
+          description: Authorization token or API key.
+          required: true
+          example: ''
           schema:
             type: string
-            default: 9BVTbqHiqloTZMmpRCBpC4-tEzyvoEiWap62nlxzkOM
       requestBody:
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/Character2'
-            example:
-              name:
-                es: Sífka
-                en: Sífka
-              description:
-                es: >-
-                  Hija de Humli y reina de Götaland. Heidrek se encaprichó de
-                  ella, tomándola como esposa a la fuerza, siendo esto un
-                  tormento para Sífka y para su padre. Motivos que harían que,
-                  tras la muerte de Heidrek y el cambio de herencia hacia
-                  Angantyr, Sífka apoyase la rebelión de su hijo Hlöd.
-                en: >-
-                  Daughter of Humli and queen of Götaland. Heidrek became
-                  infatuated with her and took her as his wife by force, a
-                  torment for both Sífka and her father. These circumstances led
-                  her, after Heidrek’s death and the shift of inheritance to
-                  Angantyr, to support her son Hlöd’s rebellion.
-              world: midgard
-              image: >-
-                https://raw.githubusercontent.com/GY-CODING/img-repo/main/fall-of-the-gods/characters/none.webp
-              title:
-                es: Reina de Götaland
-                en: Queen of Götaland
-              race:
-                es: Humano
-                en: Human
+              description: Character.
+            examples: {}
       responses:
         '200':
           description: ''
@@ -974,6 +966,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Character'
+                description: Character.
           headers: {}
         '400':
           $ref: '#/components/responses/Bad Request'
@@ -1007,30 +1000,23 @@ paths:
           in: query
           description: Character ID.
           required: true
-          example: yrsa
+          example: ''
           schema:
             type: string
         - name: Authorization
           in: header
-          description: Authorization token.
-          example: 9BVTbqHiqloTZMmpRCBpC4-tEzyvoEiWap62nlxzkOM
+          description: Authorization token or API key.
+          required: true
+          example: ''
           schema:
             type: string
-            default: 9BVTbqHiqloTZMmpRCBpC4-tEzyvoEiWap62nlxzkOM
       requestBody:
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/Character2'
-            example:
-              world: midgard
-              description:
-                es: >-
-                  En tiempos fue reina en Midgard del reino de Solor. Por
-                  razones desconocidas, Adils, su marido y rey, la desterró.
-                en: >-
-                  She was once queen of the kingdom of Solor in Midgard. For
-                  unknown reasons, Adils, her husband and king, exiled her.
+              description: Character.
+            examples: {}
       responses:
         '200':
           description: ''
@@ -1038,6 +1024,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Character'
+                description: Character.
           headers: {}
         '304':
           $ref: '#/components/responses/Not Modified'
@@ -1070,24 +1057,20 @@ paths:
         - name: id
           in: query
           description: Character ID.
-          required: false
-          example: mogthrasir
+          required: true
+          example: ''
           schema:
             type: string
         - name: Authorization
           in: header
-          description: Authorization token.
-          example: 9BVTbqHiqloTZMmpRCBpC4-tEzyvoEiWap62nlxzkOM
+          description: Authorization token or API key.
+          required: true
+          example: ''
           schema:
             type: string
-            default: 9BVTbqHiqloTZMmpRCBpC4-tEzyvoEiWap62nlxzkOM
       responses:
         '204':
           description: ''
-          content:
-            application/json:
-              schema:
-                type: 'null'
           headers: {}
         '400':
           $ref: '#/components/responses/Bad Request'
@@ -1117,16 +1100,17 @@ paths:
       parameters:
         - name: Authorization
           in: header
-          description: Authorization token.
-          example: 9BVTbqHiqloTZMmpRCBpC4-tEzyvoEiWap62nlxzkOM
+          description: Authorization token or API key.
+          required: true
+          example: ''
           schema:
             type: string
-            default: 9BVTbqHiqloTZMmpRCBpC4-tEzyvoEiWap62nlxzkOM
       requestBody:
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/Creature5'
+              description: Creature.
             examples: {}
       responses:
         '200':
@@ -1135,6 +1119,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Creature'
+                description: Creature.
           headers: {}
         '400':
           $ref: '#/components/responses/Bad Request'
@@ -1168,21 +1153,22 @@ paths:
           in: query
           description: Creature ID.
           required: true
-          example: creature_test
+          example: ''
           schema:
             type: string
         - name: Authorization
           in: header
-          description: Authorization token.
-          example: 9BVTbqHiqloTZMmpRCBpC4-tEzyvoEiWap62nlxzkOM
+          description: Authorization token or API key.
+          required: true
+          example: ''
           schema:
             type: string
-            default: 9BVTbqHiqloTZMmpRCBpC4-tEzyvoEiWap62nlxzkOM
       requestBody:
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/Creature5'
+              description: Creature.
             examples: {}
       responses:
         '200':
@@ -1191,6 +1177,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Creature'
+                description: Creature.
           headers: {}
         '304':
           $ref: '#/components/responses/Not Modified'
@@ -1223,24 +1210,20 @@ paths:
         - name: id
           in: query
           description: Creature ID.
-          required: false
-          example: creature
+          required: true
+          example: ''
           schema:
             type: string
         - name: Authorization
           in: header
-          description: Authorization token.
-          example: 9BVTbqHiqloTZMmpRCBpC4-tEzyvoEiWap62nlxzkOM
+          description: Authorization token or API key.
+          required: true
+          example: ''
           schema:
             type: string
-            default: 9BVTbqHiqloTZMmpRCBpC4-tEzyvoEiWap62nlxzkOM
       responses:
         '204':
           description: ''
-          content:
-            application/json:
-              schema:
-                type: 'null'
           headers: {}
         '400':
           $ref: '#/components/responses/Bad Request'
@@ -1270,16 +1253,17 @@ paths:
       parameters:
         - name: Authorization
           in: header
-          description: Authorization token.
-          example: 9BVTbqHiqloTZMmpRCBpC4-tEzyvoEiWap62nlxzkOM
+          description: Authorization token or API key.
+          required: true
+          example: ''
           schema:
             type: string
-            default: 9BVTbqHiqloTZMmpRCBpC4-tEzyvoEiWap62nlxzkOM
       requestBody:
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/Item1'
+              description: Item.
             examples: {}
       responses:
         '200':
@@ -1288,6 +1272,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Item'
+                description: Item.
           headers: {}
         '400':
           $ref: '#/components/responses/Bad Request'
@@ -1317,18 +1302,25 @@ paths:
       tags:
         - Items
       parameters:
-        - name: Authorization
-          in: header
-          description: Authorization token.
-          example: 9BVTbqHiqloTZMmpRCBpC4-tEzyvoEiWap62nlxzkOM
+        - name: id
+          in: query
+          description: Item ID.
+          required: true
           schema:
             type: string
-            default: 9BVTbqHiqloTZMmpRCBpC4-tEzyvoEiWap62nlxzkOM
+        - name: Authorization
+          in: header
+          description: Authorization token or API key.
+          required: true
+          example: ''
+          schema:
+            type: string
       requestBody:
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/Item1'
+              description: Item.
             examples: {}
       responses:
         '200':
@@ -1337,6 +1329,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Item'
+                description: Item.
           headers: {}
         '304':
           $ref: '#/components/responses/Not Modified'
@@ -1369,24 +1362,20 @@ paths:
         - name: id
           in: query
           description: Item ID.
-          required: false
-          example: item
+          required: true
+          example: ''
           schema:
             type: string
         - name: Authorization
           in: header
-          description: Authorization token.
-          example: 9BVTbqHiqloTZMmpRCBpC4-tEzyvoEiWap62nlxzkOM
+          description: Authorization token or API key.
+          required: true
+          example: ''
           schema:
             type: string
-            default: 9BVTbqHiqloTZMmpRCBpC4-tEzyvoEiWap62nlxzkOM
       responses:
         '204':
           description: ''
-          content:
-            application/json:
-              schema:
-                type: 'null'
           headers: {}
         '400':
           $ref: '#/components/responses/Bad Request'
@@ -1416,16 +1405,17 @@ paths:
       parameters:
         - name: Authorization
           in: header
-          description: Authorization token.
-          example: 9BVTbqHiqloTZMmpRCBpC4-tEzyvoEiWap62nlxzkOM
+          description: Authorization token or API key.
+          required: true
+          example: ''
           schema:
             type: string
-            default: 9BVTbqHiqloTZMmpRCBpC4-tEzyvoEiWap62nlxzkOM
       requestBody:
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/World3'
+              description: World.
             examples: {}
       responses:
         '200':
@@ -1434,6 +1424,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/World'
+                description: World.
           headers: {}
         '400':
           $ref: '#/components/responses/Bad Request'
@@ -1463,18 +1454,25 @@ paths:
       tags:
         - Worlds
       parameters:
-        - name: Authorization
-          in: header
-          description: Authorization token.
-          example: 9BVTbqHiqloTZMmpRCBpC4-tEzyvoEiWap62nlxzkOM
+        - name: id
+          in: query
+          description: World ID.
+          required: true
           schema:
             type: string
-            default: 9BVTbqHiqloTZMmpRCBpC4-tEzyvoEiWap62nlxzkOM
+        - name: Authorization
+          in: header
+          description: Authorization token or API key.
+          required: true
+          example: ''
+          schema:
+            type: string
       requestBody:
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/World3'
+              description: World
             examples: {}
       responses:
         '200':
@@ -1483,6 +1481,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/World'
+                description: World.
           headers: {}
         '304':
           $ref: '#/components/responses/Not Modified'
@@ -1515,17 +1514,17 @@ paths:
         - name: id
           in: query
           description: World ID.
-          required: false
-          example: world
+          required: true
+          example: ''
           schema:
             type: string
         - name: Authorization
           in: header
-          description: Authorization token.
-          example: 9BVTbqHiqloTZMmpRCBpC4-tEzyvoEiWap62nlxzkOM
+          description: Authorization token or API key.
+          required: true
+          example: ''
           schema:
             type: string
-            default: 9BVTbqHiqloTZMmpRCBpC4-tEzyvoEiWap62nlxzkOM
       responses:
         '204':
           description: ''
@@ -1563,16 +1562,17 @@ paths:
       parameters:
         - name: Authorization
           in: header
-          description: Authorization token.
-          example: 9BVTbqHiqloTZMmpRCBpC4-tEzyvoEiWap62nlxzkOM
+          description: Authorization token or API key.
+          required: true
+          example: ''
           schema:
             type: string
-            default: 9BVTbqHiqloTZMmpRCBpC4-tEzyvoEiWap62nlxzkOM
       requestBody:
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/Place4'
+              description: Place.
             examples: {}
       responses:
         '200':
@@ -1581,6 +1581,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Place'
+                description: Place.
           headers: {}
         '400':
           $ref: '#/components/responses/Bad Request'
@@ -1611,18 +1612,25 @@ paths:
         - Worlds
         - Places
       parameters:
-        - name: Authorization
-          in: header
-          description: Authorization token.
-          example: 9BVTbqHiqloTZMmpRCBpC4-tEzyvoEiWap62nlxzkOM
+        - name: id
+          in: query
+          description: Place ID.
+          required: true
           schema:
             type: string
-            default: 9BVTbqHiqloTZMmpRCBpC4-tEzyvoEiWap62nlxzkOM
+        - name: Authorization
+          in: header
+          description: Authorization token or API key.
+          required: true
+          example: ''
+          schema:
+            type: string
       requestBody:
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/Place4'
+              description: Place.
             examples: {}
       responses:
         '200':
@@ -1631,6 +1639,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Place'
+                description: Place.
           headers: {}
         '304':
           $ref: '#/components/responses/Not Modified'
@@ -1664,24 +1673,20 @@ paths:
         - name: id
           in: query
           description: Place ID.
-          required: false
-          example: place
+          required: true
+          example: ''
           schema:
             type: string
         - name: Authorization
           in: header
-          description: Authorization token.
-          example: 9BVTbqHiqloTZMmpRCBpC4-tEzyvoEiWap62nlxzkOM
+          description: Authorization token or API key.
+          required: true
+          example: ''
           schema:
             type: string
-            default: 9BVTbqHiqloTZMmpRCBpC4-tEzyvoEiWap62nlxzkOM
       responses:
         '204':
           description: ''
-          content:
-            application/json:
-              schema:
-                type: 'null'
           headers: {}
         '400':
           $ref: '#/components/responses/Bad Request'
@@ -1797,6 +1802,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Place'
+            description: World place.
           description: World places.
         image:
           type: string
@@ -1931,6 +1937,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Place4'
+            description: World place.
           description: World places.
         image:
           type: string
