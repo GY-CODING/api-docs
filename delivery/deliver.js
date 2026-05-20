@@ -13,60 +13,52 @@ function getParameter(ref, components) {
 }
 
 async function fetchAPIRoutes() {
-    const servicePath = "https://raw.githubusercontent.com/GY-CODING/api-docs/refs/heads/master/reference/gy.openapi.yaml";
+    const apiDocsServicesPaths = [
+        "https://raw.githubusercontent.com/GY-CODING/api-docs/refs/heads/master/reference/heralds-of-chaos.openapi.yaml",
+        "https://raw.githubusercontent.com/GY-CODING/api-docs/refs/heads/master/reference/gy-accounts.openapi.yaml",
+        "https://raw.githubusercontent.com/GY-CODING/api-docs/refs/heads/master/reference/gy-books.openapi.yaml"
+    ];
 
     const routes = new Array();
 
-    const response = await fetch(servicePath);
-    const yamlText = await response.text();
-    const openApiSpec = yaml.load(yamlText);
+    for (const servicePath of apiDocsServicesPaths) {
+        const response = await fetch(servicePath);
+        const yamlText = await response.text();
+        const openApiSpec = yaml.load(yamlText);
 
-    const serverUrl = openApiSpec?.servers?.[0]?.url;
-    let servicePrefix = "";
+        const paths = openApiSpec.paths;
 
-    if (typeof serverUrl === 'string' && serverUrl.length > 0) {
-        const firstPathSegment = new URL(serverUrl, 'http://localhost')
-            .pathname
-            .split('/')
-            .filter(Boolean)[0];
+        for (const path in paths) {
+            for (const method in paths[path]) {
+                const route = paths[path][method];
+                const parameters = route.parameters || [];
+                const roles = route['x-roles'] || [];
 
-        if (firstPathSegment) {
-            servicePrefix = "/" + firstPathSegment;
-        }
-    }
+                const resolvedParameters = parameters.map(param => {
+                    if (param.$ref) {
+                        return getParameter(param.$ref, openApiSpec.components);
+                    }
+                    return param;
+                });
 
-    const paths = openApiSpec.paths;
+                const queryParameters = resolvedParameters.filter(p => p.in === 'query');
+                const pathVariables = resolvedParameters.filter(p => p.in === 'path');
+                const headers = resolvedParameters.filter(p => p.in === 'header');
+                const body = route.requestBody ? route.requestBody.content : null;
 
-    for (const path in paths) {
-        for (const method in paths[path]) {
-            const route = paths[path][method];
-            const parameters = route.parameters || [];
-            const roles = route['x-roles'] || [];
+                const routeObject = new Route(
+                    "/" + openApiSpec.servers[0].url.split('/')[3],
+                    path,
+                    method.toUpperCase(),
+                    queryParameters,
+                    pathVariables,
+                    headers,
+                    body,
+                    roles
+                );
 
-            const resolvedParameters = parameters.map(param => {
-                if (param.$ref) {
-                    return getParameter(param.$ref, openApiSpec.components);
-                }
-                return param;
-            });
-
-            const queryParameters = resolvedParameters.filter(p => p.in === 'query');
-            const pathVariables = resolvedParameters.filter(p => p.in === 'path');
-            const headers = resolvedParameters.filter(p => p.in === 'header');
-            const body = route.requestBody ? route.requestBody.content : null;
-
-            const routeObject = new Route(
-                servicePrefix,
-                path,
-                method.toUpperCase(),
-                queryParameters,
-                pathVariables,
-                headers,
-                body,
-                roles
-            );
-
-            routes.push(routeObject);
+                routes.push(routeObject);
+            }
         }
     }
 
