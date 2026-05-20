@@ -2119,5 +2119,7 @@ components:
                 status: 501
                 owner: API_GATEWAY
   securitySchemes: {}
-servers: []
+servers:
+  - url: https://api.gycoding.com/heraldsofchaos
+    description: PRO
 security: []
