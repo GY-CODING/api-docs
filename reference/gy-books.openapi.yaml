@@ -1532,6 +1532,40 @@ paths:
           description: ''
       security: []
   /metadata:
+    get:
+      summary: Get Metadata
+      deprecated: false
+      description: Retrieves user metadata for GY Books.
+      tags:
+        - Metadata
+      parameters:
+        - name: Authorization
+          in: header
+          description: Authorization token or API key.
+          required: true
+          example: ''
+          schema:
+            type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Books%20Metadata'
+          headers: {}
+        '403':
+          $ref: '#/components/responses/Forbidden'
+          description: ''
+        '405':
+          $ref: '#/components/responses/Method Not Allowed'
+          description: ''
+        '500':
+          $ref: '#/components/responses/Internal Error'
+          description: ''
+      security: []
+      x-roles:
+        - ADMIN
     post:
       summary: Initialize and Sync Metadata
       deprecated: false
