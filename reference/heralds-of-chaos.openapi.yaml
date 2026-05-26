@@ -62,6 +62,10 @@ paths:
           $ref: '#/components/responses/Internal Error'
           description: ''
       security: []
+      x-roles:
+        - COMMON
+        - DEVELOPER
+        - ADMIN
   /characters/list:
     get:
       summary: List Characters
@@ -111,6 +115,10 @@ paths:
           $ref: '#/components/responses/Internal Error'
           description: ''
       security: []
+      x-roles:
+        - COMMON
+        - DEVELOPER
+        - ADMIN
   /characters/page:
     get:
       summary: Page Characters
@@ -174,6 +182,10 @@ paths:
           $ref: '#/components/responses/Internal Error'
           description: ''
       security: []
+      x-roles:
+        - COMMON
+        - DEVELOPER
+        - ADMIN
   /creatures/{id}:
     get:
       summary: Get Creature
@@ -226,6 +238,10 @@ paths:
           $ref: '#/components/responses/Internal Error'
           description: ''
       security: []
+      x-roles:
+        - COMMON
+        - DEVELOPER
+        - ADMIN
   /creatures/list:
     get:
       summary: List Creatures
@@ -275,6 +291,10 @@ paths:
           $ref: '#/components/responses/Internal Error'
           description: ''
       security: []
+      x-roles:
+        - COMMON
+        - DEVELOPER
+        - ADMIN
   /creatures/page:
     get:
       summary: Page Characters
@@ -338,6 +358,10 @@ paths:
           $ref: '#/components/responses/Internal Error'
           description: ''
       security: []
+      x-roles:
+        - COMMON
+        - DEVELOPER
+        - ADMIN
   /items/{id}:
     get:
       summary: Get Item
@@ -388,6 +412,10 @@ paths:
           $ref: '#/components/responses/Internal Error'
           description: ''
       security: []
+      x-roles:
+        - COMMON
+        - DEVELOPER
+        - ADMIN
   /items/list:
     get:
       summary: List Items
@@ -436,6 +464,10 @@ paths:
           $ref: '#/components/responses/Internal Error'
           description: ''
       security: []
+      x-roles:
+        - COMMON
+        - DEVELOPER
+        - ADMIN
   /items/page:
     get:
       summary: Page Items
@@ -498,6 +530,10 @@ paths:
           $ref: '#/components/responses/Internal Error'
           description: ''
       security: []
+      x-roles:
+        - COMMON
+        - DEVELOPER
+        - ADMIN
   /worlds/{id}:
     get:
       summary: Get World
@@ -548,6 +584,10 @@ paths:
           $ref: '#/components/responses/Internal Error'
           description: ''
       security: []
+      x-roles:
+        - COMMON
+        - DEVELOPER
+        - ADMIN
   /worlds/places/{id}:
     get:
       summary: Get Place
@@ -598,6 +638,10 @@ paths:
           $ref: '#/components/responses/Internal Error'
           description: ''
       security: []
+      x-roles:
+        - COMMON
+        - DEVELOPER
+        - ADMIN
   /worlds/list:
     get:
       summary: List Worlds
@@ -646,6 +690,10 @@ paths:
           $ref: '#/components/responses/Internal Error'
           description: ''
       security: []
+      x-roles:
+        - COMMON
+        - DEVELOPER
+        - ADMIN
   /worlds/places/list:
     get:
       summary: List Places
@@ -694,6 +742,10 @@ paths:
           $ref: '#/components/responses/Internal Error'
           description: ''
       security: []
+      x-roles:
+        - COMMON
+        - DEVELOPER
+        - ADMIN
   /worlds/places/{id}/list:
     get:
       summary: List Places by World
@@ -749,6 +801,10 @@ paths:
           $ref: '#/components/responses/Internal Error'
           description: ''
       security: []
+      x-roles:
+        - COMMON
+        - DEVELOPER
+        - ADMIN
   /worlds/page:
     get:
       summary: Page Worlds
@@ -811,6 +867,10 @@ paths:
           $ref: '#/components/responses/Internal Error'
           description: ''
       security: []
+      x-roles:
+        - COMMON
+        - DEVELOPER
+        - ADMIN
   /worlds/places/page:
     get:
       summary: Page Places
@@ -873,6 +933,10 @@ paths:
           $ref: '#/components/responses/Internal Error'
           description: ''
       security: []
+      x-roles:
+        - COMMON
+        - DEVELOPER
+        - ADMIN
   /characters:
     post:
       summary: Insert Character
@@ -923,6 +987,8 @@ paths:
           $ref: '#/components/responses/Internal Error'
           description: ''
       security: []
+      x-roles:
+        - ADMIN
     patch:
       summary: Update Character
       deprecated: false
@@ -979,6 +1045,10 @@ paths:
           $ref: '#/components/responses/Internal Error'
           description: ''
       security: []
+      x-roles:
+        - COMMON
+        - DEVELOPER
+        - ADMIN
     delete:
       summary: Remove Character
       deprecated: false
@@ -1020,6 +1090,10 @@ paths:
           $ref: '#/components/responses/Internal Error'
           description: ''
       security: []
+      x-roles:
+        - COMMON
+        - DEVELOPER
+        - ADMIN
   /creatures:
     post:
       summary: Insert Creature
@@ -1070,6 +1144,10 @@ paths:
           $ref: '#/components/responses/Internal Error'
           description: ''
       security: []
+      x-roles:
+        - COMMON
+        - DEVELOPER
+        - ADMIN
     patch:
       summary: Update Creature
       deprecated: false
@@ -1126,6 +1204,10 @@ paths:
           $ref: '#/components/responses/Internal Error'
           description: ''
       security: []
+      x-roles:
+        - COMMON
+        - DEVELOPER
+        - ADMIN
     delete:
       summary: Remove Creature
       deprecated: false
@@ -1167,6 +1249,10 @@ paths:
           $ref: '#/components/responses/Internal Error'
           description: ''
       security: []
+      x-roles:
+        - COMMON
+        - DEVELOPER
+        - ADMIN
   /items:
     post:
       summary: Insert Item
@@ -1217,6 +1303,10 @@ paths:
           $ref: '#/components/responses/Internal Error'
           description: ''
       security: []
+      x-roles:
+        - COMMON
+        - DEVELOPER
+        - ADMIN
     patch:
       summary: Update Item
       deprecated: false
@@ -1272,6 +1362,10 @@ paths:
           $ref: '#/components/responses/Internal Error'
           description: ''
       security: []
+      x-roles:
+        - COMMON
+        - DEVELOPER
+        - ADMIN
     delete:
       summary: Remove Item
       deprecated: false
@@ -1313,6 +1407,10 @@ paths:
           $ref: '#/components/responses/Internal Error'
           description: ''
       security: []
+      x-roles:
+        - COMMON
+        - DEVELOPER
+        - ADMIN
   /worlds:
     post:
       summary: Insert World
@@ -1363,6 +1461,10 @@ paths:
           $ref: '#/components/responses/Internal Error'
           description: ''
       security: []
+      x-roles:
+        - COMMON
+        - DEVELOPER
+        - ADMIN
     patch:
       summary: Update World
       deprecated: false
@@ -1418,6 +1520,10 @@ paths:
           $ref: '#/components/responses/Internal Error'
           description: ''
       security: []
+      x-roles:
+        - COMMON
+        - DEVELOPER
+        - ADMIN
     delete:
       summary: Remove World
       deprecated: false
@@ -1463,6 +1569,10 @@ paths:
           $ref: '#/components/responses/Internal Error'
           description: ''
       security: []
+      x-roles:
+        - COMMON
+        - DEVELOPER
+        - ADMIN
   /worlds/places:
     post:
       summary: Insert Place
@@ -1514,6 +1624,10 @@ paths:
           $ref: '#/components/responses/Internal Error'
           description: ''
       security: []
+      x-roles:
+        - COMMON
+        - DEVELOPER
+        - ADMIN
     patch:
       summary: Update Place
       deprecated: false
@@ -1570,6 +1684,10 @@ paths:
           $ref: '#/components/responses/Internal Error'
           description: ''
       security: []
+      x-roles:
+        - COMMON
+        - DEVELOPER
+        - ADMIN
     delete:
       summary: Remove Place
       deprecated: false
@@ -1612,6 +1730,10 @@ paths:
           $ref: '#/components/responses/Internal Error'
           description: ''
       security: []
+      x-roles:
+        - COMMON
+        - DEVELOPER
+        - ADMIN
 webhooks: {}
 components:
   schemas:
