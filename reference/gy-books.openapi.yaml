@@ -168,6 +168,10 @@ paths:
           $ref: '#/components/responses/Internal Error'
           description: ''
       security: []
+      x-roles:
+        - COMMON
+        - DEVELOPER
+        - ADMIN
     delete:
       summary: Delete Book
       deprecated: false
@@ -212,6 +216,10 @@ paths:
           $ref: '#/components/responses/Internal Error'
           description: ''
       security: []
+      x-roles:
+        - COMMON
+        - DEVELOPER
+        - ADMIN
   /{profileId}/list:
     get:
       summary: List Books by User
@@ -272,6 +280,10 @@ paths:
           $ref: '#/components/responses/Internal Error'
           description: ''
       security: []
+      x-roles:
+        - COMMON
+        - DEVELOPER
+        - ADMIN
   /friends:
     get:
       summary: List Friends
@@ -315,6 +327,10 @@ paths:
           $ref: '#/components/responses/Internal Error'
           description: ''
       security: []
+      x-roles:
+        - COMMON
+        - DEVELOPER
+        - ADMIN
   /friends/{profileId}:
     delete:
       summary: Remove Friend
@@ -357,6 +373,10 @@ paths:
           $ref: '#/components/responses/Internal Error'
           description: ''
       security: []
+      x-roles:
+        - COMMON
+        - DEVELOPER
+        - ADMIN
   /friends/request:
     post:
       summary: Send Friend Request
@@ -418,6 +438,10 @@ paths:
           $ref: '#/components/responses/Internal Error'
           description: ''
       security: []
+      x-roles:
+        - COMMON
+        - DEVELOPER
+        - ADMIN
     get:
       summary: Get Friend Requests
       deprecated: false
@@ -460,6 +484,10 @@ paths:
           $ref: '#/components/responses/Internal Error'
           description: ''
       security: []
+      x-roles:
+        - COMMON
+        - DEVELOPER
+        - ADMIN
   /friends/manage:
     post:
       summary: Manage Friend Request
@@ -527,6 +555,10 @@ paths:
           $ref: '#/components/responses/Internal Error'
           description: ''
       security: []
+      x-roles:
+        - COMMON
+        - DEVELOPER
+        - ADMIN
   /profiles:
     get:
       summary: List Profiles
@@ -572,6 +604,10 @@ paths:
           $ref: '#/components/responses/Internal Error'
           description: ''
       security: []
+      x-roles:
+        - COMMON
+        - DEVELOPER
+        - ADMIN
   /profiles/public:
     get:
       summary: List Profiles (Public)
@@ -612,6 +648,10 @@ paths:
           $ref: '#/components/responses/Internal Error'
           description: ''
       security: []
+      x-roles:
+        - DEVELOPER
+        - COMMON
+        - ADMIN
   /profiles/{profileId}:
     get:
       summary: Get Profile
@@ -653,6 +693,10 @@ paths:
           $ref: '#/components/responses/Internal Error'
           description: ''
       security: []
+      x-roles:
+        - COMMON
+        - DEVELOPER
+        - ADMIN
   /profiles/{profileId}/public:
     get:
       summary: Get Profile (Public)
@@ -694,6 +738,10 @@ paths:
           $ref: '#/components/responses/Internal Error'
           description: ''
       security: []
+      x-roles:
+        - COMMON
+        - DEVELOPER
+        - ADMIN
   /profiles/biography:
     patch:
       summary: Update Biography
@@ -747,6 +795,10 @@ paths:
           $ref: '#/components/responses/Internal Error'
           description: ''
       security: []
+      x-roles:
+        - COMMON
+        - DEVELOPER
+        - ADMIN
   /profiles/{profileId}/halloffame:
     get:
       summary: Get Hall of Fame
@@ -788,6 +840,10 @@ paths:
           $ref: '#/components/responses/Internal Error'
           description: ''
       security: []
+      x-roles:
+        - COMMON
+        - DEVELOPER
+        - ADMIN
   /profiles/halloffame/book:
     patch:
       summary: Add Book to Hall of Fame
@@ -844,6 +900,10 @@ paths:
           $ref: '#/components/responses/Internal Error'
           description: ''
       security: []
+      x-roles:
+        - COMMON
+        - DEVELOPER
+        - ADMIN
   /profiles/halloffame/book/{bookId}:
     delete:
       summary: Delete Book from Hall of Fame
@@ -883,6 +943,10 @@ paths:
           $ref: '#/components/responses/Internal Error'
           description: ''
       security: []
+      x-roles:
+        - COMMON
+        - DEVELOPER
+        - ADMIN
   /profiles/halloffame/quote:
     patch:
       summary: Set Quote to Hall of Fame
@@ -934,6 +998,10 @@ paths:
           $ref: '#/components/responses/Internal Error'
           description: ''
       security: []
+      x-roles:
+        - COMMON
+        - DEVELOPER
+        - ADMIN
   /activity:
     get:
       summary: List Friends Activities
@@ -998,6 +1066,10 @@ paths:
           $ref: '#/components/responses/Internal Error'
           description: ''
       security: []
+      x-roles:
+        - COMMON
+        - DEVELOPER
+        - ADMIN
     post:
       summary: Add Activity
       deprecated: false
@@ -1048,6 +1120,10 @@ paths:
           $ref: '#/components/responses/Internal Error'
           description: ''
       security: []
+      x-roles:
+        - COMMON
+        - DEVELOPER
+        - ADMIN
     patch:
       summary: React to an Activity
       deprecated: false
@@ -1100,6 +1176,10 @@ paths:
           $ref: '#/components/responses/Internal Error'
           description: ''
       security: []
+      x-roles:
+        - COMMON
+        - DEVELOPER
+        - ADMIN
   /activity/{profileId}:
     get:
       summary: List Activities
@@ -1144,6 +1224,10 @@ paths:
           $ref: '#/components/responses/Internal Error'
           description: ''
       security: []
+      x-roles:
+        - COMMON
+        - DEVELOPER
+        - ADMIN
   /lists:
     get:
       summary: List lists
@@ -1184,6 +1268,10 @@ paths:
           $ref: '#/components/responses/Internal Error'
           description: ''
       security: []
+      x-roles:
+        - COMMON
+        - DEVELOPER
+        - ADMIN
     post:
       summary: Create List
       deprecated: false
@@ -1228,6 +1316,10 @@ paths:
           $ref: '#/components/responses/Internal Error'
           description: ''
       security: []
+      x-roles:
+        - COMMON
+        - DEVELOPER
+        - ADMIN
     patch:
       summary: Update List
       deprecated: false
@@ -1275,6 +1367,10 @@ paths:
           $ref: '#/components/responses/Internal Error'
           description: ''
       security: []
+      x-roles:
+        - COMMON
+        - DEVELOPER
+        - ADMIN
   /lists/{id}:
     get:
       summary: Get list
@@ -1320,6 +1416,10 @@ paths:
           $ref: '#/components/responses/Internal Error'
           description: ''
       security: []
+      x-roles:
+        - COMMON
+        - DEVELOPER
+        - ADMIN
     delete:
       summary: Remove List
       deprecated: false
@@ -1361,6 +1461,10 @@ paths:
           $ref: '#/components/responses/Internal Error'
           description: ''
       security: []
+      x-roles:
+        - COMMON
+        - DEVELOPER
+        - ADMIN
   /lists/{id}/books:
     post:
       summary: Save a Book
@@ -1420,6 +1524,10 @@ paths:
           $ref: '#/components/responses/Internal Error'
           description: ''
       security: []
+      x-roles:
+        - COMMON
+        - DEVELOPER
+        - ADMIN
     patch:
       summary: Update a Book
       deprecated: false
@@ -1481,6 +1589,10 @@ paths:
           $ref: '#/components/responses/Internal Error'
           description: ''
       security: []
+      x-roles:
+        - COMMON
+        - DEVELOPER
+        - ADMIN
   /lists/{id}/books/{bookId}:
     delete:
       summary: Remove a Book
@@ -1531,6 +1643,10 @@ paths:
           $ref: '#/components/responses/Internal Error'
           description: ''
       security: []
+      x-roles:
+        - COMMON
+        - DEVELOPER
+        - ADMIN
   /metadata:
     get:
       summary: Get Metadata
@@ -1601,6 +1717,10 @@ paths:
           $ref: '#/components/responses/Internal Error'
           description: ''
       security: []
+      x-roles:
+        - COMMON
+        - DEVELOPER
+        - ADMIN
     delete:
       summary: Remove Metadata
       deprecated: false
@@ -1637,6 +1757,10 @@ paths:
           $ref: '#/components/responses/Internal Error'
           description: ''
       security: []
+      x-roles:
+        - COMMON
+        - DEVELOPER
+        - ADMIN
 webhooks: {}
 components:
   schemas:
