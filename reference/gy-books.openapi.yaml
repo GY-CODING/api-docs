@@ -576,6 +576,13 @@ paths:
           example: toxyc
           schema:
             type: string
+        - name: Authorization
+          in: header
+          description: Authorization token or API key.
+          required: true
+          example: ''
+          schema:
+            type: string
       responses:
         '200':
           description: ''
@@ -668,6 +675,13 @@ paths:
           schema:
             type: string
             format: uuid
+        - name: Authorization
+          in: header
+          description: Authorization token or API key.
+          required: true
+          example: ''
+          schema:
+            type: string
       responses:
         '200':
           description: ''
@@ -749,7 +763,14 @@ paths:
       description: Modifies the biography of a user profile.
       tags:
         - Profile
-      parameters: []
+      parameters:
+        - name: Authorization
+          in: header
+          description: Authorization token or API key.
+          required: true
+          example: ''
+          schema:
+            type: string
       requestBody:
         content:
           application/json:
@@ -851,7 +872,14 @@ paths:
       description: Adds a book to the Hall of Fame of a user.
       tags:
         - Profile
-      parameters: []
+      parameters:
+        - name: Authorization
+          in: header
+          description: Authorization token or API key.
+          required: true
+          example: ''
+          schema:
+            type: string
       requestBody:
         content:
           application/json:
@@ -919,6 +947,13 @@ paths:
           example: '386446'
           schema:
             type: string
+        - name: Authorization
+          in: header
+          description: Authorization token or API key.
+          required: true
+          example: ''
+          schema:
+            type: string
       responses:
         '204':
           description: ''
@@ -954,7 +989,14 @@ paths:
       description: Sets the quote on the Hall of Fame of a user.
       tags:
         - Profile
-      parameters: []
+      parameters:
+        - name: Authorization
+          in: header
+          description: Authorization token or API key.
+          required: false
+          example: ''
+          schema:
+            type: string
       requestBody:
         content:
           application/json:
